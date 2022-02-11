@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="pictures">
+    <file>fiol.jpg</file>
+  </qresource>
+</RCC>

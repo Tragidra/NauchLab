@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1123</width>
+    <height>851</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1123</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Проекты</string>
+    </property>
+    <addaction name="action"/>
+    <addaction name="otkrpoject"/>
+    <addaction name="action_8"/>
+    <addaction name="formuli1"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Инструменты</string>
+    </property>
+    <addaction name="videofix"/>
+    <addaction name="endvideo"/>
+    <addaction name="videotub"/>
+    <addaction name="pesochnica"/>
+    <addaction name="experim1"/>
+    <addaction name="graphik"/>
+    <addaction name="dio"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <action name="action">
+   <property name="text">
+    <string>Создать проект...</string>
+   </property>
+  </action>
+  <action name="otkrpoject">
+   <property name="text">
+    <string>Открыть проект...</string>
+   </property>
+  </action>
+  <action name="videofix">
+   <property name="text">
+    <string>Начать видеофиксацию...</string>
+   </property>
+  </action>
+  <action name="videotub">
+   <property name="text">
+    <string>Визуализация эксперимента...</string>
+   </property>
+  </action>
+  <action name="pesochnica">
+   <property name="text">
+    <string>Песочница...</string>
+   </property>
+  </action>
+  <action name="graphik">
+   <property name="text">
+    <string>Составить график...</string>
+   </property>
+  </action>
+  <action name="dio">
+   <property name="text">
+    <string>Составить диаграмму...</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>Расположение проекта..</string>
+   </property>
+  </action>
+  <action name="svernut">
+   <property name="text">
+    <string>Свернуть приложение</string>
+   </property>
+  </action>
+  <action name="endvideo">
+   <property name="text">
+    <string>Закончить видеофиксацию...</string>
+   </property>
+  </action>
+  <action name="formuli1">
+   <property name="text">
+    <string>Провести расчёты</string>
+   </property>
+  </action>
+  <action name="experim1">
+   <property name="text">
+    <string>Провести теоретический эксперимент...</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../resour/backmain.qrc"/>
+ </resources>
+ <connections/>
+</ui>
