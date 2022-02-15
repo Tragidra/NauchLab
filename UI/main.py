@@ -9,10 +9,11 @@ from PyQt5 import QtWidgets
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMessageBox, QFileDialog, QMainWindow, QDialog, QApplication, QWidget, QScrollArea, \
     QVBoxLayout, QSizePolicy, QSpacerItem, QSystemTrayIcon, QStyle, QAction, QMenu, QTableWidgetItem, QPushButton, \
-    QLineEdit, QInputDialog, QComboBox, QTableWidget
+    QLineEdit, QInputDialog, QComboBox, QTableWidget, QCheckBox
 from PyQt5.uic import loadUi
 import pyqtgraph as pg
-from scipy.linalg import solve_toeplitz, solve_banded, solve_triangular
+from scipy.linalg import solve_toeplitz, solve_banded, solve_triangular, eigh, eig_banded, eigh_tridiagonal, lu, \
+    lu_factor, lu_solve, svdvals, diagsvd, orth, ldl, cholesky, polar, hessenberg
 
 from UI.Grafiki.LinGraph import Ui_Form
 from UI.Visualisazia.VisualInput import Ui_Form as Form2
@@ -480,6 +481,318 @@ class treugM(QDialog):
             for j, val in enumerate(row):
                 self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
 
+class OneMatrObProb(QDialog):
+    def __init__(self):
+        super(OneMatrObProb,self).__init__()
+        loadUi("formuli/OneMatrix.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        print(TempOtvet)
+        TempOtvet1 = linalg.eigvals(TempOtvet)
+        print(TempOtvet1)
+        self.tb1.setRowCount(1)
+        self.tb1.setColumnCount(1)
+        self.tb1.setItem(0, 0, QTableWidgetItem(str(TempOtvet1)))
+
+class OneMatrObProb2(QDialog):
+    def __init__(self):
+        super(OneMatrObProb2,self).__init__()
+        loadUi("formuli/1ProbMat.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        print(TempOtvet)
+        if (self.cbx1.isChecked() and self.cbx2.isChecked()):
+            TempOtvet1 = linalg.eig(TempOtvet)
+            print(TempOtvet1)
+            self.tb1.setRowCount(1)
+            self.tb1.setColumnCount(1)
+            self.tb1.setItem(0, 0, QTableWidgetItem(str(TempOtvet1)))
+        elif (self.cbx1.isChecked() and self.cbx2.isChecked() == False):
+            TempOtvet1 = linalg.eig(TempOtvet, left=True, right=False)
+            print(TempOtvet1)
+            self.tb1.setRowCount(1)
+            self.tb1.setColumnCount(1)
+            self.tb1.setItem(0, 0, QTableWidgetItem(str(TempOtvet1)))
+        elif (self.cbx2.isChecked() and self.cbx1.isChecked() == False):
+            TempOtvet1 = linalg.eig(TempOtvet, left=False, right=True)
+            print(TempOtvet1)
+            self.tb1.setRowCount(1)
+            self.tb1.setColumnCount(1)
+            self.tb1.setItem(0, 0, QTableWidgetItem(str(TempOtvet1)))
+
+class OneMatrObProb3(QDialog):
+    def __init__(self):
+        super(OneMatrObProb3,self).__init__()
+        loadUi("formuli/OneMatrix.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        print(TempOtvet)
+        TempOtvet1 = eigh(TempOtvet, eigvals_only=True)
+        print(TempOtvet1)
+        self.tb1.setRowCount(1)
+        self.tb1.setColumnCount(len(TempOtvet))
+        for j in range(len(TempOtvet)):
+            print(len(TempOtvet))
+            self.tb1.setItem(0, j, QTableWidgetItem(str(TempOtvet1[j])))
+
+class OneMatrObProb4(QDialog):
+    def __init__(self):
+        super(OneMatrObProb4,self).__init__()
+        loadUi("formuli/1ProbMatTreug.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        print(TempOtvet)
+        if (self.cbx1.isChecked()):
+            TempOtvet1 = eig_banded(TempOtvet, lower=True, eigvals_only=True)
+            self.tb1.setRowCount(1)
+            self.tb1.setColumnCount(len(TempOtvet))
+            for j in range(len(TempOtvet)):
+                print(len(TempOtvet))
+                self.tb1.setItem(0, j, QTableWidgetItem(str(TempOtvet1[j])))
+        else:
+            TempOtvet1 = eig_banded(TempOtvet, lower=False, eigvals_only=True)
+            self.tb1.setRowCount(1)
+            self.tb1.setColumnCount(len(TempOtvet))
+            for j in range(len(TempOtvet)):
+                print(len(TempOtvet))
+                self.tb1.setItem(0, j, QTableWidgetItem(str(TempOtvet1[j])))
+
+class DiogObProb(QDialog):
+    def __init__(self):
+        super(DiogObProb,self).__init__()
+        loadUi("formuli/DiogObProb.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        d = self.line1.text()
+        e = self.line2.text()
+        d = [float(val) for val in d.split(' ')]
+        e = [float(val) for val in e.split(' ')]
+        w = eigh_tridiagonal(d, e, eigvals_only=True)
+        self.tb1.setRowCount(1)
+        self.tb1.setColumnCount(len(d))
+        for j in range(len(d)):
+            print(len(d))
+            self.tb1.setItem(0, j, QTableWidgetItem(str(w[j])))
+
+class LuM(QDialog):
+    def __init__(self):
+        super(LuM,self).__init__()
+        loadUi("formuli/LUM.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        print(TempOtvet)
+        p,l,u = lu(TempOtvet)
+        self.tb1.setRowCount(len(p))
+        self.tb1.setColumnCount(len(p[0]))
+        for i, row in enumerate(p):
+            for j, val in enumerate(row):
+                self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+        self.tb2.setRowCount(len(l))
+        self.tb2.setColumnCount(len(l[0]))
+        for i, row in enumerate(l):
+            for j, val in enumerate(row):
+                self.tb2.setItem(i, j, QTableWidgetItem(str(val)))
+        self.tb3.setRowCount(len(u))
+        self.tb3.setColumnCount(len(u[0]))
+        for i, row in enumerate(u):
+            for j, val in enumerate(row):
+                self.tb3.setItem(i, j, QTableWidgetItem(str(val)))
+
+class LuMf(QDialog):
+    def __init__(self):
+        super(LuMf,self).__init__()
+        loadUi("formuli/Liner1.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        A = np.matrix(self.line1.text())
+        b = np.matrix(self.line2.text())
+        lu, piv = lu_factor(A)
+        print(lu)
+        print(piv)
+        x = lu_solve((lu, piv), b)
+        print(x)
+        np.allclose(A @ x - b, np.zeros((4,)))
+        self.tb1.setRowCount(len(x))
+        self.tb1.setColumnCount(len(x[0]))
+        for i, row in enumerate(x):
+            for j, val in enumerate(row):
+                self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+
+class Sing(QDialog):
+    def __init__(self):
+        super(Sing,self).__init__()
+        loadUi("formuli/SIN.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        U, s, Vh = linalg.svd(TempOtvet)
+        self.tb1.setRowCount(len(U))
+        self.tb1.setColumnCount(len(U[0]))
+        for i, row in enumerate(U):
+            for j, val in enumerate(row):
+                self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+        self.tb2.setRowCount(1)
+        self.tb2.setColumnCount(len(s))
+        print(s)
+        for j in range(len(s)):
+            print(str(s[j]))
+            self.tb2.setItem(0, j, QTableWidgetItem(str(s[j])))
+        self.tb3.setRowCount(len(Vh))
+        self.tb3.setColumnCount(len(Vh[0]))
+        for i, row in enumerate(Vh):
+            for j, val in enumerate(row):
+                self.tb3.setItem(i, j, QTableWidgetItem(str(val)))
+
+class SingV(QDialog):
+    def __init__(self):
+        super(SingV,self).__init__()
+        loadUi("formuli/OneMatrix.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        temp1 = svdvals(TempOtvet)
+        self.tb1.setRowCount(1)
+        self.tb1.setColumnCount(len(temp1))
+        for j in range(len(temp1)):
+            print(str(temp1[j]))
+            self.tb1.setItem(0, j, QTableWidgetItem(str(temp1[j])))
+
+class SingMat(QDialog):
+    def __init__(self):
+        super(SingMat,self).__init__()
+        loadUi("formuli/SingMatr.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = self.line1.text()
+        TempOtvet = [float(val) for val in TempOtvet.split(' ')]
+        m = int(self.line2.text())
+        n = int(self.line3.text())
+        print(len(TempOtvet))
+        print(TempOtvet)
+        temp1 = diagsvd(TempOtvet,m,n)
+        self.tb1.setRowCount(len(temp1))
+        self.tb1.setColumnCount(len(temp1[0]))
+        for i, row in enumerate(temp1):
+            for j, val in enumerate(row):
+                self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+
+class OrtMat(QDialog):
+    def __init__(self):
+        super(OrtMat,self).__init__()
+        loadUi("formuli/OneMatrix.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        temp1 = orth(TempOtvet)
+        self.tb1.setRowCount(len(temp1))
+        self.tb1.setColumnCount(len(temp1[0]))
+        for i, row in enumerate(temp1):
+            for j, val in enumerate(row):
+                self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+
+class LDTtT(QDialog):
+    def __init__(self):
+        super(LDTtT,self).__init__()
+        loadUi("formuli/LDT.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        lu, d, perm = ldl(TempOtvet) #lower=0, если надо верхнюю
+        self.tb1.setRowCount(len(lu))
+        self.tb1.setColumnCount(len(lu[0]))
+        for i, row in enumerate(lu):
+            for j, val in enumerate(row):
+                self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+        self.tb2.setRowCount(1)
+        self.tb2.setColumnCount(len(perm))
+        for j in range(len(perm)):
+            self.tb2.setItem(0, j, QTableWidgetItem(str(perm[j])))
+        self.tb3.setRowCount(len(d))
+        self.tb3.setColumnCount(len(d[0]))
+        for i, row in enumerate(d):
+            for j, val in enumerate(row):
+                self.tb3.setItem(i, j, QTableWidgetItem(str(val)))
+
+class Holeck(QDialog):
+    def __init__(self):
+        super(Holeck,self).__init__()
+        loadUi("formuli/Holec.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        if (self.cbx1.isChecked()):
+            temp1 = cholesky(TempOtvet, lower=True)
+            self.tb1.setRowCount(len(temp1))
+            self.tb1.setColumnCount(len(temp1[0]))
+            for i, row in enumerate(temp1):
+                for j, val in enumerate(row):
+                    self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+        elif (self.cbx2.isChecked()):
+            temp1 = cholesky(TempOtvet, lower=False)
+            self.tb1.setRowCount(len(temp1))
+            self.tb1.setColumnCount(len(temp1[0]))
+            for i, row in enumerate(temp1):
+                for j, val in enumerate(row):
+                    self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+
+class PolarDec(QDialog):
+    def __init__(self):
+        super(PolarDec,self).__init__()
+        loadUi("formuli/OneMatrix2out.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        u, p = polar(TempOtvet)
+        self.tb1.setRowCount(len(u))
+        self.tb1.setColumnCount(len(u[0]))
+        for i, row in enumerate(u):
+            for j, val in enumerate(row):
+                self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+        self.tb2.setRowCount(len(p))
+        self.tb2.setColumnCount(len(p[0]))
+        for i, row in enumerate(p):
+            for j, val in enumerate(row):
+                self.tb2.setItem(i, j, QTableWidgetItem(str(val)))
+
+class QRD(QDialog):
+    def __init__(self):
+        super(QRD,self).__init__()
+        loadUi("formuli/hessenberg.ui", self)
+        self.ready.clicked.connect(self.ras)
+
+    def ras(self):
+        TempOtvet = np.matrix(self.line1.text())
+        u, p = hessenberg(TempOtvet, calc_q=True)
+        self.tb1.setRowCount(len(u))
+        self.tb1.setColumnCount(len(u[0]))
+        for i, row in enumerate(u):
+            for j, val in enumerate(row):
+                self.tb1.setItem(i, j, QTableWidgetItem(str(val)))
+        self.tb2.setRowCount(len(p))
+        self.tb2.setColumnCount(len(p[0]))
+        for i, row in enumerate(p):
+            for j, val in enumerate(row):
+                self.tb2.setItem(i, j, QTableWidgetItem(str(val)))
+
 class ClassM(QDialog):
     def __init__(self):
         super(ClassM,self).__init__()
@@ -492,6 +805,24 @@ class ClassM(QDialog):
         self.tm1_6.clicked.connect(self.lin2) #-
         self.tm1_7.clicked.connect(self.polo)
         self.tm1_8.clicked.connect(self.treug)
+        self.tm1_20.clicked.connect(self.obprob) # Проверить до конца, с точки зрения математики, вывод только собственных значений
+        self.tm1_21.clicked.connect(self.obprob2)# Вывод некрасивый, но правильный
+        self.tm1_24.clicked.connect(self.obprob3)
+        self.tm1_27.clicked.connect(self.obprob4) #Не проверял
+        self.tm1_25.clicked.connect(self.diogobprob) #Всё хорошо
+        self.tm1_28.clicked.connect(self.lu) #A = P L U
+        self.tm1_15.clicked.connect(self.luf) #Не работает!! Проблема Shapes of lu (4, 4) and b (1, 4) are incompatible
+        self.tm1_16.clicked.connect(self.singr) #Протестировано, работает
+        self.tm1_26.clicked.connect(self.singv) #Проверено
+        self.tm1_18.clicked.connect(self.sigM)#Проверено работает
+        self.tm1_22.clicked.connect(self.OrtsigM) #Проверено
+        self.tm1_23.clicked.connect(self.LDTt) #Проверено, при необходимости добавить выбор между нижней и верхнй матрицей
+        self.tm1_19.clicked.connect(self.holec) #Проверено
+        self.tm1_17.clicked.connect(self.pdc) #Проверено, вывод перепроверить
+        self.tm1_29.clicked.connect(self.qrdec)
+
+
+
 
     def oprmat(self):
         self.OneMatr2 = OneMatr2()
@@ -525,6 +856,66 @@ class ClassM(QDialog):
     def treug(self):
         self.treugM = treugM()
         self.treugM.show()
+
+    def obprob(self):
+        self.OneMatrObProb = OneMatrObProb()
+        self.OneMatrObProb.show()
+
+    def obprob2(self):
+        self.OneMatrObProb2 = OneMatrObProb2()
+        self.OneMatrObProb2.show()
+
+    def obprob3(self):
+        self.OneMatrObProb3 = OneMatrObProb3()
+        self.OneMatrObProb3.show()
+
+    def obprob4(self):
+        self.OneMatrObProb4 = OneMatrObProb4()
+        self.OneMatrObProb4.show()
+
+    def diogobprob(self):
+        self.DiogObProb = DiogObProb()
+        self.DiogObProb.show()
+
+    def lu(self):
+        self.LuM = LuM()
+        self.LuM.show()
+
+    def luf(self):
+        self.LuMf = LuMf()
+        self.LuMf.show()
+
+    def singr(self):
+        self.Sing = Sing()
+        self.Sing.show()
+
+    def singv(self):
+        self.SingV = SingV()
+        self.SingV.show()
+
+    def sigM(self):
+        self.SingMat = SingMat()
+        self.SingMat.show()
+
+    def OrtsigM(self):
+        self.OrtMat = OrtMat()
+        self.OrtMat.show()
+
+    def LDTt(self):
+        self.LDTtT = LDTtT()
+        self.LDTtT.show()
+
+    def holec(self):
+        self.Holeck = Holeck()
+        self.Holeck.show()
+
+    def pdc(self):
+        self.PolarDec = PolarDec()
+        self.PolarDec.show()
+
+    def qrdec(self):
+        self.QRD = QRD()
+        self.QRD.show()
 
 app = QApplication(sys.argv)
 mainW = Main()

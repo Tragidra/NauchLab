@@ -47,7 +47,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Матрицы</string>
+    <string>Основы</string>
    </property>
   </widget>
   <widget class="QCommandLinkButton" name="tm1_2">
@@ -302,6 +302,331 @@
    </property>
    <property name="text">
     <string>Проверка двухмерного массива на симметричность</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_15">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>540</y>
+     <width>501</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Решение системы уравнений, ax = b, с учётом LU-факторизации a</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_16">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>570</y>
+     <width>409</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Разложение по сингулярным значениям</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_17">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>750</y>
+     <width>671</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вычисление полярного разложения.</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_18">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>630</y>
+     <width>611</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Построение сигма-матрицы в SVD по сингулярным значениям и размерам M, N.</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_19">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>720</y>
+     <width>409</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вычисление разложения матрицы Холецкого.</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_20">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>209</y>
+     <width>421</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вычисление собственных значений из обычной или
+ обобщённой задачи на собственное значение</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_21">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>169</y>
+     <width>611</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Обычная или обощённая проблема собственных значений квадратной матрицы</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_24">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>260</y>
+     <width>631</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Решение стандартной или обобщенной проблемы собственных значений
+ для комплексной эрмитовой или вещественной симметричной матрицы.</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_25">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>360</y>
+     <width>621</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Решение проблемы собственных значений для
+ вещественной симметричной трехдиагональной матрицы.</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_26">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>600</y>
+     <width>409</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вычисление сингулярных значений матрицы.</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_27">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>310</y>
+     <width>621</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Решение задачи о собственных значениях матрицы реальных симметричных или
+ комплексных эрмитовых полос.</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_28">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>510</y>
+     <width>409</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вычисление развернутого  LU-разложение матрицы.</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>120</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Собственные значения</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>450</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Разложение</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_22">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>660</y>
+     <width>611</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Построение ортонормированного базиса для диапазона A с помощью SVD</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_23">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>690</y>
+     <width>671</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вычисление LDLt или факторизации Банча-Кауфмана симметричной/эрмитовой матрицы.</string>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="tm1_29">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>780</y>
+     <width>671</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вычисление разложения Хессенберга матрицы.</string>
    </property>
   </widget>
  </widget>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Drawflow | Simple Flow program libray</title>
+  <title>Laboratoria 1.0</title>
   <meta name="description" content="Simple library for flow programming. Drawflow allows you to create data flows easily and quickly.">
 </head>
 <body>
@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/tsayen/dom-to-image/dist/dom-to-image.min.js"></script>
 
 
   <!-- <header>
@@ -45,6 +46,7 @@
       </div>
 
 
+
     </div>
     <div class="col-right">
       <div class="menu">
@@ -55,9 +57,7 @@
       </div>
       <div id="drawflow" ondrop="drop(event)" ondragover="allowDrop(event)">
 
-        <div class="btn-export" onclick="Swal.fire({ title: 'Export',
-        html: '<pre><code>'+JSON.stringify(editor.export(), null,4)+'</code></pre>'
-        })">Готово</div>
+        <div class="btn-export" onclick="exportNodeInfo()">Готово</div>
         <div class="btn-clear" onclick="editor.clearModuleSelected()">Очистить</div>
         <div class="btn-lock">
           <i id="lock" class="fas fa-lock" onclick="editor.editor_mode='fixed'; changeMode('lock');"></i>
@@ -77,9 +77,18 @@
     const editor = new Drawflow(id);
     editor.reroute = true;
     editor.start();
-    editor.import(dataToImport);
 
-
+    function exportNodeInfo() {
+      const exportdata = editor.export();
+      const textFileAsBlob = new Blob([JSON.stringify(exportdata, null, 4)], {
+        type: "text/json",
+      });
+      const downloadLink = document.createElement("a");
+      downloadLink.download = "DrawFlow.json";
+      downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+      downloadLink.click();
+      console.log(JSON.stringify(exportdata, null, 4));
+    }
   /*
     var welcome = `
     <div>
