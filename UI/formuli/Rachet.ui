@@ -127,7 +127,7 @@
     <string>Машинное обучение</string>
    </property>
   </widget>
-  <widget class="QCommandLinkButton" name="commandLinkButton">
+  <widget class="QCommandLinkButton" name="svform">
    <property name="geometry">
     <rect>
      <x>350</x>

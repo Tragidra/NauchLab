@@ -33,7 +33,16 @@
         <i class="fab fa-vneshfac"></i><span> Внешний фактор</span>
       </div>
       <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp">
-        <i class="fab fa-etapexp"></i><span> Этап эксперимента</span>
+        <i class="fab fa-etapexp"></i><span> Этап эксперимента #1</span>
+      </div>
+      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp1">
+        <i class="fab fa-etapexp1"></i><span> Этап эксперимента #2</span>
+      </div>
+      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp2">
+        <i class="fab fa-etapexp2"></i><span> Этап эксперимента #3</span>
+      </div>
+      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp3">
+        <i class="fab fa-etapexp3"></i><span> Этап эксперимента #4</span>
       </div>
       <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="predusl">
         <i class="fab fa-predusl"></i><span> Предусловие</span>
@@ -255,7 +264,55 @@
               </div>
                 </div>
         `;
-        editor.addNode('etapexp', 5, 5, pos_x, pos_y, 'etapexp', { "name": '' }, etapexp);
+        editor.addNode('etapexp', 1, 1, pos_x, pos_y, 'etapexp', { "name": '' }, etapexp);
+          break;
+        case 'etapexp1':
+          var etapexp1 = `
+                <div>
+                <div class="title-box"><i class="fab fa-etapexp1"></i> Этап эксперимента</div>
+                <div class="box">
+                <p>Название эксперимента:</p>
+                <input type="text" df-name>
+                </div>
+                <div class="box">
+                Суть эксперимента
+                <textarea df-template></textarea>
+              </div>
+                </div>
+        `;
+          editor.addNode('etapexp1', 5, 5, pos_x, pos_y, 'etapexp1', { "name": '' }, etapexp1);
+          break;
+        case 'etapexp2':
+          var etapexp2 = `
+                <div>
+                <div class="title-box"><i class="fab fa-etapexp2"></i> Этап эксперимента</div>
+                <div class="box">
+                <p>Название эксперимента:</p>
+                <input type="text" df-name>
+                </div>
+                <div class="box">
+                Суть эксперимента
+                <textarea df-template></textarea>
+              </div>
+                </div>
+        `;
+          editor.addNode('etapexp2', 1, 5, pos_x, pos_y, 'etapexp2', { "name": '' }, etapexp2);
+          break;
+        case 'etapexp3':
+          var etapexp3 = `
+                <div>
+                <div class="title-box"><i class="fab fa-etapexp3"></i> Этап эксперимента</div>
+                <div class="box">
+                <p>Название эксперимента:</p>
+                <input type="text" df-name>
+                </div>
+                <div class="box">
+                Суть эксперимента
+                <textarea df-template></textarea>
+              </div>
+                </div>
+        `;
+          editor.addNode('etapexp3', 5, 1, pos_x, pos_y, 'etapex31', { "name": '' }, etapexp3);
           break;
         case 'konexp':
           var konexp = `

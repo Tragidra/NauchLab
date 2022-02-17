@@ -1,4 +1,6 @@
 import sys
+
+from PyQt5.uic.properties import QtGui
 from scipy import linalg
 from PIL import ImageGrab
 import numpy as np
@@ -6,7 +8,7 @@ import cv2
 import os
 import shutil
 from PyQt5 import QtWidgets
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor
 from PyQt5.QtWidgets import QMessageBox, QFileDialog, QMainWindow, QDialog, QApplication, QWidget, QScrollArea, \
     QVBoxLayout, QSizePolicy, QSpacerItem, QSystemTrayIcon, QStyle, QAction, QMenu, QTableWidgetItem, QPushButton, \
     QLineEdit, QInputDialog, QComboBox, QTableWidget, QCheckBox
@@ -14,7 +16,10 @@ from PyQt5.uic import loadUi
 import pyqtgraph as pg
 from scipy.linalg import solve_toeplitz, solve_banded, solve_triangular, eigh, eig_banded, eigh_tridiagonal, lu, \
     lu_factor, lu_solve, svdvals, diagsvd, orth, ldl, cholesky, polar, hessenberg
-
+from PyQt5.QtCore import QRegExp, pyqtSignal
+from PyQt5.QtGui import QTextCharFormat, QTextCursor
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QTextEdit,
+                                 QToolBar, QLineEdit, QPushButton, QColorDialog, QHBoxLayout, QWidget)
 from UI.Grafiki.LinGraph import Ui_Form
 from UI.Visualisazia.VisualInput import Ui_Form as Form2
 from UI.Grafiki.Grafiki import ThemeWidget
@@ -55,6 +60,8 @@ class Main(QMainWindow):
         self.pesochnica.triggered.connect(self.pesoc)
         self.formuli1.triggered.connect(self.formuli)
         self.experim1.triggered.connect(self.exper)
+        self.gotexp.triggered.connect(self.gotexper)
+
 
 
     def sapis(self):
@@ -80,7 +87,8 @@ class Main(QMainWindow):
         cv2.destroyAllWindows()
 
     def zakonchitvideosapis(self):
-        os.remove('temp.txt')
+        self.TextEdit = TextEdit() #os.remove()
+        self.TextEdit.show()
 
     def closeEvent(self, event):
             event.ignore()
@@ -142,6 +150,10 @@ class Main(QMainWindow):
     def exper(self):
         self.Exper = Exper()
         self.Exper.show()
+
+    def gotexper(self):
+        self.GotovExp = GotovExp()
+        self.GotovExp.show()
 
 class CustomViewBox(pg.ViewBox):
     def __init__(self, *args, **kwds):
@@ -241,6 +253,37 @@ class Window(QWebEngineView):
         de.setRequestInterceptor(RequestInterceptor(self))
         de.installUrlSchemeHandler(QByteArray(b'myurl'), UrlSchemeHandler(self))
 
+class Window2(QWebEngineView):
+    closed = pyqtSignal()
+    def __init__(self, *args, **kwargs):
+        super(Window2, self).__init__(*args, **kwargs)
+        self.resize(800, 800)
+        self.openbtn = QPushButton('close')
+        self.openbtn.clicked.connect(self.close)
+        h1 = QWebEngineUrlScheme.schemeByName(QByteArray(b'http'))
+        h2 = QWebEngineUrlScheme.schemeByName(QByteArray(b'https'))
+
+        CorsEnabled = 0x80  # 5.14才增加
+        h1.setFlags(h1.flags() |
+                    QWebEngineUrlScheme.SecureScheme |
+                    QWebEngineUrlScheme.LocalScheme |
+                    QWebEngineUrlScheme.LocalAccessAllowed |
+                    CorsEnabled)
+        h2.setFlags(h2.flags() |
+                    QWebEngineUrlScheme.SecureScheme |
+                    QWebEngineUrlScheme.LocalScheme |
+                    QWebEngineUrlScheme.LocalAccessAllowed |
+                    CorsEnabled)
+
+        de = QWebEngineProfile.defaultProfile()
+        de.setRequestInterceptor(RequestInterceptor(self))
+        de.installUrlSchemeHandler(QByteArray(b'myurl'), UrlSchemeHandler(self))
+
+    def closeEvent(self, event):
+        self.TextEdit = TextEdit()
+        self.TextEdit.show()
+
+
 class visualInput(QDialog,Form2):
     def __init__(self):
         super(visualInput, self).__init__()
@@ -326,9 +369,53 @@ class Exper(QDialog):
         self.click555()
 
     def click555(self):
+        self.Window2 = Window2()
+        self.Window2.load(QUrl('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html'))
+        self.Window2.show()
+        #self.Window2.closed.connect(self.sapisresult())
+
+    #def sapisresult(self):
+        #self.TextEdit = TextEdit()
+        #self.TextEdit.show()
+
+class GotovExp(QWidget):
+    def __init__(self):
+        super(GotovExp,self).__init__()
+        loadUi("Exper/GotExper.ui", self)
+        papka = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi'
+        files = os.listdir(papka)
+        a = 0
+        print(files)
+        self.tableWidget.setRowCount(len(files))
+        for i in files:
+            self.tableWidget.setItem(a,0, QTableWidgetItem(i))
+            a = a = 1
+        self.pushButton33.clicked.connect(self.prildoska1)
+        self.pushButton30.clicked.connect(self.prildoska3)
+
+    def prildoska1(self):
+        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
+        print('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi' + tecfile)
         self.close()
         self.Window = Window()
-        self.Window.load(QUrl('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html'))
+        self.Window.load(QUrl('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/' + tecfile))
+        self.Window.show()
+
+    def prildoska3(self):
+        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
+        tempdelete = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/' + tecfile
+        os.remove(tempdelete)
+        self.close()
+
+class SFor(QDialog):
+    def __init__(self):
+        super(SFor, self).__init__()
+        self.click555()
+
+    def click555(self):
+        self.close()
+        self.Window = Window()
+        self.Window.load(QUrl('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/svform/NewFormul.html'))
         self.Window.show()
 
 class Rachet(QDialog):
@@ -339,6 +426,8 @@ class Rachet(QDialog):
         self.geomet.clicked.connect(self.classicmath)
         self.stats.clicked.connect(self.classicmath)
         self.mashine.clicked.connect(self.classicmath)
+        self.svform.clicked.connect(self.svfo1rm)
+
         classicmath = ['Сложение матриц','Умножение матриц', 'Транспонирование матриц', 'Определитель матрицы','Обратная матрица','Solve equation a x = b. a is Hermitian positive-definite banded matrix'] #Линейная алгебра, scipy,pandas
         geometry = [] #матплот, керас и т.д.
         statistica = [] #statsmodel
@@ -347,6 +436,10 @@ class Rachet(QDialog):
     def classicmath(self):
         self.ClassM = ClassM()
         self.ClassM.show()
+
+    def svfo1rm(self):
+        self.SFor = SFor()
+        self.SFor.show()
 
 class OneMatr1(QDialog):
     def __init__(self):
@@ -792,6 +885,37 @@ class QRD(QDialog):
         for i, row in enumerate(p):
             for j, val in enumerate(row):
                 self.tb2.setItem(i, j, QTableWidgetItem(str(val)))
+
+class TextEdit(QMainWindow):
+    def __init__(self, parent=None):
+        super(TextEdit, self).__init__(parent)
+        self.textEdit = QTextEdit(self)
+        self.setCentralWidget(self.textEdit)
+
+        widget = QWidget(self)
+        vb = QHBoxLayout(widget)
+        vb.setContentsMargins(0, 0, 0, 0)
+        self.findText = QLineEdit(self)
+        self.findText.setText('Введите сюда название эксперимента')
+        findBtn = QPushButton('Сохранить', self)
+        findBtn.clicked.connect(self.sochtest)
+        vb.addWidget(self.findText)
+        vb.addWidget(findBtn)
+
+        tb = QToolBar(self)
+        tb.addWidget(widget)
+        self.addToolBar(tb)
+        self.textEdit.setPlainText("Опишите здесь результаты эксперимента")
+
+    def sochtest(self):
+        nazv = self.findText.text() + ".txt"
+        my_file = open(nazv, "w+")
+        my_file.write(self.textEdit.toPlainText())
+        my_file.close()
+        os.path.isfile("/Laboratoria1.0/UI/" + nazv)
+        os.rename("C:/Users/astra/PycharmProjects/Laboratoria1.0/UI/" + nazv, "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/" + nazv)
+
+
 
 class ClassM(QDialog):
     def __init__(self):

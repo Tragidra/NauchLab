@@ -32,7 +32,7 @@
     </property>
     <addaction name="action"/>
     <addaction name="otkrpoject"/>
-    <addaction name="action_8"/>
+    <addaction name="gotexp"/>
     <addaction name="formuli1"/>
    </widget>
    <widget class="QMenu" name="menu_2">
@@ -85,9 +85,9 @@
     <string>Составить диаграмму...</string>
    </property>
   </action>
-  <action name="action_8">
+  <action name="gotexp">
    <property name="text">
-    <string>Расположение проекта..</string>
+    <string>Открыть результаты экспериментов...</string>
    </property>
   </action>
   <action name="svernut">
@@ -102,7 +102,7 @@
   </action>
   <action name="formuli1">
    <property name="text">
-    <string>Провести расчёты</string>
+    <string>Провести расчёты...</string>
    </property>
   </action>
   <action name="experim1">
