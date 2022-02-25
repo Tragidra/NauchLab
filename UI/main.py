@@ -1,6 +1,11 @@
+import ast
 import sys
-
-from PyQt5.uic.properties import QtGui
+import pyqtgraph.flowchart.library as fclib
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from pyqtgraph.flowchart import Flowchart
+from pyqtgraph.flowchart.library.common import CtrlNode
 from scipy import linalg
 from PIL import ImageGrab
 import numpy as np
@@ -8,7 +13,7 @@ import cv2
 import os
 import shutil
 from PyQt5 import QtWidgets
-from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor, QPainter, QPen, QImage
 from PyQt5.QtWidgets import QMessageBox, QFileDialog, QMainWindow, QDialog, QApplication, QWidget, QScrollArea, \
     QVBoxLayout, QSizePolicy, QSpacerItem, QSystemTrayIcon, QStyle, QAction, QMenu, QTableWidgetItem, QPushButton, \
     QLineEdit, QInputDialog, QComboBox, QTableWidget, QCheckBox
@@ -16,7 +21,7 @@ from PyQt5.uic import loadUi
 import pyqtgraph as pg
 from scipy.linalg import solve_toeplitz, solve_banded, solve_triangular, eigh, eig_banded, eigh_tridiagonal, lu, \
     lu_factor, lu_solve, svdvals, diagsvd, orth, ldl, cholesky, polar, hessenberg
-from PyQt5.QtCore import QRegExp, pyqtSignal
+from PyQt5.QtCore import QRegExp, pyqtSignal, QPoint
 from PyQt5.QtGui import QTextCharFormat, QTextCursor
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QTextEdit,
                                  QToolBar, QLineEdit, QPushButton, QColorDialog, QHBoxLayout, QWidget)
@@ -49,6 +54,76 @@ class Main(QMainWindow):
         tray_menu.addAction(show_action)
         tray_menu.addAction(hide_action)
         tray_menu.addAction(quit_action)
+        file = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "r")
+        contents = file.read()
+        terminals = ast.literal_eval(contents)
+        file.close()
+        fc = Flowchart(terminals)
+        w = fc.widget()
+
+        self.LayOut1.addWidget(w, 0, 0, 2, 1)
+        data1 = ""
+        data2 = ""
+        data3 = ""
+        data4 = ""
+        data5 = ""
+        file2 = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocData.txt", "r")
+        lines2 = file2.readlines()
+        for i in range(len(lines2)):
+            print(lines2[i])
+            if i == 0:
+                fileT = open(lines2[i], "r")
+                data1 = fileT.readlines()
+                print(data1)
+                fileT.close()
+            if i == 1:
+                fileT = open(lines2[i], "r")
+                data2 = fileT.readlines()
+                fileT.close()
+            if i == 2:
+                fileT = open(lines2[i], "r")
+                data3 = fileT.readlines()
+                fileT.close()
+            if i == 3:
+                fileT = open(lines2[i], "r")
+                data4 = fileT.readlines()
+                fileT.close()
+            if i == 4:
+                fileT = open(lines2[i], "r")
+                data5 = fileT.readlines()
+                fileT.close()
+        file = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "r")
+        lines = file.readlines()
+        chet1 = (len(lines)-2)//2
+        print(chet1)
+        if chet1 == 1:
+            fc.setInput(dataIn=data1)
+        if chet1 == 2:
+            fc.setInput(dataIn=data1)
+            fc.setInput(dataIn=data2)
+        if chet1 == 3:
+            fc.setInput(dataIn=data1)
+            fc.setInput(dataIn=data2)
+            fc.setInput(dataIn=data3)
+        if chet1 == 4:
+            fc.setInput(dataIn=data1)
+            fc.setInput(dataIn=data2)
+            fc.setInput(dataIn=data3)
+            fc.setInput(dataIn=data4)
+        if chet1 == 5:
+            fc.setInput(dataIn=data1)
+            fc.setInput(dataIn=data2)
+            fc.setInput(dataIn=data3)
+            fc.setInput(dataIn=data4)
+            fc.setInput(dataIn=data5)
+        library = fclib.LIBRARY.copy()
+        library.addNodeType(UnsharpMaskNode, [('Текст',),
+                                              ('Submenu_test', 'submenu2', 'submenu3')])
+        fc.setLibrary(library)
+
+        fNode = fc.createNode('Текст', pos=(0, 0))
+        fc.connectTerminals(fc['dataIn'], fNode['dataIn'])
+        fc.connectTerminals(fNode['dataOut'], fc['dataOut'])
         self.tray_icon.setContextMenu(tray_menu)
         self.tray_icon.show()
         self.otkrpoject.triggered.connect(self.onOpenFile)
@@ -57,10 +132,13 @@ class Main(QMainWindow):
         self.videotub.triggered.connect(self.loadyoutube)
         self.videofix.triggered.connect(self.sapis)
         self.endvideo.triggered.connect(self.zakonchitvideosapis)
-        self.pesochnica.triggered.connect(self.pesoc)
+        #self.pesochnica.triggered.connect(self.pesoc)
         self.formuli1.triggered.connect(self.formuli)
         self.experim1.triggered.connect(self.exper)
         self.gotexp.triggered.connect(self.gotexper)
+        self.pesochnica.triggered.connect(self.pesocdispl)
+        #self.dobtextpes.triggered.connect(self.dobavittexttopes)
+        self.dobtextpes.triggered.connect(self.dobavittexttopes)
 
 
 
@@ -139,10 +217,6 @@ class Main(QMainWindow):
         self.visualInput = visualInput()
         self.visualInput.show()
 
-    def pesoc(self):
-        self.sapuskDoski = sapuskDoski()
-        self.sapuskDoski.show()
-
     def formuli(self):
         self.Rachet = Rachet()
         self.Rachet.show()
@@ -154,6 +228,32 @@ class Main(QMainWindow):
     def gotexper(self):
         self.GotovExp = GotovExp()
         self.GotovExp.show()
+
+    def pesocdispl(self):
+        self.Pesoc = Pesoc()
+        self.Pesoc.show()
+
+    def dobavittexttopes(self):
+#        self.DobTextPes = DobTextPes()
+#        self.DobTextPes.show()
+        self.FileOtobr = FileOtobr()
+        self.FileOtobr.show()
+
+class UnsharpMaskNode(CtrlNode):
+    """Return the input data passed through an unsharp mask."""
+    nodeName = "Текст"
+    def __init__(self, name):
+        ## Define the input / output terminals available on this node
+        terminals = {
+            'dataIn': {'io' : 'in'},
+            'dataOut': {'io': 'out'}}
+        CtrlNode.__init__(self, name, terminals=terminals)
+
+    def process(self, dataIn, display=True):
+
+        text = dataIn
+        output = text
+        return {'dataOut': output}
 
 class CustomViewBox(pg.ViewBox):
     def __init__(self, *args, **kwds):
@@ -325,41 +425,6 @@ class Nazvan(QDialog):
         self.Window = Window()
         self.Window.load(QUrl('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/proecti/' + nazv))
         self.Window.show()
-
-class sapuskDoski(QDialog):
-    def __init__(self):
-        super(sapuskDoski,self).__init__()
-        loadUi("Pesochnica/vibordoska.ui", self)
-        papka = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/proecti'
-        files = os.listdir(papka)
-        a = 0
-        print(files)
-        self.tableWidget.setRowCount(len(files))
-        for i in files:
-            self.tableWidget.setItem(a,0, QTableWidgetItem(i))
-            a = a = 1
-        self.pushButton33.clicked.connect(self.prildoska1)
-        self.pushButton333.clicked.connect(self.prildoska2)
-        self.pushButton30.clicked.connect(self.prildoska3)
-
-    def prildoska1(self):
-        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
-        print('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/proecti' + tecfile)
-        self.close()
-        self.Window = Window()
-        self.Window.load(QUrl('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/proecti/' + tecfile))
-        self.Window.show()
-
-    def prildoska2(self):
-        self.close()
-        self.Nazvan = Nazvan()
-        self.Nazvan.show()
-
-    def prildoska3(self):
-        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
-        tempdelete = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/proecti/' + tecfile
-        os.remove(tempdelete)
-        self.close()
 
 class Exper(QDialog):
     def __init__(self):
@@ -1041,11 +1106,216 @@ class ClassM(QDialog):
         self.QRD = QRD()
         self.QRD.show()
 
+
+class Pesoc(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("Песочница")
+
+        self.setGeometry(100, 100, 1500, 800)
+
+        self.image = QImage(self.size(), QImage.Format_RGB32)
+
+        self.image.fill(QColor(Qt.white))
+
+        self.drawing = False
+        self.brushSize = 2
+        self.brushColor = QColor(Qt.black)
+
+        self.lastPoint = QPoint()
+
+        # creating menu bar
+        mainMenu = self.menuBar()
+
+        fileMenu = mainMenu.addMenu("Файл...")
+
+        #fileOt = mainMenu.addMenu("Открыть ваши файлы...")
+
+        b_size = mainMenu.addMenu("Изменить размер...")
+
+        b_color = mainMenu.addMenu("Изменить цвет...")
+
+        saveAction = QAction("Сохранить...", self)
+        saveAction.setShortcut("Ctrl + S")
+        fileMenu.addAction(saveAction)
+        saveAction.triggered.connect(self.save)
+
+        clearAction = QAction("Очистить...", self)
+        clearAction.setShortcut("Ctrl + C")
+        fileMenu.addAction(clearAction)
+        clearAction.triggered.connect(self.clear)
+        #FILE = QAction("Открыть мои файлы...", self)
+        #fileOt.addAction(FILE)
+        #FILE.triggered.connect(self.fileot)
+
+        pix_4 = QAction("4px", self)
+        b_size.addAction(pix_4)
+        pix_4.triggered.connect(self.Pixel_4)
+
+        pix_7 = QAction("7px", self)
+        b_size.addAction(pix_7)
+        pix_7.triggered.connect(self.Pixel_7)
+
+        pix_9 = QAction("9px", self)
+        b_size.addAction(pix_9)
+        pix_9.triggered.connect(self.Pixel_9)
+
+        pix_12 = QAction("12px", self)
+        b_size.addAction(pix_12)
+        pix_12.triggered.connect(self.Pixel_12)
+
+        black = QAction("Чёрный", self)
+        b_color.addAction(black)
+        black.triggered.connect(self.blackColor)
+
+        white = QAction("Белый", self)
+        b_color.addAction(white)
+        white.triggered.connect(self.whiteColor)
+
+        green = QAction("Зелёный", self)
+        b_color.addAction(green)
+        green.triggered.connect(self.greenColor)
+
+        yellow = QAction("Жёлтый", self)
+        b_color.addAction(yellow)
+        yellow.triggered.connect(self.yellowColor)
+
+        red = QAction("Красный", self)
+        b_color.addAction(red)
+        red.triggered.connect(self.redColor)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.drawing = True
+            self.lastPoint = event.pos()
+
+    # method for tracking mouse activity
+    def mouseMoveEvent(self, event):
+        if (event.buttons() & Qt.LeftButton) & self.drawing:
+            painter = QPainter(self.image)
+            painter.setPen(QPen(self.brushColor, self.brushSize,
+                                Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            painter.drawLine(self.lastPoint, event.pos())
+            self.lastPoint = event.pos()
+            self.update()
+
+    def mouseReleaseEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.drawing = False
+
+    def paintEvent(self, event):
+        canvasPainter = QPainter(self)
+        canvasPainter.drawImage(self.rect(), self.image, self.image.rect())
+
+    def save(self):
+        filePath, _ = QFileDialog.getSaveFileName(self, "Сохранить", "",
+                                                  "PNG(*.png);;JPEG(*.jpg *.jpeg);;All Files(*.*) ")
+        if filePath == "":
+            return
+        self.image.save(filePath)
+
+    def clear(self):
+        self.image.fill(Qt.white)
+        self.update()
+
+    def Pixel_4(self):
+        self.brushSize = 4
+
+    def Pixel_7(self):
+        self.brushSize = 7
+
+    def Pixel_9(self):
+        self.brushSize = 9
+
+    def Pixel_12(self):
+        self.brushSize = 12
+
+    def blackColor(self):
+        self.brushColor = Qt.black
+
+    def whiteColor(self):
+        self.brushColor = Qt.white
+
+    def greenColor(self):
+        self.brushColor = Qt.green
+
+    def yellowColor(self):
+        self.brushColor = Qt.yellow
+
+    def redColor(self):
+        self.brushColor = Qt.red
+
+    def fileot(self):
+        self.FileOtobr = FileOtobr()
+        self.FileOtobr.show()
+
+class DobTextPes(QDialog):
+    def __init__(self):
+        super(DobTextPes,self).__init__()
+        loadUi("Pesochnica/Dobtext.ui", self)
+        self.pushdobText.clicked.connect(self.dobavka)
+
+    def dobavka(self):
+        path = self.lineText.text()
+
+
+class FileOtobr(QWidget):
+    def __init__(self):
+        super().__init__()
+        hlay = QHBoxLayout(self)
+        self.treeview = QTreeView()
+        self.listview = QListView()
+        hlay.addWidget(self.treeview)
+        hlay.addWidget(self.listview)
+
+        path = QDir.rootPath()
+        path1 = "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/proecti"
+        #C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/proecti
+        self.dirModel = QFileSystemModel()
+        self.dirModel.setRootPath(QDir.rootPath())
+        self.dirModel.setFilter(QDir.NoDotAndDotDot | QDir.AllDirs)
+
+        self.fileModel = QFileSystemModel()
+        self.fileModel.setFilter(QDir.NoDotAndDotDot |  QDir.Files)
+
+        self.treeview.setModel(self.dirModel)
+        self.listview.setModel(self.fileModel)
+
+        self.treeview.setRootIndex(self.dirModel.index(path1))
+        self.listview.setRootIndex(self.fileModel.index(path))
+
+        self.treeview.clicked.connect(self.on_clicked)
+        self.listview.clicked.connect(self.on_clicked2)
+
+    def on_clicked(self, index):
+        path = self.dirModel.fileInfo(index).absoluteFilePath()
+        self.listview.setRootIndex(self.fileModel.setRootPath(path))
+
+    def on_clicked2(self, index):
+        path = self.dirModel.fileInfo(index).absoluteFilePath()
+        file = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "r")
+        lines = file.readlines()
+        chet1 = len(lines) - 2
+        file.close()
+        w = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "w")
+        w.writelines([item for item in lines[:-1]])
+        w.close()
+        dd1 = "'dataIn" + str(chet1) + "': {'io': 'in'},"
+        dd2 = "'dataOut" + str(chet1) + "': {'io': 'out'},"
+        with open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "a") as myfile:
+            myfile.write(dd1+"\n")
+            myfile.write(dd2+"\n")
+            myfile.write("}")
+        with open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocData.txt", "a") as myfile:
+            myfile.write(path+"\n")
+        self.close()
+
 app = QApplication(sys.argv)
 mainW = Main()
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainW)
-widget.setFixedWidth(1700)
-widget.setFixedHeight(800)
+widget.setFixedWidth(1120)
+widget.setFixedHeight(900)
 widget.show()
 app.exec()
