@@ -28,7 +28,7 @@ class Login(QDialog):
             return
 
         try:
-            conn = psycopg2.connect(dbname='labpril', user='postgres',
+            conn = psycopg2.connect(dbname='Laboratoria', user='postgres',
                                 password='astrafaz99', host='127.0.0.1', port="5432")
             cursor = conn.cursor()
             cursor.execute('SELECT login FROM account ')
@@ -47,6 +47,13 @@ class Login(QDialog):
                 print("Данного пользователя не сущетсвует. Проверьте введённые данные.")
             elif flag1 == True and flag2 == True:
                 print("Вы успешно вошли в аккаунт под логином: " + login)
+                tt = "SELECT id FROM account WHERE login = %s AND password = %s"
+                cursor.execute(tt, (self.loginText.text(),self.ParolText.text()))
+                idd = cursor.fetchone()
+                print(idd[0])
+                my_file = open('Temp.txt', "w+")
+                my_file.write(str(idd[0]))
+                my_file.close()
                 from UI.main import Main
                 self.Main = Main()
                 self.Main.show()

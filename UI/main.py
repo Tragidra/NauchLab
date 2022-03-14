@@ -1,5 +1,6 @@
 import ast
 import sys
+import psycopg2
 import pyqtgraph.flowchart.library as fclib
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -12,6 +13,7 @@ import numpy as np
 import cv2
 import os
 import shutil
+import pyqtgraph.exporters
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor, QPainter, QPen, QImage
 from PyQt5.QtWidgets import QMessageBox, QFileDialog, QMainWindow, QDialog, QApplication, QWidget, QScrollArea, \
@@ -272,9 +274,34 @@ class CustomViewBox(pg.ViewBox):
         # pg.ViewBox.wheelEvent(self, ev, axis)
         ev.ignore()
 
-
-class graphAnalysis(QDialog, Ui_Form):
+class DioRas(QDialog):
     def __init__(self):
+        super(DioRas, self).__init__()
+        loadUi("Grafiki/DioRas.ui", self)
+        self.pushButton.clicked.connect(self.res)
+
+    def res(self):
+        kolg = 1
+        tttemp = int(len((self.gf2.text()).split()) // kolg)
+        tempxy = np.asarray((self.gf2.text()).split()).reshape(kolg, tttemp)
+        for i in range(kolg):
+            x = []
+            y = []
+            temp = tempxy[i]
+            for j in range(len(tempxy[i])):
+                if j%2 == 0:
+                    x.append(temp[j])
+                else:
+                    y.append(temp[j])
+            for t in range(len(x)):
+                x[t] = float(x[t])
+            for t in range(len(y)):
+                y[t] = float(y[t])
+            pg.plot(x, y, pen=None, symbol='o')
+
+
+class graphAnalysis(QWidget, Ui_Form):
+    '''def __init__(self):
         super(graphAnalysis, self).__init__()
         self.setupUi(self)
         self.pushButton.clicked.connect(self.test)
@@ -310,7 +337,102 @@ class graphAnalysis(QDialog, Ui_Form):
         spacerItem = QSpacerItem(20, 40, QSizePolicy.Minimum,
                                  QSizePolicy.Expanding)
         layout.addItem(spacerItem)
-        self.tabWidget.addTab(tab1, 'Ваш график')
+        self.tabWidget.addTab(tab1, 'Ваш график')'''
+    import pyqtgraph as pg
+    def __init__(self):
+        super(graphAnalysis,self).__init__()
+        loadUi("Grafiki/Graf.ui", self)
+        self.ready.clicked.connect(self.res)
+        self.dioras.clicked.connect(self.DiogRas)
+
+
+    def res(self):
+        kolg = int(self.gf1.text())
+        tttemp = int(len((self.gf2.text()).split())//kolg)
+        print(((self.gf2.text()).split()))
+        print(tttemp)
+        tempxy = np.asarray((self.gf2.text()).split ()).reshape(kolg,tttemp)
+        plotWidget = pg.plot(title="Ваш график")
+        legend = pg.LegendItem((80, 60), offset=(70, 20))
+        legend.setParentItem(plotWidget.graphicsItem())
+        if (self.bc1.isChecked()):
+            plotWidget.setBackground('w')
+        if (self.bc2.isChecked()):
+            plotWidget.setBackground('k')
+        if (self.bc3.isChecked()):
+            plotWidget.setBackground('b')
+        if (self.bc4.isChecked()):
+            plotWidget.setBackground('r')
+        if (self.bc5.isChecked()):
+            plotWidget.setBackground('y')
+        if (self.bc6.isChecked()):
+            plotWidget.setBackground('c')
+        if (self.bc7.isChecked()):
+            plotWidget.setBackground('m')
+        if (self.setka.isChecked()):
+            plotWidget.showGrid(x=True, y=True)
+        for i in range(kolg):
+            x = []
+            y = []
+            temp = tempxy[i]
+            for j in range(len(tempxy[i])):
+                if j%2 == 0:
+                    x.append(temp[j])
+                else:
+                    y.append(temp[j])
+            for t in range(len(x)):
+                x[t] = float(x[t])
+            for t in range(len(y)):
+                y[t] = float(y[t])
+            plotWidget.plot(x, y, pen=(i, kolg))  ## setting pen=(i,3) automaticaly creates three different-colored pens
+            if (self.stolbdio.isChecked()):
+                bg1 = pg.BarGraphItem(x=x, height=y, width=0.3, brush='b', pen=(i, kolg), name='bar')
+                plotWidget.addItem(bg1)
+                ttth = 'Диаграмма графика' + str(i)
+                legend.addItem(bg1, ttth)
+        if (self.gfr1.isChecked()):
+            temmu = np.asarray((self.gf3.text()).split()).reshape(2,2)
+            xp = temmu[0]
+            yp = temmu[1]
+            r = pg.PolyLineROI([(int(xp[0]), int(xp[1])), (int(yp[0]), int(yp[1]))])
+            plotWidget.addItem(r)
+        nazvtemp = self.nazvi.text()
+        exporter = pg.exporters.ImageExporter(plotWidget.scene())
+        exporter.export(nazvtemp + ".png")
+        nazv = nazvtemp + ".png"
+        os.path.isfile("/Laboratoria1.0/UI/" + nazv)
+        os.rename("C:/Users/astra/PycharmProjects/Laboratoria1.0/UI/" + nazv,
+                  "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/Diograph/" + nazv)
+        tobd = "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/Diograph/" + nazv
+        try:
+            connection = psycopg2.connect(dbname='Laboratoria', user='postgres',
+                                password='astrafaz99', host='127.0.0.1', port="5432")
+            cursor = connection.cursor()
+
+            postgres_insert_query = """ INSERT INTO experements (accountid, way) VALUES (%s,%s)"""
+            my_file = open('Temp.txt', "r")
+            idd = my_file.read()
+            my_file.close()
+            record_to_insert = (idd, tobd)
+            cursor.execute(postgres_insert_query, record_to_insert)
+
+            connection.commit()
+            count = cursor.rowcount
+            print(count, "Данные записаны в базу данных")
+
+        except (Exception, psycopg2.Error) as error:
+            print("Не получилось подключиться к таблице", error)
+
+        finally:
+            # closing database connection.
+            if connection:
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+
+    def DiogRas(self):
+        self.DioRas = DioRas()
+        self.DioRas.show()
 
 class UrlSchemeHandler(QWebEngineUrlSchemeHandler):
 
@@ -470,6 +592,29 @@ class GotovExp(QWidget):
         tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
         tempdelete = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/' + tecfile
         os.remove(tempdelete)
+        try:
+            connection = psycopg2.connect(dbname='Laboratoria', user='postgres',
+                                password='astrafaz99', host='127.0.0.1', port="5432")
+            cursor = connection.cursor()
+
+            postgres_insert_query = """DELETE FROM experements WHERE way = %s"""
+            record_to_insert = (tempdelete,)
+            cursor.execute(postgres_insert_query, record_to_insert)
+
+            connection.commit()
+            count = cursor.rowcount
+            print(count, "Данные удалены из базу данных")
+
+        except (Exception, psycopg2.Error) as error:
+            print("Не получилось подключиться к таблице", error)
+
+        finally:
+            # closing database connection.
+            if connection:
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+
         self.close()
 
 class SFor(QDialog):
@@ -979,6 +1124,32 @@ class TextEdit(QMainWindow):
         my_file.close()
         os.path.isfile("/Laboratoria1.0/UI/" + nazv)
         os.rename("C:/Users/astra/PycharmProjects/Laboratoria1.0/UI/" + nazv, "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/" + nazv)
+        tobd = "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/" + nazv
+        try:
+            connection = psycopg2.connect(dbname='Laboratoria', user='postgres',
+                                password='astrafaz99', host='127.0.0.1', port="5432")
+            cursor = connection.cursor()
+
+            postgres_insert_query = """ INSERT INTO experements (accountid, way) VALUES (%s,%s)"""
+            my_file = open('Temp.txt', "r")
+            idd = my_file.read()
+            my_file.close()
+            record_to_insert = (idd, tobd)
+            cursor.execute(postgres_insert_query, record_to_insert)
+
+            connection.commit()
+            count = cursor.rowcount
+            print(count, "Данные записаны в базу данных")
+
+        except (Exception, psycopg2.Error) as error:
+            print("Не получилось подключиться к таблице", error)
+
+        finally:
+            # closing database connection.
+            if connection:
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
 
 
 

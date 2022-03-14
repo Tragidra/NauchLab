@@ -23,7 +23,7 @@ class Main(QMainWindow):
         w = fc.widget()
 
         self.LayOut1.addWidget(w, 0, 0, 2, 1)
-        f = open('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/Exper1.txt')
+        f = open('/resour/experementi/Exper1.txt')
         data = f.read()
         library = fclib.LIBRARY.copy()
         library.addNodeType(UnsharpMaskNode, [('Текст',),
@@ -86,16 +86,16 @@ class FileOtobr(QWidget):
 
     def on_clicked2(self, index):
         path = self.dirModel.fileInfo(index).absoluteFilePath()
-        file = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "r")
+        file = open("/resour/pesocflow.txt", "r")
         lines = file.readlines()
         chet1 = len(lines) - 2
         file.close()
-        w = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "w")
+        w = open("/resour/pesocflow.txt", "w")
         w.writelines([item for item in lines[:-1]])
         w.close()
         dd1 = "'dataIn" + str(chet1) + "': {'io': 'in'},"
         dd2 = "'dataOut" + str(chet1) + "': {'io': 'out'},"
-        with open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "a") as myfile:
+        with open("/resour/pesocflow.txt", "a") as myfile:
             myfile.write(dd1+"\n")
             myfile.write(dd2+"\n")
             myfile.write("}")
