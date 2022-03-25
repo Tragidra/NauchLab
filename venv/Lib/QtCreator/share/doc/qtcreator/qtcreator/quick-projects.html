@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-creating.qdoc -->
+  <title>Creating Qt Quick Projects | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Creating Qt Quick Projects</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-visual-editor.html" />
+  <link rel="next" href="creator-qtquickdesigner-plugin.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-visual-editor.html">Developing Qt Quick Applications</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-qtquickdesigner-plugin.html">Using Qt Quick Designer</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-qt-quick-applications">Creating Qt Quick Applications</a></li>
+<li class="level1"><a href="#creating-qt-quick-based-python-applications">Creating Qt Quick Based Python Applications</a></li>
+<li class="level1"><a href="#creating-qt-quick-ui-projects">Creating Qt Quick UI Projects</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating Qt Quick Projects</h1>
+<!-- $$$quick-projects.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/qtcreator-new-qt-quick-project.png" alt="&quot;New Project dialog&quot;" /></p><p>The following table lists the wizard templates for creating a new Qt Quick project from scratch.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Category</th><th >Wizard Template</th><th >Purpose</th></tr></thead>
+<tr valign="top" class="odd"><td >Application (Qt)</td><td >Qt Quick Application</td><td >Creates a Qt Quick 2 application project that can contain both QML and C++ code. You can build the application and deploy it to desktop, embedded, and mobile target platforms.</td></tr>
+<tr valign="top" class="even"><td >Application (Qt for Python)</td><td >Qt for Python - Qt Quick Application</td><td >Creates a Python project that contains an empty Qt Quick Application.</td></tr>
+<tr valign="top" class="odd"><td >Other Project</td><td >Qt Quick UI Prototype</td><td >Creates a Qt Quick UI project with a single QML file that contains the main view. You can preview Qt Quick 2 UI projects in the QML Scene preview tool. You do not need to build them, because they do not contain any C++ code.<p>This project type is compatible with Qt Design Studio. However, use this template only if you are prototyping. You cannot create a full application by using this template.</p>
+<p>Qt Quick UI projects cannot be deployed to embedded or mobile target platforms. For those platforms, create a Qt Quick application instead.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Library</td><td >Qt Quick 2 Extension Plugin</td><td >Creates C++ plugins that make it possible to offer extensions that can be loaded dynamically into Qt Quick 2 applications.</td></tr>
+</table></div>
+<div class="admonition note">
+<p><b>Note: </b>The SDK for a particular target platform might install additional templates for that platform. For example, the QNX templates are installed as part of the QNX SDK.</p>
+</div>
+<p>Qt Creator creates the necessary boilerplate files. Some of the files are specific to a particular target platform.</p>
+<h2 id="creating-qt-quick-applications">Creating Qt Quick Applications</h2>
+<ol class="1" type="1"><li>Select <b>File</b> &gt; <b>New Project</b> &gt; <b>Application (Qt)</b> &gt; <b>Qt Quick Application</b> &gt; <b>Choose</b>.</li>
+<li>In the <b>Project Location</b> dialog, <b>Name</b> field, enter a name for the project. Keep in mind that you cannot easily change the project name later.</li>
+<li>In the <b>Create in</b> field, enter the path for the project files. Select the <b>Use as default project location</b> check box to create new projects in this folder by default. You can move project folders later without problems.</li>
+<li>Select <b>Next</b> (or <b>Continue</b> on macOS) to open the <b>Define Build System</b> dialog.</li>
+<li>In the <b>Build system</b> field, select the build system to use for building and running the project: qmake, <a href="creator-project-cmake.html">CMake</a>, or <a href="creator-project-qbs.html">Qbs</a>.</li>
+<li>Select <b>Next</b> to open the <b>Define Project Details</b> dialog.</li>
+<li>Select the Qt version to develop with in the <b>Minimal required Qt version</b> field. The Qt version determines the Qt Quick imports that are used in the QML files.</li>
+<li>Select the <b>Use Qt Virtual Keyboard</b> check box to add support for Qt Virtual Keyboard to the application.<div class="admonition note">
+<p><b>Note: </b>If you have not installed the Qt Virtual Keyboard module when you installed Qt, an error message will appear when you try to open <i>main.qml</i> for editing. You can use the Qt Maintenance Tool to install Qt Virtual Keyboard.</p>
+</div>
+</li>
+<li>Select <b>Next</b> to open the <b>Translation File</b> dialog.</li>
+<li>In the <b>Language</b> field, select a language that you plan to <a href="creator-editor-external.html#using-qt-linguist">translate</a> the application to. You can add other languages later by editing the project file.</li>
+<li>In the <b>Translation file</b> field, you can edit the name for the translation source file that will be generated for the selected language.</li>
+<li>Select <b>Next</b> to open the <b>Kit Selection</b> dialog.</li>
+<li>Select <a href="creator-glossary.html#glossary-buildandrun-kit">kits</a> for the platforms that you want to build the application for.<div class="admonition note">
+<p><b>Note: </b>Kits are listed if they have been specified in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> (on Windows and Linux) or in <b>Qt Creator</b> &gt; <b>Preferences</b> &gt; <b>Kits</b> (on macOS). For more information, see <a href="creator-targets.html">Adding Kits</a>.</p>
+</div>
+</li>
+<li>Select <b>Next</b> to open the <b>Project Management</b> dialog.</li>
+<li>Review the project settings, and select <b>Finish</b> (on Windows and Linux) or <b>Done</b> (on macOS) to create the project.</li>
+</ol>
+<p>Qt Creator creates a QML file, <i>main.qml</i>, that you can modify in the <b>Edit</b> mode.</p>
+<h2 id="creating-qt-quick-based-python-applications">Creating Qt Quick Based Python Applications</h2>
+<p>The <b>Qt for Python - Qt Quick Application - Empty</b> wizard enables you to create a Python project that contains a main QML file. Specify the minimum PySide version to run the application.</p>
+<p class="centerAlign"><img src="images/qtcreator-python-wizard-qml.png" alt="&quot;Qt for Python wizard for creating an empty Qt Quick application&quot;" /></p><p>The wizard adds the following imports to the source file to provide access to QGuiApplication and QQmlApplicationEngine:</p>
+<pre class="cpp plain">
+ import os
+ from pathlib import Path
+ import sys
+
+ from PySide6.QtGui import QGuiApplication
+ from PySide6.QtQml import QQmlApplicationEngine
+</pre>
+<p>The wizard also adds a main function, where it creates a QGuiApplication instance and passes system arguments to the QGuiApplication object:</p>
+<pre class="cpp plain">
+ if __name__ == &quot;__main__&quot;:
+     app = QGuiApplication(sys.argv)
+ ..&#x2e;
+</pre>
+<p>The following lines in the main class create a QQmlApplicationEngine instance and load the generated QML file to the engine object:</p>
+<pre class="cpp plain">
+ engine = QQmlApplicationEngine()
+ engine.load(os.fspath(Path(__file__).resolve().parent / &quot;main.qml&quot;))
+</pre>
+<p>Finally, the wizard adds code that checks whether the file was successfully loaded. If loading the file fails, the application exits with an error code. If loading succeeds, the wizard calls the <code>app.exec_()</code> method to enter the Qt main loop and start executing the Qt code:</p>
+<pre class="cpp plain">
+ if not engine.rootObjects():
+     sys.exit(-1)
+ sys.exit(app.exec_())
+</pre>
+<p>Open the .qml file in the <b>Edit</b> mode to design a Qt Quick UI, or use <a href="https://doc.qt.io/qtdesignstudio/index.html">Qt Design Studio</a>.</p>
+<h2 id="creating-qt-quick-ui-projects">Creating Qt Quick UI Projects</h2>
+<p>Qt Quick UI Prototype projects are useful for testing or prototyping user interfaces, or for setting up a separate project just for QML editing, for example. You cannot use them for application development, because they do not contain:</p>
+<ul>
+<li>C++ code</li>
+<li>Resource files (.qrc)</li>
+<li>Code needed for deploying applications to <a href="creator-glossary.html#glossary-device">devices</a></li>
+</ul>
+<p>For more information about how to turn Qt Quick UI Prototype projects into Qt Quick Application projects, see <a href="quick-converting-ui-projects.html">Converting UI Projects to Applications</a>.</p>
+<p>To create a Qt Quick UI Prototype project:</p>
+<ol class="1" type="1"><li>Select <b>File</b> &gt; <b>New Project</b> &gt; <b>Other Project</b> &gt; <b>Qt Quick UI Prototype</b>.</li>
+<li>Select <b>Choose</b> to open the <b>Project Location</b> dialog.</li>
+<li>In the <b>Name</b> field, enter a name for the application.</li>
+<li>In the <b>Create in</b> field, enter the path for the project files. Select the <b>Use as default project location</b> check box to create new projects in this folder by default.</li>
+<li>Select <b>Next</b> (or <b>Continue</b> on macOS) to open the <b>Define Project Details</b> dialog.</li>
+<li>In the <b>Minimal required Qt version</b> field, select the Qt version to develop with. The Qt version determines the Qt Quick imports that are used in the QML files.<p>You can add imports later to combine Qt Quick basic types with Qt Quick Controls, Qt Quick Dialogs, and Qt Quick Layouts (available since Qt 5.1).</p>
+</li>
+<li>Select the <b>Use Qt Virtual Keyboard</b> check box to add support for Qt Virtual Keyboard to the application.<div class="admonition note">
+<p><b>Note: </b>If you have not installed the Qt Virtual Keyboard module when you installed Qt, an error message will appear when you try to open <i>main.qml</i>.</p>
+</div>
+</li>
+<li>Select <b>Next</b> to open the <b>Kit Selection</b> dialog.</li>
+<li>Select <a href="creator-glossary.html#glossary-buildandrun-kit">kits</a> for the platforms that you want to build the application for.<div class="admonition note">
+<p><b>Note: </b>Kits are listed if they have been specified in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> (on Windows and Linux) or in <b>Qt Creator</b> &gt; <b>Preferences</b> &gt; <b>Kits</b> (on macOS). For more information, see <a href="creator-targets.html">Adding Kits</a>.</p>
+</div>
+</li>
+<li>Select <b>Next</b> to open the <b>Project Management</b> dialog.</li>
+<li>Review the project settings, and select <b>Finish</b> (on Windows and Linux) or <b>Done</b> (on macOS) to create the project.</li>
+</ol>
+<p>Qt Creator creates the following files:</p>
+<ul>
+<li>.qmlproject project file defines that all QML, JavaScript, and image files in the project folder belong to the project. Therefore, you do not need to individually list all the files in the project.</li>
+<li>.qml file defines a UI item, such as a component or the whole application UI.</li>
+<li>ui.qml file defines a form for the application UI. This file is created if you selected the <b>With .ui.qml file</b> check box.</li>
+</ul>
+<p>To use JavaScript and image files in the application, copy them to the project folder.</p>
+</div>
+<!-- @@@quick-projects.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-visual-editor.html">Developing Qt Quick Applications</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-qtquickdesigner-plugin.html">Using Qt Quick Designer</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

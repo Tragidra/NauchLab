@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- modemanager.cpp -->
+  <title>ModeManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="extending-index.html">Extending Qt Creator Manual</a></li>
+<li>ModeManager</li>
+<li id="buildversion"><a href="extending-index.html">Extending Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ModeManager Class</h1>
+<span class="small-subtitle">class <a href="core.html">Core</a>::ModeManager</span>
+<!-- $$$ModeManager-brief -->
+<p>The ModeManager class manages the activation of modes and the actions in the mode selector's tool bar. <a href="#details">More...</a></p>
+<!-- @@@ModeManager -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/modemanager.h&gt;</span>
+</td></tr></table></div>
+<ul>
+<li><a href="core-modemanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-modemanager.html#currentModeAboutToChange">currentModeAboutToChange</a></b>(Utils::Id <i>mode</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-modemanager.html#currentModeChanged">currentModeChanged</a></b>(Utils::Id <i>mode</i>, Utils::Id <i>oldMode</i> = {})</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-modemanager.html#activateMode">activateMode</a></b>(Utils::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-modemanager.html#addAction">addAction</a></b>(QAction *<i>action</i>, int <i>priority</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IMode *</td><td class="memItemRight bottomAlign"><b><a href="core-modemanager.html#currentMode">currentMode</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-modemanager.html#currentModeId">currentModeId</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::ModeManager *</td><td class="memItemRight bottomAlign"><b><a href="core-modemanager.html#instance">instance</a></b>()</td></tr>
+</table></div>
+<!-- $$$ModeManager-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Modes are implemented with the <a href="core-imode.html">IMode</a> class. Use the ModeManager to force activation of a mode, or to be notified when the active mode changed.</p>
+<p>The ModeManager also manages the actions that are visible in the mode selector's toolbar. Adding actions to the tool bar should be done very sparingly.</p>
+</div>
+<!-- @@@ModeManager -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$currentModeAboutToChange[overload1]$$$currentModeAboutToChangeUtils::Id -->
+<h3 class="fn" id="currentModeAboutToChange"><code>[signal] </code><span class="type">void</span> ModeManager::<span class="name">currentModeAboutToChange</span>(<span class="type">Utils::Id</span> <i>mode</i>)</h3>
+<p>Emitted before the current mode changes to <i>mode</i>.</p>
+<!-- @@@currentModeAboutToChange -->
+<!-- $$$currentModeChanged[overload1]$$$currentModeChangedUtils::IdUtils::Id -->
+<h3 class="fn" id="currentModeChanged"><code>[signal] </code><span class="type">void</span> ModeManager::<span class="name">currentModeChanged</span>(<span class="type">Utils::Id</span> <i>mode</i>, <span class="type">Utils::Id</span> <i>oldMode</i> = {})</h3>
+<p>Emitted after the current mode changed from <i>oldMode</i> to <i>mode</i>.</p>
+<!-- @@@currentModeChanged -->
+<!-- $$$activateMode[overload1]$$$activateModeUtils::Id -->
+<h3 class="fn" id="activateMode"><code>[static] </code><span class="type">void</span> ModeManager::<span class="name">activateMode</span>(<span class="type">Utils::Id</span> <i>id</i>)</h3>
+<p>Makes the mode with ID <i>id</i> the current mode.</p>
+<p><b>See also </b><a href="core-modemanager.html#currentMode">currentMode</a>(), <a href="core-modemanager.html#currentModeId">currentModeId</a>(), <a href="core-modemanager.html#currentModeAboutToChange">currentModeAboutToChange</a>(), and <a href="core-modemanager.html#currentModeChanged">currentModeChanged</a>().</p>
+<!-- @@@activateMode -->
+<!-- $$$addAction[overload1]$$$addActionQAction*int -->
+<h3 class="fn" id="addAction"><code>[static] </code><span class="type">void</span> ModeManager::<span class="name">addAction</span>(<span class="type">QAction</span> *<i>action</i>, <span class="type">int</span> <i>priority</i>)</h3>
+<p>Adds the <i>action</i> to the mode selector's tool bar. Actions are sorted by <i>priority</i> in descending order. Use this functionality very sparingly.</p>
+<!-- @@@addAction -->
+<!-- $$$currentMode[overload1]$$$currentMode -->
+<h3 class="fn" id="currentMode"><code>[static] </code><span class="type"><a href="core-imode.html">Core::IMode</a></span> *ModeManager::<span class="name">currentMode</span>()</h3>
+<p>Returns a pointer to the current mode.</p>
+<p><b>See also </b><a href="core-modemanager.html#activateMode">activateMode</a>() and <a href="core-modemanager.html#currentModeId">currentModeId</a>().</p>
+<!-- @@@currentMode -->
+<!-- $$$currentModeId[overload1]$$$currentModeId -->
+<h3 class="fn" id="currentModeId"><code>[static] </code><span class="type">Utils::Id</span> ModeManager::<span class="name">currentModeId</span>()</h3>
+<p>Returns the id of the current mode.</p>
+<p><b>See also </b><a href="core-modemanager.html#activateMode">activateMode</a>() and <a href="core-modemanager.html#currentMode">currentMode</a>().</p>
+<!-- @@@currentModeId -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" id="instance"><code>[static] </code><span class="type"><a href="core-modemanager.html">Core::ModeManager</a></span> *ModeManager::<span class="name">instance</span>()</h3>
+<p>Returns the pointer to the instance. Only use for connecting to signals.</p>
+<!-- @@@instance -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

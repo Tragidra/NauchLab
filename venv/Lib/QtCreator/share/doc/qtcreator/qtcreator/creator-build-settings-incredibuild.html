@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-incredibuild-building.qdoc -->
+  <title>IncrediBuild Build Configuration | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>IncrediBuild Build Configuration</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-build-settings-meson.html" />
+  <link rel="next" href="creator-build-settings-conan.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-build-settings-meson.html">Meson Build Configuration</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-build-settings-conan.html">Conan Build Configuration</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#incredibuild-build-steps">IncrediBuild Build Steps</a></li>
+<li class="level2"><a href="#distribution-control-settings-on-linux">Distribution Control Settings on Linux</a></li>
+<li class="level2"><a href="#distribution-control-settings-on-windows">Distribution Control Settings on Windows</a></li>
+<li class="level1"><a href="#incredibuild-clean-steps">IncrediBuild Clean Steps</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">IncrediBuild Build Configuration</h1>
+<!-- $$$creator-build-settings-incredibuild.html-description -->
+<div class="descr" id="details">
+<p>You can specify build steps and clean steps for IncrediBuild.</p>
+<p>For more information about configuring IncrediBuild, see <a href="creator-project-incredibuild.html">Setting Up IncrediBuild</a>.</p>
+<h2 id="incredibuild-build-steps">IncrediBuild Build Steps</h2>
+<p>To use IncrediBuild, select <b>Add Build Step</b> &gt; <b>IncrediBuild for Linux</b> or <b>IncrediBuild for Windows</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-incredibuild-build-steps-general.png" alt="" /></p><p>IncrediBuild automatically detects the build step by iterating over the build steps you already defined. The initial build step settings will be part of your IncrediBuild build step, so your usual build tool will still be used, but with the added benefit of IncrediBuild's build acceleration and graphical Build Monitor.</p>
+<p>In the <b>Target and configuration</b> group, specify the command helper and arguments that will be used to construct the build command.</p>
+<p>The build errors and warnings are parsed and displayed in the <b>Issues</b> output pane.</p>
+<p>Select the <b>Keep original jobs number</b> check box to stop IncrediBuild from overriding the <code>-j</code> command line switch, which controls the number of processes that the build tools executed by Qt Creator run in parallel. The default value set by IncrediBuild is 200.</p>
+<p>The distribution control settings to specify depend on whether you are using Linux or Windows.</p>
+<h3 id="distribution-control-settings-on-linux">Distribution Control Settings on Linux</h3>
+<p class="centerAlign"><img src="images/qtcreator-incredibuild-build-steps-linux.png" alt="" /></p><p>You can specify the following options for Linux builds:</p>
+<ul>
+<li><b>Nice value</b> is a numeric value between -20 and 19</li>
+<li><b>Force remote</b> forces <code>allow_remote</code> tasks to remote Helpers.</li>
+<li><b>Alternate tasks preference</b></li>
+</ul>
+<h3 id="distribution-control-settings-on-windows">Distribution Control Settings on Windows</h3>
+<p class="centerAlign"><img src="images/qtcreator-incredibuild-build-steps-windows.png" alt="" /></p><p>You can specify the following options for Windows builds:</p>
+<ul>
+<li><b>Profile.xml</b> defines how Automatic Interception Interface handles processes in a distributed job. It is not necessary for Visual Studio or Make and Build tools builds, but can be used to provide configuration options if those builds use additional processes that are not included in those packages. It is required to configure distributable processes in Dev Tools builds.</li>
+<li><b>Avoid local task execution</b> frees up resources on the initiator machine. This might be beneficial for distribution if the initiator turns into a bottleneck for the build because of high CPU usage.</li>
+<li><b>Maximum CPUs to utilize in the build</b> specifies the maximum amount of remote cores to use in the build. Overrides the corresponding global setting.</li>
+<li><b>Newest allowed helper machine OS</b> and <b>Oldest allowed helper machine OS</b> specify the newest and oldest operating system installed on a Helper machine to be allowed to participate as a Helper in the build.</li>
+<li><b>Build title</b> specifies a custom header line which will be displayed in the beginning of the build output text. This title will also be used for the Build History and Build Monitor displays.</li>
+<li><b>Save IncrediBuild monitor file</b> writes a copy of the build progress (<code>.ib_mon</code>) file to the specified location. If only a folder name is given, IncrediBuild generates a GUID for the file name. A message containing the location of the saved <code>.ib_mon</code> file is added to the end of the build output.</li>
+<li><b>Suppress STDOUT</b> does not write anything to the standard output.</li>
+<li><b>Output Log file</b> writes build output to a file.</li>
+<li><b>Show Commands in output</b> shows the command-line used by IncrediBuild to build the file.</li>
+<li><b>Show Agents in output</b> shows the Agent used to build each file.</li>
+<li><b>Show Time in output</b> shows the start and finish time for each file built.</li>
+<li><b>Hide IncrediBuild Header in output</b> suppresses the IncrediBuild header in the build output.</li>
+<li><b>Internal IncrediBuild logging level</b> overrides the internal Incredibuild logging level for this build. Does not affect output or any user accessible logging. Used mainly to troubleshoot issues with the help of IncrediBuild support.</li>
+<li><b>Set an Environment Variable</b> sets or overrides environment variables for the context of the build.</li>
+<li><b>Stop on errors</b> stops the execution as soon as an error is encountered. This is the default behavior in Visual Studio builds, but not for Make and Build tools or Dev Tools builds.</li>
+<li><b>Additional Arguments</b> are concatenated to the final buildconsole command line.</li>
+<li><b>Open Build Monitor</b> opens an IncrediBuild Build Monitor that graphically displays the build's progress once the build starts.</li>
+</ul>
+<h2 id="incredibuild-clean-steps">IncrediBuild Clean Steps</h2>
+<p>When building with IncrediBuild, you can add arguments and targets for the clean command in <b>Clean Steps</b>. For more information, see <a href="creator-build-settings.html#clean-steps">Clean Steps</a>.</p>
+<p>For more information about the settings, see <a href="creator-build-settings-incredibuild.html#incredibuild-build-steps">IncrediBuild Build Steps</a>.</p>
+<p>The build errors and warnings are parsed and displayed in the <b>Issues</b> output pane.</p>
+</div>
+<!-- @@@creator-build-settings-incredibuild.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-build-settings-meson.html">Meson Build Configuration</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-build-settings-conan.html">Conan Build Configuration</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

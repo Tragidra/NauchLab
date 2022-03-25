@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-conan.qdoc -->
+  <title>Setting Up Conan | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Setting Up Conan</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-project-incredibuild.html" />
+  <link rel="next" href="creator-cli.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-project-incredibuild.html">Setting Up IncrediBuild</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-cli.html">Using Command Line Options</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Setting Up Conan</h1>
+<!-- $$$creator-project-conan.html-description -->
+<div class="descr" id="details">
+<p><a href="https://conan.io">Conan</a> is a C/C++ package manager that speeds up the integration of C or C++ libraries into your own project. It's available on all the <a href="creator-os-supported-platforms.html">supported development platforms</a>.</p>
+<p>Conan can be integrated into most build systems that are integrated into Qt Creator:</p>
+<ul>
+<li><a href="https://docs.conan.io/en/latest/integrations/cmake.html">CMake</a></li>
+<li><a href="https://docs.conan.io/en/latest/integrations/qbs.html">Qbs</a></li>
+<li><a href="https://docs.conan.io/en/latest/integrations/qmake.html">qmake</a></li>
+<li><a href="https://docs.conan.io/en/latest/integrations/meson.html">Meson</a></li>
+</ul>
+<p>The client-server architecture of Conan enables the client to fetch packages from and upload them to remote servers that act as package storage. The client creates the packages, and if necessary, handles building them from sources. Because the client has a local cache for package storage, you can work offline, as long as no new packages are needed from remote servers.</p>
+<p>To use Conan, install it by using the Qt installer or the tools provided by your operating system. For example, on Windows, you can use the <code>choco install conan</code> or <code>pip install conan</code> command.</p>
+<p>To enable the experimental Conan plugin, select <b>Help</b> &gt; <b>About Plugins</b> &gt; <b>Utilities</b> &gt; <b>Conan</b>. Then select <b>Restart Now</b> to restart Qt Creator and load the plugin.</p>
+<p>For each project, you must write a <a href="https://docs.conan.io/en/latest/reference/conanfile.html">conanfile.py</a> or <a href="https://docs.conan.io/en/latest/reference/conanfile_txt.html">conanfile.txt</a> file that specifies the needed libraries and packages. Then, you must edit the build settings of the project to specify the location of the file and the contents of the Conan install command. For more information, see <a href="creator-build-settings-conan.html#conan-build-steps">Conan Build Steps</a>.</p>
+<p>Alternatively, you can automatically set up the Conan package manager for use with CMake. For more information, see <a href="creator-build-settings-cmake.html#using-cmake-with-conan">Using CMake with Conan</a>.</p>
+</div>
+<!-- @@@creator-project-conan.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-project-incredibuild.html">Setting Up IncrediBuild</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-cli.html">Using Command Line Options</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

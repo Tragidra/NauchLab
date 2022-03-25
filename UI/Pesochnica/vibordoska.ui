@@ -30,7 +30,7 @@
    </property>
    <column>
     <property name="text">
-     <string>Проекты</string>
+     <string>Данные</string>
     </property>
     <property name="font">
      <font>
@@ -77,7 +77,7 @@
   <widget class="QPushButton" name="pushButton333">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>380</x>
      <y>460</y>
      <width>93</width>
      <height>28</height>
@@ -90,7 +90,7 @@
   <widget class="QPushButton" name="pushButton30">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>640</x>
      <y>460</y>
      <width>93</width>
      <height>28</height>
@@ -98,6 +98,19 @@
    </property>
    <property name="text">
     <string>Удалить</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>570</y>
+     <width>361</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Перейти к электронному рабочему пространству</string>
    </property>
   </widget>
  </widget>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-help.qdoc -->
+  <title>Using the Help Mode | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Using the Help Mode</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-help-overview.html" />
+  <link rel="next" href="creator-faq.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-help-overview.html">Getting Help</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-faq.html">FAQ</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#viewing-function-tooltips">Viewing Function Tooltips</a></li>
+<li class="level1"><a href="#finding-information-in-qt-documentation">Finding Information in Qt Documentation</a></li>
+<li class="level2"><a href="#adding-bookmarks-to-help-pages">Adding Bookmarks to Help Pages</a></li>
+<li class="level2"><a href="#full-text-search">Full-text Search</a></li>
+<li class="level1"><a href="#adding-external-documentation">Adding External Documentation</a></li>
+<li class="level1"><a href="#detaching-the-help-window">Detaching the Help Window</a></li>
+<li class="level1"><a href="#selecting-the-start-page">Selecting the Start Page</a></li>
+<li class="level1"><a href="#using-documentation-filters">Using Documentation Filters</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Using the Help Mode</h1>
+<!-- $$$creator-help.html-description -->
+<div class="descr" id="details">
+<p>Qt Creator comes fully integrated with Qt documentation and examples using the Qt Help plugin.</p>
+<ul>
+<li>To view documentation, switch to <b>Help</b> mode.</li>
+<li>To view context sensitive help on a Qt class or function as a tooltip, move the mouse cursor over the class or function. If help is not available, the tooltip displays type information for the symbol.</li>
+<li>To display tooltips for function signatures regardless of the cursor position in the function call, press <b>Ctrl+Shift+D</b>.</li>
+<li>To display the full help on a Qt class or function, press <b>F1</b> or select <b>Context Help</b> in the context menu. The documentation is displayed in a view next to the code editor, or, if there is not enough vertical space, in the fullscreen <b>Help</b> mode.</li>
+<li>To select and configure how the documentation is displayed in the <b>Help</b> mode, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Help</b>.</li>
+</ul>
+<p>The following image displays the context sensitive help in the <b>Edit</b> mode.</p>
+<p class="centerAlign"><img src="images/qtcreator-context-sensitive-help.png" alt="" /></p><p>If the help HTML file does not use a style sheet, you can change the font family, style, and size in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Help</b> &gt; <b>General</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-help-options.png" alt="" /></p><p>You can set the default zoom level in the <b>Zoom</b> field. When viewing help pages, you can use the mouse scroll wheel to zoom them. To disable this feature, deselect the <b>Enable scroll wheel zooming</b> check box.</p>
+<p>To switch to the editor context when you close the last help page, select the <b>Return to editor on closing the last page</b> check box.</p>
+<p>The help viewer backend determines the style sheet that is used to display the help files. The default help viewer backend that is based on litehtml is recommended for viewing Qt documentation. You can choose another help viewer backend in the <b>Viewer backend</b> field. To take the new backend to use, reload the help page.</p>
+<h2 id="viewing-function-tooltips">Viewing Function Tooltips</h2>
+<p>To hide function tooltips by default, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Text Editor</b> &gt; <b>Behavior</b> &gt; <b>Show help tooltips using the mouse</b> &gt; <b>On Shift+Mouseover</b>. You can still view the tooltips by pressing and holding down the <b>Shift</b> key.</p>
+<p>To use a keyboard shortcut for viewing help tooltips, select <b>Show help tooltips using keyboard shortcut (Alt)</b>.</p>
+<h2 id="finding-information-in-qt-documentation">Finding Information in Qt Documentation</h2>
+<p>Qt Creator, Qt and other Qt deliverables contain documentation as .qch files. All the documentation is accessible in the <b>Help</b> mode.</p>
+<p>By default, Qt Creator registers only the latest available version of the documentation for each installed Qt module. To register all installed documentation, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> &gt; <b>Qt Versions</b> &gt; <b>Register documentation</b>.</p>
+<p>To find information in the documentation, select:</p>
+<ul>
+<li><b>Bookmarks</b> to view a list of pages on which you have added bookmarks.</li>
+<li><b>Contents</b> to see all the documentation installed on the development PC and to browse the documentation contents.</li>
+<li><b>Index</b> to find information based on a list of keywords in all the installed documents.</li>
+<li><b>Open Pages</b> to view a list of currently open documentation pages.</li>
+<li><b>Search</b> to search from all the installed documents.</li>
+</ul>
+<h3 id="adding-bookmarks-to-help-pages">Adding Bookmarks to Help Pages</h3>
+<p>You can add bookmarks to useful help pages to easily find them later in the <b>Bookmarks</b> view. You can either use the page title as the bookmark or change it to any text. You can organize the bookmarks in folders in the view.</p>
+<p class="centerAlign"><img src="images/qtcreator-help-add-bookmark-dlg.png" alt="&quot;Add Bookmark dialog&quot;" /></p><p>To add a bookmark to an open help page:</p>
+<ol class="1" type="1"><li>Click the <img src="images/bookmark.png" alt="" /> (<b>Add Bookmark</b>) button on the toolbar.</li>
+<li>In the <b>Add Bookmark</b> dialog, click <b>OK</b> to save the page title as a bookmark in the selected folder.</li>
+</ol>
+<p>To import and export bookmarks, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Help</b> &gt; <b>General</b> &gt; <b>Import Bookmarks</b> or <b>Export Bookmarks</b>.</p>
+<h3 id="full-text-search">Full-text Search</h3>
+<p>In the <b>Search</b> pane, you can use full-text search for finding a particular word in all the installed documents. Enter the term you are looking for, and select the <b>Search</b> button. All documents that contain the specified term are listed. The list is sorted by document version (if you have installed several Qt versions, for example) and the number of search hits that the documents contain. Select a document in the list to open it.</p>
+<p class="centerAlign"><img src="images/qtcreator-help-search.png" alt="&quot;Search pane&quot;" /></p><p>The following are examples of common search patterns:</p>
+<ul>
+<li><code>deep</code> lists all the documents that contain the word <code>deep</code>. The search is not case sensitive.</li>
+<li><code>deep*</code> lists all the documents that contain a word beginning with <code>deep</code></li>
+<li><code>deep copy</code> lists all documents that contain both <code>deep</code> and <code>copy</code></li>
+<li><code>&quot;deep copy&quot;</code> lists all documents that contain the phrase <code>deep copy</code></li>
+</ul>
+<p>Full-text search is based on indexing all the installed documents the first time when you open the <b>Search</b> pane. If you add or remove documents, Qt Creator recreates the index.</p>
+<p>If you cannot find words that you know are there, indexing might not have been completed for some reason. To regenerate the index, click <img src="images/reload_gray.png" alt="" /> (<b>Regenerate Index</b>).</p>
+<p>Punctuation is not included in indexed terms. To find terms that contain punctuation, such as domain names, use the asterisk as a wild card. For example, to find <code>Pastebin.Com</code>, enter the search term <code>Pastebin*</code>.</p>
+<h2 id="adding-external-documentation">Adding External Documentation</h2>
+<p>You can display external documentation in the <b>Help</b> mode. To augment or replace the documentation that ships with Qt Creator and Qt:</p>
+<ol class="1" type="1"><li>Create a .qch file from your documentation.<p>For information on how to prepare your documentation and create a .qch file, see The Qt Help Framework.</p>
+</li>
+<li>To add the .qch file to Qt Creator, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Help</b> &gt; <b>Documentation</b> &gt; <b>Add</b>.</li>
+</ol>
+<h2 id="detaching-the-help-window">Detaching the Help Window</h2>
+<p>By default, context-sensitive help is opened in a window next to the code editor when you press <b>F1</b>. If there is not enough vertical space, the help opens in the full-screen help mode.</p>
+<p>You can specify that the help always opens in full-screen mode or is detached to an external window. Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Help</b> &gt; <b>General</b> and specify settings for displaying context-sensitive help in the <b>On context help</b> field. To detach the help window, select <b>Always Show in External Window</b>.</p>
+<p>To change this setting in a help view, select the <img src="images/linkicon.png" alt="" /> toolbar button.</p>
+<h2 id="selecting-the-start-page">Selecting the Start Page</h2>
+<p>You can select the page to display when you open the <b>Help</b> mode in the <b>Tools</b> &gt; <b>Options</b> &gt; <b>Help</b> &gt; <b>General</b> &gt; <b>On help start</b> field. To display the page and help views that were open when you exited the mode, select the <b>Show My Tabs from Last Session</b> option. However, Web pages are not opened, because loading them would slow down opening the <b>Help</b> mode.</p>
+<p>To display a particular page, select <b>Show My Home Page</b>, and specify the page in the <b>Home Page</b> field.</p>
+<p>To display a blank page, select the <b>Show a Blank Page</b> option. You can also select the <b>Use Blank Page</b> button to set a blank page as your home page.</p>
+<h2 id="using-documentation-filters">Using Documentation Filters</h2>
+<p>You can filter the documents displayed in the <b>Help</b> mode to find relevant information faster. Select a filter from a list of filters (1). The contents of the <b>Index</b> and <b>Contents</b> view in the sidebar change accordingly.</p>
+<p class="centerAlign"><img src="images/qtcreator-help-filters.png" alt="&quot;Filters field on the Help mode toolbar&quot;" /></p><p>You can define your own filters to display documentation for a set of Qt modules and versions.</p>
+<p>To add filters:</p>
+<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Help</b> &gt; <b>Filters</b>.<p class="centerAlign"><img src="images/qtcreator-help-filter-attributes.png" alt="&quot;Filters tab in Help options&quot;" /></p></li>
+<li>Select <img src="images/plus.png" alt="" /> to add a new filter in the <b>Add Filter</b> dialog.</li>
+<li>In the <b>Filter name</b> field, enter a name for the filter, and then select <b>OK</b> to return to the <b>Filters</b> tab.</li>
+<li>In the <b>Components</b> field, select the Qt modules to include in the filter.</li>
+<li>In the <b>Versions</b> field, select the Qt versions to include in the filter.</li>
+<li>Click <b>OK</b>.</li>
+<li>In the <b>Help</b> mode, select the filter in the list of filters to see the filtered documentation in the sidebar.</li>
+</ol>
+<p>To modify the selected filter, add and remove Qt modules and versions, and then select <b>Apply</b>.</p>
+<p>To rename the selected filter, select <b>Rename</b>.</p>
+<p>To remove the selected filter select <img src="images/minus.png" alt="" /> .</p>
+</div>
+<!-- @@@creator-help.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-help-overview.html">Getting Help</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-faq.html">FAQ</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

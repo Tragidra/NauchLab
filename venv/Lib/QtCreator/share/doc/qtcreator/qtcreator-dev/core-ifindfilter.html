@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- ifindfilter.cpp -->
+  <title>IFindFilter Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="extending-index.html">Extending Qt Creator Manual</a></li>
+<li>IFindFilter</li>
+<li id="buildversion"><a href="extending-index.html">Extending Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">IFindFilter Class</h1>
+<span class="small-subtitle">class <a href="core.html">Core</a>::IFindFilter</span>
+<!-- $$$IFindFilter-brief -->
+<p>The IFindFilter class is the base class for find implementations that are invoked by selecting <b>Edit</b> &gt; <b>Find/Replace</b> &gt; <b>Advanced Find</b>. <a href="#details">More...</a></p>
+<!-- @@@IFindFilter -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/find/ifindfilter.h&gt;</span>
+</td></tr></table></div>
+<ul>
+<li><a href="core-ifindfilter-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#createConfigWidget">createConfigWidget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QKeySequence </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#defaultShortcut">defaultShortcut</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#displayName">displayName</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#findAll">findAll</a></b>(const QString &amp;<i>txt</i>, Core::FindFlags <i>findFlags</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#id">id</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#isEnabled">isEnabled</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#isReplaceSupported">isReplaceSupported</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#isValid">isValid</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#readSettings">readSettings</a></b>(QSettings *<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#replaceAll">replaceAll</a></b>(const QString &amp;<i>txt</i>, Core::FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#showSearchTermInput">showSearchTermInput</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::FindFlags </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#supportedFindFlags">supportedFindFlags</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#writeSettings">writeSettings</a></b>(QSettings *<i>settings</i>)</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#displayNameChanged">displayNameChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#enabledChanged">enabledChanged</a></b>(bool <i>enabled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#validChanged">validChanged</a></b>(bool <i>valid</i>)</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> const QList&lt;Core::IFindFilter *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#allFindFilters">allFindFilters</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#descriptionForFindFlags">descriptionForFindFlags</a></b>(Core::FindFlags <i>flags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QPixmap </td><td class="memItemRight bottomAlign"><b><a href="core-ifindfilter.html#pixmapForFindFlags">pixmapForFindFlags</a></b>(Core::FindFlags <i>flags</i>)</td></tr>
+</table></div>
+<!-- $$$IFindFilter-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Implementations of this class add an additional <b>Scope</b> to the <b>Advanced Find</b> dialog. That can be any search that requires the user to provide a text based search term (potentially with find flags like searching case sensitively or using regular expressions). Existing scopes are <b>All Projects</b> that searches from all files in all projects and <b>Files in File System</b> where the user provides a directory and file patterns to search.</p>
+<p class="centerAlign"><img src="images/qtcreator-search-filesystem.png" alt="" /></p><p>To make your find scope available to the user, you need to implement this class, and register an instance of your subclass in the plugin manager.</p>
+<p>A common way to present the search results to the user, is to use the shared <b>Search Results</b> pane.</p>
+<p class="centerAlign"><img src="images/qtcreator-searchresults.png" alt="" /></p><p>If you want to implement a find filter that is doing a file based text search, you should use <a href="core-basetextfind.html">Core::BaseTextFind</a>, which already implements all the details for this kind of search, only requiring you to provide an iterator over the file names of the files that should be searched.</p>
+<p>If you want to implement a more specialized find filter, you need to:</p>
+<ul>
+<li>Start your search in a separate thread</li>
+<li>Make this known to the <a href="core-progressmanager.html">Core::ProgressManager</a>, for a progress bar and the ability to cancel the search</li>
+<li>Interface with the shared <b>Search Results</b> pane, to show the search results, handle the event that the user click on one of the search result items, and possible handle a global replace of all or some of the search result items.</li>
+</ul>
+<p>Luckily QtConcurrent and the search results pane provide the frameworks that make it relatively easy to implement, while ensuring a common way for the user.</p>
+<p>The common pattern is roughly to first implement the actual search within a QtConcurrent based function. That is a function that takes a <code>QFutureInterface&lt;MySearchResult&gt; &amp;future</code> as the first parameter and the other information needed for the search as additional parameters. It should set useful progress information on the QFutureInterface, regularly check for <code>future.isPaused()</code> and <code>future.isCanceled()</code>, and report the search results (possibly in chunks) via <code>future.reportResult</code>.</p>
+<p>In the find filter's <code>find()</code> or <code>replaceAll()</code> function, get the shared <b>Search Results</b> window, initiate a new search and connect the signals for handling selection of results and the replace action (see the <a href="core-searchresultwindow.html">Core::SearchResultWindow</a> class for details). Start your search implementation via the corresponding QtConcurrent functions. Add the returned QFuture object to the <a href="core-progressmanager.html">Core::ProgressManager</a>. Use a QFutureWatcher on the returned QFuture object to receive a signal when your search implementation reports search results, and add these to the shared <b>Search Results</b> window.</p>
+</div>
+<!-- @@@IFindFilter -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$displayNameChanged[overload1]$$$displayNameChanged -->
+<h3 class="fn" id="displayNameChanged"><code>[signal] </code><span class="type">void</span> IFindFilter::<span class="name">displayNameChanged</span>()</h3>
+<p>This signal is emitted when the display name of this find filter changes.</p>
+<!-- @@@displayNameChanged -->
+<!-- $$$enabledChanged[overload1]$$$enabledChangedbool -->
+<h3 class="fn" id="enabledChanged"><code>[signal] </code><span class="type">void</span> IFindFilter::<span class="name">enabledChanged</span>(<span class="type">bool</span> <i>enabled</i>)</h3>
+<p>This signal is emitted when the <i>enabled</i> state of this find filter changes.</p>
+<!-- @@@enabledChanged -->
+<!-- $$$validChanged[overload1]$$$validChangedbool -->
+<h3 class="fn" id="validChanged"><code>[signal] </code><span class="type">void</span> IFindFilter::<span class="name">validChanged</span>(<span class="type">bool</span> <i>valid</i>)</h3>
+<p>This signal is emitted when the <i>valid</i> state of this find filter changes.</p>
+<!-- @@@validChanged -->
+<!-- $$$allFindFilters[overload1]$$$allFindFilters -->
+<h3 class="fn" id="allFindFilters"><code>[static] </code>const <span class="type">QList</span>&lt;<span class="type"><a href="core-ifindfilter.html">Core::IFindFilter</a></span> *&gt; IFindFilter::<span class="name">allFindFilters</span>()</h3>
+<p>Returns a list of find filters.</p>
+<!-- @@@allFindFilters -->
+<!-- $$$createConfigWidget[overload1]$$$createConfigWidget -->
+<h3 class="fn" id="createConfigWidget"><code>[virtual] </code><span class="type">QWidget</span> *IFindFilter::<span class="name">createConfigWidget</span>()</h3>
+<p>Returns a widget that contains additional controls for options for this find filter.</p>
+<p>The widget will be shown below the common options in the <b>Advanced Find</b> dialog. It will be reparented and deleted by the find plugin.</p>
+<!-- @@@createConfigWidget -->
+<!-- $$$defaultShortcut[overload1]$$$defaultShortcut -->
+<h3 class="fn" id="defaultShortcut"><code>[virtual] </code><span class="type">QKeySequence</span> IFindFilter::<span class="name">defaultShortcut</span>() const</h3>
+<p>Returns the shortcut that can be used to open the advanced find dialog with this filter or scope preselected.</p>
+<p>Usually return an empty shortcut here, the user can still choose and assign a specific shortcut to this find scope via the preferences.</p>
+<!-- @@@defaultShortcut -->
+<!-- $$$descriptionForFindFlags[overload1]$$$descriptionForFindFlagsCore::FindFlags -->
+<h3 class="fn" id="descriptionForFindFlags"><code>[static] </code><span class="type">QString</span> IFindFilter::<span class="name">descriptionForFindFlags</span>(<span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>flags</i>)</h3>
+<p>Returns descriptive text labels for the find flags <i>flags</i>.</p>
+<!-- @@@descriptionForFindFlags -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><code>[pure virtual] </code><span class="type">QString</span> IFindFilter::<span class="name">displayName</span>() const</h3>
+<p>Returns the name of the find filter or scope as presented to the user.</p>
+<p>This is the name that appears in the scope selection combo box, for example. Always return a translatable string. That is, use <code>tr()</code> for the return value.</p>
+<!-- @@@displayName -->
+<!-- $$$findAll[overload1]$$$findAllconstQString&Core::FindFlags -->
+<h3 class="fn" id="findAll"><code>[pure virtual] </code><span class="type">void</span> IFindFilter::<span class="name">findAll</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<p>This function is called when the user selected this find scope and initiated a search.</p>
+<p>You should start a thread which actually performs the search for <i>txt</i> using the given <i>findFlags</i> (add it to <a href="core-progressmanager.html">Core::ProgressManager</a> for a progress bar) and presents the search results to the user (using the <b>Search Results</b> output pane). For more information, see the descriptions of this class, <a href="core-progressmanager.html">Core::ProgressManager</a>, and <a href="core-searchresultwindow.html">Core::SearchResultWindow</a>.</p>
+<p><b>See also </b><a href="core-ifindfilter.html#replaceAll">replaceAll</a>(), <a href="core-progressmanager.html">Core::ProgressManager</a>, and <a href="core-searchresultwindow.html">Core::SearchResultWindow</a>.</p>
+<!-- @@@findAll -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" id="id"><code>[pure virtual] </code><span class="type">QString</span> IFindFilter::<span class="name">id</span>() const</h3>
+<p>Returns the unique string identifier for this find filter.</p>
+<p>Usually should be something like &quot;MyPlugin.MyFindFilter&quot;.</p>
+<!-- @@@id -->
+<!-- $$$isEnabled[overload1]$$$isEnabled -->
+<h3 class="fn" id="isEnabled"><code>[pure virtual] </code><span class="type">bool</span> IFindFilter::<span class="name">isEnabled</span>() const</h3>
+<p>Returns whether the user should be able to select this find filter at the moment.</p>
+<p>This is used for the <b>Current Projects</b> scope, for example. If the user has not opened a project, the scope is disabled.</p>
+<p><b>See also </b><a href="core-ifindfilter.html#enabledChanged">enabledChanged</a>().</p>
+<!-- @@@isEnabled -->
+<!-- $$$isReplaceSupported[overload1]$$$isReplaceSupported -->
+<h3 class="fn" id="isReplaceSupported"><code>[virtual] </code><span class="type">bool</span> IFindFilter::<span class="name">isReplaceSupported</span>() const</h3>
+<p>Returns whether the find filter supports search and replace.</p>
+<p>The default value is false, override this function to return <code>true</code>, if your find filter supports global search and replace.</p>
+<!-- @@@isReplaceSupported -->
+<!-- $$$isValid[overload1]$$$isValid -->
+<h3 class="fn" id="isValid"><code>[virtual] </code><span class="type">bool</span> IFindFilter::<span class="name">isValid</span>() const</h3>
+<p>Returns whether the find filter is valid.</p>
+<p><b>See also </b><a href="core-ifindfilter.html#validChanged">validChanged</a>().</p>
+<!-- @@@isValid -->
+<!-- $$$pixmapForFindFlags[overload1]$$$pixmapForFindFlagsCore::FindFlags -->
+<h3 class="fn" id="pixmapForFindFlags"><code>[static] </code><span class="type">QPixmap</span> IFindFilter::<span class="name">pixmapForFindFlags</span>(<span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>flags</i>)</h3>
+<p>Returns icons for the find flags <i>flags</i>.</p>
+<!-- @@@pixmapForFindFlags -->
+<!-- $$$readSettings[overload1]$$$readSettingsQSettings* -->
+<h3 class="fn" id="readSettings"><code>[virtual] </code><span class="type">void</span> IFindFilter::<span class="name">readSettings</span>(<span class="type">QSettings</span> *<i>settings</i>)</h3>
+<p>Called at startup to read the state of the additional options for this find filter from the <i>settings</i>.</p>
+<!-- @@@readSettings -->
+<!-- $$$replaceAll[overload1]$$$replaceAllconstQString&Core::FindFlags -->
+<h3 class="fn" id="replaceAll"><code>[virtual] </code><span class="type">void</span> IFindFilter::<span class="name">replaceAll</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<p>Override this function if you want to support search and replace.</p>
+<p>This function is called when the user selected this find scope and initiated a search and replace. The default implementation does nothing.</p>
+<p>You should start a thread which actually performs the search for <i>txt</i> using the given <i>findFlags</i> (add it to <a href="core-progressmanager.html">Core::ProgressManager</a> for a progress bar) and presents the search results to the user (using the <b>Search Results</b> output pane). For more information see the descriptions of this class, <a href="core-progressmanager.html">Core::ProgressManager</a>, and <a href="core-searchresultwindow.html">Core::SearchResultWindow</a>.</p>
+<p><b>See also </b><a href="core-ifindfilter.html#findAll">findAll</a>(), <a href="core-progressmanager.html">Core::ProgressManager</a>, and <a href="core-searchresultwindow.html">Core::SearchResultWindow</a>.</p>
+<!-- @@@replaceAll -->
+<!-- $$$showSearchTermInput[overload1]$$$showSearchTermInput -->
+<h3 class="fn" id="showSearchTermInput"><code>[virtual] </code><span class="type">bool</span> IFindFilter::<span class="name">showSearchTermInput</span>() const</h3>
+<p>Returns whether the find filter wants to show the search term line edit.</p>
+<p>The default value is <code>true</code>, override this function to return <code>false</code>, if your find filter does not want to show the search term line edit.</p>
+<!-- @@@showSearchTermInput -->
+<!-- $$$supportedFindFlags[overload1]$$$supportedFindFlags -->
+<h3 class="fn" id="supportedFindFlags"><code>[virtual] </code><span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> IFindFilter::<span class="name">supportedFindFlags</span>() const</h3>
+<p>Returns the find flags, like whole words or regular expressions, that this find filter supports.</p>
+<p>Depending on the returned value, the default find option widgets are enabled or disabled. The default is <a href="core.html#FindFlag-enum">Core::FindCaseSensitively</a>, <a href="core.html#FindFlag-enum">Core::FindRegularExpression</a> and <a href="core.html#FindFlag-enum">Core::FindWholeWords</a>.</p>
+<!-- @@@supportedFindFlags -->
+<!-- $$$writeSettings[overload1]$$$writeSettingsQSettings* -->
+<h3 class="fn" id="writeSettings"><code>[virtual] </code><span class="type">void</span> IFindFilter::<span class="name">writeSettings</span>(<span class="type">QSettings</span> *<i>settings</i>)</h3>
+<p>Called at shutdown to write the state of the additional options for this find filter to the <i>settings</i>.</p>
+<!-- @@@writeSettings -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

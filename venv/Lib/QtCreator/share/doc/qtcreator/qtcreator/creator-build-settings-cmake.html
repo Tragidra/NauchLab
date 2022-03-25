@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-cmake-building.qdoc -->
+  <title>CMake Build Configuration | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>CMake Build Configuration</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-build-settings.html" />
+  <link rel="next" href="creator-build-settings-qmake.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-build-settings.html">Specifying Build Settings</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-build-settings-qmake.html">qmake Build Configuration</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#multi-config-support">Multi-Config Support</a></li>
+<li class="level1"><a href="#modifying-variable-values">Modifying Variable Values</a></li>
+<li class="level1"><a href="#re-configuring-with-initial-variables">Re-configuring with Initial Variables</a></li>
+<li class="level1"><a href="#viewing-cmake-output">Viewing CMake Output</a></li>
+<li class="level1"><a href="#cmake-build-steps">CMake Build Steps</a></li>
+<li class="level1"><a href="#using-ninja-as-a-cmake-generator">Using Ninja as a CMake Generator</a></li>
+<li class="level1"><a href="#using-cmake-with-conan">Using CMake with Conan</a></li>
+<li class="level1"><a href="#cmake-clean-steps">CMake Clean Steps</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">CMake Build Configuration</h1>
+<!-- $$$creator-build-settings-cmake.html-description -->
+<div class="descr" id="details">
+<p>Configuring medium-sized to large CMake projects in Qt Creator can be a challenge due to the number of variables that you need to pass to CMake to configure the project correctly. To make this easier, Qt Creator creates an initial configuration for you based on the kit settings and displays it in <b>Initial Configuration</b> in the <a href="creator-build-settings.html">Build Settings</a> of the project.</p>
+<p class="centerAlign"><img src="images/qtcreator-cmake-build-settings-initial.png" alt="&quot;CMake build settings&quot;" /></p><p><b>Initial Configuration</b> lists the variables that are used to configure the CMake project for the first time. The default values that are inherited from the kit's CMake configuration are displayed in italic. The initial configuration list of variables is saved in the project's source directory as the <i>CMakeLists.txt.user</i> file.</p>
+<p><b>Current Configuration</b> lists the CMake variables in the <code>cmake-file-api</code> JSON export in the <code>.cmake/api/v1/reply</code> directory. The variables that are inherited from the initial configuration are displayed in italic. Mismatched values are displayed in red.</p>
+<p>You can view and edit the actual values of the variables that are passed to CMake. Variable names are listed in the <b>Key</b> column and their current values in the <b>Value</b> column. For more information about the available variables, select <b>Help</b> in the context menu or see <a href="https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html">CMake: cmake-variables(7)</a>. For more information about Qt-specific variables, see CMake Variable Reference.</p>
+<p>You can specify additional CMake options, such as <code>--find-debug</code>, <code>--preset</code>, <code>--trace-expand</code>, or <code>--warn-uninitialized</code>, in <b>Additional CMake options</b>. For more information about the available options, click the link in the field name or see <a href="https://cmake.org/cmake/help/latest/manual/cmake.1.html">CMake: cmake(1)</a>.</p>
+<p>After successfully running CMake, you can view and modify the current configuration in <b>Current Configuration</b>.</p>
+<p>Select <b>Kit Configuration</b> to edit the CMake settings for the build and run kit selected for the project.</p>
+<h2 id="multi-config-support">Multi-Config Support</h2>
+<p>Qt Creator supports <a href="https://cmake.org/cmake/help/latest/prop_gbl/GENERATOR_IS_MULTI_CONFIG.html">Multi-config generators</a>, such as Xcode, Visual Studio, and Ninja Multi-Config. This means that you need to configure CMake only once, have only one build directory, and can switch between build types faster.</p>
+<p>However, this means that Qt Creator can no longer simply parse the first CMake file-api JSON export. Therefore, the value of the <b>Build type</b> field must match that of the <code>CMAKE_BUILD_TYPE</code> variable for the single configuration generators (Ninja, Makefile) to determine, which generator to use.</p>
+<p>When developing with Qt 6 for iOS, only the Xcode generator is supported.</p>
+<h2 id="modifying-variable-values">Modifying Variable Values</h2>
+<p>You can view and edit the actual values of the variables that are passed to CMake in <b>Initial Configuration</b> or <b>Current Configuration</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-cmake-build-settings.png" alt="&quot;CMake variables&quot;" /></p><p>To view all variables, select the <b>Advanced</b> check box.</p>
+<p>To add variables, select <b>Add</b>, and then select the type of the variable that you are adding: <b>Boolean</b>, <b>String</b>, <b>Directory</b>, or <b>File</b>.</p>
+<p>To change the type of the selected variable, right-click the variable name in the <b>Key</b> column, and then select <b>Force to bool</b>, <b>Force to file</b>, <b>Force to directory</b>, or <b>Force to string</b> in the context menu.</p>
+<p>To copy the name or value of the selected variable to the clipboard, select <b>Copy</b> in the context menu.</p>
+<p>To modify the value of a variable, double-click it, or select it, and then select <b>Edit</b>. If the initial, current, and kit configuration get out of sync, select <b>Apply Kit Value</b> or <b>Apply Initial Configuration Value</b> in the context menu in <b>Initial Configuration</b> or <b>Current Configuration</b>.</p>
+<p>You can apply actions to multiple variables at a time. To clear the selection, select <b>Clear Selection</b>.</p>
+<p>To remove the selected variables, select <b>Unset</b>. To undo the removal, select <b>Set</b>.</p>
+<p>To reset all the changes that you made, select <b>Reset</b>.</p>
+<p>To modify the environment variable values for the CMake build environment, select <b>Batch Edit</b>. For more information, see <a href="creator-project-settings-environment.html#batch-editing">Batch Editing</a>.</p>
+<p>To build using the current configuration, select <b>Run CMake</b>. While building, the button text changes to <b>Stop CMake</b>. Select the button to cancel the current build.</p>
+<p>The variable values that you change are passed via <code>-D&lt;option&gt;=&lt;value&gt;</code> to CMake, which stores the options in the CMakeCache.txt file. This means that if you remove the build directory, all the custom variables that are not part of the initial CMake configuration are also removed.</p>
+<p>To reconfigure a project using the modified variable values, select <b>Build</b> &gt; <b>Clear CMake Configuration</b>, which removes the CMakeCache.txt file. This enables you to do a full rebuild.</p>
+<h2 id="re-configuring-with-initial-variables">Re-configuring with Initial Variables</h2>
+<p>To reset CMake variables to the initial ones, select <b>Re-configure with Initial Variables</b> in <b>Initial Configuration</b>. Qt Creator deletes the current CMake configuration and runs CMake. The initial configuration values are stored in the CMakeLists.txt.user file, so deleting a build directory does not delete the initial configuration.</p>
+<p>To be asked before Qt Creator resets the changes, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Build &amp; Run</b> &gt; <b>CMake</b> &gt; <b>Ask before re-configuring with initial parameters</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-build-run-options-cmake.png" alt="&quot;CMake Build &amp; Run options&quot;" /></p><h2 id="viewing-cmake-output">Viewing CMake Output</h2>
+<p>Output from CMake is displayed next to the <b>Build Settings</b> and <b>Run Settings</b> panes in the <b>Projects</b> mode.</p>
+<p class="centerAlign"><img src="images/qtcreator-build-cmake-output.png" alt="&quot;CMake output in Projects mode&quot;" /></p><p>To clear the search results, select the <img src="images/clean_pane_small.png" alt="" /> (<b>Clear</b>) button.</p>
+<p>You can enter a string in the <b>Filter</b> field to filter output. To specify filtering options, select the <img src="images/magnifier.png" alt="&quot;Filtering options menu&quot;" /> button. You can filter output by using regular expressions or case-sensitivity. Select <b>Show Non-matching Lines</b> to hide the lines that match the filter.</p>
+<p>Press <b>Ctrl+F</b> to <a href="creator-editor-finding.html">search</a> for a string from the output.</p>
+<p>To increase or decrease the output text size, select <img src="images/plus.png" alt="" /> (<b>Zoom In</b>) or <img src="images/minus.png" alt="" /> (<b>Zoom Out</b>), or press <b>Ctrl++</b> or <b>Ctrl+-</b>.</p>
+<h2 id="cmake-build-steps">CMake Build Steps</h2>
+<p>Qt Creator builds CMake projects by running <code>cmake . --build</code>, which then runs the CMake generator specified in the project configuration: <code>make</code>, <code>mingw32-make</code>, <code>nmake</code>, or <code>ninja</code>, for example. The CMake generator produces project files for Qt Creator. Multi-config generators are also supported.</p>
+<p>You can add arguments to pass to CMake and the generator and targets for the build command in <b>Build Steps</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-cmake-build-steps.png" alt="&quot;CMake build steps&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>While the other CMake generators are installed together with Qt, you usually need to install Ninja yourself.</p>
+</div>
+<h2 id="using-ninja-as-a-cmake-generator">Using Ninja as a CMake Generator</h2>
+<p>To use <a href="https://ninja-build.org/">Ninja</a> with CMake, you must install it and select it as the CMake generator in the build and run kit:</p>
+<ol class="1" type="1"><li>Install Ninja.</li>
+<li>Add the path to the Ninja executable to the value of the PATH system variable.</li>
+<li>In <b>Projects</b> &gt; <b>Build &amp; Run</b> &gt; <b>Build</b> &gt; <b>Build Settings</b>, select <b>Kit Configuration</b>.<p class="centerAlign"><img src="images/qtcreator-cmake-kit-configuration.png" alt="&quot;Kit CMake Configuration dialog&quot;" /></p></li>
+<li>Select <b>Change</b> next to the <b>CMake generator</b> field to open the <b>CMake Generator</b> dialog.<p class="centerAlign"><img src="images/qtcreator-cmake-generator.png" alt="&quot;CMake Generator dialog&quot;" /></p></li>
+<li>In <b>Generator</b>, select <b>Ninja</b>.</li>
+<li>Select <b>OK</b> to save your changes and close the dialog.</li>
+<li>Select <b>Close</b> to close the <b>Kit CMake Configuration</b> dialog and return to <b>Build Settings</b>.</li>
+</ol>
+<div class="admonition note">
+<p><b>Note: </b>To make sure that old build artifacts don't get in the way the first time you build the project after the change, select <b>Build</b> &gt; <b>Rebuild Project</b>. This cleans up the build directory and performs a new build.</p>
+</div>
+<h2 id="using-cmake-with-conan">Using CMake with Conan</h2>
+<p>Qt Creator can automatically set up the <a href="creator-project-conan.html">Conan package manager</a> for use with CMake.</p>
+<p>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Build &amp; Run</b> &gt; <b>CMake</b> &gt; <b>Package manager auto setup</b> to set the value of the <code>CMAKE_PROJECT_INCLUDE_BEFORE</code> variable to the path to a CMake script that installs dependencies from a <code>conanfile.txt</code>, <code>conanfile.py</code>, or <code>vcpkg.json</code> file in the project source directory.</p>
+<h2 id="cmake-clean-steps">CMake Clean Steps</h2>
+<p>When building with CMake, you can add arguments to pass to CMake and the generator and targets for the clean command in <b>Clean Steps</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-cmake-clean-steps.png" alt="" /></p><p>The build errors and warnings are parsed and displayed in the <a href="creator-output-panes.html#issues">Issues</a> output pane.</p>
+</div>
+<!-- @@@creator-build-settings-cmake.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-build-settings.html">Specifying Build Settings</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-build-settings-qmake.html">qmake Build Configuration</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

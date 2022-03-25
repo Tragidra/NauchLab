@@ -1,112 +1,290 @@
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.Qt import *
 import sys
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QApplication
-from PyQt5.uic import loadUi
-from pyqtgraph.flowchart import Flowchart, Node
-import pyqtgraph.flowchart.library as fclib
-from pyqtgraph.flowchart.library.common import CtrlNode
-from pyqtgraph.Qt import QtGui, QtCore
-import pyqtgraph as pg
-import numpy as np
+import os
+import shutil
+import functools
+import tkinter
 
-class Main(QMainWindow):
-    check_box = None
-    tray_icon = None
-    def __init__(self):
-        super(Main, self).__init__()
-        loadUi("UI/Main.ui",self)
+class MyMainWindow(QMainWindow):
 
-## Create an empty flowchart with a single input and output
-        fc = Flowchart(terminals={
-            'dataIn': {'io': 'in'},
-            'dataOut': {'io': 'out'}
-        })
-        w = fc.widget()
+    def __init__(self, parent=None):
+        QMainWindow.__init__(self, parent)
+        self.config_window()
+        self.create_widgets()
+        self.config_widgets()
+        self.create_menubar()
+        self.bind_widgets()
+        self.show_widgets()
 
-        self.LayOut1.addWidget(fc.widget(), 0, 0, 2, 1)
+    def config_window(self):
+        self.setWindowTitle('DirectoPy')
+        self.setMinimumHeight(600)
+        self.setMinimumWidth(1000)
 
-## Create two ImageView widgets to display the raw and processed data with contrast
-## and color control.
-        v1 = pg.ImageView()
-        v2 = pg.ImageView()
-        self.LayOut1.addWidget(v1, 0, 1)
-        self.LayOut1.addWidget(v2, 1, 1)
+    def create_widgets(self):
+        self.central_widget = QWidget()
+        self.main_layout = QGridLayout()
+        self.moveup_button = QPushButton('Collapse all', self)
+        self.goto_lineedit = QLineEdit('C:\\', self)
+        self.goto_button = QPushButton('Go', self)
+        self.folder_view = QTreeView(self)
+        self.file_view = QTreeView(self)
+        self.folder_model = QFileSystemModel(self)
+        self.file_model = QFileSystemModel(self)
 
-## generate random input data
-        data = np.random.normal(size=(100, 100))
-        data = 25 * pg.gaussianFilter(data, (5, 5))
-        data += np.random.normal(size=(100, 100))
-        data[40:60, 40:60] += 15.0
-        data[30:50, 30:50] += 15.0
-        library = fclib.LIBRARY.copy()  # start with the default node set
-        library.addNodeType(UnsharpMaskNode, [('Image',),
-                                              ('Submenu_test', 'submenu2', 'submenu3')])
-        fc.setLibrary(library)
+    def config_widgets(self):
+        self.main_layout.addWidget(self.moveup_button, 0, 0)
+        self.main_layout.addWidget(self.goto_lineedit, 0, 1, 1, 2)
+        self.main_layout.addWidget(self.goto_button, 0, 3)
+        self.main_layout.addWidget(self.folder_view, 1, 0, 1, 2)
+        self.main_layout.addWidget(self.file_view, 1, 2, 1, 2)
 
-        ## Now we will programmatically add nodes to define the function of the flowchart.
-        ## Normally, the user will do this manually or by loading a pre-generated
-        ## flowchart file.
-        fNode = fc.createNode('UnsharpMask', pos=(0, 0))
-        fc.connectTerminals(fc['dataIn'], fNode['dataIn'])
-        fc.connectTerminals(fNode['dataOut'], fc['dataOut'])
+        self.central_widget.setLayout(self.main_layout)
 
-        fc.setInput(dataIn=data)
+        # Кнопка "вверх"
+        self.moveup_button.setMaximumWidth(100)
+
+        # Кнопка "перейти"
+        self.goto_button.setMaximumWidth(70)
+        self.setCentralWidget(self.central_widget)
+        # панелі
+        self.folder_model.setRootPath(None)
+        self.folder_model.setFilter(QDir.AllDirs | QDir.NoDotAndDotDot)
+        self.folder_view.setModel(self.folder_model)
+        self.folder_view.setRootIndex(self.folder_model.index(None))
+        self.folder_view.clicked[QModelIndex].connect(self.clicked_onfolder)
+        self.folder_view.hideColumn(1)
+        self.folder_view.hideColumn(2)
+        self.folder_view.hideColumn(3)
+
+        self.file_model.setFilter(QDir.Files)
+        self.file_view.setModel(self.file_model)
+        self.file_model.setReadOnly(False)
+        self.file_view.setColumnWidth(0,200)
+        self.file_view.setSelectionMode(QAbstractItemView.ExtendedSelection)
+
+    def clicked_onfolder(self, index):
+        selection_model = self.folder_view.selectionModel()
+        index = selection_model.currentIndex()
+        dir_path = self.folder_model.filePath(index)
+        self.file_model.setRootPath(dir_path)
+        self.file_view.setRootIndex(self.file_model.index(dir_path))
+
+    def open_file(self):
+        index = self.file_view.selectedIndexes()
+        if not index:
+            return
+        else:
+            index = index[0]
+        file_path = self.file_model.filePath(index).replace('/', '\\')
+        print(file_path)
+        extention = os.path.splitext(file_path)[-1]
+        print(extention)
+        self.file_view.update()
+
+    def new_file(self):
+        index = self.folder_view.selectedIndexes()
+        if len(index) > 0:
+            path = self.folder_model.filePath(index[0])
+            for i in range(1, 9999999999999999):
+                if not os.path.isfile(os.path.join(path, "newfile{}.txt".format(i))):
+                    file_name = os.path.join(path, "newfile{}.txt".format(i))
+                    break
+            file_name = os.path.abspath(file_name)
+            open(file_name, 'w').close()
+        else:
+            print("Please, select folder")
+
+    def delete_file(self):
+        indexes = self.file_view.selectedIndexes()
+        for i in indexes:
+            self.file_model.remove(i)
+
+    def rename_file(self):
+        index = self.file_view.selectedIndexes()
+        if not index:
+            return
+        else:
+            index = index[0]
+        self.file_view.edit(index)
+
+    def copy_file(self):
+        print("COPY")
+        ask = QFileDialog.getExistingDirectory(self, "Open Directory", "/home",
+                                               QFileDialog.ShowDirsOnly |
+                                               QFileDialog.DontResolveSymlinks)
+        new_path = ask.replace('\\', '/')
+        indexes = self.file_view.selectedIndexes()[::4]
+        for i in indexes:
+            new_filename = new_path + '/' + self.file_model.fileName(i)
+            shutil.copy2(self.file_model.filePath(i), new_filename)
+
+    def colapse(self):
+        self.folder_view.collapseAll()
+
+    def go_to(self):
+        dir_path = self.goto_lineedit.text().replace('\\', '/')
+        print(dir_path)
+        self.file_model.setRootPath(dir_path)
+        self.file_view.setRootIndex(self.file_model.index(dir_path))
+
+        #self.file_model.setRootPath()
+
+    def move_file(self):
+        print("MOVE")
+        ask = QFileDialog.getExistingDirectory(self, "Open Directory", "/home",
+                                               QFileDialog.ShowDirsOnly |
+                                               QFileDialog.DontResolveSymlinks)
+        if ask == '':
+            return
+        new_path = ask.replace('\\', '/')
+        indexes = self.file_view.selectedIndexes()[::4]
+        for i in indexes:
+            new_filename = new_path + '/' + self.file_model.fileName(i)
+            shutil.move(self.file_model.filePath(i), new_filename)
+
+    def new_folder(self):
+        index = self.folder_view.selectedIndexes()
+        if len(index) > 0:
+            path = self.folder_model.filePath(index[0])
+            for i in range(1, 9999999999999999):
+                if not os.path.isdir(os.path.join(path, "newfolder{}".format(i))):
+                    file_name = os.path.join(path, "newfolder{}".format(i))
+                    break
+            file_name = os.path.abspath(file_name)
+            os.mkdir(file_name)
+        else:
+            print("Please, select folder")
+
+    def delete_folder(self):
+        indexes = self.folder_view.selectedIndexes()
+        for i in indexes:
+            self.folder_model.remove(i)
+
+    def rename_folder(self):
+        index = self.folder_view.selectedIndexes()
+        if not index:
+            return
+        else:
+            index = index[0]
+        self.folder_view.edit(index)
+
+    def exit_application(self):
+       print("EXIT")
+       self.close()
+
+    def about_prog(self, event=None):
+        w = tkinter.Tk()
+        w.title("About program")
+        w.minsize(width=400, height=100)
+        options = dict(padx=10, pady=14, sticky=tkinter.W+tkinter.N)
+
+        tkinter.Label(w, text='Програма:').grid(column=0, row=0, **options)
+        tkinter.Label(w, text="Файловий менеджер").grid(column=1, row=0, **options)
+
+        tkinter.Label(w, text='Автор:').grid(column=0, row=1, **options)
+        tkinter.Label(w, text="Гизила Євгеній").grid(column=1, row=1, **options)
+
+        tkinter.Label(w, text='Версія:').grid(column=0, row=2, **options)
+        tkinter.Label(w, text="0.01").grid(column=1, row=2, **options)
+
+        tkinter.Label(w, text='Ліцензія:').grid(column=0, row=2, **options)
+        tkinter.Label(w, text="LGPL").grid(column=1, row=2, **options)
+
+        tkinter.Label(w, text='Опис:').grid(column=0, row=3, **options)
+        tkinter.Label(w, text="Фа́йловий ме́неджер — комп'ютерна програма,\n"
+                              "що надає інтерфейс користувача для роботи \n"
+                              "з файловою системою та файлами. Дозволяє \n"
+                              "виконувати найчастіші операції з файлами: \n"
+                              "створення, відкриття/запуск/перегляд, \n"
+                              "редагування, переміщення, перейменування, \n"
+                              "копіювання, вилучення, зміну атрибутів та \n"
+                              "властивостей, пошук файлів та призначення \n"
+                              "прав.").grid(column=1, row=3, **options)
+
+        w.mainloop()
+
+    def bind_widgets(self):
+        self.open_file_action.triggered.connect(self.open_file)
+        self.new_file_action.triggered.connect(self.new_file)
+        self.delete_file_action.triggered.connect(self.delete_file)
+        self.rename_file_action.triggered.connect(self.rename_file)
+        self.copy_file_action.triggered.connect(self.copy_file)
+        self.move_file_action.triggered.connect(self.move_file)
+        self.exit_action.triggered.connect(self.exit_application)
+
+        self.new_folder_action.triggered.connect(self.new_folder)
+        self.delete_folder_action.triggered.connect(self.delete_folder)
+        self.rename_folder_action.triggered.connect(self.rename_folder)
+        self.about_action.triggered.connect(self.about_prog)
 
 
-class ImageViewNode(Node):
-    """Node that displays image data in an ImageView widget"""
-    nodeName = 'ImageView'
+        self.goto_button.clicked.connect(functools.partial(self.go_to))
+        self.moveup_button.clicked.connect(functools.partial(self.colapse))
 
-    def __init__(self, name):
-        self.view = None
-        ## Initialize node with only a single input terminal
-        Node.__init__(self, name, terminals={'data': {'io': 'in'}})
+    def create_menubar(self):
 
-    def setView(self, view):  ## setView must be called by the program
-        self.view = view
+        self.exit_action = QAction('Exit', self)
+        self.exit_action.setShortcut('Ctrl+Q')
 
-    def process(self, data, display=True):
-        ## if process is called with display=False, then the flowchart is being operated
-        ## in batch processing mode, so we should skip displaying to improve performance.
+        self.new_file_action = QAction('New file', self)
+        self.new_file_action.setShortcut('F4')
 
-        if display and self.view is not None:
-            ## the 'data' argument is the value given to the 'data' terminal
-            if data is None:
-                self.view.setImage(np.zeros((1, 1)))  # give a blank array to clear the view
-            else:
-                self.view.setImage(data)
+        self.open_file_action = QAction('Open file', self)
+        self.open_file_action.setShortcut('F3')
 
-## We will define an unsharp masking filter node as a subclass of CtrlNode.
-## CtrlNode is just a convenience class that automatically creates its
-## control widget based on a simple data structure.
-class UnsharpMaskNode(CtrlNode):
-    """Return the input data passed through an unsharp mask."""
-    nodeName = "UnsharpMask"
-    uiTemplate = [
-        ('sigma', 'spin', {'value': 1.0, 'step': 1.0, 'bounds': [0.0, None]}),
-        ('strength', 'spin', {'value': 1.0, 'dec': True, 'step': 0.5, 'minStep': 0.01, 'bounds': [0.0, None]}),
-    ]
+        self.rename_file_action = QAction('Rename file', self)
+        self.rename_file_action.setShortcut('F2')
 
-    def __init__(self, name):
-        ## Define the input / output terminals available on this node
-        terminals = {
-            'dataIn': dict(io='in'),  # each terminal needs at least a name and
-            'dataOut': dict(io='out'),  # to specify whether it is input or output
-        }  # other more advanced options are available
-        # as well..
+        self.delete_file_action = QAction('Remove file', self)
+        self.delete_file_action.setShortcut(QKeySequence.Delete)
 
-        CtrlNode.__init__(self, name, terminals=terminals)
+        self.copy_file_action = QAction('Copy folder...', self)
+        self.copy_file_action.setShortcut(QKeySequence.Copy)
 
-    def process(self, dataIn, display=True):
-        # CtrlNode has created self.ctrls, which is a dict containing {ctrlName: widget}
-        sigma = self.ctrls['sigma'].value()
-        strength = self.ctrls['strength'].value()
-        output = dataIn - (strength * pg.gaussianFilter(dataIn, (sigma, sigma)))
-        return {'dataOut': output}
+        self.move_file_action = QAction('Move folder...', self)
+        self.move_file_action.setShortcut(QKeySequence.Cut)
 
-app = QApplication(sys.argv)
-mainW = Main()
-widget = QtWidgets.QStackedWidget()
-widget.addWidget(mainW)
-widget.show()
-app.exec()
+        self.new_folder_action = QAction('New folder', self)
+        self.new_folder_action.setShortcut('Ctrl+Shift+N')
+
+        self.delete_folder_action = QAction('Delete folder', self)
+        self.delete_folder_action.setShortcut('Ctrl+Shift+Del')
+
+        self.rename_folder_action = QAction('Rename folder', self)
+        self.rename_folder_action.setShortcut('Ctrl+Shift+R')
+
+        self.about_action = QAction('About', self)
+        self.about_action.setShortcut('F1')
+
+        self.menubar = self.menuBar()
+        self.file_menu = self.menubar.addMenu('File')
+        self.file_menu.addAction(self.new_file_action)
+        self.file_menu.addAction(self.open_file_action)
+        self.file_menu.addAction(self.rename_file_action)
+        self.file_menu.addAction(self.delete_file_action)
+        self.file_menu.addAction(self.copy_file_action)
+        self.file_menu.addAction(self.move_file_action)
+        self.file_menu.addSeparator()
+        self.file_menu.addAction(self.exit_action)
+
+        self.folder_menu = self.menubar.addMenu('Folder')
+        self.folder_menu.addAction(self.new_folder_action)
+        self.folder_menu.addAction(self.delete_folder_action)
+        self.folder_menu.addAction(self.rename_folder_action)
+
+        self.about_menu = self.menubar.addMenu('About')
+        self.about_menu.addAction(self.about_action)
+
+    def show_widgets(self):
+        self.setLayout(self.main_layout)
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    mw = MyMainWindow()
+    mw.show()
+    app.exec_()
+    app.exit()

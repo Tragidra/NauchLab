@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-quick-fixes.qdoc -->
+  <title>Applying Refactoring Actions | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Applying Refactoring Actions</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-editor-refactoring.html" />
+  <link rel="next" href="creator-beautifier.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-editor-refactoring.html">Refactoring</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-beautifier.html">Beautifying Source Code</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-functions">Creating Functions</a></li>
+<li class="level2"><a href="#implementing-member-functions">Implementing Member Functions</a></li>
+<li class="level2"><a href="#inserting-virtual-functions">Inserting Virtual Functions</a></li>
+<li class="level2"><a href="#creating-getters-and-setters">Creating Getters and Setters</a></li>
+<li class="level2"><a href="#generating-constructors">Generating Constructors</a></li>
+<li class="level1"><a href="#specifying-settings-for-refactoring-actions">Specifying Settings for Refactoring Actions</a></li>
+<li class="level2"><a href="#function-locations">Function Locations</a></li>
+<li class="level2"><a href="#function-names-and-attributes">Function Names and Attributes</a></li>
+<li class="level2"><a href="#namespace-handling">Namespace Handling</a></li>
+<li class="level2"><a href="#custom-parameter-types">Custom Parameter Types</a></li>
+<li class="level1"><a href="#summary-of-refactoring-actions">Summary of Refactoring Actions</a></li>
+<li class="level2"><a href="#refactoring-c-code">Refactoring C++ Code</a></li>
+<li class="level2"><a href="#refactoring-qml-code">Refactoring QML Code</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Applying Refactoring Actions</h1>
+<!-- $$$creator-editor-quick-fixes.html-description -->
+<div class="descr" id="details">
+<p>Qt Creator allows you to quickly and conveniently apply actions (quick fixes) to refactor your code by selecting them in a context menu. The actions available depend on the position of the cursor in the code editor.</p>
+<p>To apply refactoring actions to C++ code, right-click an operand, conditional statement, string, or name to open a context menu. To apply refactoring actions to QML code, right-click an item ID or name.</p>
+<p>In the context menu, select <b>Refactoring</b> and then select a refactoring action.</p>
+<p>You can also press <b>Alt+Enter</b> to open a context menu that contains refactoring actions available in the current cursor position.</p>
+<h2 id="creating-functions">Creating Functions</h2>
+<p>You can apply refactoring actions to implement member functions, insert virtual functions of base classes, create getter and setter functions, and generate constructors. You can specify settings for generating the functions either globally for all projects or separately for each project in the <a href="creator-configuring-projects.html#specifying-settings">build and run</a> settings of the project.</p>
+<h3 id="implementing-member-functions">Implementing Member Functions</h3>
+<p>You can apply the <b>Create Implementations for Member Functions</b> refactoring action to create implementations for all member functions in one go. In the <b>Member Function Implementations</b> dialog, you can specify whether the member functions are generated inline or outside the class.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-member-function-implementations.png" alt="&quot;Implement Member Functions dialog&quot;" /></p><h3 id="inserting-virtual-functions">Inserting Virtual Functions</h3>
+<p>You can apply the <b>Insert Virtual Functions of Base Classes</b> refactoring action to insert declarations and the corresponding definitions inside or outside the class or in an implementation file (if it exists).</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-virtual-function-dialog.png" alt="&quot;Insert Virtual Functions dialog&quot;" /></p><p>Select the functions to insert in the list of available functions. You can filter the list and hide reimplemented functions from it.</p>
+<p>You can add <i>virtual</i> or the <i>override</i> equivalent to the function declaration.</p>
+<h3 id="creating-getters-and-setters">Creating Getters and Setters</h3>
+<p>You can apply the <b>Create Getter and Setter Member Functions</b> refactoring action to create either both getter and setter member functions for member variables or only a getter or setter.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-getters-and-setters.png" alt="&quot;Getters and Setters dialog&quot;" /></p><h3 id="generating-constructors">Generating Constructors</h3>
+<p>You can apply the <b>Generate Constructor</b> refactoring action to create a public, protected, or private constructor for a class. Select the class members to initialize in the constructor. Drag and drop the parameters to specify their order in the constructor.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-constructor.png" alt="&quot;Constructor dialog&quot;" /></p><h2 id="specifying-settings-for-refactoring-actions">Specifying Settings for Refactoring Actions</h2>
+<p>You can specify settings for the refactoring actions either globally for all projects or separately for each project. To specify global options, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>C++</b> &gt; <b>Quick Fixes</b>.</p>
+<p>To specify custom settings for a particular project, select <b>Projects</b> &gt; <b>Project Settings</b> &gt; <b>Quick Fixes</b> &gt; <b>Custom Settings</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-options-locations.png" alt="&quot;Quick Fixes settings&quot;" /></p><p>To revert to global settings, select <b>Reset to Global</b>. To delete the custom settings, select <b>Delete Custom Settings File</b>.</p>
+<h3 id="function-locations">Function Locations</h3>
+<p>In the <b>Generated Function Locations</b> group, you can determine whether refactoring actions should generate getter and setter functions in the header file (inside or outside the class) or in the implementation file.</p>
+<h3 id="function-names-and-attributes">Function Names and Attributes</h3>
+<p>In the <b>Getter Setter Generation Properties</b> group, you can specify additional settings for getter and setter names, attributes, and parameters. You can specify that setter functions should be created as <i>slots</i> and that signals should be generated with the new value as a parameter.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-options-generation.png" alt="&quot;Getter and Setter generation settings&quot;" /></p><h3 id="namespace-handling">Namespace Handling</h3>
+<p>In the <b>Missing Namespace Handling</b> group, select whether to generate missing namespaces, add <code>using namespace</code> where necessary, or rewrite types to match the existing namespaces.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-options-namespaces.png" alt="&quot;Namespace handling settings&quot;" /></p><h3 id="custom-parameter-types">Custom Parameter Types</h3>
+<p>In the <b>Custom Getter Setter Templates</b> group, specify how the code of a getter or setter function for a certain data type should look like. This is necessary for types where assignment cannot use <code>operator=</code>, as in the pre-defined settings for <code>unique_ptr</code> or where <code>operator==</code> is not suitable for comparison, as in the pre-defined settings for floating-point types. For example, if you have a special type <code>MyClass</code>, you can specify that a function, <code>myCompare</code>, should be used for comparison rather than the default of <code>==</code>.</p>
+<p>To specify special handling for a custom parameter type, select <b>Add</b> and set the parameter type, comparison, return expression, and return type. In the <b>Return type</b> field, you can use <code>&lt;new&gt;</code> and <code>&lt;cur&gt;</code> to access the parameter and current value. Use <code>&lt;type&gt;</code> to access the type and <code>&lt;T&gt;</code> for the template parameter.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-options-templates.png" alt="&quot;Settings for handling custom parameter types&quot;" /></p><p>Usually, arguments are passed by using a <code>const</code> reference. To pass arguments of a particular type as values, list them in the <b>Value types</b> field. Namespaces and template arguments are removed. The real Type must contain the given Type. For example, <code>int</code> matches <code>int32_t</code> but not <code>vector&lt;int&gt;</code>, and <code>vector</code> matches <code>std::pmr::vector&lt;int&gt;</code> but not <code>std::optional&lt;vector&lt;int&gt;&gt;</code>.</p>
+<h2 id="summary-of-refactoring-actions">Summary of Refactoring Actions</h2>
+<p>If you use the <a href="creator-clang-codemodel.html">Clang code model</a> to parse the C++ files, the <a href="http://clang.llvm.org/diagnostics.html">Clang fix-it hints</a> that have been integrated into Qt Creator are also available to you. In addition to the standard ways of activating refactoring actions, you can select the actions that are applicable on a line in the context menu in the left margin of the code editor.</p>
+<h3 id="refactoring-c-code">Refactoring C++ Code</h3>
+<p>You can apply the following types of refactoring actions to C++ code:</p>
+<ul>
+<li>Change binary operands</li>
+<li>Simplify if and while conditions (for example, move declarations out of if conditions)</li>
+<li>Modify strings (for example, set the encoding for a string to Latin-1, mark strings translatable, and convert symbol names to camel case)</li>
+<li>Create variable declarations</li>
+<li>Create function declarations and definitions</li>
+</ul>
+<p>The following table summarizes the refactoring actions for C++ code. The action is available when the cursor is in the position described in the Activation column.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Refactoring Action</th><th >Description</th><th >Activation</th></tr></thead>
+<tr valign="top" class="odd"><td >Add Curly Braces</td><td >Adds curly braces to an if statement that does not contain a compound statement. For example, rewrites<pre class="cpp">
+ <span class="keyword">if</span> (a)
+     b;
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="keyword">if</span> (a) {
+     b;
+ }
+</pre>
+</td><td ><code>if</code></td></tr>
+<tr valign="top" class="even"><td >Move Declaration out of Condition</td><td >Moves a declaration out of an if or while condition to simplify the condition. For example, rewrites<pre class="cpp">
+ <span class="keyword">if</span> (Type name <span class="operator">=</span> foo()) {}
+</pre>
+<p>as</p>
+<pre class="cpp">
+ Type name <span class="operator">=</span> foo;
+ <span class="keyword">if</span> (name) {}
+</pre>
+</td><td >Name of the introduced variable</td></tr>
+<tr valign="top" class="odd"><td >Rewrite Condition Using ||</td><td >Rewrites the expression according to De Morgan's laws. For example, rewrites:<pre class="cpp">
+ <span class="operator">!</span>a <span class="operator">&amp;</span><span class="operator">&amp;</span> <span class="operator">!</span>b
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="operator">!</span>(a <span class="operator">|</span><span class="operator">|</span> b)
+</pre>
+</td><td ><code>&amp;&amp;</code></td></tr>
+<tr valign="top" class="even"><td >Rewrite Using <i>operator</i></td><td >Rewrites an expression negating it and using the inverse operator. For example, rewrites:<ul>
+<li><pre class="cpp">
+ a op b
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="operator">!</span>(a invop b)
+</pre>
+</li>
+<li><pre class="cpp">
+ (a op b)
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="operator">!</span>(a invop b)
+</pre>
+</li>
+<li><pre class="cpp">
+ <span class="operator">!</span>(a op b)
+</pre>
+<p>as</p>
+<pre class="cpp">
+ (a invob b)
+</pre>
+</li>
+</ul>
+</td><td ><code>&lt;=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code> or <code>!=</code></td></tr>
+<tr valign="top" class="odd"><td >Split Declaration</td><td >Splits a simple declaration into several declarations. For example, rewrites:<pre class="cpp">
+ <span class="type">int</span> <span class="operator">*</span>a<span class="operator">,</span> b;
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="type">int</span> <span class="operator">*</span>a;
+ <span class="type">int</span> b;
+</pre>
+</td><td >Type name or variable name</td></tr>
+<tr valign="top" class="even"><td >Split if Statement</td><td >Splits an if statement into several statements. For example, rewrites:<pre class="cpp">
+ <span class="keyword">if</span> (something <span class="operator">&amp;</span><span class="operator">&amp;</span> something_else) {
+ }
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="keyword">if</span> (something) {
+    <span class="keyword">if</span> (something_else) {
+    }
+ }
+</pre>
+<p>and</p>
+<pre class="cpp">
+ <span class="keyword">if</span> (something <span class="operator">|</span><span class="operator">|</span> something_else)
+     x;
+</pre>
+<p>with</p>
+<pre class="cpp">
+ <span class="keyword">if</span> (something)
+     x;
+ <span class="keyword">else</span> <span class="keyword">if</span> (something_else)
+     x;
+</pre>
+</td><td ><code>&amp;&amp;</code> or <code>||</code></td></tr>
+<tr valign="top" class="odd"><td >Swap Operands</td><td >Rewrites an expression in the inverse order using the inverse operator. For example, rewrites:<pre class="cpp">
+ a op b
+</pre>
+<p>as</p>
+<pre class="cpp">
+ b flipop a
+</pre>
+</td><td ><code>&lt;=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>, <code>&amp;&amp;</code> or <code>||</code></td></tr>
+<tr valign="top" class="even"><td >Convert to Decimal</td><td >Converts an integer literal to decimal representation</td><td >Numeric literal</td></tr>
+<tr valign="top" class="odd"><td >Convert to Hexadecimal</td><td >Converts an integer literal to hexadecimal representation</td><td >Numeric literal</td></tr>
+<tr valign="top" class="even"><td >Convert to Octal</td><td >Converts an integer literal to octal representation</td><td >Numeric literal</td></tr>
+<tr valign="top" class="odd"><td >Convert to Objective-C String Literal</td><td >Converts a string literal to an Objective-C string literal if the file type is Objective-C(++). For example, rewrites the following strings<pre class="cpp">
+ <span class="string">&quot;abcd&quot;</span>
+ QLatin1String(<span class="string">&quot;abcd&quot;</span>)
+ QLatin1Literal(<span class="string">&quot;abcd&quot;</span>)
+</pre>
+<p>as</p>
+<pre class="cpp">
+ @<span class="string">&quot;abcd&quot;</span>
+</pre>
+</td><td >String literal</td></tr>
+<tr valign="top" class="even"><td >Enclose in QLatin1Char()</td><td >Sets the encoding for a character to Latin-1, unless the character is already enclosed in QLatin1Char, QT_TRANSLATE_NOOP, tr, trUtf8, QLatin1Literal, or QLatin1String. For example, rewrites<pre class="cpp">
+ <span class="char">'a'</span>
+</pre>
+<p>as</p>
+<pre class="cpp">
+ QLatin1Char(<span class="char">'a'</span>)
+</pre>
+</td><td >String literal</td></tr>
+<tr valign="top" class="odd"><td >Enclose in QLatin1String()</td><td >Sets the encoding for a string to Latin-1, unless the string is already enclosed in QLatin1Char, QT_TRANSLATE_NOOP, tr, trUtf8, QLatin1Literal, or QLatin1String. For example, rewrites<pre class="cpp">
+ <span class="string">&quot;abcd&quot;</span>
+</pre>
+<p>as</p>
+<pre class="cpp">
+ QLatin1String(<span class="string">&quot;abcd&quot;</span>)
+</pre>
+</td><td >String literal</td></tr>
+<tr valign="top" class="even"><td >Mark as Translatable</td><td >Marks a string translatable. For example, rewrites <code>&quot;abcd&quot;</code> with one of the following options, depending on which of them is available:<pre class="cpp">
+ tr(<span class="string">&quot;abcd&quot;</span>)
+ <span class="type">QCoreApplication</span><span class="operator">::</span>translate(<span class="string">&quot;CONTEXT&quot;</span><span class="operator">,</span> <span class="string">&quot;abcd&quot;</span>)
+ QT_TRANSLATE_NOOP(<span class="string">&quot;GLOBAL&quot;</span><span class="operator">,</span> <span class="string">&quot;abcd&quot;</span>)
+</pre>
+</td><td >String literal</td></tr>
+<tr valign="top" class="odd"><td >Add Definition in ..&#x2e;</td><td >Inserts a definition stub for a function declaration either in the header file (inside or outside the class) or in the implementation file. For free functions, inserts the definition after the declaration of the function or in the implementation file. Qualified names are minimized when possible, instead of always being fully expanded.<p>For example, rewrites</p>
+<pre class="cpp">
+ Class Foo {
+     <span class="type">void</span> bar();
+ };
+</pre>
+<p>as (inside class)</p>
+<pre class="cpp">
+ Class Foo {
+     <span class="type">void</span> bar() {
+
+     }
+ };
+</pre>
+<p>as (outside class)</p>
+<pre class="cpp">
+ Class Foo {
+     <span class="type">void</span> bar();
+ };
+
+ <span class="type">void</span> Foo<span class="operator">::</span>bar()
+ {
+
+ }
+</pre>
+<p>as (in implementation file)</p>
+<pre class="cpp">
+ <span class="comment">// Header file</span>
+ Class Foo {
+     <span class="type">void</span> bar();
+ };
+
+ <span class="comment">// Implementation file</span>
+ <span class="type">void</span> Foo<span class="operator">::</span>bar()
+ {
+
+ }
+</pre>
+</td><td >Function name</td></tr>
+<tr valign="top" class="even"><td >Add <code>Function</code> Declaration</td><td >Inserts the member function declaration that matches the member function definition into the class declaration. The function can be <code>public</code>, <code>protected</code>, <code>private</code>, <code>public slot</code>, <code>protected slot</code>, or <code>private slot</code>.</td><td >Function name</td></tr>
+<tr valign="top" class="odd"><td >Add Class Member</td><td >Adds a member declaration for the class member being initialized if it is not yet declared. You must enter the data type of the member.</td><td >Identifier</td></tr>
+<tr valign="top" class="even"><td >Create Implementations for Member Functions</td><td >Creates implementations for all member functions in one go. In the <b>Member Function Implementations</b> dialog, you can specify whether the member functions are generated inline or outside the class.</td><td >Function name</td></tr>
+<tr valign="top" class="odd"><td >Switch with Next/Previous Parameter</td><td >Moves a parameter down or up one position in a parameter list.</td><td >Parameter in the declaration or definition of a function</td></tr>
+<tr valign="top" class="even"><td >Extract Function</td><td >Moves the selected code to a new function and replaces the block of code with a call to the new function. Enter a name for the function in the <b>Extract Function Refactoring</b> dialog.</td><td >Block of code selected</td></tr>
+<tr valign="top" class="odd"><td >Extract Constant as Function Parameter</td><td >Replaces the selected literal and all its occurrences with the function parameter <code>newParameter</code>. The parameter <code>newParameter</code> will have the original literal as the default value.</td><td >Block of code selected</td></tr>
+<tr valign="top" class="even"><td >Add Local Declaration</td><td >Adds the type of an assignee, if the type of the right-hand side of the assignment is known. For example, rewrites<pre class="cpp">
+ a <span class="operator">=</span> foo();
+</pre>
+<p>as</p>
+<pre class="cpp">
+ Type a <span class="operator">=</span> foo();
+</pre>
+<p>where Type is the return type of <code>foo()</code></p>
+</td><td >Assignee</td></tr>
+<tr valign="top" class="odd"><td >Convert to Camel Case</td><td >Converts a symbol name to camel case, where elements of the name are joined without delimiter characters and the initial character of each element is capitalized. For example, rewrites <code>an_example_symbol</code> as <code>anExampleSymbol</code> and <code>AN_EXAMPLE_SYMBOL</code> as <code>AnExampleSymbol</code></td><td >Identifier</td></tr>
+<tr valign="top" class="even"><td >Complete Switch Statement</td><td >Adds all possible cases to a switch statement of the type <code>enum</code></td><td ><code>switch</code></td></tr>
+<tr valign="top" class="odd"><td >Generate Missing Q_PROPERTY Members</td><td >Adds missing members to a <code>Q_PROPERTY</code>:<ul>
+<li><code>read</code> function</li>
+<li><code>write</code> function, if there is a WRITE</li>
+<li><code>onChanged</code> signal, if there is a NOTIFY</li>
+<li>data member with the name <code>m_&lt;propertyName&gt;</code></li>
+</ul>
+</td><td ><code>Q_PROPERTY</code></td></tr>
+<tr valign="top" class="even"><td >Generate Q_PROPERTY and Missing Members</td><td >Generates a Q_PROPERTY and adds missing members to it, as described above.</td><td >Class member</td></tr>
+<tr valign="top" class="odd"><td >Generate Constant Q_PROPERTY and Missing Members</td><td >Generates a constant Q_PROPERTY and adds missing members to it, as described above.</td><td >Class member</td></tr>
+<tr valign="top" class="even"><td >Generate Q_PROPERTY and Missing Members with Reset Function</td><td >Generates a Q_PROPERTY and adds missing members to it, as described above, but with an additional <code>reset</code> function.</td><td >Class member</td></tr>
+<tr valign="top" class="odd"><td >Apply Changes</td><td >Keeps function declarations and definitions synchronized by checking for the matching declaration or definition when you edit a function signature and by applying the changes to the matching code.</td><td >Function signature. When this action is available, a light bulb icon appears: <img src="images/refactormarker.png" alt="" /></td></tr>
+<tr valign="top" class="even"><td >Add #include for undeclared or forward declared identifier</td><td >Adds an <code>#include</code> directive to the current file to make the definition of a symbol available.</td><td >Undeclared identifier</td></tr>
+<tr valign="top" class="odd"><td >Add Forward Declaration</td><td >Adds a forward declaration for an undeclared identifier operation.</td><td >Undeclared identifier</td></tr>
+<tr valign="top" class="even"><td >Reformat Pointers or References</td><td >Reformats declarations with pointers or references according to the code style settings for the current project. In case no project is open, the current global code style settings are used.<p>For example, rewrites:</p>
+<pre class="cpp">
+ <span class="type">char</span><span class="operator">*</span>s;
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="type">char</span> <span class="operator">*</span>s;
+</pre>
+<p>When applied to selections, all suitable declarations in the selection are rewritten.</p>
+</td><td >Declarations with pointers or references and selections containing such declarations</td></tr>
+<tr valign="top" class="odd"><td >Create Getter and Setter Member Functions</td><td >Creates either both getter and setter member functions for member variables or only a getter or setter.</td><td >Member variable in class definition</td></tr>
+<tr valign="top" class="even"><td >Generate Getter and Setter</td><td >Creates getter and setter member functions for a member variable.</td><td >Member variable in class definition</td></tr>
+<tr valign="top" class="odd"><td >Generate Getter</td><td >Creates a getter member function for a member variable.</td><td >Member variable in class definition</td></tr>
+<tr valign="top" class="even"><td >Generate Setter</td><td >Creates a setter member function for a member variable.</td><td >Member variable in class definition</td></tr>
+<tr valign="top" class="odd"><td >Generate Constructor</td><td >Creates a constructor for a class.</td><td >Class definition</td></tr>
+<tr valign="top" class="even"><td >Move Function Definition</td><td >Moves a function definition to the implementation file, outside the class or back to its declaration. For example, rewrites:<pre class="cpp">
+ <span class="keyword">class</span> Foo
+ {
+   <span class="type">void</span> bar()
+   {
+       <span class="comment">// do stuff here</span>
+   }
+ };
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="keyword">class</span> Foo
+ {
+   <span class="type">void</span> bar();
+ };
+
+ <span class="type">void</span> Foo<span class="operator">::</span>bar() {
+     <span class="comment">// do stuff here</span>
+ }
+</pre>
+</td><td >Function signature</td></tr>
+<tr valign="top" class="odd"><td >Move All Function Definitions</td><td >Moves all function definitions to the implementation file or outside the class. For example, rewrites:<pre class="cpp">
+ <span class="keyword">class</span> Foo
+ {
+   <span class="type">void</span> bar()
+   {
+       <span class="comment">// do stuff here</span>
+   }
+   <span class="type">void</span> baz()
+   {
+       <span class="comment">// do stuff here</span>
+   }
+ };
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="keyword">class</span> Foo
+ {
+   <span class="type">void</span> bar();
+   <span class="type">void</span> baz();
+ };
+
+ <span class="type">void</span> Foo<span class="operator">::</span>bar() {
+     <span class="comment">// do stuff here</span>
+ }
+
+ <span class="type">void</span> Foo<span class="operator">::</span>baz() {
+     <span class="comment">// do stuff here</span>
+ }
+</pre>
+</td><td >Class name</td></tr>
+<tr valign="top" class="even"><td >Assign to Local Variable</td><td >Adds a local variable which stores the return value of a function call or a new expression. For example, rewrites:<pre class="cpp">
+ <span class="type">QString</span> s;
+ s<span class="operator">.</span>toLatin1();
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="type">QString</span> s;
+ <span class="type">QByteArray</span> latin1 <span class="operator">=</span> s<span class="operator">.</span>toLatin1();
+</pre>
+<p>and</p>
+<pre class="cpp">
+ <span class="keyword">new</span> Foo;
+</pre>
+<p>as</p>
+<pre class="cpp">
+ Foo <span class="operator">*</span> localFoo <span class="operator">=</span> <span class="keyword">new</span> Foo;
+</pre>
+</td><td >Function call or class name</td></tr>
+<tr valign="top" class="odd"><td >Insert Virtual Functions of Base Classes</td><td >Inserts declarations and the corresponding definitions inside or outside the class or in an implementation file (if it exists). For more information, see <a href="creator-editor-quick-fixes.html#inserting-virtual-functions">Inserting Virtual Functions</a>.</td><td >Class or base class name</td></tr>
+<tr valign="top" class="even"><td >Optimize for-Loop</td><td >Rewrites post increment operators as pre increment operators and post decrement operators as pre decrement operators. It also moves other than string or numeric literals and id expressions from the condition of a for loop to its initializer. For example, rewrites:<pre class="cpp">
+ <span class="keyword">for</span> (<span class="type">int</span> i <span class="operator">=</span> <span class="number">0</span>; i <span class="operator">&lt;</span> <span class="number">3</span> <span class="operator">*</span> <span class="number">2</span>; i<span class="operator">+</span><span class="operator">+</span>)
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="keyword">for</span> (<span class="type">int</span> i <span class="operator">=</span> <span class="number">0</span><span class="operator">,</span> total <span class="operator">=</span> <span class="number">3</span> <span class="operator">*</span> <span class="number">2</span>; i <span class="operator">&lt;</span> total; <span class="operator">+</span><span class="operator">+</span>i)
+</pre>
+</td><td ><code>for</code></td></tr>
+<tr valign="top" class="odd"><td >Escape String Literal as UTF-8</td><td >Escapes non-ASCII characters in a string literal to hexadecimal escape sequences. String Literals are handled as UTF-8.</td><td >String literal</td></tr>
+<tr valign="top" class="even"><td >Unescape String Literal as UTF-8</td><td >Unescapes octal or hexadecimal escape sequences in a string literal. String Literals are handled as UTF-8.</td><td >String literal</td></tr>
+<tr valign="top" class="odd"><td >Convert to Stack Variable</td><td >Converts the selected pointer to a stack variable. For example, rewrites:<pre class="cpp">
+ <span class="type">QByteArray</span> <span class="operator">*</span>foo <span class="operator">=</span> <span class="keyword">new</span> <span class="type">QByteArray</span>(<span class="string">&quot;foo&quot;</span>);
+ foo<span class="operator">-</span><span class="operator">&gt;</span>append(<span class="string">&quot;bar&quot;</span>);
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="type">QByteArray</span> foo(<span class="string">&quot;foo&quot;</span>);
+ foo<span class="operator">.</span>append(<span class="string">&quot;bar&quot;</span>);
+</pre>
+<p>This operation is limited to work only within function scope. Also, the coding style for pointers and references is not respected yet.</p>
+</td><td >Pointer Variable</td></tr>
+<tr valign="top" class="even"><td >Convert to Pointer</td><td >Converts the selected stack variable to a pointer. For example, rewrites:<pre class="cpp">
+ <span class="type">QByteArray</span> foo <span class="operator">=</span> <span class="string">&quot;foo&quot;</span>;
+ foo<span class="operator">.</span>append(<span class="string">&quot;bar&quot;</span>);
+</pre>
+<p>as</p>
+<pre class="cpp">
+ <span class="type">QByteArray</span> <span class="operator">*</span>foo <span class="operator">=</span> <span class="keyword">new</span> <span class="type">QByteArray</span>(<span class="string">&quot;foo&quot;</span>);
+ foo<span class="operator">-</span><span class="operator">&gt;</span>append(<span class="string">&quot;bar&quot;</span>);
+</pre>
+<p>This operation is limited to work only within function scope. Also, the coding style for pointers and references is not respected yet.</p>
+</td><td >Stack Variable</td></tr>
+<tr valign="top" class="odd"><td >Remove <code>using namespace</code> and Adjust Type Names Accordingly</td><td >Remove occurrences of <code>using namespace</code> in the local scope and adjust type names accordingly.</td><td ><code>using</code> directive</td></tr>
+<tr valign="top" class="even"><td >Remove All Occurrences of <code>using namespace</code> in Global Scope and Adjust Type Names Accordingly</td><td >Remove all occurrences of <code>using namespace</code> in the global scope and adjust type names accordingly.</td><td ><code>using</code> directive</td></tr>
+<tr valign="top" class="odd"><td >Convert connect() to Qt 5 Style</td><td >Converts a Qt 4 QObject::connect() to Qt 5 style.</td><td >QObject::connect() (Qt 4 style)</td></tr>
+</table></div>
+<h3 id="refactoring-qml-code">Refactoring QML Code</h3>
+<p>You can apply the following types of refactoring actions to QML code:</p>
+<ul>
+<li>Rename IDs</li>
+<li>Split initializers</li>
+<li>Move a QML type into a separate file to reuse it in other .qml files</li>
+</ul>
+<p>The following table summarizes the refactoring actions for QML code. The action is available when the cursor is in the position described in the Activation column.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Refactoring Action</th><th >Description</th><th >Activation</th></tr></thead>
+<tr valign="top" class="odd"><td >Move Component into Separate File</td><td >Moves a QML type into a separate file. Give the new component a name and select whether properties are set for the new component or for the original one.<p class="centerAlign"><img src="images/qtcreator-move-component-into-separate-file.png" alt="" /></p></td><td >QML type name.</td></tr>
+<tr valign="top" class="even"><td >Split Initializer</td><td >Reformats a one-line type into a multi-line type. For example, rewrites<pre class="cpp">
+ Item { x: <span class="number">10</span>; y: <span class="number">20</span>; width: <span class="number">10</span> }
+</pre>
+<p>as</p>
+<pre class="cpp">
+ Item {
+     x: <span class="number">10</span>;
+     y: <span class="number">20</span>;
+     width: <span class="number">10</span>
+ }
+</pre>
+</td><td >QML type property</td></tr>
+<tr valign="top" class="odd"><td >Wrap Component in Loader</td><td >Wraps the type in a Component type and loads it dynamically in a Loader type. This is usually done to improve startup time.</td><td >QML type name</td></tr>
+<tr valign="top" class="even"><td >Add a message suppression comment</td><td >Prepends the line with an annotation comment that stops the message from being generated.</td><td >Error, warning or hint from static analysis</td></tr>
+</table></div>
+</div>
+<!-- @@@creator-editor-quick-fixes.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-editor-refactoring.html">Refactoring</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-beautifier.html">Beautifying Source Code</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

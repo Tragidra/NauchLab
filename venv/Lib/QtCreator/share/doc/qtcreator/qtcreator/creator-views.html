@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-views.qdoc -->
+  <title>Browsing Project Contents | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Browsing Project Contents</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-sidebars.html" />
+  <link rel="next" href="creator-projects-view.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-sidebars.html">Working with Sidebars</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-projects-view.html">Projects</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#viewing-defined-types-and-symbols">Viewing Defined Types and Symbols</a></li>
+<li class="level1"><a href="#viewing-the-class-hierarchy">Viewing the Class Hierarchy</a></li>
+<li class="level1"><a href="#viewing-type-hierarchy">Viewing Type Hierarchy</a></li>
+<li class="level1"><a href="#viewing-include-hierarchy">Viewing Include Hierarchy</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Browsing Project Contents</h1>
+<!-- $$$creator-views.html-description -->
+<div class="descr" id="details">
+<p>You can organize Qt Creator views in <a href="creator-sidebars.html">sidebars</a> or as workspaces depending on the <a href="creator-modes.html">mode</a> you are working in. Only views that are relevant to a mode are available in it.</p>
+<p>The following views are related to managing projects and files:</p>
+<ul>
+<li><a href="creator-projects-view.html">Projects</a> shows a list of projects open in the current session and the project files needed by the build system.</li>
+<li><a href="creator-file-system-view.html">File System</a> shows all files in the currently selected directory.</li>
+<li><a href="creator-open-documents-view.html">Open Documents</a> shows currently open files.</li>
+<li><a href="creator-coding-navigating.html#using-bookmarks">Bookmarks</a> shows all bookmarks for the current session.</li>
+<li><a href="creator-vcs-git.html#working-with-branches">Git Branches</a> shows the local and remote brances for the project in the Git version control system.</li>
+<li><a href="creator-views.html#viewing-defined-types-and-symbols">Outline</a> shows an overview of defined types and other symbols, as well as their properties and hierarchy in a source file.</li>
+</ul>
+<p>The following views display additional information about C++ code:</p>
+<ul>
+<li><a href="creator-views.html#viewing-the-class-hierarchy">Class View</a> shows the class hierarchy of the currently open projects.</li>
+<li><a href="creator-autotest.html">Tests</a> lists autotests and Qt Quick tests in the project.</li>
+<li><a href="creator-views.html#viewing-type-hierarchy">Type Hierarchy</a> shows the base classes of a class.</li>
+<li><a href="creator-views.html#viewing-include-hierarchy">Include Hierarchy</a> shows which files are included in the current file and which files include the current file.</li>
+</ul>
+<p>The additional options in a particular view are described in the following sections.</p>
+<p>In some views, right-clicking opens a context menu that contains functions for managing the objects listed in the view.</p>
+<h2 id="viewing-defined-types-and-symbols">Viewing Defined Types and Symbols</h2>
+<p>The <b>Outline</b> view shows an overview of defined types and other symbols, as well as their properties and hierarchy in a source file. You can move the code for types and symbols around in the source file by dragging and dropping them in the outline.</p>
+<p class="centerAlign"><img src="images/qtcreator-outline-view.png" alt="&quot;Outline view&quot;" /></p><ul>
+<li>To see a complete list of all bindings, select <img src="images/filtericon.png" alt="" /> (<b>Filter Tree</b>) &gt; <b>Show All Bindings</b>.</li>
+<li>To sort types or symbols alphabetically, select <img src="images/sort_alphabetically.png" alt="" /> (<b>Sort Alphabetically</b>).</li>
+<li>To stop the synchronization with the type or symbol selected in the editor, deselect <img src="images/linkicon.png" alt="" /> (<b>Synchronize with Editor</b>).</li>
+</ul>
+<h2 id="viewing-the-class-hierarchy">Viewing the Class Hierarchy</h2>
+<p>The <b>Class View</b> shows the class hierarchy of the currently open projects.</p>
+<p class="centerAlign"><img src="images/qtcreator-class-view.png" alt="&quot;Class View&quot;" /></p><p>To organize the view by subprojects, click <img src="images/qtcreator-show-subprojects.png" alt="" /> (<b>Show Subprojects</b>).</p>
+<p>To visit all parts of a namespace, double-click on the namespace item multiple times.</p>
+<h2 id="viewing-type-hierarchy">Viewing Type Hierarchy</h2>
+<p>To view the base classes and derived classes of a class, right-click the class in the code editor and select <b>Open Type Hierarchy</b> or press <b>Ctrl+Shift+T</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-type-hierarchy-view.png" alt="&quot;Type Hierarchy view&quot;" /></p><p>To navigate in the type hierarchy, double-click a class or select it, and then select <b>Open Type Hierarchy</b> in the context menu. The previous class is highlighted in the view.</p>
+<p>The definition of the selected class is opened in the code editor. You can also select <b>Open in Editor</b> in the context menu to open it.</p>
+<h2 id="viewing-include-hierarchy">Viewing Include Hierarchy</h2>
+<p>To view which files are included in the current file and which files include the current file, right-click in the editor and select <b>Open Include Hierarchy</b> or press <b>Ctrl+Shift+I</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-include-hierarchy-view.png" alt="&quot;Include Hierarchy view&quot;" /></p><p>To keep the view synchronized with the file currently opened in the editor, select <img src="images/linkicon.png" alt="" /> (<b>Synchronize with Editor</b>).</p>
+</div>
+<!-- @@@creator-views.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-sidebars.html">Working with Sidebars</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-projects-view.html">Projects</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

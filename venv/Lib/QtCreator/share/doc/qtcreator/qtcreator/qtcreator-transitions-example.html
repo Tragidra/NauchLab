@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-app-tutorial.qdoc -->
+  <title>Creating a Qt Quick Application | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Creating a Qt Quick Application</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-tutorials.html" />
+  <link rel="next" href="creator-writing-program.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-writing-program.html">Creating a Qt Widget Based Application</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-the-project">Creating the Project</a></li>
+<li class="level1"><a href="#deploying-applications">Deploying Applications</a></li>
+<li class="level1"><a href="#creating-custom-qml-types">Creating Custom QML Types</a></li>
+<li class="level1"><a href="#connecting-mouse-clicks-to-state-changes">Connecting Mouse Clicks to State Changes</a></li>
+<li class="level1"><a href="#adding-page-to-the-main-view">Adding Page to the Main View</a></li>
+<li class="level1"><a href="#animating-transitions">Animating Transitions</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating a Qt Quick Application</h1>
+<!-- $$$transitions-description -->
+<div class="descr" id="details">
+<p>This tutorial illustrates basic concepts of Qt Quick. For more information about the UI choices you have, see User Interfaces.</p>
+<p>This tutorial describes how to use Qt Creator to implement states and transitions when using Qt 6 as the minimum Qt version and CMake as the build system.</p>
+<p>We use the <a href="creator-coding-navigating.html">Edit mode</a> to create an application that moves a Qt logo between three rectangles when you click them.</p>
+<p class="centerAlign"><img src="images/qtquick-tutorial.gif" alt="&quot;Transitions example&quot;" /></p><p>For more examples, see Qt Quick Examples and Tutorials.</p>
+<p>You can develop Qt Quick applications also in Qt Design Studio. For more information, see <a href="https://doc.qt.io/qtdesignstudio/index.html">Qt Design Studio Manual</a>.</p>
+<h4 id="creating-the-project">Creating the Project</h4>
+<ol class="1" type="1"><li>Select <b>File</b> &gt; <b>New Project</b> &gt; <b>Application (Qt)</b> &gt; <b>Qt Quick Application</b>.</li>
+<li>Select <b>Choose</b> to open the <b>Project Location</b> dialog.</li>
+<li>In the <b>Name</b> field, enter a name for the application. When naming your own projects, keep in mind that they cannot be easily renamed later.</li>
+<li>In the <b>Create in</b> field, enter the path for the project files. You can move project folders later without problems.</li>
+<li>Select <b>Next</b> (or <b>Continue</b> on macOS) to open the <b>Define Build System</b> dialog.</li>
+<li>In the <b>Build system</b> field, select <a href="creator-project-cmake.html">CMake</a> as the build system to use for building and running the project.<div class="admonition note">
+<p><b>Note: </b>If you select qmake, the instructions for configuring the project won't apply.</p>
+</div>
+</li>
+<li>Select <b>Next</b> to open the <b>Define Project Details</b> dialog.</li>
+<li>In the <b>Minimal required Qt version</b> field, select Qt 6.2&#x2e;</li>
+<li>Select <b>Next</b> to open the <b>Translation File</b> dialog.</li>
+<li>Select <b>Next</b> to use the default settings and to open the <b>Kit Selection</b> dialog.</li>
+<li>Select Qt 6.2 or later <a href="creator-glossary.html#glossary-buildandrun-kit">kits</a> for the platforms that you want to build the application for. To build applications for mobile devices, select kits also for Android and iOS.<div class="admonition note">
+<p><b>Note: </b>Kits are listed if they have been specified in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> (on Windows and Linux) or in <b>Qt Creator</b> &gt; <b>Preferences</b> &gt; <b>Kits</b> (on macOS). For more information, see <a href="creator-targets.html">Adding Kits</a>.</p>
+</div>
+</li>
+<li>Select <b>Next</b> to open the <b>Project Management</b> dialog.</li>
+<li>Review the project settings, and select <b>Finish</b> (or <b>Done</b> on macOS) to create the project.</li>
+</ol>
+<p>For more information about the settings that you skipped and the other wizard templates available, see <a href="quick-projects.html#creating-qt-quick-applications">Creating Qt Quick Applications</a>.</p>
+<p>Qt Creator generates a component file, <i>main.qml</i>, and opens it in the <b>Edit</b> mode.</p>
+<h4 id="deploying-applications">Deploying Applications</h4>
+<p>The main view of the application displays a Qt logo inside a rectangle in the top left corner of the view and two empty rectangles.</p>
+<p>We use the <i>qt-logo.png</i> image in this tutorial, but you can also use any other image or a component, instead.</p>
+<p>For the image to appear when you run the application, you must specify it as a resource in the <code>RESOURCES</code> section of <i>CMakeLists.txt</i> file that the wizard created for you:</p>
+<pre class="cpp">
+ qt_add_qml_module(apptransitions
+     URI transitions
+     VERSION 1.0
+     QML_FILES main.qml Page.qml
+     RESOURCES qt-logo.png
+ )
+</pre>
+<h4 id="creating-custom-qml-types">Creating Custom QML Types</h4>
+<p>Because the Window QML type requires states to be added into child components, we use the wizard to create a custom QML type called <i>Page</i> that we will refer to from <i>main.qml</i>.</p>
+<p>To create a custom QML type:</p>
+<ol class="1" type="1"><li>Select <b>File</b> &gt; <b>New File</b> &gt; <b>Qt</b> &gt; <b>QML File (Qt Quick 2)</b>.</li>
+<li>Select <b>Choose</b> to open the <b>Location</b> dialog.</li>
+<li>In the <b>File name</b> field, enter a name for the custom QML type. In this example, we call the type <i>Page</i>.</li>
+<li>Select <b>Next</b> to open the <b>Project Management</b> dialog.</li>
+<li>Select <b>Finish</b> to create <i>Page.qml</i>.</li>
+</ol>
+<p>Qt Creator opens <i>Page.qml</i> in the <b>Edit</b> mode. It contains a root item of the type Item that we replace with a Rectangle type. We give the type the ID <i>page</i>, anchor it to the parent item on all sides, and set its color to white:</p>
+<pre class="cpp">
+ import QtQuick
+
+ <span class="type">Rectangle</span> {
+     <span class="name">id</span>: <span class="name">page</span>
+     <span class="name">anchors</span>.fill: <span class="name">parent</span>
+     <span class="name">color</span>: <span class="string">&quot;#ffffff&quot;</span>
+</pre>
+<p>Because we develop with Qt 6, where version numbers are not used with modules, we remove the version number from the import statement.</p>
+<p>When you start typing the QML type name, Qt Creator suggests available types and properties to <a href="creator-completing-code.html">complete the code</a>.</p>
+<p>Select the light bulb icon <img src="images/refactormarker.png" alt="" /> next to the type name to open the <a href="qt-quick-toolbars.html#editing-rectangles">Qt Quick Toolbar for rectangles</a>. You can use it to specify rectangle properties, such as color, transparency, and gradients.</p>
+<p class="centerAlign"><img src="images/qml-toolbar-rectangle.png" alt="&quot;Qt Quick Toolbar for rectangles&quot;" /></p><p>Next, we add an Image type with <i>qt-logo.png</i> as the source. We position the image in the top-left corner of the rectangle:</p>
+<pre class="cpp">
+     <span class="type">Image</span> {
+         <span class="name">id</span>: <span class="name">icon</span>
+         <span class="name">x</span>: <span class="number">20</span>
+         <span class="name">y</span>: <span class="number">20</span>
+         <span class="name">source</span>: <span class="string">&quot;qt-logo.png&quot;</span>
+     }
+</pre>
+<p>You can use the <a href="qt-quick-toolbars.html#previewing-images">Qt Quick Toolbar for images</a> to specify image properties, such as source file and fill mode.</p>
+<p class="centerAlign"><img src="images/qml-toolbar-image.png" alt="&quot;Logo visible in Qt Quick Toolbar for images&quot;" /></p><p>We now create the rectangles that the image will move between. Their size should match the image size and they should be transparent, so that the image is visible. We set the border color to light gray to make the rectangles visible:</p>
+<pre class="cpp">
+     <span class="type">Rectangle</span> {
+         <span class="name">id</span>: <span class="name">topLeftRect</span>
+         <span class="name">width</span>: <span class="number">55</span>
+         <span class="name">height</span>: <span class="number">41</span>
+         <span class="name">color</span>: <span class="string">&quot;#00ffffff&quot;</span>
+         <span class="name">border</span>.color: <span class="string">&quot;#808080&quot;</span>
+</pre>
+<p>We anchor the rectangles to their parent to position them in its top-left and and bottom-left corners, as well as the vertical center of its right edge. The following code snippet anchors a rectangle to the top-left corner of its parent:</p>
+<pre class="cpp">
+         <span class="name">anchors</span>.left: <span class="name">parent</span>.<span class="name">left</span>
+         <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+         <span class="name">anchors</span>.leftMargin: <span class="number">20</span>
+         <span class="name">anchors</span>.topMargin: <span class="number">20</span>
+</pre>
+<p>We add a MouseArea type to make the rectangle clickable by users:</p>
+<pre class="cpp">
+         <span class="type">MouseArea</span> {
+             <span class="name">id</span>: <span class="name">mouseArea</span>
+             <span class="name">anchors</span>.fill: <span class="name">parent</span>
+</pre>
+<p>To check your code, you can compare it with the <i>Page.qml</i> example file.</p>
+<p>Next, we will make the image move between the rectangles when users click them, by adding states and by connecting mouse clicks to state changes.</p>
+<h4 id="connecting-mouse-clicks-to-state-changes">Connecting Mouse Clicks to State Changes</h4>
+<p>To make the image move between the rectangles when users click them, we add states to the Page component, where we change the values of the <code>x</code> and <code>y</code> properties of <i>icon</i> to match those of the middle right and top left rectangles. To make sure that the image is displayed within the rectangle when the view is scaled on different sizes of screens, we <i>bind</i> the values of the <code>x</code> and <code>y</code> properties of <i>icon</i> to those of the rectangles:</p>
+<pre class="cpp">
+     ...
+     <span class="name">states</span>: [
+         <span class="type">State</span> {
+             <span class="name">name</span>: <span class="string">&quot;State1&quot;</span>
+         },
+         <span class="type">State</span> {
+             <span class="name">name</span>: <span class="string">&quot;State2&quot;</span>
+
+             <span class="type">PropertyChanges</span> {
+                 <span class="name">target</span>: <span class="name">icon</span>
+                 <span class="name">x</span>: <span class="name">middleRightRect</span>.<span class="name">x</span>
+                 <span class="name">y</span>: <span class="name">middleRightRect</span>.<span class="name">y</span>
+             }
+         },
+         <span class="type">State</span> {
+             <span class="name">name</span>: <span class="string">&quot;State3&quot;</span>
+
+             <span class="type">PropertyChanges</span> {
+                 <span class="name">target</span>: <span class="name">icon</span>
+                 <span class="name">x</span>: <span class="name">bottomLeftRect</span>.<span class="name">x</span>
+                 <span class="name">y</span>: <span class="name">bottomLeftRect</span>.<span class="name">y</span>
+             }
+         }
+     ]
+</pre>
+<p>Then, we connect the <code>onClicked</code> signals of the mouse areas to the state changes:</p>
+<pre class="cpp">
+             <span class="type">Connections</span> {
+                 <span class="name">target</span>: <span class="name">mouseArea</span>
+                 <span class="keyword">function </span><span class="name">onClicked</span>()
+                 {
+                     <span class="name">page</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;State1&quot;</span>
+                 }
+</pre>
+<p>Because we develop with Qt 6, we must specify the connections as functions.</p>
+<h4 id="adding-page-to-the-main-view">Adding Page to the Main View</h4>
+<p>We now open <i>main.qml</i> for editing and add an instance of the Page custom component to it:</p>
+<pre class="cpp">
+ import QtQuick
+
+ <span class="type">Window</span> {
+     <span class="name">width</span>: <span class="number">640</span>
+     <span class="name">height</span>: <span class="number">480</span>
+     <span class="name">visible</span>: <span class="number">true</span>
+     <span class="name">title</span>: <span class="name">qsTr</span>(<span class="string">&quot;Transitions&quot;</span>)
+
+     <span class="type">Page</span> {
+         <span class="name">id</span>: <span class="name">page</span>
+         <span class="name">anchors</span>.fill: <span class="name">parent</span>
+     }
+ }
+</pre>
+<p>Press <b>Ctrl+R</b> to run the application, and click the rectangles to move the Qt logo from one rectangle to another.</p>
+<h4 id="animating-transitions">Animating Transitions</h4>
+<p>We will now create transitions to apply animation to the image. For example, the image bounces back when it moves to <i>middleRightRect</i> and eases into <i>bottomLeftRect</i>.</p>
+<p>We specify transitions for switching from each state to the other two states:</p>
+<pre class="cpp">
+     <span class="name">transitions</span>: [
+         <span class="type">Transition</span> {
+             <span class="name">id</span>: <span class="name">toState1</span>
+             <span class="type">ParallelAnimation</span> {
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;y&quot;</span>
+                         <span class="name">duration</span>: <span class="number">200</span>
+                     }
+                 }
+
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;x&quot;</span>
+                         <span class="name">duration</span>: <span class="number">200</span>
+                     }
+                 }
+             }
+             <span class="name">to</span>: <span class="string">&quot;State1&quot;</span>
+             <span class="name">from</span>: <span class="string">&quot;State2,State3&quot;</span>
+         },
+</pre>
+<p>We change the easing curve type for transitions to <i>State2</i> from linear to <code>Easing.OutBounce</code> to create the bounce effect:</p>
+<pre class="cpp">
+         <span class="type">Transition</span> {
+             <span class="name">id</span>: <span class="name">toState2</span>
+             <span class="type">ParallelAnimation</span> {
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;y&quot;</span>
+                         <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">OutBounce</span>
+                         <span class="name">duration</span>: <span class="number">1006</span>
+                     }
+                 }
+
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;x&quot;</span>
+                         <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">OutBounce</span>
+                         <span class="name">duration</span>: <span class="number">1006</span>
+                     }
+                 }
+             }
+             <span class="name">to</span>: <span class="string">&quot;State2&quot;</span>
+             <span class="name">from</span>: <span class="string">&quot;State1,State3&quot;</span>
+         },
+</pre>
+<div class="admonition note">
+<p><b>Note: </b>You can use the <a href="qt-quick-toolbars.html#previewing-animation">Qt Quick Toolbar for animation</a> to specify the easing curve type and animation duration.</p>
+</div>
+<p class="centerAlign"><img src="images/qml-toolbar-animation.png" alt="&quot;Qt Quick Toolbar for animation&quot;" /></p><p>Then, we change the easing curve type for transitions to <i>State2</i> from linear to <code>Easing.InOutQuad</code> to create the easing effect:</p>
+<pre class="cpp">
+         <span class="type">Transition</span> {
+             <span class="name">id</span>: <span class="name">toState3</span>
+             <span class="type">ParallelAnimation</span> {
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;y&quot;</span>
+                         <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">InOutQuad</span>
+                         <span class="name">duration</span>: <span class="number">2000</span>
+                     }
+                 }
+
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;x&quot;</span>
+                         <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">InOutQuad</span>
+                         <span class="name">duration</span>: <span class="number">2000</span>
+                     }
+                 }
+             }
+             <span class="name">to</span>: <span class="string">&quot;State3&quot;</span>
+             <span class="name">from</span>: <span class="string">&quot;State1,State2&quot;</span>
+         }
+     ]
+ }
+</pre>
+<p>Press <b>Ctrl+R</b> to run the application, and click the rectangles to view the animated transitions.</p>
+<p>Files:</p>
+<ul>
+<li><a href="qtcreator-transitions-cmakelists-txt.html">transitions/CMakeLists.txt</a></li>
+<li><a href="qtcreator-transitions-page-qml.html">transitions/Page.qml</a></li>
+<li><a href="qtcreator-transitions-main-qml.html">transitions/main.qml</a></li>
+</ul>
+<p>Images:</p>
+<ul>
+<li><a href="images/used-in-examples/transitions/qt-logo.png">transitions/qt-logo.png</a></li>
+</ul>
+</div>
+<!-- @@@transitions -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-writing-program.html">Creating a Qt Widget Based Application</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

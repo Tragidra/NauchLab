@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- basefilefilter.cpp -->
+  <title>List of All Members for BaseFileFilter | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="extending-index.html">Extending Qt Creator Manual</a></li>
+<li>BaseFileFilter</li>
+<li id="buildversion"><a href="extending-index.html">Extending Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">List of All Members for BaseFileFilter</h1>
+<p>This is the complete list of members for <a href="core-basefilefilter.html">Core::BaseFileFilter</a>, including inherited members.</p>
+<div class="table"><table class="propsummary">
+<tr><td class="topAlign"><ul>
+<li class="fn">enum class <span class="name"><b><a href="core-ilocatorfilter.html#MatchLevel-enum">MatchLevel</a></b></span></li>
+<li class="fn">enum <span class="name"><b><a href="core-ilocatorfilter.html#Priority-enum">Priority</a></b></span></li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setEnabled">setEnabled</a></b></span>(bool)</li>
+<li class="fn"><span class="name"><b><a href="core-basefilefilter.html#accept">accept</a></b></span>(const Core::LocatorFilterEntry &amp;, QString *, int *, int *) const</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#actionId">actionId</a></b></span>() const : Utils::Id</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#allLocatorFilters">allLocatorFilters</a></b></span>() : const QList&lt;Core::ILocatorFilter *&gt;</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#caseSensitivity">caseSensitivity</a></b></span>(const QString &amp;) : Qt::CaseSensitivity</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#createRegExp">createRegExp</a></b></span>(const QString &amp;, Qt::CaseSensitivity) : QRegularExpression</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#description">description</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#displayName">displayName</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="core-basefilefilter.html#fileIterator">fileIterator</a></b></span>() : QSharedPointer&lt;Core::BaseFileFilter::Iterator&gt;</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#highlightInfo">highlightInfo</a></b></span>(const QRegularExpressionMatch &amp;, LocatorFilterEntry::HighlightInfo::DataType) : LocatorFilterEntry::HighlightInfo</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#id">id</a></b></span>() const : Utils::Id</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#isConfigurable">isConfigurable</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#isEnabled">isEnabled</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#isHidden">isHidden</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#isIncludedByDefault">isIncludedByDefault</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#isOldSetting">isOldSetting</a></b></span>(const QByteArray &amp;) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-basefilefilter.html#matchesFor">matchesFor</a></b></span>(QFutureInterface&lt;Core::LocatorFilterEntry&gt; &amp;, const QString &amp;) : QList&lt;Core::LocatorFilterEntry&gt;</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#msgConfigureDialogTitle">msgConfigureDialogTitle</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#msgIncludeByDefault">msgIncludeByDefault</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#msgIncludeByDefaultToolTip">msgIncludeByDefaultToolTip</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#msgPrefixLabel">msgPrefixLabel</a></b></span>() : QString</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#msgPrefixToolTip">msgPrefixToolTip</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#openConfigDialog">openConfigDialog</a></b></span>(QWidget *, bool &amp;) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#openConfigDialog-1">openConfigDialog</a></b></span>(QWidget *, QWidget *) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-basefilefilter.html#prepareSearch">prepareSearch</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#priority">priority</a></b></span>() const : Core::ILocatorFilter::Priority</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#refresh">refresh</a></b></span>(QFutureInterface&lt;void&gt; &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#restoreState">restoreState</a></b></span>(const QByteArray &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#restoreState-1">restoreState</a></b></span>(const QJsonObject &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#saveState">saveState</a></b></span>() const : QByteArray</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#saveState-1">saveState</a></b></span>(QJsonObject &amp;) const</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setConfigurable">setConfigurable</a></b></span>(bool)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setDefaultIncludedByDefault">setDefaultIncludedByDefault</a></b></span>(bool)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setDefaultShortcutString">setDefaultShortcutString</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setDescription">setDescription</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setDisplayName">setDisplayName</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-basefilefilter.html#setFileIterator">setFileIterator</a></b></span>(Core::BaseFileFilter::Iterator *)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setHidden">setHidden</a></b></span>(bool)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setId">setId</a></b></span>(Utils::Id)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setIncludedByDefault">setIncludedByDefault</a></b></span>(bool)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setPriority">setPriority</a></b></span>(Core::ILocatorFilter::Priority)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#setShortcutString">setShortcutString</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-ilocatorfilter.html#shortcutString">shortcutString</a></b></span>() const : QString</li>
+</ul>
+</td></tr>
+</table></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

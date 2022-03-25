@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- editormanager.cpp -->
+  <title>List of All Members for EditorManager | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="extending-index.html">Extending Qt Creator Manual</a></li>
+<li>EditorManager</li>
+<li id="buildversion"><a href="extending-index.html">Extending Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">List of All Members for EditorManager</h1>
+<p>This is the complete list of members for <a href="core-editormanager.html">Core::EditorManager</a>, including inherited members.</p>
+<div class="table"><table class="propsummary">
+<tr><td class="topAlign"><ul>
+<li class="fn">enum <span class="name"><b><a href="core-editormanager.html#OpenEditorFlag-enum">OpenEditorFlag</a></b></span></li>
+<li class="fn">flags <span class="name"><b><a href="core-editormanager.html#OpenEditorFlag-enum">OpenEditorFlags</a></b></span></li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#aboutToSave">aboutToSave</a></b></span>(Core::IDocument *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#autoSaved">autoSaved</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#closeAllEditors">closeAllEditors</a></b></span>(bool) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#closeOtherDocuments-1">closeOtherDocuments</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#currentDocumentStateChanged">currentDocumentStateChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#currentEditorAboutToChange">currentEditorAboutToChange</a></b></span>(Core::IEditor *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#currentEditorChanged">currentEditorChanged</a></b></span>(Core::IEditor *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#documentClosed">documentClosed</a></b></span>(Core::IDocument *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#documentOpened">documentOpened</a></b></span>(Core::IDocument *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#documentStateChanged">documentStateChanged</a></b></span>(Core::IDocument *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#editorAboutToClose">editorAboutToClose</a></b></span>(Core::IEditor *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#editorCreated">editorCreated</a></b></span>(Core::IEditor *, const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#editorOpened">editorOpened</a></b></span>(Core::IEditor *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#editorsClosed">editorsClosed</a></b></span>(QList&lt;Core::IEditor *&gt;)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#goBackInNavigationHistory">goBackInNavigationHistory</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#goForwardInNavigationHistory">goForwardInNavigationHistory</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#gotoOtherSplit">gotoOtherSplit</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#revertToSaved">revertToSaved</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#saveDocument-1">saveDocument</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#saveDocumentAs">saveDocumentAs</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#saved">saved</a></b></span>(Core::IDocument *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#splitSideBySide">splitSideBySide</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#activateEditor">activateEditor</a></b></span>(Core::IEditor *, Core::EditorManager::OpenEditorFlags)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#activateEditorForDocument">activateEditorForDocument</a></b></span>(Core::IDocument *, Core::EditorManager::OpenEditorFlags) : Core::IEditor *</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#activateEditorForEntry">activateEditorForEntry</a></b></span>(DocumentModel::Entry *, Core::EditorManager::OpenEditorFlags)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#addCloseEditorListener">addCloseEditorListener</a></b></span>(const std::function&lt;bool (IEditor *)&gt; &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#addCurrentPositionToNavigationHistory">addCurrentPositionToNavigationHistory</a></b></span>(const QByteArray &amp;)</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#addNativeDirAndOpenWithActions">addNativeDirAndOpenWithActions</a></b></span>(QMenu *, DocumentModel::Entry *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#addPinEditorActions">addPinEditorActions</a></b></span>(QMenu *, DocumentModel::Entry *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#addSaveAndCloseEditorActions">addSaveAndCloseEditorActions</a></b></span>(QMenu *, DocumentModel::Entry *, Core::IEditor *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#clearUniqueId">clearUniqueId</a></b></span>(Core::IDocument *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#closeAllDocuments">closeAllDocuments</a></b></span>() : bool</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#closeDocuments">closeDocuments</a></b></span>(const QList&lt;Core::IDocument *&gt; &amp;, bool) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#closeDocuments-1">closeDocuments</a></b></span>(const QList&lt;DocumentModel::Entry *&gt; &amp;) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#closeEditors">closeEditors</a></b></span>(const QList&lt;Core::IEditor *&gt; &amp;, bool) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#closeOtherDocuments">closeOtherDocuments</a></b></span>(Core::IDocument *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#currentDocument">currentDocument</a></b></span>() : Core::IDocument *</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#currentEditor">currentEditor</a></b></span>() : Core::IEditor *</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#cutForwardNavigationHistory">cutForwardNavigationHistory</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#defaultLineEnding">defaultLineEnding</a></b></span>() : Utils::TextFileFormat::LineTerminationMode</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#defaultTextCodec">defaultTextCodec</a></b></span>() : QTextCodec *</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#getOpenFilePaths">getOpenFilePaths</a></b></span>() : Utils::FilePaths</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#instance">instance</a></b></span>() : Core::EditorManager *</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#isAutoSaveFile">isAutoSaveFile</a></b></span>(const QString &amp;) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#maxTextFileSize">maxTextFileSize</a></b></span>() : qint64</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#openEditor">openEditor</a></b></span>(const Utils::FilePath &amp;, Utils::Id, Core::EditorManager::OpenEditorFlags, bool *) : Core::IEditor *</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#openEditorAt">openEditorAt</a></b></span>(const Utils::Link &amp;, Utils::Id, Core::EditorManager::OpenEditorFlags, bool *) : Core::IEditor *</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#openEditorAtSearchResult">openEditorAtSearchResult</a></b></span>(const Core::SearchResultItem &amp;, Utils::Id, Core::EditorManager::OpenEditorFlags, bool *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#openEditorWithContents">openEditorWithContents</a></b></span>(Utils::Id, QString *, const QByteArray &amp;, const QString &amp;, Core::EditorManager::OpenEditorFlags) : Core::IEditor *</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#openExternalEditor">openExternalEditor</a></b></span>(const Utils::FilePath &amp;, Utils::Id) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#populateOpenWithMenu">populateOpenWithMenu</a></b></span>(QMenu *, const Utils::FilePath &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#reloadSetting">reloadSetting</a></b></span>() : IDocument::ReloadSetting</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#saveDocument">saveDocument</a></b></span>(Core::IDocument *) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#setLastEditLocation">setLastEditLocation</a></b></span>(const Core::IEditor *)</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#skipOpeningBigTextFile">skipOpeningBigTextFile</a></b></span>(const Utils::FilePath &amp;) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-editormanager.html#visibleEditors">visibleEditors</a></b></span>() : QList&lt;Core::IEditor *&gt;</li>
+</ul>
+</td></tr>
+</table></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

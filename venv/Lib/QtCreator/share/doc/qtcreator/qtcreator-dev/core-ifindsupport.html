@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- ifindsupport.cpp -->
+  <title>IFindSupport Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="extending-index.html">Extending Qt Creator Manual</a></li>
+<li>IFindSupport</li>
+<li id="buildversion"><a href="extending-index.html">Extending Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">IFindSupport Class</h1>
+<span class="small-subtitle">class <a href="core.html">Core</a>::IFindSupport</span>
+<!-- $$$IFindSupport-brief -->
+<p>The IFindSupport class provides functions for searching in a document or widget. <a href="#details">More...</a></p>
+<!-- @@@IFindSupport -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/find/ifindsupport.h&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="core-basetextfind.html">Core::BaseTextFind</a></p>
+</td></tr></table></div>
+<ul>
+<li><a href="core-ifindsupport-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#Result-enum">Result</a></b> { Found, NotFound, NotYetFound }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#clearFindScope">clearFindScope</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#clearHighlights">clearHighlights</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#completedFindString">completedFindString</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#currentFindString">currentFindString</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#defineFindScope">defineFindScope</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::IFindSupport::Result </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#findIncremental">findIncremental</a></b>(const QString &amp;<i>txt</i>, Core::FindFlags <i>findFlags</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::IFindSupport::Result </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#findStep">findStep</a></b>(const QString &amp;<i>txt</i>, Core::FindFlags <i>findFlags</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#highlightAll">highlightAll</a></b>(const QString &amp;<i>txt</i>, Core::FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#replace">replace</a></b>(const QString &amp;<i>before</i>, const QString &amp;<i>after</i>, Core::FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#replaceAll">replaceAll</a></b>(const QString &amp;<i>before</i>, const QString &amp;<i>after</i>, Core::FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#replaceStep">replaceStep</a></b>(const QString &amp;<i>before</i>, const QString &amp;<i>after</i>, Core::FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#resetIncrementalSearch">resetIncrementalSearch</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#selectAll">selectAll</a></b>(const QString &amp;<i>txt</i>, Core::FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::FindFlags </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#supportedFindFlags">supportedFindFlags</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#supportsReplace">supportsReplace</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#supportsSelectAll">supportsSelectAll</a></b>() const</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#changed">changed</a></b>()</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ifindsupport.html#showWrapIndicator">showWrapIndicator</a></b>(QWidget *<i>parent</i>)</td></tr>
+</table></div>
+<!-- $$$IFindSupport-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+</div>
+<p><b>See also </b><a href="core-basetextfind.html">Core::BaseTextFind</a>.</p>
+<!-- @@@IFindSupport -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$Result$$$Found$$$NotFound$$$NotYetFound -->
+<h3 class="fn" id="Result-enum">enum IFindSupport::<span class="name">Result</span></h3>
+<p>This enum holds whether the search term was found within the search scope using the find flags.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code>Core::IFindSupport::Found</code></td><td class="topAlign tblval"><code>0</code></td><td class="topAlign">The search term was found.</td></tr>
+<tr><td class="topAlign"><code>Core::IFindSupport::NotFound</code></td><td class="topAlign tblval"><code>1</code></td><td class="topAlign">The search term was not found.</td></tr>
+<tr><td class="topAlign"><code>Core::IFindSupport::NotYetFound</code></td><td class="topAlign tblval"><code>2</code></td><td class="topAlign">The search term has not been found yet.</td></tr>
+</table></div>
+<!-- @@@Result -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$changed[overload1]$$$changed -->
+<h3 class="fn" id="changed"><code>[signal] </code><span class="type">void</span> IFindSupport::<span class="name">changed</span>()</h3>
+<p>This signal is emitted when the search changes.</p>
+<!-- @@@changed -->
+<!-- $$$clearFindScope[overload1]$$$clearFindScope -->
+<h3 class="fn" id="clearFindScope"><code>[virtual] </code><span class="type">void</span> IFindSupport::<span class="name">clearFindScope</span>()</h3>
+<p>Clears the find scope.</p>
+<!-- @@@clearFindScope -->
+<!-- $$$clearHighlights[overload1]$$$clearHighlights -->
+<h3 class="fn" id="clearHighlights"><code>[pure virtual] </code><span class="type">void</span> IFindSupport::<span class="name">clearHighlights</span>()</h3>
+<p>Clears highlighting of search results in the searched widget.</p>
+<!-- @@@clearHighlights -->
+<!-- $$$completedFindString[overload1]$$$completedFindString -->
+<h3 class="fn" id="completedFindString"><code>[pure virtual] </code><span class="type">QString</span> IFindSupport::<span class="name">completedFindString</span>() const</h3>
+<p>Returns the complete search string.</p>
+<!-- @@@completedFindString -->
+<!-- $$$currentFindString[overload1]$$$currentFindString -->
+<h3 class="fn" id="currentFindString"><code>[pure virtual] </code><span class="type">QString</span> IFindSupport::<span class="name">currentFindString</span>() const</h3>
+<p>Returns the current search string.</p>
+<!-- @@@currentFindString -->
+<!-- $$$defineFindScope[overload1]$$$defineFindScope -->
+<h3 class="fn" id="defineFindScope"><code>[virtual] </code><span class="type">void</span> IFindSupport::<span class="name">defineFindScope</span>()</h3>
+<p>Defines the find scope.</p>
+<!-- @@@defineFindScope -->
+<!-- $$$findIncremental[overload1]$$$findIncrementalconstQString&Core::FindFlags -->
+<h3 class="fn" id="findIncremental"><code>[pure virtual] </code><span class="type"><a href="core-ifindsupport.html#Result-enum">Core::IFindSupport::Result</a></span> IFindSupport::<span class="name">findIncremental</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<p>Performs an incremental search of the search term <i>txt</i> using <i>findFlags</i>.</p>
+<!-- @@@findIncremental -->
+<!-- $$$findStep[overload1]$$$findStepconstQString&Core::FindFlags -->
+<h3 class="fn" id="findStep"><code>[pure virtual] </code><span class="type"><a href="core-ifindsupport.html#Result-enum">Core::IFindSupport::Result</a></span> IFindSupport::<span class="name">findStep</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<p>Searches for <i>txt</i> using <i>findFlags</i>.</p>
+<!-- @@@findStep -->
+<!-- $$$highlightAll[overload1]$$$highlightAllconstQString&Core::FindFlags -->
+<h3 class="fn" id="highlightAll"><code>[virtual] </code><span class="type">void</span> IFindSupport::<span class="name">highlightAll</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<p>Highlights all search hits for <i>txt</i> when using <i>findFlags</i>.</p>
+<!-- @@@highlightAll -->
+<!-- $$$replace[overload1]$$$replaceconstQString&constQString&Core::FindFlags -->
+<h3 class="fn" id="replace"><code>[virtual] </code><span class="type">void</span> IFindSupport::<span class="name">replace</span>(const <span class="type">QString</span> &amp;<i>before</i>, const <span class="type">QString</span> &amp;<i>after</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<p>Replaces <i>before</i> with <i>after</i> as specified by <i>findFlags</i>.</p>
+<!-- @@@replace -->
+<!-- $$$replaceAll[overload1]$$$replaceAllconstQString&constQString&Core::FindFlags -->
+<h3 class="fn" id="replaceAll"><code>[virtual] </code><span class="type">int</span> IFindSupport::<span class="name">replaceAll</span>(const <span class="type">QString</span> &amp;<i>before</i>, const <span class="type">QString</span> &amp;<i>after</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<p>Finds and replaces all instances of <i>before</i> with <i>after</i> as specified by <i>findFlags</i>.</p>
+<!-- @@@replaceAll -->
+<!-- $$$replaceStep[overload1]$$$replaceStepconstQString&constQString&Core::FindFlags -->
+<h3 class="fn" id="replaceStep"><code>[virtual] </code><span class="type">bool</span> IFindSupport::<span class="name">replaceStep</span>(const <span class="type">QString</span> &amp;<i>before</i>, const <span class="type">QString</span> &amp;<i>after</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<p>Replaces <i>before</i> with <i>after</i> as specified by <i>findFlags</i>, and then performs <a href="core-ifindsupport.html#findStep">findStep</a>().</p>
+<p>Returns whether the find step found another match.</p>
+<!-- @@@replaceStep -->
+<!-- $$$resetIncrementalSearch[overload1]$$$resetIncrementalSearch -->
+<h3 class="fn" id="resetIncrementalSearch"><code>[pure virtual] </code><span class="type">void</span> IFindSupport::<span class="name">resetIncrementalSearch</span>()</h3>
+<p>Resets incremental search to start position.</p>
+<!-- @@@resetIncrementalSearch -->
+<!-- $$$selectAll[overload1]$$$selectAllconstQString&Core::FindFlags -->
+<h3 class="fn" id="selectAll"><code>[virtual] </code><span class="type">void</span> IFindSupport::<span class="name">selectAll</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<p>Finds and selects all instances of <i>txt</i> with specified <i>findFlags</i>.</p>
+<!-- @@@selectAll -->
+<!-- $$$showWrapIndicator[overload1]$$$showWrapIndicatorQWidget* -->
+<h3 class="fn" id="showWrapIndicator"><code>[static] </code><span class="type">void</span> IFindSupport::<span class="name">showWrapIndicator</span>(<span class="type">QWidget</span> *<i>parent</i>)</h3>
+<p>Shows <i>parent</i> overlayed with the wrap indicator.</p>
+<!-- @@@showWrapIndicator -->
+<!-- $$$supportedFindFlags[overload1]$$$supportedFindFlags -->
+<h3 class="fn" id="supportedFindFlags"><code>[pure virtual] </code><span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> IFindSupport::<span class="name">supportedFindFlags</span>() const</h3>
+<p>Returns the find flags, such as whole words or regular expressions, that this find filter supports.</p>
+<p>Depending on the returned value, the default find option widgets are enabled or disabled.</p>
+<p>The default is <a href="core.html#FindFlag-enum">Core::FindBackward</a>, <a href="core.html#FindFlag-enum">Core::FindCaseSensitively</a>, <a href="core.html#FindFlag-enum">Core::FindRegularExpression</a>, <a href="core.html#FindFlag-enum">Core::FindWholeWords</a>, and <a href="core.html#FindFlag-enum">Core::FindPreserveCase</a>.</p>
+<!-- @@@supportedFindFlags -->
+<!-- $$$supportsReplace[overload1]$$$supportsReplace -->
+<h3 class="fn" id="supportsReplace"><code>[pure virtual] </code><span class="type">bool</span> IFindSupport::<span class="name">supportsReplace</span>() const</h3>
+<p>Returns whether the find filter supports search and replace.</p>
+<!-- @@@supportsReplace -->
+<!-- $$$supportsSelectAll[overload1]$$$supportsSelectAll -->
+<h3 class="fn" id="supportsSelectAll"><code>[virtual] </code><span class="type">bool</span> IFindSupport::<span class="name">supportsSelectAll</span>() const</h3>
+<p>Returns whether the find filter supports selecting all results.</p>
+<!-- @@@supportsSelectAll -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+    <namespace>org.qt-project.qtcreator.developer.6840</namespace>
+    <virtualFolder>doc</virtualFolder>
+    <metaData name="version" value=""/>
+    <customFilter name="Qt Creator 7.0.0-rc1">
+        <filterAttribute>7.0.0-rc1</filterAttribute>
+        <filterAttribute>qtcreator</filterAttribute>
+    </customFilter>
+    <filterSection>
+        <filterAttribute>7.0.0-rc1</filterAttribute>
+        <filterAttribute>qtcreator</filterAttribute>
+        <toc>
+            <section ref="extending-index.html" title="Extending Qt Creator Manual">
+                <section ref="" title="">
+                    <section ref="qtcreator-ui-text.html" title="User Interface Text Guidelines"/>
+                    <section ref="coding-style.html" title="Qt Creator Coding Rules"/>
+                    <section ref="qtcreator-api.html" title="Qt Creator API Reference"/>
+                </section>
+            </section>
+        </toc>
+        <keywords>
+            <keyword name="ActionContainer" id="Core::ActionContainer" ref="core-actioncontainer.html"/>
+            <keyword name="ActionContainer::Disable" id="ActionContainer::Disable" ref="core-actioncontainer.html#OnAllDisabledBehavior-enum"/>
+            <keyword name="ActionContainer::Hide" id="ActionContainer::Hide" ref="core-actioncontainer.html#OnAllDisabledBehavior-enum"/>
+            <keyword name="ActionContainer::OnAllDisabledBehavior" id="ActionContainer::OnAllDisabledBehavior" ref="core-actioncontainer.html#OnAllDisabledBehavior-enum"/>
+            <keyword name="ActionContainer::Show" id="ActionContainer::Show" ref="core-actioncontainer.html#OnAllDisabledBehavior-enum"/>
+            <keyword name="ActionManager" id="Core::ActionManager" ref="core-actionmanager.html"/>
+            <keyword name="Aggregate" id="Aggregation::Aggregate" ref="aggregation-aggregate.html"/>
+            <keyword name="Aggregation" id="Aggregation" ref="aggregation.html"/>
+            <keyword name="BaseFileFilter" id="Core::BaseFileFilter" ref="core-basefilefilter.html"/>
+            <keyword name="BaseFileWizard" id="Core::BaseFileWizard" ref="core-basefilewizard.html"/>
+            <keyword name="BaseFileWizardFactory" id="Core::BaseFileWizardFactory" ref="core-basefilewizardfactory.html"/>
+            <keyword name="BaseTextDocument" id="Core::BaseTextDocument" ref="core-basetextdocument.html"/>
+            <keyword name="BaseTextFind" id="Core::BaseTextFind" ref="core-basetextfind.html"/>
+            <keyword name="Command" id="Core::Command" ref="core-command.html"/>
+            <keyword name="Command::CA_Hide" id="Command::CA_Hide" ref="core-command.html#CommandAttribute-enum"/>
+            <keyword name="Command::CA_NonConfigurable" id="Command::CA_NonConfigurable" ref="core-command.html#CommandAttribute-enum"/>
+            <keyword name="Command::CA_UpdateIcon" id="Command::CA_UpdateIcon" ref="core-command.html#CommandAttribute-enum"/>
+            <keyword name="Command::CA_UpdateText" id="Command::CA_UpdateText" ref="core-command.html#CommandAttribute-enum"/>
+            <keyword name="Command::CommandAttribute" id="Command::CommandAttribute" ref="core-command.html#CommandAttribute-enum"/>
+            <keyword name="Command::CommandAttributes" id="Command::CommandAttributes" ref="core-command.html#CommandAttribute-enum"/>
+            <keyword name="CommandButton" id="Core::CommandButton" ref="core-commandbutton.html"/>
+            <keyword name="Common Extension Tasks" id="Common Extension Tasks" ref="common-extension-tasks.html"/>
+            <keyword name="Context" id="Core::Context" ref="core-context.html"/>
+            <keyword name="Context::const_iterator" id="Context::const_iterator" ref="core-context.html#const_iterator-typedef"/>
+            <keyword name="Core" id="Core" ref="core.html"/>
+            <keyword name="Core::FindBackward" id="Core::FindBackward" ref="core.html#FindFlag-enum"/>
+            <keyword name="Core::FindCaseSensitively" id="Core::FindCaseSensitively" ref="core.html#FindFlag-enum"/>
+            <keyword name="Core::FindFlag" id="Core::FindFlag" ref="core.html#FindFlag-enum"/>
+            <keyword name="Core::FindFlags" id="Core::FindFlags" ref="core.html#FindFlag-enum"/>
+            <keyword name="Core::FindPreserveCase" id="Core::FindPreserveCase" ref="core.html#FindFlag-enum"/>
+            <keyword name="Core::FindRegularExpression" id="Core::FindRegularExpression" ref="core.html#FindFlag-enum"/>
+            <keyword name="Core::FindWholeWords" id="Core::FindWholeWords" ref="core.html#FindFlag-enum"/>
+            <keyword name="Creating Plugins" id="Creating Plugins" ref="creating-plugins.html"/>
+            <keyword name="Creating Wizards in Code" id="Creating Wizards in Code" ref="qtcreator-dev-wizards.html"/>
+            <keyword name="Creating Your First Plugin" id="Creating Your First Plugin" ref="first-plugin.html"/>
+            <keyword name="Distributing Plugins" id="Distributing Plugins" ref="distributing-plugins.html"/>
+            <keyword name="DocumentManager" id="Core::DocumentManager" ref="core-documentmanager.html"/>
+            <keyword name="EditorManager" id="Core::EditorManager" ref="core-editormanager.html"/>
+            <keyword name="EditorManager::AllowExternalEditor" id="EditorManager::AllowExternalEditor" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::DoNotChangeCurrentEditor" id="EditorManager::DoNotChangeCurrentEditor" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::DoNotMakeVisible" id="EditorManager::DoNotMakeVisible" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::DoNotRaise" id="EditorManager::DoNotRaise" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::DoNotSwitchToDesignMode" id="EditorManager::DoNotSwitchToDesignMode" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::DoNotSwitchToEditMode" id="EditorManager::DoNotSwitchToEditMode" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::IgnoreNavigationHistory" id="EditorManager::IgnoreNavigationHistory" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::NoFlags" id="EditorManager::NoFlags" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::OpenEditorFlag" id="EditorManager::OpenEditorFlag" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::OpenEditorFlags" id="EditorManager::OpenEditorFlags" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::OpenInOtherSplit" id="EditorManager::OpenInOtherSplit" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManager::SwitchSplitIfAlreadyVisible" id="EditorManager::SwitchSplitIfAlreadyVisible" ref="core-editormanager.html#OpenEditorFlag-enum"/>
+            <keyword name="EditorManagerPlaceHolder" id="Core::EditorManagerPlaceHolder" ref="core-editormanagerplaceholder.html"/>
+            <keyword name="EditorType" id="Core::EditorType" ref="core-editortype.html"/>
+            <keyword name="Extending Qt Creator Manual" id="Extending Qt Creator Manual" ref="extending-index.html"/>
+            <keyword name="ExtensionSystem" id="ExtensionSystem" ref="extensionsystem.html"/>
+            <keyword name="External Tool Specification Files" id="External Tool Specification Files" ref="external-tool-spec.html"/>
+            <keyword name="FileChangeBlocker" id="Core::FileChangeBlocker" ref="core-filechangeblocker.html"/>
+            <keyword name="FileIconProvider" id="Core::FileIconProvider" ref="core-fileiconprovider.html"/>
+            <keyword name="FutureProgress" id="Core::FutureProgress" ref="core-futureprogress.html"/>
+            <keyword name="GeneratedFile" id="Core::GeneratedFile" ref="core-generatedfile.html"/>
+            <keyword name="GeneratedFile::Attributes" id="GeneratedFile::Attributes" ref="core-generatedfile.html#Attribute-enum"/>
+            <keyword name="Getting and Building Qt Creator" id="Getting and Building Qt Creator" ref="getting-and-building.html"/>
+            <keyword name="IContext" id="Core::IContext" ref="core-icontext.html"/>
+            <keyword name="IContext::HelpCallback" id="IContext::HelpCallback" ref="core-icontext.html#HelpCallback-typedef"/>
+            <keyword name="ICore" id="Core::ICore" ref="core-icore.html"/>
+            <keyword name="ICore::ContextPriority" id="ICore::ContextPriority" ref="core-icore.html#ContextPriority-enum"/>
+            <keyword name="ICore::High" id="ICore::High" ref="core-icore.html#ContextPriority-enum"/>
+            <keyword name="ICore::Low" id="ICore::Low" ref="core-icore.html#ContextPriority-enum"/>
+            <keyword name="IDocument" id="Core::IDocument" ref="core-idocument.html"/>
+            <keyword name="IDocument::CannotHandle" id="IDocument::CannotHandle" ref="core-idocument.html#OpenResult-enum"/>
+            <keyword name="IDocument::ChangeTrigger" id="IDocument::ChangeTrigger" ref="core-idocument.html#ChangeTrigger-enum"/>
+            <keyword name="IDocument::ChangeType" id="IDocument::ChangeType" ref="core-idocument.html#ChangeType-enum"/>
+            <keyword name="IDocument::FlagIgnore" id="IDocument::FlagIgnore" ref="core-idocument.html#ReloadFlag-enum"/>
+            <keyword name="IDocument::FlagReload" id="IDocument::FlagReload" ref="core-idocument.html#ReloadFlag-enum"/>
+            <keyword name="IDocument::OpenResult" id="IDocument::OpenResult" ref="core-idocument.html#OpenResult-enum"/>
+            <keyword name="IDocument::ReadError" id="IDocument::ReadError" ref="core-idocument.html#OpenResult-enum"/>
+            <keyword name="IDocument::ReloadFlag" id="IDocument::ReloadFlag" ref="core-idocument.html#ReloadFlag-enum"/>
+            <keyword name="IDocument::Success" id="IDocument::Success" ref="core-idocument.html#OpenResult-enum"/>
+            <keyword name="IDocument::TriggerExternal" id="IDocument::TriggerExternal" ref="core-idocument.html#ChangeTrigger-enum"/>
+            <keyword name="IDocument::TriggerInternal" id="IDocument::TriggerInternal" ref="core-idocument.html#ChangeTrigger-enum"/>
+            <keyword name="IDocument::TypeContents" id="IDocument::TypeContents" ref="core-idocument.html#ChangeType-enum"/>
+            <keyword name="IDocument::TypeRemoved" id="IDocument::TypeRemoved" ref="core-idocument.html#ChangeType-enum"/>
+            <keyword name="IEditor" id="Core::IEditor" ref="core-ieditor.html"/>
+            <keyword name="IEditorFactory" id="Core::IEditorFactory" ref="core-ieditorfactory.html"/>
+            <keyword name="IExternalEditor" id="Core::IExternalEditor" ref="core-iexternaleditor.html"/>
+            <keyword name="IFeatureProvider" id="Core::IFeatureProvider" ref="core-ifeatureprovider.html"/>
+            <keyword name="IFindFilter" id="Core::IFindFilter" ref="core-ifindfilter.html"/>
+            <keyword name="IFindSupport" id="Core::IFindSupport" ref="core-ifindsupport.html"/>
+            <keyword name="IFindSupport::Found" id="IFindSupport::Found" ref="core-ifindsupport.html#Result-enum"/>
+            <keyword name="IFindSupport::NotFound" id="IFindSupport::NotFound" ref="core-ifindsupport.html#Result-enum"/>
+            <keyword name="IFindSupport::NotYetFound" id="IFindSupport::NotYetFound" ref="core-ifindsupport.html#Result-enum"/>
+            <keyword name="IFindSupport::Result" id="IFindSupport::Result" ref="core-ifindsupport.html#Result-enum"/>
+            <keyword name="ILocatorFilter" id="Core::ILocatorFilter" ref="core-ilocatorfilter.html"/>
+            <keyword name="ILocatorFilter::Best" id="ILocatorFilter::Best" ref="core-ilocatorfilter.html#MatchLevel-enum"/>
+            <keyword name="ILocatorFilter::Better" id="ILocatorFilter::Better" ref="core-ilocatorfilter.html#MatchLevel-enum"/>
+            <keyword name="ILocatorFilter::Count" id="ILocatorFilter::Count" ref="core-ilocatorfilter.html#MatchLevel-enum"/>
+            <keyword name="ILocatorFilter::Good" id="ILocatorFilter::Good" ref="core-ilocatorfilter.html#MatchLevel-enum"/>
+            <keyword name="ILocatorFilter::High" id="ILocatorFilter::High" ref="core-ilocatorfilter.html#Priority-enum"/>
+            <keyword name="ILocatorFilter::Highest" id="ILocatorFilter::Highest" ref="core-ilocatorfilter.html#Priority-enum"/>
+            <keyword name="ILocatorFilter::Low" id="ILocatorFilter::Low" ref="core-ilocatorfilter.html#Priority-enum"/>
+            <keyword name="ILocatorFilter::MatchLevel" id="ILocatorFilter::MatchLevel" ref="core-ilocatorfilter.html#MatchLevel-enum"/>
+            <keyword name="ILocatorFilter::Medium" id="ILocatorFilter::Medium" ref="core-ilocatorfilter.html#Priority-enum"/>
+            <keyword name="ILocatorFilter::Normal" id="ILocatorFilter::Normal" ref="core-ilocatorfilter.html#MatchLevel-enum"/>
+            <keyword name="ILocatorFilter::Priority" id="ILocatorFilter::Priority" ref="core-ilocatorfilter.html#Priority-enum"/>
+            <keyword name="IMode" id="Core::IMode" ref="core-imode.html"/>
+            <keyword name="INavigationWidgetFactory" id="Core::INavigationWidgetFactory" ref="core-inavigationwidgetfactory.html"/>
+            <keyword name="IOptionsPage" id="Core::IOptionsPage" ref="core-ioptionspage.html"/>
+            <keyword name="IOutputPane" id="Core::IOutputPane" ref="core-ioutputpane.html"/>
+            <keyword name="IOutputPane::EnsureSizeHint" id="IOutputPane::EnsureSizeHint" ref="core-ioutputpane.html#Flag-enum"/>
+            <keyword name="IOutputPane::Flag" id="IOutputPane::Flag" ref="core-ioutputpane.html#Flag-enum"/>
+            <keyword name="IOutputPane::Flags" id="IOutputPane::Flags" ref="core-ioutputpane.html#Flag-enum"/>
+            <keyword name="IOutputPane::ModeSwitch" id="IOutputPane::ModeSwitch" ref="core-ioutputpane.html#Flag-enum"/>
+            <keyword name="IOutputPane::NoModeSwitch" id="IOutputPane::NoModeSwitch" ref="core-ioutputpane.html#Flag-enum"/>
+            <keyword name="IOutputPane::WithFocus" id="IOutputPane::WithFocus" ref="core-ioutputpane.html#Flag-enum"/>
+            <keyword name="IPlugin" id="ExtensionSystem::IPlugin" ref="extensionsystem-iplugin.html"/>
+            <keyword name="IPlugin::AsynchronousShutdown" id="IPlugin::AsynchronousShutdown" ref="extensionsystem-iplugin.html#ShutdownFlag-enum"/>
+            <keyword name="IPlugin::ShutdownFlag" id="IPlugin::ShutdownFlag" ref="extensionsystem-iplugin.html#ShutdownFlag-enum"/>
+            <keyword name="IPlugin::SynchronousShutdown" id="IPlugin::SynchronousShutdown" ref="extensionsystem-iplugin.html#ShutdownFlag-enum"/>
+            <keyword name="IWizardFactory" id="Core::IWizardFactory" ref="core-iwizardfactory.html"/>
+            <keyword name="IWizardFactory::FileWizard" id="IWizardFactory::FileWizard" ref="core-iwizardfactory.html#WizardKind-enum"/>
+            <keyword name="IWizardFactory::ProjectWizard" id="IWizardFactory::ProjectWizard" ref="core-iwizardfactory.html#WizardKind-enum"/>
+            <keyword name="IWizardFactory::WizardFlags" id="IWizardFactory::WizardFlags" ref="core-iwizardfactory.html#WizardFlag-enum"/>
+            <keyword name="IWizardFactory::WizardKind" id="IWizardFactory::WizardKind" ref="core-iwizardfactory.html#WizardKind-enum"/>
+            <keyword name="MessageManager" id="Core::MessageManager" ref="core-messagemanager.html"/>
+            <keyword name="MiniSplitter" id="Core::MiniSplitter" ref="core-minisplitter.html"/>
+            <keyword name="MiniSplitter::Dark" id="MiniSplitter::Dark" ref="core-minisplitter.html#SplitterStyle-enum"/>
+            <keyword name="MiniSplitter::Light" id="MiniSplitter::Light" ref="core-minisplitter.html#SplitterStyle-enum"/>
+            <keyword name="MiniSplitter::SplitterStyle" id="MiniSplitter::SplitterStyle" ref="core-minisplitter.html#SplitterStyle-enum"/>
+            <keyword name="ModeManager" id="Core::ModeManager" ref="core-modemanager.html"/>
+            <keyword name="NavigationView" id="Core::NavigationView" ref="core-navigationview.html"/>
+            <keyword name="NonResizingSplitter" id="Core::NonResizingSplitter" ref="core-nonresizingsplitter.html"/>
+            <keyword name="Plugin Life Cycle" id="Plugin Life Cycle" ref="plugin-lifecycle.html"/>
+            <keyword name="Plugin Meta Data" id="Plugin Meta Data" ref="plugin-meta-data.html"/>
+            <keyword name="PluginArgumentDescription" id="ExtensionSystem::PluginArgumentDescription" ref="extensionsystem-pluginargumentdescription.html"/>
+            <keyword name="PluginDependency" id="ExtensionSystem::PluginDependency" ref="extensionsystem-plugindependency.html"/>
+            <keyword name="PluginDependency::Optional" id="PluginDependency::Optional" ref="extensionsystem-plugindependency.html#Type-enum"/>
+            <keyword name="PluginDependency::Required" id="PluginDependency::Required" ref="extensionsystem-plugindependency.html#Type-enum"/>
+            <keyword name="PluginDependency::Test" id="PluginDependency::Test" ref="extensionsystem-plugindependency.html#Type-enum"/>
+            <keyword name="PluginDependency::Type" id="PluginDependency::Type" ref="extensionsystem-plugindependency.html#Type-enum"/>
+            <keyword name="PluginDetailsView" id="ExtensionSystem::PluginDetailsView" ref="extensionsystem-plugindetailsview.html"/>
+            <keyword name="PluginErrorView" id="ExtensionSystem::PluginErrorView" ref="extensionsystem-pluginerrorview.html"/>
+            <keyword name="PluginManager" id="ExtensionSystem::PluginManager" ref="extensionsystem-pluginmanager.html"/>
+            <keyword name="PluginSpec" id="ExtensionSystem::PluginSpec" ref="extensionsystem-pluginspec.html"/>
+            <keyword name="PluginSpec::Deleted" id="PluginSpec::Deleted" ref="extensionsystem-pluginspec.html#State-enum"/>
+            <keyword name="PluginSpec::Initialized" id="PluginSpec::Initialized" ref="extensionsystem-pluginspec.html#State-enum"/>
+            <keyword name="PluginSpec::Invalid" id="PluginSpec::Invalid" ref="extensionsystem-pluginspec.html#State-enum"/>
+            <keyword name="PluginSpec::Loaded" id="PluginSpec::Loaded" ref="extensionsystem-pluginspec.html#State-enum"/>
+            <keyword name="PluginSpec::Read" id="PluginSpec::Read" ref="extensionsystem-pluginspec.html#State-enum"/>
+            <keyword name="PluginSpec::Resolved" id="PluginSpec::Resolved" ref="extensionsystem-pluginspec.html#State-enum"/>
+            <keyword name="PluginSpec::Running" id="PluginSpec::Running" ref="extensionsystem-pluginspec.html#State-enum"/>
+            <keyword name="PluginSpec::State" id="PluginSpec::State" ref="extensionsystem-pluginspec.html#State-enum"/>
+            <keyword name="PluginSpec::Stopped" id="PluginSpec::Stopped" ref="extensionsystem-pluginspec.html#State-enum"/>
+            <keyword name="PluginView" id="ExtensionSystem::PluginView" ref="extensionsystem-pluginview.html"/>
+            <keyword name="ProgressManager" id="Core::ProgressManager" ref="core-progressmanager.html"/>
+            <keyword name="ProgressManager::KeepOnFinish" id="ProgressManager::KeepOnFinish" ref="core-progressmanager.html#ProgressFlag-enum"/>
+            <keyword name="ProgressManager::ProgressFlag" id="ProgressManager::ProgressFlag" ref="core-progressmanager.html#ProgressFlag-enum"/>
+            <keyword name="ProgressManager::ProgressFlags" id="ProgressManager::ProgressFlags" ref="core-progressmanager.html#ProgressFlag-enum"/>
+            <keyword name="ProgressManager::ShowInApplicationIcon" id="ProgressManager::ShowInApplicationIcon" ref="core-progressmanager.html#ProgressFlag-enum"/>
+            <keyword name="Qt Creator API Reference" id="Qt Creator API Reference" ref="qtcreator-api.html"/>
+            <keyword name="Qt Creator C++ Classes" id="Qt Creator C++ Classes" ref="qtcreator-module.html"/>
+            <keyword name="Qt Creator Coding Rules" id="Qt Creator Coding Rules" ref="coding-style.html"/>
+            <keyword name="Qt Creator Functions" id="Qt Creator Functions" ref="functions.html"/>
+            <keyword name="Qt Creator Main Classes" id="Qt Creator Main Classes" ref="mainclasses.html"/>
+            <keyword name="Qt Creator Namespaces" id="Qt Creator Namespaces" ref="namespaces.html"/>
+            <keyword name="SearchResult" id="Core::SearchResult" ref="core-searchresult.html"/>
+            <keyword name="SearchResult::AddMode" id="SearchResult::AddMode" ref="core-searchresult.html#AddMode-enum"/>
+            <keyword name="SearchResult::AddOrdered" id="SearchResult::AddOrdered" ref="core-searchresult.html#AddMode-enum"/>
+            <keyword name="SearchResult::AddSorted" id="SearchResult::AddSorted" ref="core-searchresult.html#AddMode-enum"/>
+            <keyword name="SearchResultWindow" id="Core::SearchResultWindow" ref="core-searchresultwindow.html"/>
+            <keyword name="SearchResultWindow::PreserveCaseDisabled" id="SearchResultWindow::PreserveCaseDisabled" ref="core-searchresultwindow.html#PreserveCaseMode-enum"/>
+            <keyword name="SearchResultWindow::PreserveCaseEnabled" id="SearchResultWindow::PreserveCaseEnabled" ref="core-searchresultwindow.html#PreserveCaseMode-enum"/>
+            <keyword name="SearchResultWindow::PreserveCaseMode" id="SearchResultWindow::PreserveCaseMode" ref="core-searchresultwindow.html#PreserveCaseMode-enum"/>
+            <keyword name="SearchResultWindow::SearchAndReplace" id="SearchResultWindow::SearchAndReplace" ref="core-searchresultwindow.html#SearchMode-enum"/>
+            <keyword name="SearchResultWindow::SearchMode" id="SearchResultWindow::SearchMode" ref="core-searchresultwindow.html#SearchMode-enum"/>
+            <keyword name="SearchResultWindow::SearchOnly" id="SearchResultWindow::SearchOnly" ref="core-searchresultwindow.html#SearchMode-enum"/>
+            <keyword name="SettingsDatabase" id="Core::SettingsDatabase" ref="core-settingsdatabase.html"/>
+            <keyword name="The Action Manager and Commands" id="The Action Manager and Commands" ref="actionmanager.html"/>
+            <keyword name="The Plugin Manager, the Object Pool, and Registered Objects" id="The Plugin Manager, the Object Pool, and Registered Objects" ref="pluginmanager.html"/>
+            <keyword name="User Interface Text Guidelines" id="User Interface Text Guidelines" ref="qtcreator-ui-text.html"/>
+            <keyword name="WizardDialogParameters" id="Core::WizardDialogParameters" ref="core-wizarddialogparameters.html"/>
+            <keyword name="WizardDialogParameters::DialogParameterEnum" id="WizardDialogParameters::DialogParameterEnum" ref="core-wizarddialogparameters.html#DialogParameterEnum-enum"/>
+            <keyword name="WizardDialogParameters::DialogParameterFlags" id="WizardDialogParameters::DialogParameterFlags" ref="core-wizarddialogparameters.html#DialogParameterEnum-enum"/>
+            <keyword name="WizardDialogParameters::ForceCapitalLetterForFileName" id="WizardDialogParameters::ForceCapitalLetterForFileName" ref="core-wizarddialogparameters.html#DialogParameterEnum-enum"/>
+            <keyword name="Writing Documentation" id="Writing Documentation" ref="qtcreator-documentation.html"/>
+            <keyword name="aboutToReload" id="IDocument::aboutToReload" ref="core-idocument.html#aboutToReload"/>
+            <keyword name="aboutToSave" id="EditorManager::aboutToSave" ref="core-editormanager.html#aboutToSave"/>
+            <keyword name="aboutToShutdown" id="IPlugin::aboutToShutdown" ref="extensionsystem-iplugin.html#aboutToShutdown"/>
+            <keyword name="accept" id="BaseFileFilter::accept" ref="core-basefilefilter.html#accept"/>
+            <keyword name="action" id="Command::action" ref="core-command.html#action"/>
+            <keyword name="actionContainer" id="ActionManager::actionContainer" ref="core-actionmanager.html#actionContainer"/>
+            <keyword name="actionId" id="ILocatorFilter::actionId" ref="core-ilocatorfilter.html#actionId"/>
+            <keyword name="activateEditor" id="EditorManager::activateEditor" ref="core-editormanager.html#activateEditor"/>
+            <keyword name="activateEditorForDocument" id="EditorManager::activateEditorForDocument" ref="core-editormanager.html#activateEditorForDocument"/>
+            <keyword name="activateEditorForEntry" id="EditorManager::activateEditorForEntry" ref="core-editormanager.html#activateEditorForEntry"/>
+            <keyword name="activateMode" id="ModeManager::activateMode" ref="core-modemanager.html#activateMode"/>
+            <keyword name="activated" id="SearchResult::activated" ref="core-searchresult.html#activated"/>
+            <keyword name="activationSequence" id="INavigationWidgetFactory::activationSequence" ref="core-inavigationwidgetfactory.html#activationSequence"/>
+            <keyword name="activeStateChanged" id="Command::activeStateChanged" ref="core-command.html#activeStateChanged"/>
+            <keyword name="add" id="Aggregate::add" ref="aggregation-aggregate.html#add"/>
+            <keyword name="add" id="Context::add" ref="core-context.html#add"/>
+            <keyword name="addAction" id="ActionContainer::addAction" ref="core-actioncontainer.html#addAction"/>
+            <keyword name="addAction" id="ModeManager::addAction" ref="core-modemanager.html#addAction"/>
+            <keyword name="addAdditionalContext" id="ICore::addAdditionalContext" ref="core-icore.html#addAdditionalContext"/>
+            <keyword name="addArgument" id="PluginSpec::addArgument" ref="extensionsystem-pluginspec.html#addArgument"/>
+            <keyword name="addCloseEditorListener" id="EditorManager::addCloseEditorListener" ref="core-editormanager.html#addCloseEditorListener"/>
+            <keyword name="addContextObject" id="ICore::addContextObject" ref="core-icore.html#addContextObject"/>
+            <keyword name="addCurrentPositionToNavigationHistory" id="EditorManager::addCurrentPositionToNavigationHistory" ref="core-editormanager.html#addCurrentPositionToNavigationHistory"/>
+            <keyword name="addDocument" id="DocumentManager::addDocument" ref="core-documentmanager.html#addDocument"/>
+            <keyword name="addDocuments" id="DocumentManager::addDocuments" ref="core-documentmanager.html#addDocuments"/>
+            <keyword name="addMenu" id="ActionContainer::addMenu" ref="core-actioncontainer.html#addMenu"/>
+            <keyword name="addMimeType" id="EditorType::addMimeType" ref="core-editortype.html#addMimeType"/>
+            <keyword name="addNativeDirAndOpenWithActions" id="EditorManager::addNativeDirAndOpenWithActions" ref="core-editormanager.html#addNativeDirAndOpenWithActions"/>
+            <keyword name="addObject" id="PluginManager::addObject" ref="extensionsystem-pluginmanager.html#addObject"/>
+            <keyword name="addPinEditorActions" id="EditorManager::addPinEditorActions" ref="core-editormanager.html#addPinEditorActions"/>
+            <keyword name="addPreCloseListener" id="ICore::addPreCloseListener" ref="core-icore.html#addPreCloseListener"/>
+            <keyword name="addResult" id="SearchResult::addResult" ref="core-searchresult.html#addResult"/>
+            <keyword name="addResults" id="SearchResult::addResults" ref="core-searchresult.html#addResults"/>
+            <keyword name="addSaveAndCloseEditorActions" id="EditorManager::addSaveAndCloseEditorActions" ref="core-editormanager.html#addSaveAndCloseEditorActions"/>
+            <keyword name="addSeparator" id="ActionContainer::addSeparator" ref="core-actioncontainer.html#addSeparator"/>
+            <keyword name="addTimedTask" id="ProgressManager::addTimedTask" ref="core-progressmanager.html#addTimedTask"/>
+            <keyword name="addToRecentFiles" id="DocumentManager::addToRecentFiles" ref="core-documentmanager.html#addToRecentFiles"/>
+            <keyword name="additionalReplaceWidget" id="SearchResult::additionalReplaceWidget" ref="core-searchresult.html#additionalReplaceWidget"/>
+            <keyword name="allEditorTypes" id="EditorType::allEditorTypes" ref="core-editortype.html#allEditorTypes"/>
+            <keyword name="allExternalEditors" id="IExternalEditor::allExternalEditors" ref="core-iexternaleditor.html#allExternalEditors"/>
+            <keyword name="allFindFilters" id="IFindFilter::allFindFilters" ref="core-ifindfilter.html#allFindFilters"/>
+            <keyword name="allLocatorFilters" id="ILocatorFilter::allLocatorFilters" ref="core-ilocatorfilter.html#allLocatorFilters"/>
+            <keyword name="allObjects" id="PluginManager::allObjects" ref="extensionsystem-pluginmanager.html#allObjects"/>
+            <keyword name="allOptionsPages" id="IOptionsPage::allOptionsPages" ref="core-ioptionspage.html#allOptionsPages"/>
+            <keyword name="allTasksFinished" id="ProgressManager::allTasksFinished" ref="core-progressmanager.html#allTasksFinished"/>
+            <keyword name="appendGroup" id="ActionContainer::appendGroup" ref="core-actioncontainer.html#appendGroup"/>
+            <keyword name="apply" id="IOptionsPage::apply" ref="core-ioptionspage.html#apply"/>
+            <keyword name="argumentDescriptions" id="PluginSpec::argumentDescriptions" ref="extensionsystem-pluginspec.html#argumentDescriptions"/>
+            <keyword name="arguments" id="PluginManager::arguments" ref="extensionsystem-pluginmanager.html#arguments"/>
+            <keyword name="arguments" id="PluginSpec::arguments" ref="extensionsystem-pluginspec.html#arguments"/>
+            <keyword name="argumentsForRestart" id="PluginManager::argumentsForRestart" ref="extensionsystem-pluginmanager.html#argumentsForRestart"/>
+            <keyword name="asynchronousShutdownFinished" id="IPlugin::asynchronousShutdownFinished" ref="extensionsystem-iplugin.html#asynchronousShutdownFinished"/>
+            <keyword name="at" id="Context::at" ref="core-context.html#at"/>
+            <keyword name="augmentActionWithShortcutToolTip" id="Command::augmentActionWithShortcutToolTip" ref="core-command.html#augmentActionWithShortcutToolTip"/>
+            <keyword name="autoSaved" id="EditorManager::autoSaved" ref="core-editormanager.html#autoSaved"/>
+            <keyword name="begin" id="Context::begin" ref="core-context.html#begin"/>
+            <keyword name="buildFileName" id="BaseFileWizardFactory::buildFileName" ref="core-basefilewizardfactory.html#buildFileName"/>
+            <keyword name="cacheResourcePath" id="ICore::cacheResourcePath" ref="core-icore.html#cacheResourcePath"/>
+            <keyword name="canFocus" id="IOutputPane::canFocus" ref="core-ioutputpane.html#canFocus"/>
+            <keyword name="canNavigate" id="IOutputPane::canNavigate" ref="core-ioutputpane.html#canNavigate"/>
+            <keyword name="canNext" id="IOutputPane::canNext" ref="core-ioutputpane.html#canNext"/>
+            <keyword name="canPrevious" id="IOutputPane::canPrevious" ref="core-ioutputpane.html#canPrevious"/>
+            <keyword name="cancelTasks" id="ProgressManager::cancelTasks" ref="core-progressmanager.html#cancelTasks"/>
+            <keyword name="canceled" id="FutureProgress::canceled" ref="core-futureprogress.html#canceled"/>
+            <keyword name="cancelled" id="SearchResult::cancelled" ref="core-searchresult.html#cancelled"/>
+            <keyword name="caseSensitivity" id="ILocatorFilter::caseSensitivity" ref="core-ilocatorfilter.html#caseSensitivity"/>
+            <keyword name="category" id="IOptionsPage::category" ref="core-ioptionspage.html#category"/>
+            <keyword name="category" id="IWizardFactory::category" ref="core-iwizardfactory.html#category"/>
+            <keyword name="category" id="PluginSpec::category" ref="extensionsystem-pluginspec.html#category"/>
+            <keyword name="categoryIcon" id="IOptionsPage::categoryIcon" ref="core-ioptionspage.html#categoryIcon"/>
+            <keyword name="changed" id="Aggregate::changed" ref="aggregation-aggregate.html#changed"/>
+            <keyword name="changed" id="IDocument::changed" ref="core-idocument.html#changed"/>
+            <keyword name="changed" id="IFindSupport::changed" ref="core-ifindsupport.html#changed"/>
+            <keyword name="checkPermissions" id="IDocument::checkPermissions" ref="core-idocument.html#checkPermissions"/>
+            <keyword name="clear" id="ActionContainer::clear" ref="core-actioncontainer.html#clear"/>
+            <keyword name="clearContents" id="IOutputPane::clearContents" ref="core-ioutputpane.html#clearContents"/>
+            <keyword name="clearContents" id="SearchResultWindow::clearContents" ref="core-searchresultwindow.html#clearContents"/>
+            <keyword name="clearFindScope" id="BaseTextFind::clearFindScope" ref="core-basetextfind.html#clearFindScope"/>
+            <keyword name="clearFindScope" id="IFindSupport::clearFindScope" ref="core-ifindsupport.html#clearFindScope"/>
+            <keyword name="clearHighlights" id="BaseTextFind::clearHighlights" ref="core-basetextfind.html#clearHighlights"/>
+            <keyword name="clearHighlights" id="IFindSupport::clearHighlights" ref="core-ifindsupport.html#clearHighlights"/>
+            <keyword name="clearRecentFiles" id="DocumentManager::clearRecentFiles" ref="core-documentmanager.html#clearRecentFiles"/>
+            <keyword name="clearUniqueId" id="EditorManager::clearUniqueId" ref="core-editormanager.html#clearUniqueId"/>
+            <keyword name="clicked" id="FutureProgress::clicked" ref="core-futureprogress.html#clicked"/>
+            <keyword name="closeAllDocuments" id="EditorManager::closeAllDocuments" ref="core-editormanager.html#closeAllDocuments"/>
+            <keyword name="closeAllEditors" id="EditorManager::closeAllEditors" ref="core-editormanager.html#closeAllEditors"/>
+            <keyword name="closeDocuments" id="EditorManager::closeDocuments" ref="core-editormanager.html#closeDocuments"/>
+            <keyword name="closeEditors" id="EditorManager::closeEditors" ref="core-editormanager.html#closeEditors"/>
+            <keyword name="closeOtherDocuments" id="EditorManager::closeOtherDocuments" ref="core-editormanager.html#closeOtherDocuments"/>
+            <keyword name="command" id="ActionManager::command" ref="core-actionmanager.html#command"/>
+            <keyword name="commandAdded" id="ActionManager::commandAdded" ref="core-actionmanager.html#commandAdded"/>
+            <keyword name="commandListChanged" id="ActionManager::commandListChanged" ref="core-actionmanager.html#commandListChanged"/>
+            <keyword name="commands" id="ActionManager::commands" ref="core-actionmanager.html#commands"/>
+            <keyword name="compatVersion" id="PluginSpec::compatVersion" ref="extensionsystem-pluginspec.html#compatVersion"/>
+            <keyword name="completedFindString" id="BaseTextFind::completedFindString" ref="core-basetextfind.html#completedFindString"/>
+            <keyword name="completedFindString" id="IFindSupport::completedFindString" ref="core-ifindsupport.html#completedFindString"/>
+            <keyword name="component" id="Aggregate::component" ref="aggregation-aggregate.html#component"/>
+            <keyword name="components" id="Aggregate::components" ref="aggregation-aggregate.html#components"/>
+            <keyword name="contains" id="Context::contains" ref="core-context.html#contains"/>
+            <keyword name="contents" id="IDocument::contents" ref="core-idocument.html#contents"/>
+            <keyword name="contentsChanged" id="IDocument::contentsChanged" ref="core-idocument.html#contentsChanged"/>
+            <keyword name="context" id="Command::context" ref="core-command.html#context"/>
+            <keyword name="context" id="IContext::context" ref="core-icontext.html#context"/>
+            <keyword name="contextAboutToChange" id="ICore::contextAboutToChange" ref="core-icore.html#contextAboutToChange"/>
+            <keyword name="contextChanged" id="ICore::contextChanged" ref="core-icore.html#contextChanged"/>
+            <keyword name="contextHelp" id="IContext::contextHelp" ref="core-icontext.html#contextHelp"/>
+            <keyword name="contextObject" id="ICore::contextObject" ref="core-icore.html#contextObject"/>
+            <keyword name="copyright" id="PluginSpec::copyright" ref="extensionsystem-pluginspec.html#copyright"/>
+            <keyword name="coreAboutToClose" id="ICore::coreAboutToClose" ref="core-icore.html#coreAboutToClose"/>
+            <keyword name="coreAboutToOpen" id="ICore::coreAboutToOpen" ref="core-icore.html#coreAboutToOpen"/>
+            <keyword name="coreOpened" id="ICore::coreOpened" ref="core-icore.html#coreOpened"/>
+            <keyword name="count" id="SearchResult::count" ref="core-searchresult.html#count"/>
+            <keyword name="countChanged" id="SearchResult::countChanged" ref="core-searchresult.html#countChanged"/>
+            <keyword name="create" id="BaseFileWizardFactory::create" ref="core-basefilewizardfactory.html#create"/>
+            <keyword name="createConfigWidget" id="IFindFilter::createConfigWidget" ref="core-ifindfilter.html#createConfigWidget"/>
+            <keyword name="createEditor" id="IEditorFactory::createEditor" ref="core-ieditorfactory.html#createEditor"/>
+            <keyword name="createMenu" id="ActionManager::createMenu" ref="core-actionmanager.html#createMenu"/>
+            <keyword name="createMenuBar" id="ActionManager::createMenuBar" ref="core-actionmanager.html#createMenuBar"/>
+            <keyword name="createRegExp" id="ILocatorFilter::createRegExp" ref="core-ilocatorfilter.html#createRegExp"/>
+            <keyword name="createTestObjects" id="IPlugin::createTestObjects" ref="extensionsystem-iplugin.html#createTestObjects"/>
+            <keyword name="createTouchBar" id="ActionManager::createTouchBar" ref="core-actionmanager.html#createTouchBar"/>
+            <keyword name="createWidget" id="INavigationWidgetFactory::createWidget" ref="core-inavigationwidgetfactory.html#createWidget"/>
+            <keyword name="currentColumn" id="IEditor::currentColumn" ref="core-ieditor.html#currentColumn"/>
+            <keyword name="currentContextObject" id="ICore::currentContextObject" ref="core-icore.html#currentContextObject"/>
+            <keyword name="currentContextWidget" id="ICore::currentContextWidget" ref="core-icore.html#currentContextWidget"/>
+            <keyword name="currentDocument" id="EditorManager::currentDocument" ref="core-editormanager.html#currentDocument"/>
+            <keyword name="currentDocumentStateChanged" id="EditorManager::currentDocumentStateChanged" ref="core-editormanager.html#currentDocumentStateChanged"/>
+            <keyword name="currentEditor" id="EditorManager::currentEditor" ref="core-editormanager.html#currentEditor"/>
+            <keyword name="currentEditorAboutToChange" id="EditorManager::currentEditorAboutToChange" ref="core-editormanager.html#currentEditorAboutToChange"/>
+            <keyword name="currentEditorChanged" id="EditorManager::currentEditorChanged" ref="core-editormanager.html#currentEditorChanged"/>
+            <keyword name="currentFindString" id="BaseTextFind::currentFindString" ref="core-basetextfind.html#currentFindString"/>
+            <keyword name="currentFindString" id="IFindSupport::currentFindString" ref="core-ifindsupport.html#currentFindString"/>
+            <keyword name="currentLine" id="IEditor::currentLine" ref="core-ieditor.html#currentLine"/>
+            <keyword name="currentMode" id="ModeManager::currentMode" ref="core-modemanager.html#currentMode"/>
+            <keyword name="currentModeAboutToChange" id="ModeManager::currentModeAboutToChange" ref="core-modemanager.html#currentModeAboutToChange"/>
+            <keyword name="currentModeChanged" id="ModeManager::currentModeChanged" ref="core-modemanager.html#currentModeChanged"/>
+            <keyword name="currentModeId" id="ModeManager::currentModeId" ref="core-modemanager.html#currentModeId"/>
+            <keyword name="currentPlugin" id="PluginView::currentPlugin" ref="extensionsystem-pluginview.html#currentPlugin"/>
+            <keyword name="currentPluginChanged" id="PluginView::currentPluginChanged" ref="extensionsystem-pluginview.html#currentPluginChanged"/>
+            <keyword name="cutForwardNavigationHistory" id="EditorManager::cutForwardNavigationHistory" ref="core-editormanager.html#cutForwardNavigationHistory"/>
+            <keyword name="defaultEditorTypes" id="EditorType::defaultEditorTypes" ref="core-editortype.html#defaultEditorTypes"/>
+            <keyword name="defaultKeySequences" id="Command::defaultKeySequences" ref="core-command.html#defaultKeySequences"/>
+            <keyword name="defaultLineEnding" id="EditorManager::defaultLineEnding" ref="core-editormanager.html#defaultLineEnding"/>
+            <keyword name="defaultLocationForNewFiles" id="DocumentManager::defaultLocationForNewFiles" ref="core-documentmanager.html#defaultLocationForNewFiles"/>
+            <keyword name="defaultShortcut" id="IFindFilter::defaultShortcut" ref="core-ifindfilter.html#defaultShortcut"/>
+            <keyword name="defaultTextCodec" id="EditorManager::defaultTextCodec" ref="core-editormanager.html#defaultTextCodec"/>
+            <keyword name="defineFindScope" id="BaseTextFind::defineFindScope" ref="core-basetextfind.html#defineFindScope"/>
+            <keyword name="defineFindScope" id="IFindSupport::defineFindScope" ref="core-ifindsupport.html#defineFindScope"/>
+            <keyword name="delayedInitialize" id="IPlugin::delayedInitialize" ref="extensionsystem-iplugin.html#delayedInitialize"/>
+            <keyword name="dependencies" id="PluginSpec::dependencies" ref="extensionsystem-pluginspec.html#dependencies"/>
+            <keyword name="dependencySpecs" id="PluginSpec::dependencySpecs" ref="extensionsystem-pluginspec.html#dependencySpecs"/>
+            <keyword name="description" id="Command::description" ref="core-command.html#description"/>
+            <keyword name="description" id="ILocatorFilter::description" ref="core-ilocatorfilter.html#description"/>
+            <keyword name="description" id="IWizardFactory::description" ref="core-iwizardfactory.html#description"/>
+            <keyword name="description" id="PluginSpec::description" ref="extensionsystem-pluginspec.html#description"/>
+            <keyword name="descriptionForFindFlags" id="IFindFilter::descriptionForFindFlags" ref="core-ifindfilter.html#descriptionForFindFlags"/>
+            <keyword name="dialogParent" id="ICore::dialogParent" ref="core-icore.html#dialogParent"/>
+            <keyword name="displayCategory" id="IOptionsPage::displayCategory" ref="core-ioptionspage.html#displayCategory"/>
+            <keyword name="displayCategory" id="IWizardFactory::displayCategory" ref="core-iwizardfactory.html#displayCategory"/>
+            <keyword name="displayName" id="EditorType::displayName" ref="core-editortype.html#displayName"/>
+            <keyword name="displayName" id="IDocument::displayName" ref="core-idocument.html#displayName"/>
+            <keyword name="displayName" id="IFindFilter::displayName" ref="core-ifindfilter.html#displayName"/>
+            <keyword name="displayName" id="ILocatorFilter::displayName" ref="core-ilocatorfilter.html#displayName"/>
+            <keyword name="displayName" id="IMode::displayName" ref="core-imode.html#displayName-prop"/>
+            <keyword name="displayName" id="IMode::displayName" ref="core-imode.html#displayName-prop"/>
+            <keyword name="displayName" id="INavigationWidgetFactory::displayName" ref="core-inavigationwidgetfactory.html#displayName"/>
+            <keyword name="displayName" id="IOptionsPage::displayName" ref="core-ioptionspage.html#displayName"/>
+            <keyword name="displayName" id="IOutputPane::displayName" ref="core-ioutputpane.html#displayName"/>
+            <keyword name="displayName" id="IWizardFactory::displayName" ref="core-iwizardfactory.html#displayName"/>
+            <keyword name="displayNameChanged" id="IFindFilter::displayNameChanged" ref="core-ifindfilter.html#displayNameChanged"/>
+            <keyword name="document" id="IEditor::document" ref="core-ieditor.html#document"/>
+            <keyword name="documentClosed" id="EditorManager::documentClosed" ref="core-editormanager.html#documentClosed"/>
+            <keyword name="documentOpened" id="EditorManager::documentOpened" ref="core-editormanager.html#documentOpened"/>
+            <keyword name="documentStateChanged" id="EditorManager::documentStateChanged" ref="core-editormanager.html#documentStateChanged"/>
+            <keyword name="duplicate" id="IEditor::duplicate" ref="core-ieditor.html#duplicate"/>
+            <keyword name="duplicateSupported" id="IEditor::duplicateSupported" ref="core-ieditor.html#duplicateSupported"/>
+            <keyword name="editorAboutToClose" id="EditorManager::editorAboutToClose" ref="core-editormanager.html#editorAboutToClose"/>
+            <keyword name="editorCreated" id="EditorManager::editorCreated" ref="core-editormanager.html#editorCreated"/>
+            <keyword name="editorOpened" id="EditorManager::editorOpened" ref="core-editormanager.html#editorOpened"/>
+            <keyword name="editorsClosed" id="EditorManager::editorsClosed" ref="core-editormanager.html#editorsClosed"/>
+            <keyword name="enabled" id="IMode::enabled" ref="core-imode.html#enabled-prop"/>
+            <keyword name="enabledChanged" id="IFindFilter::enabledChanged" ref="core-ifindfilter.html#enabledChanged"/>
+            <keyword name="enabledStateChanged" id="IMode::enabledStateChanged" ref="core-imode.html#enabled-prop"/>
+            <keyword name="end" id="Context::end" ref="core-context.html#end"/>
+            <keyword name="errorString" id="PluginSpec::errorString" ref="extensionsystem-pluginspec.html#errorString"/>
+            <keyword name="expectFileChange" id="DocumentManager::expectFileChange" ref="core-documentmanager.html#expectFileChange"/>
+            <keyword name="extensionsInitialized" id="IPlugin::extensionsInitialized" ref="extensionsystem-iplugin.html#extensionsInitialized"/>
+            <keyword name="externalEditors" id="IExternalEditor::externalEditors" ref="core-iexternaleditor.html#externalEditors"/>
+            <keyword name="fallbackSaveAsFileName" id="IDocument::fallbackSaveAsFileName" ref="core-idocument.html#fallbackSaveAsFileName"/>
+            <keyword name="fallbackSaveAsPath" id="IDocument::fallbackSaveAsPath" ref="core-idocument.html#fallbackSaveAsPath"/>
+            <keyword name="fileDialogInitialDirectory" id="DocumentManager::fileDialogInitialDirectory" ref="core-documentmanager.html#fileDialogInitialDirectory"/>
+            <keyword name="fileDialogLastVisitedDirectory" id="DocumentManager::fileDialogLastVisitedDirectory" ref="core-documentmanager.html#fileDialogLastVisitedDirectory"/>
+            <keyword name="fileIterator" id="BaseFileFilter::fileIterator" ref="core-basefilefilter.html#fileIterator"/>
+            <keyword name="filePath" id="IDocument::filePath" ref="core-idocument.html#filePath"/>
+            <keyword name="filePath" id="PluginSpec::filePath" ref="extensionsystem-pluginspec.html#filePath"/>
+            <keyword name="filePathChanged" id="IDocument::filePathChanged" ref="core-idocument.html#filePathChanged"/>
+            <keyword name="filePathKey" id="DocumentManager::filePathKey" ref="core-documentmanager.html#filePathKey"/>
+            <keyword name="findAll" id="IFindFilter::findAll" ref="core-ifindfilter.html#findAll"/>
+            <keyword name="findIncremental" id="BaseTextFind::findIncremental" ref="core-basetextfind.html#findIncremental"/>
+            <keyword name="findIncremental" id="IFindSupport::findIncremental" ref="core-ifindsupport.html#findIncremental"/>
+            <keyword name="findScopeChanged" id="BaseTextFind::findScopeChanged" ref="core-basetextfind.html#findScopeChanged"/>
+            <keyword name="findStep" id="BaseTextFind::findStep" ref="core-basetextfind.html#findStep"/>
+            <keyword name="findStep" id="IFindSupport::findStep" ref="core-ifindsupport.html#findStep"/>
+            <keyword name="finish" id="IOptionsPage::finish" ref="core-ioptionspage.html#finish"/>
+            <keyword name="finishSearch" id="SearchResult::finishSearch" ref="core-searchresult.html#finishSearch"/>
+            <keyword name="finished" id="FutureProgress::finished" ref="core-futureprogress.html#finished"/>
+            <keyword name="flash" id="IOutputPane::flash" ref="core-ioutputpane.html#flash"/>
+            <keyword name="flashButton" id="IOutputPane::flashButton" ref="core-ioutputpane.html#flashButton"/>
+            <keyword name="format" id="BaseTextDocument::format" ref="core-basetextdocument.html#format"/>
+            <keyword name="formatOptions" id="PluginManager::formatOptions" ref="extensionsystem-pluginmanager.html#formatOptions"/>
+            <keyword name="formatPluginOptions" id="PluginManager::formatPluginOptions" ref="extensionsystem-pluginmanager.html#formatPluginOptions"/>
+            <keyword name="formatPluginVersions" id="PluginManager::formatPluginVersions" ref="extensionsystem-pluginmanager.html#formatPluginVersions"/>
+            <keyword name="future" id="FutureProgress::future" ref="core-futureprogress.html#future"/>
+            <keyword name="generateFiles" id="BaseFileWizardFactory::generateFiles" ref="core-basefilewizardfactory.html#generateFiles"/>
+            <keyword name="getObject" id="PluginManager::getObject" ref="extensionsystem-pluginmanager.html#getObject"/>
+            <keyword name="getObjectByName" id="PluginManager::getObjectByName" ref="extensionsystem-pluginmanager.html#getObjectByName"/>
+            <keyword name="getOpenFileNames" id="DocumentManager::getOpenFileNames" ref="core-documentmanager.html#getOpenFileNames"/>
+            <keyword name="getOpenFilePaths" id="EditorManager::getOpenFilePaths" ref="core-editormanager.html#getOpenFilePaths"/>
+            <keyword name="getSaveAsFileName" id="DocumentManager::getSaveAsFileName" ref="core-documentmanager.html#getSaveAsFileName"/>
+            <keyword name="globalSettings" id="PluginManager::globalSettings" ref="extensionsystem-pluginmanager.html#globalSettings"/>
+            <keyword name="goBackInNavigationHistory" id="EditorManager::goBackInNavigationHistory" ref="core-editormanager.html#goBackInNavigationHistory"/>
+            <keyword name="goForwardInNavigationHistory" id="EditorManager::goForwardInNavigationHistory" ref="core-editormanager.html#goForwardInNavigationHistory"/>
+            <keyword name="goToNext" id="IOutputPane::goToNext" ref="core-ioutputpane.html#goToNext"/>
+            <keyword name="goToPrev" id="IOutputPane::goToPrev" ref="core-ioutputpane.html#goToPrev"/>
+            <keyword name="gotoLine" id="IEditor::gotoLine" ref="core-ieditor.html#gotoLine"/>
+            <keyword name="gotoOtherSplit" id="EditorManager::gotoOtherSplit" ref="core-editormanager.html#gotoOtherSplit"/>
+            <keyword name="hasAttribute" id="Command::hasAttribute" ref="core-command.html#hasAttribute"/>
+            <keyword name="hasError" id="FutureProgress::hasError" ref="core-futureprogress.html#hasError"/>
+            <keyword name="hasError" id="PluginManager::hasError" ref="extensionsystem-pluginmanager.html#hasError"/>
+            <keyword name="hasError" id="PluginSpec::hasError" ref="extensionsystem-pluginspec.html#hasError"/>
+            <keyword name="hasFocus" id="IOutputPane::hasFocus" ref="core-ioutputpane.html#hasFocus"/>
+            <keyword name="hide" id="IOutputPane::hide" ref="core-ioutputpane.html#hide"/>
+            <keyword name="hidePage" id="IOutputPane::hidePage" ref="core-ioutputpane.html#hidePage"/>
+            <keyword name="highlightAll" id="BaseTextFind::highlightAll" ref="core-basetextfind.html#highlightAll"/>
+            <keyword name="highlightAll" id="IFindSupport::highlightAll" ref="core-ifindsupport.html#highlightAll"/>
+            <keyword name="highlightAllRequested" id="BaseTextFind::highlightAllRequested" ref="core-basetextfind.html#highlightAllRequested"/>
+            <keyword name="highlightInfo" id="ILocatorFilter::highlightInfo" ref="core-ilocatorfilter.html#highlightInfo"/>
+            <keyword name="icon" id="FileIconProvider::icon" ref="core-fileiconprovider.html#icon"/>
+            <keyword name="icon" id="IMode::icon" ref="core-imode.html#icon-prop"/>
+            <keyword name="icon" id="IMode::icon" ref="core-imode.html#icon-prop"/>
+            <keyword name="icon" id="IWizardFactory::icon" ref="core-iwizardfactory.html#icon"/>
+            <keyword name="id" id="EditorType::id" ref="core-editortype.html#id"/>
+            <keyword name="id" id="IDocument::id" ref="core-idocument.html#id"/>
+            <keyword name="id" id="IFindFilter::id" ref="core-ifindfilter.html#id"/>
+            <keyword name="id" id="ILocatorFilter::id" ref="core-ilocatorfilter.html#id"/>
+            <keyword name="id" id="IMode::id" ref="core-imode.html#id-prop"/>
+            <keyword name="id" id="IMode::id" ref="core-imode.html#id-prop"/>
+            <keyword name="id" id="INavigationWidgetFactory::id" ref="core-inavigationwidgetfactory.html#id"/>
+            <keyword name="id" id="IOptionsPage::id" ref="core-ioptionspage.html#id"/>
+            <keyword name="id" id="IWizardFactory::id" ref="core-iwizardfactory.html#id"/>
+            <keyword name="indexOf" id="Context::indexOf" ref="core-context.html#indexOf"/>
+            <keyword name="infoBar" id="ICore::infoBar" ref="core-icore.html#infoBar"/>
+            <keyword name="infoBar" id="IDocument::infoBar" ref="core-idocument.html#infoBar"/>
+            <keyword name="initialize" id="IPlugin::initialize" ref="extensionsystem-iplugin.html#initialize"/>
+            <keyword name="insertGroup" id="ActionContainer::insertGroup" ref="core-actioncontainer.html#insertGroup"/>
+            <keyword name="insertLocation" id="ActionContainer::insertLocation" ref="core-actioncontainer.html#insertLocation"/>
+            <keyword name="installerResourcePath" id="ICore::installerResourcePath" ref="core-icore.html#installerResourcePath"/>
+            <keyword name="instance" id="ActionManager::instance" ref="core-actionmanager.html#instance"/>
+            <keyword name="instance" id="EditorManager::instance" ref="core-editormanager.html#instance"/>
+            <keyword name="instance" id="ICore::instance" ref="core-icore.html#instance"/>
+            <keyword name="instance" id="ModeManager::instance" ref="core-modemanager.html#instance"/>
+            <keyword name="instance" id="ProgressManager::instance" ref="core-progressmanager.html#instance"/>
+            <keyword name="instance" id="SearchResultWindow::instance" ref="core-searchresultwindow.html#instance"/>
+            <keyword name="instance" id="PluginManager::instance" ref="extensionsystem-pluginmanager.html#instance"/>
+            <keyword name="invoke" id="ExtensionSystem::invoke" ref="extensionsystem.html#invoke"/>
+            <keyword name="isActive" id="Command::isActive" ref="core-command.html#isActive"/>
+            <keyword name="isAutoSaveFile" id="EditorManager::isAutoSaveFile" ref="core-editormanager.html#isAutoSaveFile"/>
+            <keyword name="isAvailableForHostPlatform" id="PluginSpec::isAvailableForHostPlatform" ref="extensionsystem-pluginspec.html#isAvailableForHostPlatform"/>
+            <keyword name="isConfigurable" id="ILocatorFilter::isConfigurable" ref="core-ilocatorfilter.html#isConfigurable"/>
+            <keyword name="isDesignModePreferred" id="IEditor::isDesignModePreferred" ref="core-ieditor.html#isDesignModePreferred"/>
+            <keyword name="isEffectivelyEnabled" id="PluginSpec::isEffectivelyEnabled" ref="extensionsystem-pluginspec.html#isEffectivelyEnabled"/>
+            <keyword name="isEmpty" id="Context::isEmpty" ref="core-context.html#isEmpty"/>
+            <keyword name="isEnabled" id="IFindFilter::isEnabled" ref="core-ifindfilter.html#isEnabled"/>
+            <keyword name="isEnabled" id="ILocatorFilter::isEnabled" ref="core-ilocatorfilter.html#isEnabled"/>
+            <keyword name="isEnabled" id="IMode::isEnabled" ref="core-imode.html#enabled-prop"/>
+            <keyword name="isEnabledByDefault" id="PluginSpec::isEnabledByDefault" ref="extensionsystem-pluginspec.html#isEnabledByDefault"/>
+            <keyword name="isEnabledBySettings" id="PluginSpec::isEnabledBySettings" ref="extensionsystem-pluginspec.html#isEnabledBySettings"/>
+            <keyword name="isEnabledIndirectly" id="PluginSpec::isEnabledIndirectly" ref="extensionsystem-pluginspec.html#isEnabledIndirectly"/>
+            <keyword name="isExperimental" id="PluginSpec::isExperimental" ref="extensionsystem-pluginspec.html#isExperimental"/>
+            <keyword name="isFileReadOnly" id="IDocument::isFileReadOnly" ref="core-idocument.html#isFileReadOnly"/>
+            <keyword name="isForceDisabled" id="PluginSpec::isForceDisabled" ref="extensionsystem-pluginspec.html#isForceDisabled"/>
+            <keyword name="isForceEnabled" id="PluginSpec::isForceEnabled" ref="extensionsystem-pluginspec.html#isForceEnabled"/>
+            <keyword name="isHidden" id="ILocatorFilter::isHidden" ref="core-ilocatorfilter.html#isHidden"/>
+            <keyword name="isIncludedByDefault" id="ILocatorFilter::isIncludedByDefault" ref="core-ilocatorfilter.html#isIncludedByDefault"/>
+            <keyword name="isModified" id="IDocument::isModified" ref="core-idocument.html#isModified"/>
+            <keyword name="isNewItemDialogRunning" id="ICore::isNewItemDialogRunning" ref="core-icore.html#isNewItemDialogRunning"/>
+            <keyword name="isOldSetting" id="ILocatorFilter::isOldSetting" ref="core-ilocatorfilter.html#isOldSetting"/>
+            <keyword name="isPresentationModeEnabled" id="ActionManager::isPresentationModeEnabled" ref="core-actionmanager.html#isPresentationModeEnabled"/>
+            <keyword name="isReplaceSupported" id="IFindFilter::isReplaceSupported" ref="core-ifindfilter.html#isReplaceSupported"/>
+            <keyword name="isRequired" id="PluginSpec::isRequired" ref="extensionsystem-pluginspec.html#isRequired"/>
+            <keyword name="isSaveAsAllowed" id="IDocument::isSaveAsAllowed" ref="core-idocument.html#isSaveAsAllowed"/>
+            <keyword name="isScriptable" id="Command::isScriptable" ref="core-command.html#isScriptable"/>
+            <keyword name="isSuspendAllowed" id="IDocument::isSuspendAllowed" ref="core-idocument.html#isSuspendAllowed"/>
+            <keyword name="isTemporary" id="IDocument::isTemporary" ref="core-idocument.html#isTemporary"/>
+            <keyword name="isValid" id="IFindFilter::isValid" ref="core-ifindfilter.html#isValid"/>
+            <keyword name="keySequence" id="Command::keySequence" ref="core-command.html#keySequence"/>
+            <keyword name="keySequenceChanged" id="Command::keySequenceChanged" ref="core-command.html#keySequenceChanged"/>
+            <keyword name="keySequences" id="Command::keySequences" ref="core-command.html#keySequences"/>
+            <keyword name="kind" id="IWizardFactory::kind" ref="core-iwizardfactory.html#kind"/>
+            <keyword name="libexecPath" id="ICore::libexecPath" ref="core-icore.html#libexecPath"/>
+            <keyword name="license" id="PluginSpec::license" ref="extensionsystem-pluginspec.html#license"/>
+            <keyword name="loadPlugins" id="PluginManager::loadPlugins" ref="extensionsystem-pluginmanager.html#loadPlugins"/>
+            <keyword name="loadQueue" id="PluginManager::loadQueue" ref="extensionsystem-pluginmanager.html#loadQueue"/>
+            <keyword name="location" id="PluginSpec::location" ref="extensionsystem-pluginspec.html#location"/>
+            <keyword name="mainWindow" id="ICore::mainWindow" ref="core-icore.html#mainWindow"/>
+            <keyword name="matches" id="IOptionsPage::matches" ref="core-ioptionspage.html#matches"/>
+            <keyword name="matchesFor" id="BaseFileFilter::matchesFor" ref="core-basefilefilter.html#matchesFor"/>
+            <keyword name="matchesFor" id="ILocatorFilter::matchesFor" ref="core-ilocatorfilter.html#matchesFor"/>
+            <keyword name="maxTextFileSize" id="EditorManager::maxTextFileSize" ref="core-editormanager.html#maxTextFileSize"/>
+            <keyword name="menu" id="ActionContainer::menu" ref="core-actioncontainer.html#menu"/>
+            <keyword name="menu" id="IMode::menu" ref="core-imode.html#menu-prop"/>
+            <keyword name="menu" id="IMode::menu" ref="core-imode.html#menu-prop"/>
+            <keyword name="menuBar" id="ActionContainer::menuBar" ref="core-actioncontainer.html#menuBar"/>
+            <keyword name="metaData" id="PluginSpec::metaData" ref="extensionsystem-pluginspec.html#metaData"/>
+            <keyword name="mimeType" id="IDocument::mimeType" ref="core-idocument.html#mimeType"/>
+            <keyword name="mimeTypeChanged" id="IDocument::mimeTypeChanged" ref="core-idocument.html#mimeTypeChanged"/>
+            <keyword name="mimeTypes" id="EditorType::mimeTypes" ref="core-editortype.html#mimeTypes"/>
+            <keyword name="modifiedDocuments" id="DocumentManager::modifiedDocuments" ref="core-documentmanager.html#modifiedDocuments"/>
+            <keyword name="msgConfigureDialogTitle" id="ILocatorFilter::msgConfigureDialogTitle" ref="core-ilocatorfilter.html#msgConfigureDialogTitle"/>
+            <keyword name="msgIncludeByDefault" id="ILocatorFilter::msgIncludeByDefault" ref="core-ilocatorfilter.html#msgIncludeByDefault"/>
+            <keyword name="msgIncludeByDefaultToolTip" id="ILocatorFilter::msgIncludeByDefaultToolTip" ref="core-ilocatorfilter.html#msgIncludeByDefaultToolTip"/>
+            <keyword name="msgPrefixLabel" id="ILocatorFilter::msgPrefixLabel" ref="core-ilocatorfilter.html#msgPrefixLabel"/>
+            <keyword name="msgPrefixToolTip" id="ILocatorFilter::msgPrefixToolTip" ref="core-ilocatorfilter.html#msgPrefixToolTip"/>
+            <keyword name="msgShowOptionsDialog" id="ICore::msgShowOptionsDialog" ref="core-icore.html#msgShowOptionsDialog"/>
+            <keyword name="msgShowOptionsDialogToolTip" id="ICore::msgShowOptionsDialogToolTip" ref="core-icore.html#msgShowOptionsDialogToolTip"/>
+            <keyword name="name" id="PluginDependency::name" ref="extensionsystem-plugindependency.html#name-var"/>
+            <keyword name="name" id="PluginSpec::name" ref="extensionsystem-pluginspec.html#name"/>
+            <keyword name="navigateStateChanged" id="IOutputPane::navigateStateChanged" ref="core-ioutputpane.html#navigateStateChanged"/>
+            <keyword name="navigateStateUpdate" id="IOutputPane::navigateStateUpdate" ref="core-ioutputpane.html#navigateStateUpdate"/>
+            <keyword name="newItemDialog" id="ICore::newItemDialog" ref="core-icore.html#newItemDialog"/>
+            <keyword name="onAllDisabledBehavior" id="ActionContainer::onAllDisabledBehavior" ref="core-actioncontainer.html#onAllDisabledBehavior"/>
+            <keyword name="open" id="IDocument::open" ref="core-idocument.html#open"/>
+            <keyword name="openConfigDialog" id="ILocatorFilter::openConfigDialog" ref="core-ilocatorfilter.html#openConfigDialog"/>
+            <keyword name="openEditor" id="EditorManager::openEditor" ref="core-editormanager.html#openEditor"/>
+            <keyword name="openEditorAt" id="EditorManager::openEditorAt" ref="core-editormanager.html#openEditorAt"/>
+            <keyword name="openEditorAtSearchResult" id="EditorManager::openEditorAtSearchResult" ref="core-editormanager.html#openEditorAtSearchResult"/>
+            <keyword name="openEditorWithContents" id="EditorManager::openEditorWithContents" ref="core-editormanager.html#openEditorWithContents"/>
+            <keyword name="openExternalEditor" id="EditorManager::openExternalEditor" ref="core-editormanager.html#openExternalEditor"/>
+            <keyword name="openFiles" id="ICore::openFiles" ref="core-icore.html#openFiles"/>
+            <keyword name="openNewSearchPanel" id="SearchResultWindow::openNewSearchPanel" ref="core-searchresultwindow.html#openNewSearchPanel"/>
+            <keyword name="outputWidget" id="IOutputPane::outputWidget" ref="core-ioutputpane.html#outputWidget"/>
+            <keyword name="overlayIcon" id="FileIconProvider::overlayIcon" ref="core-fileiconprovider.html#overlayIcon"/>
+            <keyword name="parentAggregate" id="Aggregate::parentAggregate" ref="aggregation-aggregate.html#parentAggregate"/>
+            <keyword name="parseOptions" id="PluginManager::parseOptions" ref="extensionsystem-pluginmanager.html#parseOptions"/>
+            <keyword name="paused" id="SearchResult::paused" ref="core-searchresult.html#paused"/>
+            <keyword name="pixmapForFindFlags" id="IFindFilter::pixmapForFindFlags" ref="core-ifindfilter.html#pixmapForFindFlags"/>
+            <keyword name="platformSpecification" id="PluginSpec::platformSpecification" ref="extensionsystem-pluginspec.html#platformSpecification"/>
+            <keyword name="plugin" id="PluginSpec::plugin" ref="extensionsystem-pluginspec.html#plugin"/>
+            <keyword name="pluginActivated" id="PluginView::pluginActivated" ref="extensionsystem-pluginview.html#pluginActivated"/>
+            <keyword name="pluginIID" id="PluginManager::pluginIID" ref="extensionsystem-pluginmanager.html#pluginIID"/>
+            <keyword name="pluginPaths" id="PluginManager::pluginPaths" ref="extensionsystem-pluginmanager.html#pluginPaths"/>
+            <keyword name="pluginSettingsChanged" id="PluginView::pluginSettingsChanged" ref="extensionsystem-pluginview.html#pluginSettingsChanged"/>
+            <keyword name="pluginSpec" id="IPlugin::pluginSpec" ref="extensionsystem-iplugin.html#pluginSpec"/>
+            <keyword name="plugins" id="PluginManager::plugins" ref="extensionsystem-pluginmanager.html#plugins"/>
+            <keyword name="pluginsRequiredByPlugin" id="PluginManager::pluginsRequiredByPlugin" ref="extensionsystem-pluginmanager.html#pluginsRequiredByPlugin"/>
+            <keyword name="pluginsRequiringPlugin" id="PluginManager::pluginsRequiringPlugin" ref="extensionsystem-pluginmanager.html#pluginsRequiringPlugin"/>
+            <keyword name="populateOpenWithMenu" id="EditorManager::populateOpenWithMenu" ref="core-editormanager.html#populateOpenWithMenu"/>
+            <keyword name="popup" id="IOutputPane::popup" ref="core-ioutputpane.html#popup"/>
+            <keyword name="popup" id="SearchResult::popup" ref="core-searchresult.html#popup"/>
+            <keyword name="postGenerateFiles" id="BaseFileWizardFactory::postGenerateFiles" ref="core-basefilewizardfactory.html#postGenerateFiles"/>
+            <keyword name="postGenerateOpenEditors" id="BaseFileWizardFactory::postGenerateOpenEditors" ref="core-basefilewizardfactory.html#postGenerateOpenEditors"/>
+            <keyword name="preferredDisplayName" id="IDocument::preferredDisplayName" ref="core-idocument.html#preferredDisplayName"/>
+            <keyword name="preferredEditorFactories" id="IEditorFactory::preferredEditorFactories" ref="core-ieditorfactory.html#preferredEditorFactories"/>
+            <keyword name="preferredSuffix" id="BaseFileWizardFactory::preferredSuffix" ref="core-basefilewizardfactory.html#preferredSuffix"/>
+            <keyword name="prepareSearch" id="BaseFileFilter::prepareSearch" ref="core-basefilefilter.html#prepareSearch"/>
+            <keyword name="prepareSearch" id="ILocatorFilter::prepareSearch" ref="core-ilocatorfilter.html#prepareSearch"/>
+            <keyword name="prepend" id="Context::prepend" ref="core-context.html#prepend"/>
+            <keyword name="printer" id="ICore::printer" ref="core-icore.html#printer"/>
+            <keyword name="priority" id="ILocatorFilter::priority" ref="core-ilocatorfilter.html#priority"/>
+            <keyword name="priority" id="IMode::priority" ref="core-imode.html#priority-prop"/>
+            <keyword name="priority" id="IMode::priority" ref="core-imode.html#priority-prop"/>
+            <keyword name="priority" id="INavigationWidgetFactory::priority" ref="core-inavigationwidgetfactory.html#priority"/>
+            <keyword name="priorityInStatusBar" id="IOutputPane::priorityInStatusBar" ref="core-ioutputpane.html#priorityInStatusBar"/>
+            <keyword name="projectsDirectory" id="DocumentManager::projectsDirectory" ref="core-documentmanager.html#projectsDirectory"/>
+            <keyword name="promptOverwrite" id="BaseFileWizardFactory::promptOverwrite" ref="core-basefilewizardfactory.html#promptOverwrite"/>
+            <keyword name="provides" id="PluginSpec::provides" ref="extensionsystem-pluginspec.html#provides"/>
+            <keyword name="query" id="query" ref="aggregation-aggregate.html#query"/>
+            <keyword name="query_all" id="query_all" ref="aggregation-aggregate.html#query_all"/>
+            <keyword name="raiseWindow" id="ICore::raiseWindow" ref="core-icore.html#raiseWindow"/>
+            <keyword name="read" id="BaseTextDocument::read" ref="core-basetextdocument.html#read"/>
+            <keyword name="readSettings" id="IFindFilter::readSettings" ref="core-ifindfilter.html#readSettings"/>
+            <keyword name="recentFiles" id="DocumentManager::recentFiles" ref="core-documentmanager.html#recentFiles"/>
+            <keyword name="refresh" id="ILocatorFilter::refresh" ref="core-ilocatorfilter.html#refresh"/>
+            <keyword name="registerAction" id="ActionManager::registerAction" ref="core-actionmanager.html#registerAction"/>
+            <keyword name="registerIconOverlayForMimeType" id="FileIconProvider::registerIconOverlayForMimeType" ref="core-fileiconprovider.html#registerIconOverlayForMimeType"/>
+            <keyword name="registerIconOverlayForSuffix" id="FileIconProvider::registerIconOverlayForSuffix" ref="core-fileiconprovider.html#registerIconOverlayForSuffix"/>
+            <keyword name="registerWindow" id="ICore::registerWindow" ref="core-icore.html#registerWindow"/>
+            <keyword name="reload" id="IDocument::reload" ref="core-idocument.html#reload"/>
+            <keyword name="reloadBehavior" id="IDocument::reloadBehavior" ref="core-idocument.html#reloadBehavior"/>
+            <keyword name="reloadFinished" id="IDocument::reloadFinished" ref="core-idocument.html#reloadFinished"/>
+            <keyword name="reloadSetting" id="EditorManager::reloadSetting" ref="core-editormanager.html#reloadSetting"/>
+            <keyword name="remoteArguments" id="PluginManager::remoteArguments" ref="extensionsystem-pluginmanager.html#remoteArguments"/>
+            <keyword name="remoteCommand" id="IPlugin::remoteCommand" ref="extensionsystem-iplugin.html#remoteCommand"/>
+            <keyword name="remove" id="Aggregate::remove" ref="aggregation-aggregate.html#remove"/>
+            <keyword name="removeAdditionalContext" id="ICore::removeAdditionalContext" ref="core-icore.html#removeAdditionalContext"/>
+            <keyword name="removeAt" id="Context::removeAt" ref="core-context.html#removeAt"/>
+            <keyword name="removeAttribute" id="Command::removeAttribute" ref="core-command.html#removeAttribute"/>
+            <keyword name="removeContextObject" id="ICore::removeContextObject" ref="core-icore.html#removeContextObject"/>
+            <keyword name="removeDocument" id="DocumentManager::removeDocument" ref="core-documentmanager.html#removeDocument"/>
+            <keyword name="removeObject" id="PluginManager::removeObject" ref="extensionsystem-pluginmanager.html#removeObject"/>
+            <keyword name="renamedFile" id="DocumentManager::renamedFile" ref="core-documentmanager.html#renamedFile"/>
+            <keyword name="replace" id="BaseTextFind::replace" ref="core-basetextfind.html#replace"/>
+            <keyword name="replace" id="IFindSupport::replace" ref="core-ifindsupport.html#replace"/>
+            <keyword name="replaceAll" id="BaseTextFind::replaceAll" ref="core-basetextfind.html#replaceAll"/>
+            <keyword name="replaceAll" id="IFindFilter::replaceAll" ref="core-ifindfilter.html#replaceAll"/>
+            <keyword name="replaceAll" id="IFindSupport::replaceAll" ref="core-ifindsupport.html#replaceAll"/>
+            <keyword name="replaceButtonClicked" id="SearchResult::replaceButtonClicked" ref="core-searchresult.html#replaceButtonClicked"/>
+            <keyword name="replaceStep" id="BaseTextFind::replaceStep" ref="core-basetextfind.html#replaceStep"/>
+            <keyword name="replaceStep" id="IFindSupport::replaceStep" ref="core-ifindsupport.html#replaceStep"/>
+            <keyword name="requestEnabledCheck" id="SearchResult::requestEnabledCheck" ref="core-searchresult.html#requestEnabledCheck"/>
+            <keyword name="requiresAny" id="PluginSpec::requiresAny" ref="extensionsystem-pluginspec.html#requiresAny"/>
+            <keyword name="resetIncrementalSearch" id="BaseTextFind::resetIncrementalSearch" ref="core-basetextfind.html#resetIncrementalSearch"/>
+            <keyword name="resetIncrementalSearch" id="IFindSupport::resetIncrementalSearch" ref="core-ifindsupport.html#resetIncrementalSearch"/>
+            <keyword name="resourcePath" id="ICore::resourcePath" ref="core-icore.html#resourcePath"/>
+            <keyword name="restart" id="ICore::restart" ref="core-icore.html#restart"/>
+            <keyword name="restart" id="SearchResult::restart" ref="core-searchresult.html#restart"/>
+            <keyword name="restoreSettings" id="INavigationWidgetFactory::restoreSettings" ref="core-inavigationwidgetfactory.html#restoreSettings"/>
+            <keyword name="restoreState" id="IEditor::restoreState" ref="core-ieditor.html#restoreState"/>
+            <keyword name="restoreState" id="ILocatorFilter::restoreState" ref="core-ilocatorfilter.html#restoreState"/>
+            <keyword name="revertToSaved" id="EditorManager::revertToSaved" ref="core-editormanager.html#revertToSaved"/>
+            <keyword name="runWizard" id="IWizardFactory::runWizard" ref="core-iwizardfactory.html#runWizard"/>
+            <keyword name="save" id="IDocument::save" ref="core-idocument.html#save"/>
+            <keyword name="saveAllModifiedDocuments" id="DocumentManager::saveAllModifiedDocuments" ref="core-documentmanager.html#saveAllModifiedDocuments"/>
+            <keyword name="saveAllModifiedDocumentsSilently" id="DocumentManager::saveAllModifiedDocumentsSilently" ref="core-documentmanager.html#saveAllModifiedDocumentsSilently"/>
+            <keyword name="saveDocument" id="EditorManager::saveDocument" ref="core-editormanager.html#saveDocument"/>
+            <keyword name="saveDocumentAs" id="EditorManager::saveDocumentAs" ref="core-editormanager.html#saveDocumentAs"/>
+            <keyword name="saveModifiedDocument" id="DocumentManager::saveModifiedDocument" ref="core-documentmanager.html#saveModifiedDocument"/>
+            <keyword name="saveModifiedDocumentSilently" id="DocumentManager::saveModifiedDocumentSilently" ref="core-documentmanager.html#saveModifiedDocumentSilently"/>
+            <keyword name="saveModifiedDocuments" id="DocumentManager::saveModifiedDocuments" ref="core-documentmanager.html#saveModifiedDocuments"/>
+            <keyword name="saveModifiedDocumentsSilently" id="DocumentManager::saveModifiedDocumentsSilently" ref="core-documentmanager.html#saveModifiedDocumentsSilently"/>
+            <keyword name="saveSettings" id="INavigationWidgetFactory::saveSettings" ref="core-inavigationwidgetfactory.html#saveSettings"/>
+            <keyword name="saveSettingsRequested" id="ICore::saveSettingsRequested" ref="core-icore.html#saveSettingsRequested"/>
+            <keyword name="saveState" id="IEditor::saveState" ref="core-ieditor.html#saveState"/>
+            <keyword name="saveState" id="ILocatorFilter::saveState" ref="core-ilocatorfilter.html#saveState"/>
+            <keyword name="saved" id="EditorManager::saved" ref="core-editormanager.html#saved"/>
+            <keyword name="searchAgainRequested" id="SearchResult::searchAgainRequested" ref="core-searchresult.html#searchAgainRequested"/>
+            <keyword name="selectAll" id="IFindSupport::selectAll" ref="core-ifindsupport.html#selectAll"/>
+            <keyword name="serializedArguments" id="PluginManager::serializedArguments" ref="extensionsystem-pluginmanager.html#serializedArguments"/>
+            <keyword name="setActivationSequence" id="INavigationWidgetFactory::setActivationSequence" ref="core-inavigationwidgetfactory.html#setActivationSequence"/>
+            <keyword name="setAdditionalReplaceWidget" id="SearchResult::setAdditionalReplaceWidget" ref="core-searchresult.html#setAdditionalReplaceWidget"/>
+            <keyword name="setApplicationLabel" id="ProgressManager::setApplicationLabel" ref="core-progressmanager.html#setApplicationLabel"/>
+            <keyword name="setArguments" id="PluginSpec::setArguments" ref="extensionsystem-pluginspec.html#setArguments"/>
+            <keyword name="setAttribute" id="Command::setAttribute" ref="core-command.html#setAttribute"/>
+            <keyword name="setBadgeNumber" id="IOutputPane::setBadgeNumber" ref="core-ioutputpane.html#setBadgeNumber"/>
+            <keyword name="setCategory" id="IOptionsPage::setCategory" ref="core-ioptionspage.html#setCategory"/>
+            <keyword name="setCategoryIcon" id="IOptionsPage::setCategoryIcon" ref="core-ioptionspage.html#setCategoryIcon"/>
+            <keyword name="setCategoryIconPath" id="IOptionsPage::setCategoryIconPath" ref="core-ioptionspage.html#setCategoryIconPath"/>
+            <keyword name="setCommandId" id="CommandButton::setCommandId" ref="core-commandbutton.html#setCommandId"/>
+            <keyword name="setConfigurable" id="ILocatorFilter::setConfigurable" ref="core-ilocatorfilter.html#setConfigurable"/>
+            <keyword name="setContents" id="IDocument::setContents" ref="core-idocument.html#setContents"/>
+            <keyword name="setContext" id="IContext::setContext" ref="core-icontext.html#setContext"/>
+            <keyword name="setContextHelp" id="IContext::setContextHelp" ref="core-icontext.html#setContextHelp"/>
+            <keyword name="setDefaultIncludedByDefault" id="ILocatorFilter::setDefaultIncludedByDefault" ref="core-ilocatorfilter.html#setDefaultIncludedByDefault"/>
+            <keyword name="setDefaultKeySequence" id="Command::setDefaultKeySequence" ref="core-command.html#setDefaultKeySequence"/>
+            <keyword name="setDefaultKeySequences" id="Command::setDefaultKeySequences" ref="core-command.html#setDefaultKeySequences"/>
+            <keyword name="setDefaultLocationForNewFiles" id="DocumentManager::setDefaultLocationForNewFiles" ref="core-documentmanager.html#setDefaultLocationForNewFiles"/>
+            <keyword name="setDefaultShortcutString" id="ILocatorFilter::setDefaultShortcutString" ref="core-ilocatorfilter.html#setDefaultShortcutString"/>
+            <keyword name="setDescription" id="Command::setDescription" ref="core-command.html#setDescription"/>
+            <keyword name="setDescription" id="ILocatorFilter::setDescription" ref="core-ilocatorfilter.html#setDescription"/>
+            <keyword name="setDisplayCategory" id="IOptionsPage::setDisplayCategory" ref="core-ioptionspage.html#setDisplayCategory"/>
+            <keyword name="setDisplayName" id="EditorType::setDisplayName" ref="core-editortype.html#setDisplayName"/>
+            <keyword name="setDisplayName" id="ILocatorFilter::setDisplayName" ref="core-ilocatorfilter.html#setDisplayName"/>
+            <keyword name="setDisplayName" id="IMode::setDisplayName" ref="core-imode.html#displayName-prop"/>
+            <keyword name="setDisplayName" id="INavigationWidgetFactory::setDisplayName" ref="core-inavigationwidgetfactory.html#setDisplayName"/>
+            <keyword name="setDisplayName" id="IOptionsPage::setDisplayName" ref="core-ioptionspage.html#setDisplayName"/>
+            <keyword name="setDuplicateSupported" id="IEditor::setDuplicateSupported" ref="core-ieditor.html#setDuplicateSupported"/>
+            <keyword name="setEditorCreator" id="IEditorFactory::setEditorCreator" ref="core-ieditorfactory.html#setEditorCreator"/>
+            <keyword name="setEnabled" id="ILocatorFilter::setEnabled" ref="core-ilocatorfilter.html#setEnabled"/>
+            <keyword name="setEnabled" id="IMode::setEnabled" ref="core-imode.html#enabled-prop"/>
+            <keyword name="setEnabledBySettings" id="PluginSpec::setEnabledBySettings" ref="extensionsystem-pluginspec.html#setEnabledBySettings"/>
+            <keyword name="setFileDialogLastVisitedDirectory" id="DocumentManager::setFileDialogLastVisitedDirectory" ref="core-documentmanager.html#setFileDialogLastVisitedDirectory"/>
+            <keyword name="setFileIterator" id="BaseFileFilter::setFileIterator" ref="core-basefilefilter.html#setFileIterator"/>
+            <keyword name="setFilePath" id="IDocument::setFilePath" ref="core-idocument.html#setFilePath"/>
+            <keyword name="setFilter" id="PluginView::setFilter" ref="extensionsystem-pluginview.html#setFilter"/>
+            <keyword name="setFocus" id="IOutputPane::setFocus" ref="core-ioutputpane.html#setFocus"/>
+            <keyword name="setGlobalSettings" id="PluginManager::setGlobalSettings" ref="extensionsystem-pluginmanager.html#setGlobalSettings"/>
+            <keyword name="setHidden" id="ILocatorFilter::setHidden" ref="core-ilocatorfilter.html#setHidden"/>
+            <keyword name="setIcon" id="IMode::setIcon" ref="core-imode.html#icon-prop"/>
+            <keyword name="setIconBadgeNumber" id="IOutputPane::setIconBadgeNumber" ref="core-ioutputpane.html#setIconBadgeNumber"/>
+            <keyword name="setId" id="EditorType::setId" ref="core-editortype.html#setId"/>
+            <keyword name="setId" id="IDocument::setId" ref="core-idocument.html#setId"/>
+            <keyword name="setId" id="ILocatorFilter::setId" ref="core-ilocatorfilter.html#setId"/>
+            <keyword name="setId" id="IMode::setId" ref="core-imode.html#id-prop"/>
+            <keyword name="setId" id="INavigationWidgetFactory::setId" ref="core-inavigationwidgetfactory.html#setId"/>
+            <keyword name="setId" id="IOptionsPage::setId" ref="core-ioptionspage.html#setId"/>
+            <keyword name="setIncludedByDefault" id="ILocatorFilter::setIncludedByDefault" ref="core-ilocatorfilter.html#setIncludedByDefault"/>
+            <keyword name="setLastEditLocation" id="EditorManager::setLastEditLocation" ref="core-editormanager.html#setLastEditLocation"/>
+            <keyword name="setMenu" id="IMode::setMenu" ref="core-imode.html#menu-prop"/>
+            <keyword name="setMimeType" id="IDocument::setMimeType" ref="core-idocument.html#setMimeType"/>
+            <keyword name="setMimeTypes" id="EditorType::setMimeTypes" ref="core-editortype.html#setMimeTypes"/>
+            <keyword name="setOnAllDisabledBehavior" id="ActionContainer::setOnAllDisabledBehavior" ref="core-actioncontainer.html#setOnAllDisabledBehavior"/>
+            <keyword name="setPluginIID" id="PluginManager::setPluginIID" ref="extensionsystem-pluginmanager.html#setPluginIID"/>
+            <keyword name="setPluginPaths" id="PluginManager::setPluginPaths" ref="extensionsystem-pluginmanager.html#setPluginPaths"/>
+            <keyword name="setPreferredDisplayName" id="IDocument::setPreferredDisplayName" ref="core-idocument.html#setPreferredDisplayName"/>
+            <keyword name="setPriority" id="ILocatorFilter::setPriority" ref="core-ilocatorfilter.html#setPriority"/>
+            <keyword name="setPriority" id="IMode::setPriority" ref="core-imode.html#priority-prop"/>
+            <keyword name="setPriority" id="INavigationWidgetFactory::setPriority" ref="core-inavigationwidgetfactory.html#setPriority"/>
+            <keyword name="setProjectsDirectory" id="DocumentManager::setProjectsDirectory" ref="core-documentmanager.html#setProjectsDirectory"/>
+            <keyword name="setReplaceEnabled" id="SearchResult::setReplaceEnabled" ref="core-searchresult.html#setReplaceEnabled"/>
+            <keyword name="setSearchAgainEnabled" id="SearchResult::setSearchAgainEnabled" ref="core-searchresult.html#setSearchAgainEnabled"/>
+            <keyword name="setSearchAgainSupported" id="SearchResult::setSearchAgainSupported" ref="core-searchresult.html#setSearchAgainSupported"/>
+            <keyword name="setSettings" id="PluginManager::setSettings" ref="extensionsystem-pluginmanager.html#setSettings"/>
+            <keyword name="setShortcutString" id="ILocatorFilter::setShortcutString" ref="core-ilocatorfilter.html#setShortcutString"/>
+            <keyword name="setSuspendAllowed" id="IDocument::setSuspendAllowed" ref="core-idocument.html#setSuspendAllowed"/>
+            <keyword name="setTabWidth" id="SearchResultWindow::setTabWidth" ref="core-searchresultwindow.html#setTabWidth"/>
+            <keyword name="setTemporary" id="IDocument::setTemporary" ref="core-idocument.html#setTemporary"/>
+            <keyword name="setTextToReplace" id="SearchResult::setTextToReplace" ref="core-searchresult.html#setTextToReplace"/>
+            <keyword name="setTitle" id="FutureProgress::setTitle" ref="core-futureprogress.html#setTitle"/>
+            <keyword name="setToolTipBase" id="CommandButton::setToolTipBase" ref="core-commandbutton.html#toolTipBase-prop"/>
+            <keyword name="setTouchBarIcon" id="Command::setTouchBarIcon" ref="core-command.html#setTouchBarIcon"/>
+            <keyword name="setTouchBarText" id="Command::setTouchBarText" ref="core-command.html#setTouchBarText"/>
+            <keyword name="setUseProjectsDirectory" id="DocumentManager::setUseProjectsDirectory" ref="core-documentmanager.html#setUseProjectsDirectory"/>
+            <keyword name="setUserData" id="SearchResult::setUserData" ref="core-searchresult.html#setUserData"/>
+            <keyword name="setWidget" id="FutureProgress::setWidget" ref="core-futureprogress.html#setWidget"/>
+            <keyword name="setWidget" id="IContext::setWidget" ref="core-icontext.html#setWidget"/>
+            <keyword name="setWidgetCreator" id="IOptionsPage::setWidgetCreator" ref="core-ioptionspage.html#setWidgetCreator"/>
+            <keyword name="settings" id="ICore::settings" ref="core-icore.html#settings"/>
+            <keyword name="settings" id="PluginManager::settings" ref="extensionsystem-pluginmanager.html#settings"/>
+            <keyword name="settingsDatabase" id="ICore::settingsDatabase" ref="core-icore.html#settingsDatabase"/>
+            <keyword name="shortcutString" id="ILocatorFilter::shortcutString" ref="core-ilocatorfilter.html#shortcutString"/>
+            <keyword name="shouldAutoSave" id="IDocument::shouldAutoSave" ref="core-idocument.html#shouldAutoSave"/>
+            <keyword name="showNewItemDialog" id="ICore::showNewItemDialog" ref="core-icore.html#showNewItemDialog"/>
+            <keyword name="showOptionsDialog" id="ICore::showOptionsDialog" ref="core-icore.html#showOptionsDialog"/>
+            <keyword name="showPage" id="IOutputPane::showPage" ref="core-ioutputpane.html#showPage"/>
+            <keyword name="showSearchTermInput" id="IFindFilter::showSearchTermInput" ref="core-ifindfilter.html#showSearchTermInput"/>
+            <keyword name="showWarningWithOptions" id="ICore::showWarningWithOptions" ref="core-icore.html#showWarningWithOptions"/>
+            <keyword name="showWrapIndicator" id="IFindSupport::showWrapIndicator" ref="core-ifindsupport.html#showWrapIndicator"/>
+            <keyword name="shutdown" id="PluginManager::shutdown" ref="extensionsystem-pluginmanager.html#shutdown"/>
+            <keyword name="size" id="Context::size" ref="core-context.html#size"/>
+            <keyword name="skipOpeningBigTextFile" id="EditorManager::skipOpeningBigTextFile" ref="core-editormanager.html#skipOpeningBigTextFile"/>
+            <keyword name="splitSideBySide" id="EditorManager::splitSideBySide" ref="core-editormanager.html#splitSideBySide"/>
+            <keyword name="startEditor" id="IExternalEditor::startEditor" ref="core-iexternaleditor.html#startEditor"/>
+            <keyword name="startNewSearch" id="SearchResultWindow::startNewSearch" ref="core-searchresultwindow.html#startNewSearch"/>
+            <keyword name="state" id="PluginSpec::state" ref="extensionsystem-pluginspec.html#state"/>
+            <keyword name="stringWithAppendedShortcut" id="Command::stringWithAppendedShortcut" ref="core-command.html#stringWithAppendedShortcut"/>
+            <keyword name="supportedFindFlags" id="BaseTextFind::supportedFindFlags" ref="core-basetextfind.html#supportedFindFlags"/>
+            <keyword name="supportedFindFlags" id="IFindFilter::supportedFindFlags" ref="core-ifindfilter.html#supportedFindFlags"/>
+            <keyword name="supportedFindFlags" id="IFindSupport::supportedFindFlags" ref="core-ifindsupport.html#supportedFindFlags"/>
+            <keyword name="supportsReplace" id="BaseTextFind::supportsReplace" ref="core-basetextfind.html#supportsReplace"/>
+            <keyword name="supportsReplace" id="IFindSupport::supportsReplace" ref="core-ifindsupport.html#supportsReplace"/>
+            <keyword name="supportsSelectAll" id="IFindSupport::supportsSelectAll" ref="core-ifindsupport.html#supportsSelectAll"/>
+            <keyword name="taskStarted" id="ProgressManager::taskStarted" ref="core-progressmanager.html#taskStarted"/>
+            <keyword name="textToReplace" id="SearchResult::textToReplace" ref="core-searchresult.html#textToReplace"/>
+            <keyword name="title" id="FutureProgress::title" ref="core-futureprogress.html#title"/>
+            <keyword name="toggle" id="IOutputPane::toggle" ref="core-ioutputpane.html#toggle"/>
+            <keyword name="togglePage" id="IOutputPane::togglePage" ref="core-ioutputpane.html#togglePage"/>
+            <keyword name="toolBar" id="IEditor::toolBar" ref="core-ieditor.html#toolBar"/>
+            <keyword name="toolBarWidgets" id="IOutputPane::toolBarWidgets" ref="core-ioutputpane.html#toolBarWidgets"/>
+            <keyword name="toolButtonWithAppendedShortcut" id="Command::toolButtonWithAppendedShortcut" ref="core-command.html#toolButtonWithAppendedShortcut"/>
+            <keyword name="toolTipBase" id="CommandButton::toolTipBase" ref="core-commandbutton.html#toolTipBase-prop"/>
+            <keyword name="toolTipBase" id="CommandButton::toolTipBase" ref="core-commandbutton.html#toolTipBase-prop"/>
+            <keyword name="touchBar" id="ActionContainer::touchBar" ref="core-actioncontainer.html#touchBar"/>
+            <keyword name="touchBarIcon" id="Command::touchBarIcon" ref="core-command.html#touchBarIcon"/>
+            <keyword name="touchBarText" id="Command::touchBarText" ref="core-command.html#touchBarText"/>
+            <keyword name="type" id="PluginDependency::type" ref="extensionsystem-plugindependency.html#type-var"/>
+            <keyword name="unexpectFileChange" id="DocumentManager::unexpectFileChange" ref="core-documentmanager.html#unexpectFileChange"/>
+            <keyword name="unregisterAction" id="ActionManager::unregisterAction" ref="core-actionmanager.html#unregisterAction"/>
+            <keyword name="update" id="PluginDetailsView::update" ref="extensionsystem-plugindetailsview.html#update"/>
+            <keyword name="update" id="PluginErrorView::update" ref="extensionsystem-pluginerrorview.html#update"/>
+            <keyword name="updateAdditionalContexts" id="ICore::updateAdditionalContexts" ref="core-icore.html#updateAdditionalContexts"/>
+            <keyword name="url" id="PluginSpec::url" ref="extensionsystem-pluginspec.html#url"/>
+            <keyword name="useProjectsDirectory" id="DocumentManager::useProjectsDirectory" ref="core-documentmanager.html#useProjectsDirectory"/>
+            <keyword name="userData" id="SearchResult::userData" ref="core-searchresult.html#userData"/>
+            <keyword name="userInterfaceLanguage" id="ICore::userInterfaceLanguage" ref="core-icore.html#userInterfaceLanguage"/>
+            <keyword name="userResourcePath" id="ICore::userResourcePath" ref="core-icore.html#userResourcePath"/>
+            <keyword name="validChanged" id="IFindFilter::validChanged" ref="core-ifindfilter.html#validChanged"/>
+            <keyword name="vendor" id="PluginSpec::vendor" ref="extensionsystem-pluginspec.html#vendor"/>
+            <keyword name="version" id="PluginDependency::version" ref="extensionsystem-plugindependency.html#version-var"/>
+            <keyword name="version" id="PluginSpec::version" ref="extensionsystem-pluginspec.html#version"/>
+            <keyword name="versionString" id="ICore::versionString" ref="core-icore.html#versionString"/>
+            <keyword name="visibilityChanged" id="IOutputPane::visibilityChanged" ref="core-ioutputpane.html#visibilityChanged"/>
+            <keyword name="visibilityChanged" id="SearchResult::visibilityChanged" ref="core-searchresult.html#visibilityChanged"/>
+            <keyword name="visibleEditors" id="EditorManager::visibleEditors" ref="core-editormanager.html#visibleEditors"/>
+            <keyword name="widget" id="FutureProgress::widget" ref="core-futureprogress.html#widget"/>
+            <keyword name="widget" id="IContext::widget" ref="core-icontext.html#widget"/>
+            <keyword name="widget" id="IOptionsPage::widget" ref="core-ioptionspage.html#widget"/>
+            <keyword name="withNumberAccelerator" id="ActionManager::withNumberAccelerator" ref="core-actionmanager.html#withNumberAccelerator"/>
+            <keyword name="write" id="BaseTextDocument::write" ref="core-basetextdocument.html#write"/>
+            <keyword name="writeDisrupting" id="MessageManager::writeDisrupting" ref="core-messagemanager.html#writeDisrupting"/>
+            <keyword name="writeFiles" id="BaseFileWizardFactory::writeFiles" ref="core-basefilewizardfactory.html#writeFiles"/>
+            <keyword name="writeFlashing" id="MessageManager::writeFlashing" ref="core-messagemanager.html#writeFlashing"/>
+            <keyword name="writeSettings" id="IFindFilter::writeSettings" ref="core-ifindfilter.html#writeSettings"/>
+            <keyword name="writeSilently" id="MessageManager::writeSilently" ref="core-messagemanager.html#writeSilently"/>
+            <keyword name="~Aggregate" id="Aggregate::~Aggregate" ref="aggregation-aggregate.html#dtor.Aggregate"/>
+            <keyword name="~IDocument" id="IDocument::~IDocument" ref="core-idocument.html#dtor.IDocument"/>
+        </keywords>
+        <files>
+            <file>actionmanager.html</file>
+            <file>aggregation-aggregate-members.html</file>
+            <file>aggregation-aggregate.html</file>
+            <file>aggregation.html</file>
+            <file>coding-style.html</file>
+            <file>common-extension-tasks.html</file>
+            <file>core-actioncontainer-members.html</file>
+            <file>core-actioncontainer.html</file>
+            <file>core-actionmanager-members.html</file>
+            <file>core-actionmanager.html</file>
+            <file>core-basefilefilter-members.html</file>
+            <file>core-basefilefilter.html</file>
+            <file>core-basefilewizard.html</file>
+            <file>core-basefilewizardfactory-members.html</file>
+            <file>core-basefilewizardfactory.html</file>
+            <file>core-basetextdocument-members.html</file>
+            <file>core-basetextdocument.html</file>
+            <file>core-basetextfind-members.html</file>
+            <file>core-basetextfind.html</file>
+            <file>core-command-members.html</file>
+            <file>core-command.html</file>
+            <file>core-commandbutton-members.html</file>
+            <file>core-commandbutton.html</file>
+            <file>core-context-members.html</file>
+            <file>core-context.html</file>
+            <file>core-documentmanager-members.html</file>
+            <file>core-documentmanager.html</file>
+            <file>core-editormanager-members.html</file>
+            <file>core-editormanager.html</file>
+            <file>core-editormanagerplaceholder-members.html</file>
+            <file>core-editormanagerplaceholder.html</file>
+            <file>core-editortype-members.html</file>
+            <file>core-editortype.html</file>
+            <file>core-filechangeblocker.html</file>
+            <file>core-fileiconprovider.html</file>
+            <file>core-futureprogress-members.html</file>
+            <file>core-futureprogress.html</file>
+            <file>core-generatedfile-members.html</file>
+            <file>core-generatedfile.html</file>
+            <file>core-icontext-members.html</file>
+            <file>core-icontext.html</file>
+            <file>core-icore-members.html</file>
+            <file>core-icore.html</file>
+            <file>core-idocument-members.html</file>
+            <file>core-idocument.html</file>
+            <file>core-ieditor-members.html</file>
+            <file>core-ieditor.html</file>
+            <file>core-ieditorfactory-members.html</file>
+            <file>core-ieditorfactory.html</file>
+            <file>core-iexternaleditor-members.html</file>
+            <file>core-iexternaleditor.html</file>
+            <file>core-ifeatureprovider.html</file>
+            <file>core-ifindfilter-members.html</file>
+            <file>core-ifindfilter.html</file>
+            <file>core-ifindsupport-members.html</file>
+            <file>core-ifindsupport.html</file>
+            <file>core-ilocatorfilter-members.html</file>
+            <file>core-ilocatorfilter.html</file>
+            <file>core-imode-members.html</file>
+            <file>core-imode.html</file>
+            <file>core-inavigationwidgetfactory-members.html</file>
+            <file>core-inavigationwidgetfactory.html</file>
+            <file>core-ioptionspage-members.html</file>
+            <file>core-ioptionspage.html</file>
+            <file>core-ioutputpane-members.html</file>
+            <file>core-ioutputpane.html</file>
+            <file>core-iwizardfactory-members.html</file>
+            <file>core-iwizardfactory.html</file>
+            <file>core-messagemanager-members.html</file>
+            <file>core-messagemanager.html</file>
+            <file>core-minisplitter-members.html</file>
+            <file>core-minisplitter.html</file>
+            <file>core-modemanager-members.html</file>
+            <file>core-modemanager.html</file>
+            <file>core-navigationview.html</file>
+            <file>core-nonresizingsplitter-members.html</file>
+            <file>core-nonresizingsplitter.html</file>
+            <file>core-progressmanager-members.html</file>
+            <file>core-progressmanager.html</file>
+            <file>core-searchresult-members.html</file>
+            <file>core-searchresult.html</file>
+            <file>core-searchresultwindow-members.html</file>
+            <file>core-searchresultwindow.html</file>
+            <file>core-settingsdatabase.html</file>
+            <file>core-wizarddialogparameters-members.html</file>
+            <file>core-wizarddialogparameters.html</file>
+            <file>core.html</file>
+            <file>creating-plugins.html</file>
+            <file>distributing-plugins.html</file>
+            <file>extending-index.html</file>
+            <file>extensionsystem-iplugin-members.html</file>
+            <file>extensionsystem-iplugin.html</file>
+            <file>extensionsystem-pluginargumentdescription.html</file>
+            <file>extensionsystem-plugindependency-members.html</file>
+            <file>extensionsystem-plugindependency.html</file>
+            <file>extensionsystem-plugindetailsview-members.html</file>
+            <file>extensionsystem-plugindetailsview.html</file>
+            <file>extensionsystem-pluginerrorview-members.html</file>
+            <file>extensionsystem-pluginerrorview.html</file>
+            <file>extensionsystem-pluginmanager-members.html</file>
+            <file>extensionsystem-pluginmanager.html</file>
+            <file>extensionsystem-pluginspec-members.html</file>
+            <file>extensionsystem-pluginspec.html</file>
+            <file>extensionsystem-pluginview-members.html</file>
+            <file>extensionsystem-pluginview.html</file>
+            <file>extensionsystem.html</file>
+            <file>external-tool-spec.html</file>
+            <file>first-plugin.html</file>
+            <file>functions.html</file>
+            <file>getting-and-building.html</file>
+            <file>images/actionmanager.png</file>
+            <file>images/arrow_bc.png</file>
+            <file>images/bgrContent.png</file>
+            <file>images/btn_next.png</file>
+            <file>images/btn_prev.png</file>
+            <file>images/bullet_dn.png</file>
+            <file>images/bullet_sq.png</file>
+            <file>images/firstplugin-kitselection.png</file>
+            <file>images/firstplugin-nameandpath.png</file>
+            <file>images/firstplugin-pluginsetup.png</file>
+            <file>images/firstplugin-runsettings.png</file>
+            <file>images/firstplugin-summary.png</file>
+            <file>images/firstplugin-translation-file.png</file>
+            <file>images/firstplugin-wizard.png</file>
+            <file>images/home.png</file>
+            <file>images/ico_note.png</file>
+            <file>images/ico_note_attention.png</file>
+            <file>images/ico_out.png</file>
+            <file>images/logo.png</file>
+            <file>images/qtcreator-context-menu.png</file>
+            <file>images/qtcreator-debugger-views.png</file>
+            <file>images/qtcreator-dialog.png</file>
+            <file>images/qtcreator-error-message.png</file>
+            <file>images/qtcreator-locator.png</file>
+            <file>images/qtcreator-menu-item.png</file>
+            <file>images/qtcreator-menu.png</file>
+            <file>images/qtcreator-mode-selector.png</file>
+            <file>images/qtcreator-options-dialog.png</file>
+            <file>images/qtcreator-output-pane.png</file>
+            <file>images/qtcreator-search-filesystem.png</file>
+            <file>images/qtcreator-searchresults.png</file>
+            <file>images/qtcreator-sidebar-menu.png</file>
+            <file>images/qtcreator-tooltip-long.png</file>
+            <file>images/qtcreator-tooltip.png</file>
+            <file>images/riot.png</file>
+            <file>mainclasses.html</file>
+            <file>namespaces.html</file>
+            <file>plugin-lifecycle.html</file>
+            <file>plugin-meta-data.html</file>
+            <file>pluginmanager.html</file>
+            <file>qtcreator-api.html</file>
+            <file>qtcreator-dev-wizards.html</file>
+            <file>qtcreator-documentation.html</file>
+            <file>qtcreator-module.html</file>
+            <file>qtcreator-ui-text.html</file>
+            <file>style/offline-simple.css</file>
+            <file>style/offline.css</file>
+        </files>
+    </filterSection>
+</QtHelpProject>

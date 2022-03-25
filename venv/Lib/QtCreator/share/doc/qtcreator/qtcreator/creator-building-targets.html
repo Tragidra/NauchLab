@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-building.qdoc -->
+  <title>Building for Multiple Platforms | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Building for Multiple Platforms</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qt-design-viewer.html" />
+  <link rel="next" href="creator-running-targets.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qt-design-viewer.html">Previewing in Browsers</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-running-targets.html">Running on Multiple Platforms</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#additional-build-commands">Additional Build Commands</a></li>
+<li class="level1"><a href="#building-with-cmake">Building with CMake</a></li>
+<li class="level1"><a href="#building-with-qmake">Building with qmake</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Building for Multiple Platforms</h1>
+<!-- $$$creator-building-targets.html-description -->
+<div class="descr" id="details">
+<p>You can build applications for multiple target platforms, or using different compilers, debuggers or Qt versions. <a href="creator-glossary.html#glossary-buildandrun-kit">Kits</a> define the tools, <a href="creator-glossary.html#glossary-device">device</a> type and other settings to use.</p>
+<p>By default, when you run the application, you automatically build and deploy it first. However, you can also perform each operation separately.</p>
+<p>To check that the application code can be compiled and linked for a device, you can build the project. The build errors and warnings are displayed in the <b>Issues</b> output pane. More detailed information is displayed in the <b>Compile Output</b> pane.</p>
+<p>To build an application:</p>
+<ol class="1" type="1"><li>Click the <b>Build and Run Kit Selector</b> icon (1) or select <b>Build</b> &gt; <b>Open Build and Run Kit Selector</b> to select the build and run <a href="creator-glossary.html#glossary-buildandrun-kit">kit</a> or an <a href="creator-developing-android.html#managing-android-virtual-devices-avd">Android device</a>.<p class="centerAlign"><img src="images/qtcreator-kit-selector.png" alt="&quot;Kit selector&quot;" /></p></li>
+<li>Choose <b>Build</b> &gt; <b>Build Project</b> or press <b>Ctrl+B</b>.<p>You can also select the <b>Run</b> button (2) to also deploy and run the application after building it.</p>
+</li>
+</ol>
+<p>While the application is being built, the <b>Build</b> button (3) changes to a <b>Cancel Build</b> button. To cancel the build, select the button, press <b>Alt+Backspace</b>, or select <b>Build</b> &gt; <b>Cancel Build</b>. If you selected a build command and decide you would also like to run the application, you can select the <b>Run</b> button to schedule running the project after building is done.</p>
+<p>For more information on the options you have, see <a href="creator-build-settings.html">Specifying Build Settings</a>.</p>
+<h2 id="additional-build-commands">Additional Build Commands</h2>
+<p>The <b>Build</b> menu contains additional commands for building, rebuilding, and cleaning projects.</p>
+<p>To build the current project in all its configurations, that is, for all build configurations in all enabled kits, select <b>Build Project for All Configurations</b>.</p>
+<p>To build all open projects, select <b>Build All Projects</b>. If building one application fails, Qt Creator displays an error message and continues building the other applications.</p>
+<p>To build all open projects in all their configurations, select <b>Build All Projects for All Configurations</b>.</p>
+<p>To quickly check the compile output for changes that you made in one file or subproject, you can use the <b>Build</b> menu commands to build a file or subproject. The available build menu commands depend on the build system you selected for the project: CMake, qmake, or Qbs.</p>
+<p>Select <b>Build for Run Configuration</b> to build the executable that corresponds to the selected run configuration. You can also use the <code>cm</code> filter in the <a href="creator-editor-locator.html">locator</a>.</p>
+<p>To remove all build artifacts, select one of <b>Clean</b> menu commands.</p>
+<p>To clean the build directory and then build the project, select one of <b>Rebuild</b> menu commands.</p>
+<p>To build and clean projects without dependencies, select the <b>Build Without Dependencies</b>, <b>Rebuild Without Dependencies</b>, and <b>Clean Without Dependencies</b> options in the context menu in the <b>Projects</b> view.</p>
+<p>To run qmake or CMake to regenerate build system files, select <b>Build</b> &gt; <b>Run qmake</b> or <b>Run CMake</b>.</p>
+<h2 id="building-with-cmake">Building with CMake</h2>
+<p>Qt Creator automatically runs CMake when you make changes to <code>CMakeLists.txt</code> files. To disable this feature, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> &gt; <b>CMake</b>. Select the CMake executable to edit, and then deselect the <b>Autorun CMake</b> check box.</p>
+<p>For more information, see <a href="creator-project-cmake.html">Setting Up CMake</a>.</p>
+<h2 id="building-with-qmake">Building with qmake</h2>
+<p>To prevent failures on incremental builds, it might make sense to always run qmake before building, even though it means that building will take more time. To enable this option, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Build &amp; Run</b> &gt; <b>qmake</b> &gt; <b>Run qmake on every build</b>.</p>
+</div>
+<!-- @@@creator-building-targets.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qt-design-viewer.html">Previewing in Browsers</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-running-targets.html">Running on Multiple Platforms</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

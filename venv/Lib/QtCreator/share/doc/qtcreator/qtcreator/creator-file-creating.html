@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-files-creating.qdoc -->
+  <title>Creating Files | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Creating Files</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-project-creating.html" />
+  <link rel="next" href="creator-project-opening.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-project-creating.html">Creating Projects</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-project-opening.html">Opening Projects</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-c-classes">Creating C++ Classes</a></li>
+<li class="level1"><a href="#creating-resource-files">Creating Resource Files</a></li>
+<li class="level1"><a href="#creating-opengl-fragment-and-vertex-shaders">Creating OpenGL Fragment and Vertex Shaders</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating Files</h1>
+<!-- $$$creator-file-creating.html-description -->
+<div class="descr" id="details">
+<p>You can use wizard templates to add individual files to your <a href="creator-project-creating.html">projects</a>. The following table lists the wizard templates for creating files.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Category</th><th >Wizard Template</th><th >Purpose</th></tr></thead>
+<tr valign="top" class="odd"><td  rowspan="3">C/C++</td><td >C++ Class</td><td >C++ header and source file for a new class that you can add to a C++ project.</td></tr>
+<tr valign="top" class="even"><td >C/C++ Source File</td><td >C++ source file that you can add to a C++ project.</td></tr>
+<tr valign="top" class="odd"><td >C/C++ Header File</td><td >C++ header file that you can add to a C++ project.</td></tr>
+<tr valign="top" class="even"><td  rowspan="3">Modeling</td><td >State Chart</td><td >State Chart XML (SCXML) file that contains boilerplate code for state machines. You can use the classes in the Qt SCXML module to embed state machines created from the files in Qt applications.</td></tr>
+<tr valign="top" class="odd"><td >Model</td><td >Universal Modeling Language (UML) style model with a structured diagram. However, the model editor uses a variant of UML and provides only a subset of properties for specifying the appearance of model elements. For more information, see <a href="creator-modeling.html">Modeling</a>.</td></tr>
+<tr valign="top" class="even"><td >Scratch Model</td><td >Scratch model using a temporary file.</td></tr>
+<tr valign="top" class="odd"><td  rowspan="7">Qt</td><td >Qt Item Model</td><td >Source and header files that you can use to create classes derived from QAbstractItemModel, QAbstractTableModel, or QAbstractListModel.</td></tr>
+<tr valign="top" class="even"><td >Qt Designer Form Class</td><td >Qt Designer form and a matching class for implementing a UI based on Qt widgets.</td></tr>
+<tr valign="top" class="odd"><td >Qt Designer Form</td><td >Qt Designer form for Qt widget based projects. This is useful if you already have an existing class for the UI logic.</td></tr>
+<tr valign="top" class="even"><td >Qt Resource File</td><td >Resource file for storing binary files in the application executable.</td></tr>
+<tr valign="top" class="odd"><td >QML File (Qt Quick 2)</td><td >QML file that imports Qt Quick 2.0 for use in Qt Quick projects.</td></tr>
+<tr valign="top" class="even"><td >Qt Quick UI File</td><td ><a href="creator-quick-ui-forms.html">UI file</a> (<i>.ui.qml</i>) and the corresponding implementation file (<i>.qml</i>) for use in Qt Quick projects.</td></tr>
+<tr valign="top" class="odd"><td >JS File</td><td >JavaScript file that you can use to write the application logic in Qt Quick projects.</td></tr>
+<tr valign="top" class="even"><td  rowspan="4">GLSL</td><td >Fragment Shader (OpenGL/ES 2.0)</td><td >Fragment shader that generates the final pixel colors for triangles, points, and lines rendered with OpenGL. You can use it in both Qt Quick projects and Qt widget based projects.</td></tr>
+<tr valign="top" class="odd"><td >Vertex Shader (OpenGL/ES 2.0)</td><td >Vertex shader that transforms the positions, normals, and texture coordinates of triangles, points, and lines rendered with OpenGL. You can use it in both Qt Quick projects and Qt widget based projects.</td></tr>
+<tr valign="top" class="even"><td >Fragment Shader (Desktop OpenGL)</td><td >Fragment shader for use in both Qt Quick projects and Qt widget based projects.</td></tr>
+<tr valign="top" class="odd"><td >Vertex Shader (Desktop OpenGL)</td><td >Vertex shader for use in both Qt Quick projects and Qt widget based projects.</td></tr>
+<tr valign="top" class="even"><td  rowspan="2">General</td><td >Empty File</td><td >Empty file that you can save with any filename extensio.</td></tr>
+<tr valign="top" class="odd"><td >Scratch Buffer</td><td >Scratch buffer that uses temporary files. You can create this type of files for temporarily storing information that you do not intend to save</td></tr>
+<tr valign="top" class="even"><td >Java</td><td >Java File</td><td >Java class files that you can use to create Java classes.</td></tr>
+<tr valign="top" class="odd"><td  rowspan="2">Python</td><td >Python Class</td><td >Python class file.</td></tr>
+<tr valign="top" class="even"><td >Python File</td><td >Python script file using UTF-8 encoding.</td></tr>
+<tr valign="top" class="odd"><td  rowspan="2">Nim (experimental)</td><td >Nim Script File</td><td >Empty Nim script file using UTF-8 encoding.</td></tr>
+<tr valign="top" class="even"><td >Nim File</td><td >Empty Nim source file using UTF-8 encoding.</td></tr>
+</table></div>
+<h2 id="creating-c-classes">Creating C++ Classes</h2>
+<p>The <b>C++ Class Wizard</b> allows you to create a C++ header and source file for a new class that you can add to a C++ project. Specify the class name, base class, and header and source files for the class.</p>
+<p>The wizard supports namespaces. To use a namespace, enter a qualified class name in the <b>Class name</b> field. For example: <code>MyNamespace::MySubNamespace::MyClass</code>. The wizard suggests existing namespaces and class names as you type.</p>
+<p class="centerAlign"><img src="images/qtcreator-cpp-class-wizard.png" alt="&quot;Enter Class Name dialog&quot;" /></p><p>The names of the header and source file are based on the class name. To change the default suffix of a file, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>C++</b> &gt; <b>File Naming</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-options-cpp-files.png" alt="&quot;File Naming tab in Options&quot;" /></p><p>In the <b>License template</b> field, you can use <a href="creator-project-wizards.html#using-variables-in-wizards">predefined wizard variables</a> to specify the path and filename of the license to use in the source and header files.</p>
+<p>You can create your own project and class wizards. For more information, see <a href="creator-project-wizards.html">Adding New Custom Wizards</a>.</p>
+<h2 id="creating-resource-files">Creating Resource Files</h2>
+<p>Qt Creator supports the Qt Resource System, which is a platform-independent mechanism for storing files in the application's executable.</p>
+<p class="centerAlign"><img src="images/qtcreator-add-resource-wizard.png" alt="&quot;New File dialog&quot;" /></p><p>The wizard creates a resource collection file (.qrc) that you can manage in the resource editor.</p>
+<p class="centerAlign"><img src="images/qtcreator-add-resource.png" alt="&quot;Editing resource files&quot;" /></p><p>Select <b>Add Files</b> to locate and add individual files.</p>
+<p>To list the folders and files in ascending alphabetic order in the source tree, select <b>Sort Alphabetically</b> in the context menu.</p>
+<p>By default, resources are accessible in the application under the same file name as they have in the source tree, with a <code>:/</code> prefix, or by a URL with a <code>qrc</code> scheme. To specify a path prefix for all files in the <code>.qrc</code> file, select <b>Add Prefix</b> and enter the prefix in the <b>Prefix</b> field.</p>
+<p>Some resources need to change based on the user's locale, such as translation files or icons. You can specify a locale in the <b>Language</b> field.</p>
+<p>Select <b>Remove</b> to remove the selected file from the resource collection. In the <b>Remove File</b> dialog, select the <b>Delete file permanently</b> check box to remove the file from the file system. To remove files that cannot be found in the file system, select <b>Remove Missing Files</b>.</p>
+<p>The above functions are also available in the context menu in the <b>Projects</b> view.</p>
+<h2 id="creating-opengl-fragment-and-vertex-shaders">Creating OpenGL Fragment and Vertex Shaders</h2>
+<p>Qt provides support for integration with OpenGL implementations on all platforms, which allows you to display hardware accelerated 3D graphics alongside a more conventional user interface. For more information, see Qt GUI.</p>
+<p>You can use the QOpenGLShader class to compile OpenGL shaders written in the OpenGL Shading Language (GLSL) and in the OpenGL/ES Shading Language (GLSL/ES). QOpenGLShader and QOpenGLShaderProgram shelter you from the details of compiling and linking vertex and fragment shaders.</p>
+<p>You can use Qt Creator code editor to write fragment and vertex shaders in GLSL or GLSL/ES. The code editor provides syntax highlighting and code completion for the files.</p>
+<p class="centerAlign"><img src="images/qtcreator-new-opengl-file.png" alt="&quot;New OpenGL file wizard&quot;" /></p></div>
+<!-- @@@creator-file-creating.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-project-creating.html">Creating Projects</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-project-opening.html">Opening Projects</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

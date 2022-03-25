@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-how-tos.qdoc -->
+  <title>How-tos | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>How-tos</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-faq.html" />
+  <link rel="next" href="creator-known-issues.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-faq.html">FAQ</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-known-issues.html">Known Issues</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#switch-between-modes">Switch between modes</a></li>
+<li class="level1"><a href="#move-between-open-files">Move between open files</a></li>
+<li class="level1"><a href="#switch-to-edit-mode">Switch to Edit mode</a></li>
+<li class="level1"><a href="#find-a-specific-setting">Find a specific setting</a></li>
+<li class="level1"><a href="#open-output-panes">Open output panes</a></li>
+<li class="level1"><a href="#find-keyboard-shortcuts">Find keyboard shortcuts</a></li>
+<li class="level1"><a href="#run-qt-creator-from-the-command-line">Run Qt Creator from the command line</a></li>
+<li class="level1"><a href="#show-and-hide-sidebars">Show and hide sidebars</a></li>
+<li class="level1"><a href="#move-to-symbols">Move to symbols</a></li>
+<li class="level1"><a href="#inspect-signal-slot-connections-while-debugging">Inspect signal-slot connections while debugging</a></li>
+<li class="level1"><a href="#display-low-level-data-in-the-debugger">Display low-level data in the debugger</a></li>
+<li class="level1"><a href="#see-the-value-of-variables-in-tooltips-while-debugging">See the value of variables in tooltips while debugging</a></li>
+<li class="level1"><a href="#quickly-locate-files-using-the-keyboard">Quickly locate files using the keyboard</a></li>
+<li class="level1"><a href="#perform-calculations">Perform calculations</a></li>
+<li class="level1"><a href="#jump-to-a-function-in-qml-code">Jump to a function in QML code</a></li>
+<li class="level1"><a href="#add-a-license-header-template-for-c-code">Add a license header template for C++ code</a></li>
+<li class="level1"><a href="#paste-text-from-my-clipboard-history">Paste text from my clipboard history</a></li>
+<li class="level1"><a href="#sort-lines-alphabetically">Sort lines alphabetically</a></li>
+<li class="level1"><a href="#enclose-selected-code-in-curly-braces-parentheses-or-double-quotes">Enclose selected code in curly braces, parentheses, or double quotes</a></li>
+<li class="level1"><a href="#select-the-enclosing-block-in-c">Select the enclosing block in C++</a></li>
+<li class="level1"><a href="#add-my-own-code-snippets-to-the-auto-complete-menu">Add my own code snippets to the auto-complete menu</a></li>
+<li class="level1"><a href="#quickly-write-down-notes-somewhere">Quickly write down notes somewhere</a></li>
+<li class="level1"><a href="#configure-the-amount-of-recent-files-shown">Configure the amount of recent files shown</a></li>
+<li class="level1"><a href="#search-and-replace-across-files-using-a-regular-expression">Search and replace across files using a regular expression</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">How-tos</h1>
+<!-- $$$creator-how-tos.html-description -->
+<div class="descr" id="details">
+<p>How do I:</p>
+<ul>
+<li><a href="creator-how-tos.html#switch-between-modes">Switch between modes</a></li>
+<li><a href="creator-how-tos.html#move-between-open-files">Move between open files</a></li>
+<li><a href="creator-how-tos.html#switch-to-edit-mode">Switch to Edit mode</a></li>
+<li><a href="creator-how-tos.html#find-a-specific-setting">Find a specific setting</a></li>
+<li><a href="creator-how-tos.html#open-output-panes">Open output panes</a></li>
+<li><a href="creator-how-tos.html#find-keyboard-shortcuts">Find keyboard shortcuts</a></li>
+<li><a href="creator-how-tos.html#run-qt-creator-from-the-command-line">Run Qt Creator from the command line</a></li>
+<li><a href="creator-how-tos.html#show-and-hide-sidebars">Show and hide sidebars</a></li>
+<li><a href="creator-how-tos.html#move-to-symbols">Move to symbols</a></li>
+<li><a href="creator-how-tos.html#inspect-signal-slot-connections-while-debugging">Inspect signal-slot connections while debugging</a></li>
+<li><a href="creator-how-tos.html#display-low-level-data-in-the-debugger">Display low-level data in the debugger</a></li>
+<li><a href="creator-how-tos.html#see-the-value-of-variables-in-tooltips-while-debugging">See the value of variables in tooltips while debugging</a></li>
+<li><a href="creator-how-tos.html#quickly-locate-files-using-the-keyboard">Quickly locate files using the keyboard</a></li>
+<li><a href="creator-how-tos.html#perform-calculations">Perform calculations</a></li>
+<li><a href="creator-how-tos.html#jump-to-a-function-in-qml-code">Jump to a function in QML code</a></li>
+<li><a href="creator-how-tos.html#add-a-license-header-template-for-c-code">Add a license header template for C++ code</a></li>
+<li><a href="creator-how-tos.html#paste-text-from-my-clipboard-history">Paste text from my clipboard history</a></li>
+<li><a href="creator-how-tos.html#sort-lines-alphabetically">Sort lines alphabetically</a></li>
+<li><a href="creator-how-tos.html#enclose-selected-code-in-curly-braces-parentheses-or-double-quotes">Enclose selected code in curly braces, parentheses, or double quotes</a></li>
+<li><a href="creator-how-tos.html#select-the-enclosing-block-in-c">Select the enclosing block in C++</a></li>
+<li><a href="creator-how-tos.html#add-my-own-code-snippets-to-the-auto-complete-menu">Add my own code snippets to the auto-complete menu</a></li>
+<li><a href="creator-how-tos.html#quickly-write-down-notes-somewhere">Quickly write down notes somewhere</a></li>
+<li><a href="creator-how-tos.html#configure-the-amount-of-recent-files-shown">Configure the amount of recent files shown</a></li>
+<li><a href="creator-how-tos.html#search-and-replace-across-files-using-a-regular-expression">Search and replace across files using a regular expression</a></li>
+</ul>
+<h2 id="switch-between-modes">Switch between modes</h2>
+<p>Qt Creator uses different modes for different purposes. You can quickly switch between these modes with the following keyboard shortcuts:</p>
+<ul>
+<li><b>Welcome</b> mode <b>Ctrl+1</b></li>
+<li><b>Edit</b> mode <b>Ctrl+2</b></li>
+<li><b>Design</b> mode <b>Ctrl+3</b></li>
+<li><b>Debug</b> mode <b>Ctrl+4</b></li>
+<li><b>Projects</b> mode <b>Ctrl+5</b></li>
+<li><b>Help</b> mode <b>Ctrl+6</b></li>
+</ul>
+<p>For more information about Qt Creator modes, see <a href="creator-modes.html">Selecting Modes</a>.</p>
+<h2 id="move-between-open-files">Move between open files</h2>
+<p>To quickly move between currently open files, press <b>Ctrl+Tab</b>.</p>
+<p>To move forward in the location history, press <b>Alt+Right</b> (<b>Cmd+Opt+Right</b> on macOS). To move backward, press <b>Alt+Left</b> (<b>Cmd+Opt+Left</b> on macOS). For example, if you use the <b>Locator</b> to jump to a symbol in the same file, you can jump back to your original location in that file by pressing <b>Alt+Left</b>.</p>
+<h2 id="switch-to-edit-mode">Switch to Edit mode</h2>
+<p>To move to the <b>Edit</b> mode and currently active file, press <b>Esc</b>.</p>
+<p>If you already are in the <b>Edit</b> mode:</p>
+<ul>
+<li>The first press moves focus to the editor</li>
+<li>The second press closes secondary windows</li>
+</ul>
+<h2 id="find-a-specific-setting">Find a specific setting</h2>
+<p>To find specific settings in <b>Tools</b> &gt; <b>Options</b>, use the filter located at the top left of the <b>Options</b> dialog box.</p>
+<h2 id="open-output-panes">Open output panes</h2>
+<p>The <a href="creator-output-panes.html">output panes</a> provide a list of errors and warnings encountered during a build, detailed output from the compiler, status of a program when it is executed, debug output, and search results.</p>
+<p>To open output panes, use the following shortcuts:</p>
+<ul>
+<li><b>Issues</b> - <b>Alt+1</b> (<b>Cmd+1</b> on macOS)</li>
+<li><b>Search Results</b> - <b>Alt+2</b> (<b>Cmd+2</b> on macOS)</li>
+<li><b>Application Output</b> - <b>Alt+3</b> (<b>Cmd+3</b> on macOS)</li>
+<li><b>Compile Output</b> - <b>Alt+4</b> (<b>Cmd+4</b> on macOS)</li>
+</ul>
+<p>For additional ways to open all output panes, see <a href="creator-output-panes.html">Viewing Output</a>.</p>
+<h2 id="find-keyboard-shortcuts">Find keyboard shortcuts</h2>
+<p>Qt Creator provides <a href="creator-keyboard-shortcuts.html">many useful keyboard shortcuts</a>. You can see the keyboard shortcut for a menu command in the menu or the tooltip for a button.</p>
+<p>To customize, import, or export keyboard shortcuts, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Environment</b> &gt; <b>Keyboard</b>.</p>
+<h2 id="run-qt-creator-from-the-command-line">Run Qt Creator from the command line</h2>
+<p>You can launch Qt Creator from the command line using the name of an existing <a href="creator-project-managing-sessions.html">session</a> or project file by entering the name as the command argument.</p>
+<p>For example, running <code>qtcreator somesession</code>, launches Qt Creator and loads the session called <i>somesession</i>.</p>
+<p>For more information, see <a href="creator-cli.html">Using Command Line Options</a>.</p>
+<h2 id="show-and-hide-sidebars">Show and hide sidebars</h2>
+<p>You can toggle the left and right sidebar in some Qt Creator modes.</p>
+<p>To toggle the left sidebar, click <img src="images/leftsidebaricon.png" alt="" /> (<b>Hide Left Sidebar/Show Left Sidebar</b>) or press <b>Alt+0</b> (<b>Cmd+0</b> on macOS).</p>
+<p>To toggle the right sidebar, click <img src="images/rightsidebaricon.png" alt="" /> (<b>Hide Right Sidebar/Show Right Sidebar</b>) or press <b>Alt+Shift+0</b> (<b>Cmd+Shift+0</b> on macOS).</p>
+<p>For more information on using the sidebars, see <a href="creator-views.html">Browsing Project Contents</a>.</p>
+<h2 id="move-to-symbols">Move to symbols</h2>
+<p>To move straight to a symbol used in a project, select the symbol in the <b>Editor</b> toolbar drop-down menu. For more information on the editor toolbar, see <a href="creator-coding-navigating.html#using-the-editor-toolbar">Using the Editor Toolbar</a>.</p>
+<p>To jump to a symbol in the current file, press <b>Ctrl+K</b> to open the <b>Locator</b>, enter a period (.), and start typing the symbol name. Then select the symbol in the list. For more information on using the locator, see <a href="creator-editor-locator.html">Searching with the Locator</a>.</p>
+<p>Press <b>Ctrl</b> (<b>Cmd</b> on macOS) and click a symbol to move directly to the definition or the declaration of the symbol. You can also move the cursor on the symbol and press <b>F2</b>. For more information, see <a href="creator-coding-navigating.html#moving-to-symbol-definition-or-declaration">Moving to Symbol Definition or Declaration</a>.</p>
+<h2 id="inspect-signal-slot-connections-while-debugging">Inspect signal-slot connections while debugging</h2>
+<p>If an instance of a class is derived from QObject, and you would like to find all other objects connected to one of your object's slots using Qt's signals and slots mechanism, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Debugger</b> &gt; <b>Locals</b> &gt; <b>Use Debugging Helper</b>.</p>
+<p>In the <b>Locals</b> view, expand the object's entry and open the slot in the <i>slots</i> subitem. The objects connected to this slot are shown as children of the slot. This method works with signals too.</p>
+<p>For more information about the <b>Locals</b> view, see <a href="creator-debug-mode.html#local-variables-and-function-parameters">Local Variables and Function Parameters</a>.</p>
+<h2 id="display-low-level-data-in-the-debugger">Display low-level data in the debugger</h2>
+<p>If special debugging of Qt objects fails due to data corruption within the debugged objects, you can switch off the debugging helpers. When debugging helpers are switched off, low-level structures become visible.</p>
+<p>To switch off the debugging helpers:</p>
+<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Debugger</b> &gt; <b>Locals</b>.</li>
+<li>Uncheck the <b>Use Debugging Helper</b> checkbox.</li>
+</ol>
+<h2 id="see-the-value-of-variables-in-tooltips-while-debugging">See the value of variables in tooltips while debugging</h2>
+<p>To inspect the value of variables from the editor, you can turn on tooltips. Tooltips are hidden by default for performance reasons.</p>
+<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Debugger</b> &gt; <b>General</b>.</li>
+<li>Select the <b>Use tooltips in main editor while debugging</b> check box.</li>
+</ol>
+<p>When you hover over a variable in the code editor in <b>Debug</b> mode, a tooltip is displayed. To keep the tooltip visible, click the pin button. You can expand pinned tooltips to view their full content.</p>
+<p class="centerAlign"><img src="images/qtcreator-pin-tooltip.png" alt="" /></p><p>Pinned tooltips are stored in the session. To close all pinned tooltips, select <b>Close Editor Tooltips</b> in the context menu in the <b>Locals</b> view.</p>
+<h2 id="quickly-locate-files-using-the-keyboard">Quickly locate files using the keyboard</h2>
+<p>The <b>Locator</b> provides one of the easiest ways in Qt Creator to browse through projects, files, classes, functions, documentation, and file systems. To quickly access files not directly mentioned in your project, you can create your own locator filters. That way you can locate files in a directory structure you have defined.</p>
+<p>To create locator filters, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Locator</b> &gt; <b>Add</b>.</p>
+<p>For more information, see <a href="creator-editor-locator.html#creating-locator-filters">Creating Locator Filters</a>.</p>
+<h2 id="perform-calculations">Perform calculations</h2>
+<p>Open the <b>Locator</b> with <b>Ctrl+K</b> and type =, followed by a space. You can now do basic calculations, with options to copy the results to the clipboard by navigating through the entries and pressing <b>Enter</b>.</p>
+<p>For more information, see <a href="creator-editor-locator.html#executing-javascript">Executing JavaScript</a>.</p>
+<h2 id="jump-to-a-function-in-qml-code">Jump to a function in QML code</h2>
+<p>Open the <b>Locator</b> with <b>Ctrl+K</b> and type m, followed by a space. You can now go directly to any QML method in the file.</p>
+<h2 id="add-a-license-header-template-for-c-code">Add a license header template for C++ code</h2>
+<p>A file containing a license header for C++ can be specified under <b>Tools</b> &gt; <b>Options</b> &gt; <b>C++</b> &gt; <b>License Template</b>. It may contain special placeholders enclosed in <code>%%</code> that are replaced when generating a new file:</p>
+<ol class="1" type="1"><li><code>%YEAR%</code>: Year</li>
+<li><code>%MONTH%</code>: Month</li>
+<li><code>%DAY%</code>: Day of the month</li>
+<li><code>%DATE%</code>: Date</li>
+<li><code>%USER%</code>: Username</li>
+<li><code>%FILENAME%</code>: File name</li>
+<li><code>%CLASS%</code>: Class name (if applicable)</li>
+<li><code>%$VARIABLE%</code>: Contents of environment variable <code>VARIABLE</code>.</li>
+</ol>
+<h2 id="paste-text-from-my-clipboard-history">Paste text from my clipboard history</h2>
+<p>Qt Creator stores copied text in clipboard history. To retrieve clips from the history, press <b>Ctrl+Shift+V</b> until the clip appears. The number of clips in the history is fixed to 10.</p>
+<h2 id="sort-lines-alphabetically">Sort lines alphabetically</h2>
+<p>To sort selected lines alphabetically, select <b>Edit</b> &gt; <b>Advanced</b> &gt; <b>Sort Selected Lines</b> or press <b>Alt+Shift+S</b> (or <b>Ctrl+Shift+S</b> on macOS).</p>
+<h2 id="enclose-selected-code-in-curly-braces-parentheses-or-double-quotes">Enclose selected code in curly braces, parentheses, or double quotes</h2>
+<p>When you have selected code and enter one of the following opening characters, the appropriate closing character is added automatically at the end of the selection:</p>
+<ul>
+<li>{</li>
+<li>(</li>
+<li>&quot;</li>
+</ul>
+<h2 id="select-the-enclosing-block-in-c">Select the enclosing block in C++</h2>
+<p>Press <b>Ctrl+U</b>.</p>
+<h2 id="add-my-own-code-snippets-to-the-auto-complete-menu">Add my own code snippets to the auto-complete menu</h2>
+<p>You can add, modify, and remove snippets in the snippet editor. To open the editor, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Text Editor</b> &gt; <b>Snippets</b>.</p>
+<p>For more information, see <a href="creator-completing-code.html#adding-and-editing-snippets">Adding and Editing Snippets</a>.</p>
+<h2 id="quickly-write-down-notes-somewhere">Quickly write down notes somewhere</h2>
+<p>Select <b>File</b> &gt; <b>New File</b> &gt; <b>General</b> &gt; <b>Scratch Buffer</b>. Alternatively, <b>Ctrl+N</b> can be used to open this dialog, which is fully navigable via keyboard by using the up and down arrow keys and the tab key.</p>
+<p>This creates a new empty text file and saves it to the temporary directory on your machine. You can use it to write down notes without having to worry about deleting the file afterwards. The operating system will eventually remove the file automatically. If you want to keep the file, you can easily save it as a new file somewhere else. If you accidentally close the file, you can find it in the <b>File</b> &gt; <b>Recent Files</b> menu.</p>
+<h2 id="configure-the-amount-of-recent-files-shown">Configure the amount of recent files shown</h2>
+<p>Select <b>Tools</b> &gt; <b>Options</b>, and change the value of the list under <b>Environment</b> &gt; <b>System</b> &gt; <b>Maximum number of entries in &quot;Recent Files&quot;</b>.</p>
+<h2 id="search-and-replace-across-files-using-a-regular-expression">Search and replace across files using a regular expression</h2>
+<p>As an example, say you want to replace equality checks (<code>foo == bar</code>) with a function (<code>foo.equals(bar)</code>):</p>
+<ol class="1" type="1"><li>Ensure that any work you have done is committed to version control, as the changes cannot be undone.</li>
+<li>Press <b>Ctrl+Shift+F</b> to bring up the <b>Advanced Find</b> form.</li>
+<li>Change the scope to whatever is appropriate for your search.</li>
+<li>Under the <b>Search for</b> text field, select the <b>Use regular expressions</b> check box.</li>
+<li>Enter the following text in the <b>Search for</b> text field:<pre class="cpp plain">
+ if \((.*) == (.*)\)
+</pre>
+</li>
+<li>Press <b>Search &amp; Replace</b> to see a list of search results.</li>
+<li>In the <b>Replace with</b> text field, enter the following text:<pre class="cpp plain">
+ if (\1.strictlyEquals(\2))
+</pre>
+</li>
+<li>Press <b>Replace</b> to replace all instances of the text.</li>
+</ol>
+<p>For more information, see <a href="creator-editor-finding.html#advanced-search">Advanced Search</a>.</p>
+</div>
+<!-- @@@creator-how-tos.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-faq.html">FAQ</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-known-issues.html">Known Issues</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

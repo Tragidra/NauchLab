@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- ieditorfactory.cpp -->
+  <title>EditorType Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="extending-index.html">Extending Qt Creator Manual</a></li>
+<li>EditorType</li>
+<li id="buildversion"><a href="extending-index.html">Extending Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">EditorType Class</h1>
+<span class="small-subtitle">class <a href="core.html">Core</a>::EditorType</span>
+<!-- $$$EditorType-brief -->
+<p>The EditorType class is the base class for <a href="core-ieditorfactory.html">Core::IEditorFactory</a> and <a href="core-iexternaleditor.html">Core::IExternalEditor</a>. <a href="#details">More...</a></p>
+<!-- @@@EditorType -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/editormanager/ieditorfactory.h&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="core-ieditorfactory.html">Core::IEditorFactory</a> and <a href="core-iexternaleditor.html">Core::IExternalEditor</a></p>
+</td></tr></table></div>
+<ul>
+<li><a href="core-editortype-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-editortype.html#displayName">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-editortype.html#id">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="core-editortype.html#mimeTypes">mimeTypes</a></b>() const</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> const Core::EditorTypeList </td><td class="memItemRight bottomAlign"><b><a href="core-editortype.html#allEditorTypes">allEditorTypes</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Core::EditorTypeList </td><td class="memItemRight bottomAlign"><b><a href="core-editortype.html#defaultEditorTypes">defaultEditorTypes</a></b>(const Utils::MimeType &amp;<i>mimeType</i>)</td></tr>
+</table></div>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editortype.html#addMimeType">addMimeType</a></b>(const QString &amp;<i>mimeType</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editortype.html#setDisplayName">setDisplayName</a></b>(const QString &amp;<i>displayName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editortype.html#setId">setId</a></b>(Utils::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editortype.html#setMimeTypes">setMimeTypes</a></b>(const QStringList &amp;<i>mimeTypes</i>)</td></tr>
+</table></div>
+<!-- $$$EditorType-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+</div>
+<!-- @@@EditorType -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$addMimeType[overload1]$$$addMimeTypeconstQString& -->
+<h3 class="fn" id="addMimeType"><code>[protected] </code><span class="type">void</span> EditorType::<span class="name">addMimeType</span>(const <span class="type">QString</span> &amp;<i>mimeType</i>)</h3>
+<p>Adds <i>mimeType</i> to the list of MIME types supported by this editor type.</p>
+<p><b>See also </b><a href="core-editortype.html#mimeTypes">mimeTypes</a>() and <a href="core-editortype.html#setMimeTypes">setMimeTypes</a>().</p>
+<!-- @@@addMimeType -->
+<!-- $$$allEditorTypes[overload1]$$$allEditorTypes -->
+<h3 class="fn" id="allEditorTypes"><code>[static] </code>const <span class="type">Core::EditorTypeList</span> EditorType::<span class="name">allEditorTypes</span>()</h3>
+<p>Returns all registered internal and external editors.</p>
+<!-- @@@allEditorTypes -->
+<!-- $$$defaultEditorTypes[overload1]$$$defaultEditorTypesconstUtils::MimeType& -->
+<h3 class="fn" id="defaultEditorTypes"><code>[static] </code>const <span class="type">Core::EditorTypeList</span> EditorType::<span class="name">defaultEditorTypes</span>(const <span class="type">Utils::MimeType</span> &amp;<i>mimeType</i>)</h3>
+<p>Returns all available internal and external editors for the <i>mimeType</i> in the default order: Editor types ordered by MIME type hierarchy, internal editors first.</p>
+<!-- @@@defaultEditorTypes -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><span class="type">QString</span> EditorType::<span class="name">displayName</span>() const</h3>
+<p>Returns a user-visible description of the editor type.</p>
+<p><b>See also </b><a href="core-editortype.html#setDisplayName">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" id="id"><span class="type">Utils::Id</span> EditorType::<span class="name">id</span>() const</h3>
+<p>Returns the ID of the editors' document type.</p>
+<p><b>See also </b><a href="core-editortype.html#setId">setId</a>().</p>
+<!-- @@@id -->
+<!-- $$$mimeTypes[overload1]$$$mimeTypes -->
+<h3 class="fn" id="mimeTypes"><span class="type">QStringList</span> EditorType::<span class="name">mimeTypes</span>() const</h3>
+<p>Returns the list of supported MIME types of this editor type.</p>
+<p><b>See also </b><a href="core-editortype.html#addMimeType">addMimeType</a>() and <a href="core-editortype.html#setMimeTypes">setMimeTypes</a>().</p>
+<!-- @@@mimeTypes -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" id="setDisplayName"><code>[protected] </code><span class="type">void</span> EditorType::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>displayName</i>)</h3>
+<p>Sets the <i>displayName</i> of the editor type. This is for example shown in the <b>Open With</b> menu and the MIME type preferences.</p>
+<p><b>See also </b><a href="core-editortype.html#displayName">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setId[overload1]$$$setIdUtils::Id -->
+<h3 class="fn" id="setId"><code>[protected] </code><span class="type">void</span> EditorType::<span class="name">setId</span>(<span class="type">Utils::Id</span> <i>id</i>)</h3>
+<p>Sets the <i>id</i> of the editors' document type. This must be the same as the <a href="core-idocument.html#id">IDocument::id</a>() of the documents returned by created editors.</p>
+<p><b>See also </b><a href="core-editortype.html#id">id</a>().</p>
+<!-- @@@setId -->
+<!-- $$$setMimeTypes[overload1]$$$setMimeTypesconstQStringList& -->
+<h3 class="fn" id="setMimeTypes"><code>[protected] </code><span class="type">void</span> EditorType::<span class="name">setMimeTypes</span>(const <span class="type">QStringList</span> &amp;<i>mimeTypes</i>)</h3>
+<p>Sets the MIME types supported by the editor type to <i>mimeTypes</i>.</p>
+<p><b>See also </b><a href="core-editortype.html#addMimeType">addMimeType</a>() and <a href="core-editortype.html#mimeTypes">mimeTypes</a>().</p>
+<!-- @@@setMimeTypes -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

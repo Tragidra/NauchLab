@@ -5,11 +5,13 @@ import pyqtgraph.flowchart.library as fclib
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+from PyQt5.uic import loadUi
 from pyqtgraph.flowchart import Flowchart
 from pyqtgraph.flowchart.library.common import CtrlNode
 from scipy import linalg
 from PIL import ImageGrab
 import numpy as np
+from UI.Pesochnica.ChernovikPesocFlow import ChernovikPesocFlow
 import cv2
 import os
 import shutil
@@ -19,7 +21,6 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor, QPainter
 from PyQt5.QtWidgets import QMessageBox, QFileDialog, QMainWindow, QDialog, QApplication, QWidget, QScrollArea, \
     QVBoxLayout, QSizePolicy, QSpacerItem, QSystemTrayIcon, QStyle, QAction, QMenu, QTableWidgetItem, QPushButton, \
     QLineEdit, QInputDialog, QComboBox, QTableWidget, QCheckBox
-from PyQt5.uic import loadUi
 import pyqtgraph as pg
 from scipy.linalg import solve_toeplitz, solve_banded, solve_triangular, eigh, eig_banded, eigh_tridiagonal, lu, \
     lu_factor, lu_solve, svdvals, diagsvd, orth, ldl, cholesky, polar, hessenberg
@@ -56,76 +57,6 @@ class Main(QMainWindow):
         tray_menu.addAction(show_action)
         tray_menu.addAction(hide_action)
         tray_menu.addAction(quit_action)
-        file = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "r")
-        contents = file.read()
-        terminals = ast.literal_eval(contents)
-        file.close()
-        fc = Flowchart(terminals)
-        w = fc.widget()
-
-        self.LayOut1.addWidget(w, 0, 0, 2, 1)
-        data1 = ""
-        data2 = ""
-        data3 = ""
-        data4 = ""
-        data5 = ""
-        file2 = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocData.txt", "r")
-        lines2 = file2.readlines()
-        for i in range(len(lines2)):
-            print(lines2[i])
-            if i == 0:
-                fileT = open(lines2[i], "r")
-                data1 = fileT.readlines()
-                print(data1)
-                fileT.close()
-            if i == 1:
-                fileT = open(lines2[i], "r")
-                data2 = fileT.readlines()
-                fileT.close()
-            if i == 2:
-                fileT = open(lines2[i], "r")
-                data3 = fileT.readlines()
-                fileT.close()
-            if i == 3:
-                fileT = open(lines2[i], "r")
-                data4 = fileT.readlines()
-                fileT.close()
-            if i == 4:
-                fileT = open(lines2[i], "r")
-                data5 = fileT.readlines()
-                fileT.close()
-        file = open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocflow.txt", "r")
-        lines = file.readlines()
-        chet1 = (len(lines)-2)//2
-        print(chet1)
-        if chet1 == 1:
-            fc.setInput(dataIn=data1)
-        if chet1 == 2:
-            fc.setInput(dataIn=data1)
-            fc.setInput(dataIn=data2)
-        if chet1 == 3:
-            fc.setInput(dataIn=data1)
-            fc.setInput(dataIn=data2)
-            fc.setInput(dataIn=data3)
-        if chet1 == 4:
-            fc.setInput(dataIn=data1)
-            fc.setInput(dataIn=data2)
-            fc.setInput(dataIn=data3)
-            fc.setInput(dataIn=data4)
-        if chet1 == 5:
-            fc.setInput(dataIn=data1)
-            fc.setInput(dataIn=data2)
-            fc.setInput(dataIn=data3)
-            fc.setInput(dataIn=data4)
-            fc.setInput(dataIn=data5)
-        library = fclib.LIBRARY.copy()
-        library.addNodeType(UnsharpMaskNode, [('Текст',),
-                                              ('Submenu_test', 'submenu2', 'submenu3')])
-        fc.setLibrary(library)
-
-        fNode = fc.createNode('Текст', pos=(0, 0))
-        fc.connectTerminals(fc['dataIn'], fNode['dataIn'])
-        fc.connectTerminals(fNode['dataOut'], fc['dataOut'])
         self.tray_icon.setContextMenu(tray_menu)
         self.tray_icon.show()
         self.otkrpoject.triggered.connect(self.onOpenFile)
@@ -141,8 +72,11 @@ class Main(QMainWindow):
         self.pesochnica.triggered.connect(self.pesocdispl)
         #self.dobtextpes.triggered.connect(self.dobavittexttopes)
         self.dobtextpes.triggered.connect(self.dobavittexttopes)
+        self.otkritpesoc.triggered.connect(self.pesoc)
 
-
+    def pesoc(self):
+        self.ChernovikPesocFlow = ChernovikPesocFlow()
+        self.ChernovikPesocFlow.show()
 
     def sapis(self):
         if not os.path.exists('temp.txt'):
@@ -235,11 +169,11 @@ class Main(QMainWindow):
         self.Pesoc = Pesoc()
         self.Pesoc.show()
 
-    def dobavittexttopes(self):
+    #def dobavittexttopes(self):
 #        self.DobTextPes = DobTextPes()
 #        self.DobTextPes.show()
-        self.FileOtobr = FileOtobr()
-        self.FileOtobr.show()
+        #self.FileOtobr = FileOtobr()
+        #self.FileOtobr.show()
 
 class UnsharpMaskNode(CtrlNode):
     """Return the input data passed through an unsharp mask."""
@@ -1417,9 +1351,9 @@ class Pesoc(QMainWindow):
     def redColor(self):
         self.brushColor = Qt.red
 
-    def fileot(self):
-        self.FileOtobr = FileOtobr()
-        self.FileOtobr.show()
+    #def fileot(self):
+        #self.FileOtobr = FileOtobr()
+        #self.FileOtobr.show()
 
 class DobTextPes(QDialog):
     def __init__(self):
@@ -1431,7 +1365,7 @@ class DobTextPes(QDialog):
         path = self.lineText.text()
 
 
-class FileOtobr(QWidget):
+'''class FileOtobr(QWidget):
     def __init__(self):
         super().__init__()
         hlay = QHBoxLayout(self)
@@ -1441,7 +1375,7 @@ class FileOtobr(QWidget):
         hlay.addWidget(self.listview)
 
         path = QDir.rootPath()
-        path1 = "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/proecti"
+        path1 = setRootPath(None)
         #C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/proecti
         self.dirModel = QFileSystemModel()
         self.dirModel.setRootPath(QDir.rootPath())
@@ -1480,7 +1414,7 @@ class FileOtobr(QWidget):
             myfile.write("}")
         with open("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/pesocData.txt", "a") as myfile:
             myfile.write(path+"\n")
-        self.close()
+        self.close() '''
 
 app = QApplication(sys.argv)
 mainW = Main()

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-cmake.qdoc -->
+  <title>Setting Up CMake | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Setting Up CMake</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-project-other.html" />
+  <link rel="next" href="creator-project-qbs.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-project-other.html">Build Systems</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-project-qbs.html">Setting Up Qbs</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#adding-cmake-tools">Adding CMake Tools</a></li>
+<li class="level1"><a href="#editing-cmake-configuration-files">Editing CMake Configuration Files</a></li>
+<li class="level1"><a href="#adding-external-libraries-to-cmake-projects">Adding External Libraries to CMake Projects</a></li>
+<li class="level1"><a href="#related-topics">Related Topics</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Setting Up CMake</h1>
+<!-- $$$creator-project-cmake.html-description -->
+<div class="descr" id="details">
+<p>CMake automates the configuration of build systems. It controls the software compilation process by using simple configuration files, called <code>CMakeLists.txt</code> files. CMake generates native build configurations and workspaces that you can use in the compiler environment of your choice.</p>
+<p>You can use CMake from Qt Creator to build applications for the desktop, as well as mobile and embedded devices. You can also build single files to test your changes.</p>
+<p>Qt Creator automatically detects the CMake executable specified in the <code>PATH</code>. You can add paths to other CMake executables and use them in different build and run <a href="creator-glossary.html#glossary-buildandrun-kit">kits</a>.</p>
+<p>CMake documentation is installed in Qt help file format (.qch) when you install CMake. It is automatically registered by Qt Creator, and you can view it in the Help mode.</p>
+<p>Qt Creator automatically runs CMake to refresh project information when you edit a <code>CMakeLists.txt</code> configuration file in a project. Project information is also automatically refreshed when you build the project.</p>
+<p class="centerAlign"><img src="images/qtcreator-projects-view-edit.png" alt="&quot;CMake project in Projects view&quot;" /></p><p>If Qt Creator cannot load the CMake project, the <a href="creator-projects-view.html">Projects</a> view shows a <b>&lt;File System&gt;</b> project node to avoid scanning the file system and load the project faster. The node shows the same files as the <a href="creator-file-system-view.html">File System</a> view. Select <b>Build</b> &gt; <b>Clear CMake Configuration</b>, and then select <b>Build</b> &gt; <b>Run CMake</b> to reconfigure the project.</p>
+<h2 id="adding-cmake-tools">Adding CMake Tools</h2>
+<p>Qt Creator requires CMake's <a href="https://cmake.org/cmake/help/latest/manual/cmake-file-api.7.html">file-based API</a>, and therefore you'll need CMake version 3.14, or later.</p>
+<p>For systems with older versions of CMake, only workarounds are available:</p>
+<ul>
+<li>For CMake version 3.5 or later it is possible to generate a <a href="https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html">compilation database</a> and open that in Qt Creator, as described in <a href="creator-clang-codemodel.html#using-compilation-databases">Using Compilation Databases</a>.</li>
+<li>Create an ad-hoc project file for a qmake build using <code>qmake -project</code> and <a href="creator-project-opening.html">open</a> that in Qt Creator. Be aware that this is typically not compilable without further manual changes.</li>
+<li>Manually create an ad-hoc project file for a <a href="creator-project-generic.html">generic project</a> and open that in Qt Creator. Be aware this is typically not compilable without further manual changes.</li>
+</ul>
+<p>To view and specify settings for CMake:</p>
+<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> &gt; <b>CMake</b>.<p class="centerAlign"><img src="images/qtcreator-cmakeexecutable.png" alt="" /></p></li>
+<li>The <b>Name</b> field displays a name for the CMake installation.</li>
+<li>The <b>Path</b> field displays the path to the CMake executable.</li>
+<li>The <b>Help file</b> field displays the path to the CMake help file (.qch) provided by and installed with CMake.</li>
+<li>Deselect the <b>Autorun CMake</b> check box if you do not want to automatically run CMake every time when you save changes to <code>CMakeLists.txt</code> files.</li>
+<li>Select <b>Apply</b> to save your changes.</li>
+</ol>
+<p>To add a path to a CMake executable that Qt Creator does not detect automatically, and to specify settings for it, select <b>Add</b>. To make changes to automatically detected installations, select <b>Clone</b>.</p>
+<p>Qt Creator uses the <i>default CMake</i> if it does not have enough information to choose the CMake to use. To set the selected CMake executable as the default, select <b>Make Default</b>.</p>
+<p>To remove the selected CMake executable from the list, select <b>Remove</b>.</p>
+<p>Select the <b>Kits</b> tab to add the CMake tool to a build and run kit. The kit also specifies the CMake generator that is used for producing project files for Qt Creator and the initial configuration parameters:</p>
+<p class="centerAlign"><img src="images/qtcreator-kits-cmake.png" alt="" /></p><p>For more information, see <a href="creator-targets.html">Adding Kits</a>.</p>
+<h2 id="editing-cmake-configuration-files">Editing CMake Configuration Files</h2>
+<p>To open a CMakeLists.txt file for editing, right-click it in the <b>Projects</b> view and select <b>Open With</b> &gt; <b>CMake Editor</b>.</p>
+<p>You can also use the <code>cmo</code> filter in the <a href="creator-editor-locator.html">locator</a> to open the CMakeLists.txt file for the current run configuration in the editor. This is the same build target as when you select <b>Build</b> &gt; <b>Build for Run Configuration</b>.</p>
+<p>The following features are supported:</p>
+<ul>
+<li>Pressing <b>F2</b> when the cursor is on a filename to open the file</li>
+<li>Keyword completion</li>
+<li>Code completion</li>
+<li>Path completion</li>
+<li>Auto-indentation</li>
+<li>Matching parentheses and quotes</li>
+</ul>
+<p>Warnings and errors are displayed in the <a href="creator-output-panes.html#issues">Issues</a> output pane.</p>
+<h2 id="adding-external-libraries-to-cmake-projects">Adding External Libraries to CMake Projects</h2>
+<p>Through external libraries, Qt Creator can support code completion and syntax highlighting as if they were part of the current project or the Qt library.</p>
+<p>Qt Creator detects the external libraries using the <code>find_package()</code> macro. Some libraries come with the CMake installation. You can find those in the <code>Modules</code> directory of your CMake installation. For more information, see <a href="https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html">cmake-packages(7)</a>.</p>
+<p>Syntax completion and highlighting work once your project successfully builds and links against the external library.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="creator-project-opening.html">Opening Projects</a></li>
+<li><a href="creator-build-settings-cmake.html">CMake Build Configuration</a></li>
+<li><a href="creator-run-settings.html">Specifying Run Settings</a></li>
+<li><a href="creator-deployment-embedded-linux.html">Deploying Applications to Generic Remote Linux Devices</a></li>
+</ul>
+</div>
+<!-- @@@creator-project-cmake.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-project-other.html">Build Systems</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-project-qbs.html">Setting Up Qbs</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

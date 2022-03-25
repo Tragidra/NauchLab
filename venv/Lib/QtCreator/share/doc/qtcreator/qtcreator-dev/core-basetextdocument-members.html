@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- textdocument.cpp -->
+  <title>List of All Members for BaseTextDocument | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="extending-index.html">Extending Qt Creator Manual</a></li>
+<li>BaseTextDocument</li>
+<li id="buildversion"><a href="extending-index.html">Extending Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">List of All Members for BaseTextDocument</h1>
+<p>This is the complete list of members for <a href="core-basetextdocument.html">Core::BaseTextDocument</a>, including inherited members.</p>
+<div class="table"><table class="propsummary">
+<tr><td class="topAlign"><ul>
+<li class="fn">enum <span class="name"><b><a href="core-idocument.html#ChangeTrigger-enum">ChangeTrigger</a></b></span></li>
+<li class="fn">enum <span class="name"><b><a href="core-idocument.html#ChangeType-enum">ChangeType</a></b></span></li>
+<li class="fn">enum class <span class="name"><b><a href="core-idocument.html#OpenResult-enum">OpenResult</a></b></span></li>
+<li class="fn">enum <span class="name"><b><a href="core-idocument.html#ReloadFlag-enum">ReloadFlag</a></b></span></li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#aboutToReload">aboutToReload</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#changed">changed</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#contentsChanged">contentsChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#filePathChanged">filePathChanged</a></b></span>(const Utils::FilePath &amp;, const Utils::FilePath &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#mimeTypeChanged">mimeTypeChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#reloadFinished">reloadFinished</a></b></span>(bool)</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#checkPermissions">checkPermissions</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#contents">contents</a></b></span>() const : QByteArray</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#displayName">displayName</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#fallbackSaveAsFileName">fallbackSaveAsFileName</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#fallbackSaveAsPath">fallbackSaveAsPath</a></b></span>() const : Utils::FilePath</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#filePath">filePath</a></b></span>() const : const Utils::FilePath &amp;</li>
+<li class="fn"><span class="name"><b><a href="core-basetextdocument.html#format">format</a></b></span>() const : Utils::TextFileFormat</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#id">id</a></b></span>() const : Utils::Id</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#infoBar">infoBar</a></b></span>() : Utils::InfoBar *</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#isFileReadOnly">isFileReadOnly</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#isModified">isModified</a></b></span>() const : bool</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#isSaveAsAllowed">isSaveAsAllowed</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#isSuspendAllowed">isSuspendAllowed</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#isTemporary">isTemporary</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#mimeType">mimeType</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#open">open</a></b></span>(QString *, const Utils::FilePath &amp;, const Utils::FilePath &amp;) : Core::IDocument::OpenResult</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#preferredDisplayName">preferredDisplayName</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="core-basetextdocument.html#read">read</a></b></span>(const Utils::FilePath &amp;, QStringList *, QString *) : Core::BaseTextDocument::ReadResult</li>
+<li class="fn"><span class="name"><b><a href="core-basetextdocument.html#read-1">read</a></b></span>(const Utils::FilePath &amp;, QString *, QString *) : Core::BaseTextDocument::ReadResult</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#reload">reload</a></b></span>(QString *, Core::IDocument::ReloadFlag, Core::IDocument::ChangeType) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#reloadBehavior">reloadBehavior</a></b></span>(Core::IDocument::ChangeTrigger, Core::IDocument::ChangeType) const : Core::IDocument::ReloadBehavior</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#save">save</a></b></span>(QString *, const Utils::FilePath &amp;, bool) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#setContents">setContents</a></b></span>(const QByteArray &amp;) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#setFilePath">setFilePath</a></b></span>(const Utils::FilePath &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#setId">setId</a></b></span>(Utils::Id)</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#setMimeType">setMimeType</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#setPreferredDisplayName">setPreferredDisplayName</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#setSuspendAllowed">setSuspendAllowed</a></b></span>(bool)</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#setTemporary">setTemporary</a></b></span>(bool)</li>
+<li class="fn"><span class="name"><b><a href="core-idocument.html#shouldAutoSave">shouldAutoSave</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-basetextdocument.html#write">write</a></b></span>(const Utils::FilePath &amp;, const QString &amp;, QString *) const : bool</li>
+<li class="fn"><span class="name"><b><a href="core-basetextdocument.html#write-1">write</a></b></span>(const Utils::FilePath &amp;, const Utils::TextFileFormat &amp;, const QString &amp;, QString *) const : bool</li>
+</ul>
+</td></tr>
+</table></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

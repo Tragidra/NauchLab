@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- deploying-android.qdoc -->
+  <title>Deploying Applications to Android Devices | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Deploying Applications to Android Devices</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-deployment.html" />
+  <link rel="next" href="creator-deployment-b2qt.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-deployment.html">Deploying to Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-deployment-b2qt.html">Deploying Applications to Boot2Qt Devices</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#packaging-applications">Packaging Applications</a></li>
+<li class="level2"><a href="#specifying-deployment-settings">Specifying Deployment Settings</a></li>
+<li class="level2"><a href="#specifying-settings-for-packages">Specifying Settings for Packages</a></li>
+<li class="level1"><a href="#editing-manifest-files">Editing Manifest Files</a></li>
+<li class="level2"><a href="#package-names">Package Names</a></li>
+<li class="level2"><a href="#styling">Styling</a></li>
+<li class="level2"><a href="#screen-orientation">Screen Orientation</a></li>
+<li class="level2"><a href="#icons-and-splash-screens">Icons and Splash Screens</a></li>
+<li class="level2"><a href="#android-manifest-editor">Android Manifest Editor</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Deploying Applications to Android Devices</h1>
+<!-- $$$creator-deploying-android.html-description -->
+<div class="descr" id="details">
+<p>On Android, applications are distributed in specially structured types of ZIP packages called Application Packages (APK) or Android App Bundles (AAB). APK files can be downloaded to and executed on a device, whereas AAB is intended to be interpreted by the Google Play store and is used to generate APK files.</p>
+<p>Qt for Android has binaries for armv7a, arm64-v8a, x86, and x86-64. To support several different ABIs in your application, build an AAB that contains binaries for each of the ABIs. The Google Play store uses the AAB to generate optimized APK packages for the devices issuing the download request and automatically signs them with your publisher key.</p>
+<p>Qt Creator supports the following methods of deployment for Android applications:</p>
+<ul>
+<li>As a stand-alone, distributable application package (APK).</li>
+<li>Since Qt 5.14.0, as an app bundle (AAB), intended for distribution in the Google Play store.</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>Since Qt Creator 4.12, Ministro is not supported.</p>
+</div>
+<p>To <a href="creator-deploying-android.html#specifying-settings-for-packages">specify settings</a> for application packages, select <b>Projects</b> &gt; <b>Build</b> &gt; <b>Build Android APK</b> &gt; <b>Details</b>.</p>
+<p>For more information about options that you have for running applications, see <a href="creator-run-settings.html#specifying-run-settings-for-android-devices">Specifying Run Settings for Android Devices</a>.</p>
+<h2 id="packaging-applications">Packaging Applications</h2>
+<p>Because bundling applications as APK packages is not trivial, Qt 5 provides a deployment tool called <code>androiddeployqt</code>. When you deploy an application using a <i>Qt for Android kit</i>, Qt Creator uses the <code>androiddeployqt</code> tool to create the necessary files and to bundle them into an APK:</p>
+<ul>
+<li>Java files, which serve as the entry point into your application and that automatically load Qt and execute the native code in your application.</li>
+<li>AndroidManifest.xml, which provides meta-information about your application.</li>
+<li>Other XML files, which specify the dependencies of your application.</li>
+<li>Resource files.</li>
+<li>Libraries and QML files, which can be included in the project depending on the deployment method that you select.</li>
+<li>Gradle wrappers that are needed to download and use Gradle.</li>
+<li>Gradle script that is needed by Java IDEs, such as Android Studio. It allows the user to extend the Java part without copying our Java sources. It also allows the IDEs to provide code completion, syntax highlighting, and so on.</li>
+</ul>
+<p>The Gradle wrappers and scripts are bundled only if you use Gradle to build the application packages. For more information, see <a href="creator-developing-android.html">Connecting Android Devices</a>.</p>
+<p>To view the packages that the <code>androiddeployqt</code> tool created, select the <b>Open package location after build</b> check box.</p>
+<h3 id="specifying-deployment-settings">Specifying Deployment Settings</h3>
+<p>The available deployment settings are listed in the <b>Method</b> field. To add deployment methods for a project, select <b>Add</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-android-deployment-settings.png" alt="&quot;Deployment settings&quot;" /></p><p>To rename the current deployment method, select <b>Rename</b>.</p>
+<p>To remove the current deployment method, select <b>Remove</b>.</p>
+<p>The packages are deployed on the Android device that you select in the <a href="creator-building-targets.html">kit selector</a>. To add devices, select <b>Manage</b>.</p>
+<p>For more information about specifying additional start options for applications, see <a href="creator-run-settings.html#specifying-run-settings-for-android-devices">Specifying Run Settings for Android Devices</a>.</p>
+<p>To remove previously installed files from the device, select <b>Uninstall the existing app before deployment</b>.</p>
+<p>To install a pre-built APK, such as a 3rd-party application to a device, select <b>Install an APK File</b>.</p>
+<h3 id="specifying-settings-for-packages">Specifying Settings for Packages</h3>
+<p>To specify settings for the <code>androiddeployqt</code> tool, select <b>Projects</b> &gt; <b>Build &amp; Run</b> &gt; <b>Build</b> &gt; <b>Build Android APK</b> &gt; <b>Details</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-android-build-apk-step.png" alt="&quot;Build Android APK step&quot;" /></p><p>The <code>androiddeployqt</code> tool uses the configuration information to create APKs. For more information about the available options, see androiddeployqt.</p>
+<p>You can view information about what the <code>androiddeployqt</code> tool is doing in the <b>Compile Output</b> pane. To view additional information, select the <b>Verbose output</b> check box.</p>
+<p>Select <b>Add debug server</b> to include the debug server binary into a package.</p>
+<h4 id="selecting-api-level">Selecting API Level</h4>
+<p>In the <b>Android build platform SDK</b> field, you can select the API level to use for building the application. Usually, you should select the highest API level available.</p>
+<div class="admonition note">
+<p><b>Note: </b>For Qt 5.12.0 to 5.12.5 and Qt 5.13.0 to 5.13.1, Android build platform SDK 28 should be used. For more recent versions than Qt 5.13.1, build platform SDK 29 or the most recent one should be used.</p>
+</div>
+<p>This field does not specify the minimum supported API level nor the target API level, which you can specify in the Android manifest. See <a href="creator-deploying-android.html#editing-manifest-files">Editing Manifest Files</a>. For more information about Android API levels, see <a href="http://developer.android.com/guide/topics/manifest/uses-sdk-element.html#ApiLevels">What is API Level?</a>.</p>
+<h4 id="building-aabs">Building AABs</h4>
+<p>For testing the application locally, use the APK format, because the package can be uploaded directly to the device and run. For distribution to the Google Play store, create an AAB by selecting the <b>Build Android App Bundle (*.aab)</b> check box.</p>
+<p>When building with CMake, you can view the selected ABIs in <b>Initial Configuration</b> in the <b>CMake</b> section. You can set additional ABIs as values of the <code>ANDROID_ABI</code> key:</p>
+<p class="centerAlign"><img src="images/qtcreator-android-cmake-settings.png" alt="&quot;CMake settings for building AABs&quot;" /></p><p>When building with Qbs or qmake, you can select the ABIs in the <b>ABIs</b> field in the <b>Build Steps</b>:</p>
+<p class="centerAlign"><img src="images/qtcreator-android-build-steps.png" alt="&quot;qmake settings for building AABs&quot;" /></p><h4 id="signing-android-packages">Signing Android Packages</h4>
+<p>To publish your application, you must sign it by using a <i>public-private key pair</i> that consists of a <i>certificate</i> and a corresponding <i>private key</i> and is identified by an <i>alias</i>. The key pair is used to verify that the future versions of your application are actually created by you.</p>
+<div class="admonition warning">
+<p><b>Warning: </b>Keep the key pair in a safe place and take back up copies, because you cannot update the application if you lose the key pair.</p>
+</div>
+<p>You can use Qt Creator to generate a keystore and a <i>self-signed</i> certificate. The generated certificate has the structure of an X.509 v3 digital certificate. It contains information about the version, serial number, and validity period of the certificate, the ID of the algorithm that is used to encrypt the data, the organization that issued the certificate, and the <i>subject</i> (owner) of the certificate. In case of a self-signed certificate, the issuer and owner of the certificate are the same. In addition, the certificate contains information about the algorithm that is used to sign the certificate, as well as the signature of the certificate.</p>
+<p>The keystore is protected by a password. In addition, you can protect each alias with its individual password.</p>
+<p>When you sign an Android application, you must select a keystore that contains certificates and a certificate alias from the keystore. The public key (certificate) for the alias is embedded into the APK during signing.</p>
+<p>To create a keystore and a self-signed certificate:</p>
+<ol class="1" type="1"><li>In the <b>Keystore</b> field, select <b>Create</b> to create a new keystore that contains one key pair in the <b>Create a Keystore and a Certificate</b> dialog:<p class="centerAlign"><img src="images/qtcreator-android-certificate.png" alt="" /></p></li>
+<li>In the <b>Keystore</b> group, enter a password to protect the keystore.</li>
+<li>In the <b>Certificate</b> group, specify the key size and validity period of the certificate. You can specify a separate password to protect the key pair or use the keystore password.</li>
+<li>In the <b>Certificate Distinguished Names</b> group, enter information about yourself and your company or organization that identifies the issuer and the owner of the key pair.</li>
+<li>Select <b>Save</b>.</li>
+<li>In the <b>Keystore File Name</b> dialog, enter a name for the keystore and select a location for it.</li>
+<li>In the <b>Keystore</b> dialog, enter the keystore password to create the key pair in the keystore.</li>
+</ol>
+<p>To sign an Android package by using a key pair, set the <b>Sign package</b> group settings described in <a href="creator-deploying-android.html#specifying-settings-for-packages">Specifying Settings for Packages</a>:</p>
+<ol class="1" type="1"><li>In the <b>Keystore</b> field, select <b>Choose</b> to select an existing keystore.</li>
+<li>In the <b>Certificate alias</b> field, select an alias from the list of key pairs that the keystore contains.</li>
+<li>Select the <b>Sign package</b> check box to use the alias to sign the Android package.</li>
+</ol>
+<h4 id="adding-external-libraries">Adding External Libraries</h4>
+<p>Qt Creator automatically detects which Qt libraries the application uses and adds them as dependencies. If the application needs external libraries, specify them in <b>Projects</b> &gt; <b>Build</b> &gt; <b>Build Android APK</b> &gt; <b>Additional Libraries</b> field. The libraries are copied into your application's library folder and loaded on startup.</p>
+<p>To add OpenSSL libraries, select <b>Include prebuilt OpenSSL libraries</b> in the <b>Additional Libraries</b> group. This will add the OpenSSL include project defined in <a href="creator-developing-android.html#specifying-android-device-settings">device settings</a> in <b>Android OpenSSL</b> group. This can be used for QMake and CMake projects.</p>
+<p>Otherwise, you can manually add the paths to the required <code>libssl.so</code> and <code>libcrypto.so</code> libraries to the <b>Additional Libraries</b> field.</p>
+<h2 id="editing-manifest-files">Editing Manifest Files</h2>
+<p>You can use the configuration options to specify all the settings you need for the <code>androiddeployqt</code> tool. You only need an Adroid manifest file to specify Android-specific settings, such as the application icon. However, the manifest file is needed when you want to publish the package in the Play Store.</p>
+<h3 id="package-names">Package Names</h3>
+<p>Android application packages are usually named by using a hierarchical pattern with the levels in the hierarchy separated by periods (.)&#x2e; In general, a package name begins with the top level domain name of the organization followed by the organization's domain name and any subdomain names listed in reverse order. The organization can then choose a specific name for their package. Package names should be written in all lowercase characters whenever possible. For example, <code>org.qtproject.example</code>.</p>
+<p>Complete conventions for disambiguating package names and rules for naming packages when the Internet domain name cannot be directly used as a package name are described in section 7.7 of the Java Language Specification.</p>
+<p>For more information about package names, see <a href="http://developer.android.com/guide/components/fundamentals.html">Android Application Fundamentals</a>.</p>
+<h3 id="styling">Styling</h3>
+<p>Qt uses different methods to determine how Qt Widgets and Qt Quick Controls should be styled:</p>
+<ul>
+<li>Select <b>Default</b> or <b>Full</b> when using Qt Widgets or Qt Quick Controls 1 in your project.<div class="admonition note">
+<p><b>Note: </b>This method uses some Android non-SDK interfaces, that are being restricted by Google starting from Android 9.0 (API 28).</p>
+</div>
+</li>
+<li>Select <b>Minimal</b> when using Qt Quick Controls 2 but no Qt Widgets or Qt Quick Controls 1. This is faster than using the default or full options.</li>
+<li>Select <b>None</b> when using neither Qt Widgets nor Qt Quick Controls 1 or 2.</li>
+</ul>
+<h3 id="screen-orientation">Screen Orientation</h3>
+<p>You can specify different options for determining screen orientation, depending on sensor readings or user preferences. The following table lists the options available.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Orientation</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >Unspecified</td><td >The system chooses the orientation. The policy it uses, and therefore the choices made in specific contexts, may differ from device to device.</td></tr>
+<tr valign="top" class="even"><td >Behind</td><td >Use the same orientation as the activity that's immediately beneath it in the activity stack.</td></tr>
+<tr valign="top" class="odd"><td >Landscape</td><td >Landscape orientation, where the display width is larger than its height.</td></tr>
+<tr valign="top" class="even"><td >Portrait</td><td >Portrait orientation, where the display height is larger than its width.</td></tr>
+<tr valign="top" class="odd"><td >Reverse landscape</td><td >Landscape orientation in the opposite direction of normal landscape.</td></tr>
+<tr valign="top" class="even"><td >Reverse portrait</td><td >Portrait orientation in the opposite direction of normal portrait.</td></tr>
+<tr valign="top" class="odd"><td >Sensor landscape</td><td >Landscape orientation, but it can be either normal or reverse landscape based on the device sensor. The sensor is used even if the user has locked sensor-based rotation.</td></tr>
+<tr valign="top" class="even"><td >Sensor portrait</td><td >Portrait orientation, but it can be either normal or reverse portrait based on the device sensor. The sensor is used even if the user has locked sensor-based rotation.</td></tr>
+<tr valign="top" class="odd"><td >User landscape</td><td >Landscape orientation, but it can be either normal or reverse landscape based on the device sensor and the user's preference.</td></tr>
+<tr valign="top" class="even"><td >User portrait</td><td >Portrait orientation, but it can be either normal or reverse portrait based on the device sensor and the user's preference.</td></tr>
+<tr valign="top" class="odd"><td >Sensor</td><td >The orientation is determined by the device orientation sensor. The orientation of the display depends on how the user is holding the device. It changes when the user rotates the device. Some devices, however, will not rotate to all four possible orientations by default. To allow all four orientations, select the full sensor option. The sensor is used even if the user locked sensor-based rotation.</td></tr>
+<tr valign="top" class="even"><td >Full sensor</td><td >The orientation is determined by the device orientation sensor for any of the four orientations. This is similar to the sensor option, except that it allows any of the four possible screen orientations, regardless of what the device will normally do. For example, some devices won't normally use reverse portrait or reverse landscape, but this option enables them.</td></tr>
+<tr valign="top" class="odd"><td >No sensor</td><td >The orientation is determined without reference to a physical orientation sensor. The sensor is ignored, so the display will not rotate based on how the user moves the device.</td></tr>
+<tr valign="top" class="even"><td >User</td><td >The user's current preferred orientation.</td></tr>
+<tr valign="top" class="odd"><td >Full user</td><td >If the user has locked sensor-based rotation, this option behaves in the same way as the user option. Otherwise, it behaves the same as the full sensor option, and allows any of the four possible screen orientations.</td></tr>
+<tr valign="top" class="even"><td >Locked</td><td >Locks the orientation to its current rotation, whatever that is.</td></tr>
+</table></div>
+<h3 id="icons-and-splash-screens">Icons and Splash Screens</h3>
+<p>You can set different images to be shown as application icons and splash screens on low, medium, high, and extra high DPI displays. The following list summarizes the DPI values typically associated with each category:</p>
+<ul>
+<li>Low-density (LDPI): ~120dpi</li>
+<li>Medium-density (MDPI): ~160dpi</li>
+<li>High-density (HDPI): ~240dpi</li>
+<li>Extra-high-density (XHDPI): ~320dpi</li>
+<li>Extra-extra-high-density (XXHDPI): ~480dpi</li>
+<li>Extra-extra-extra-high-density (XXXHDPI): ~640dpi</li>
+</ul>
+<p>Specify settings for icons in the <b>Application icon</b> tab. Select the image with the highest resolution as the <b>Master icon</b>. Qt Creator resizes the icon and sets versions of it to be shown on low, medium, high, and extra high DPI displays, as needed. Alternatively, set the icons for each resolution separately.</p>
+<p class="centerAlign"><img src="images/qtcreator-android-manifest-editor-app-icon.png" alt="&quot;Application icons in Android Manifest Editor&quot;" /></p><p>Specify settings for splash screens in the <b>Splash screen</b> tab. Select images to display as splash screens depending on the device orientation and screen resolution.</p>
+<p class="centerAlign"><img src="images/qtcreator-android-manifest-editor-splash-screen.png" alt="&quot;Splash screens in Android Manifest Editor&quot;" /></p><p>By default, the splash screen is hidden automatically when an activity is drawn. To keep it visible until <a href="https://doc.qt.io/qt-6/qnativeinterface-qandroidapplication.html#hideSplashScreen">QNativeInterface::QAndroidApplication::hideSplashScreen()</a> is called, select the <b>Sticky splash screen</b> check box.</p>
+<p>In <b>Image show mode</b>, select whether to center the splash screen on the device display or scale it to fill the display.</p>
+<p>Set a background color in <b>Background color</b>.</p>
+<p>Select the images with the highest resolution as the <b>Master image</b>, <b>Portrait master image</b>, and <b>Landscape master image</b>.</p>
+<p>Select <b>Clear All</b> to reset all settings or remove all images.</p>
+<h3 id="android-manifest-editor">Android Manifest Editor</h3>
+<p>If you use qmake as the build system, you can create an Android manifest file and edit it in Qt Creator.</p>
+<p>To create an Android manifest file and to open it in the Android Manifest Editor:</p>
+<ol class="1" type="1"><li>Select <b>Projects</b> &gt; <b>Build</b> &gt; <b>Build Android APK</b> &gt; <b>Create Templates</b>.</li>
+<li>In the <b>Package name</b> field, enter a valid <a href="creator-deploying-android.html#package-names">package name</a> for the application. For example, <code>org.example.myapplication</code>. The application is launched by an automatically generated Java launcher that is packaged with the application into an Android package (.apk).<p class="centerAlign"><img src="images/qtcreator-android-manifest-editor-package.png" alt="&quot;Package info in Android Manifest Editor&quot;" /></p></li>
+<li>You can specify an internal version number for the package in the <b>Version code</b> field. It is used to determine whether one version of the application is more recent than another. In the <b>Version name</b> field, specify the version number that is shown to users.</li>
+<li>In the <b>Minimum required SDK</b> field, select the minimum API level required to run the application. The minimum supported API level for Qt Creator is android-9. However, Qt versions might have different minimum API levels, and therefore Qt Creator does not allow you to select an API level that the Qt version specified for the kit does not support.</li>
+<li>In the <b>Target SDK</b> field, select the targeted API level of the application. This affects the activation of some compatibility features in the OS. The value used by the <code>androiddeployqt</code> tool by default is 14, which means that the overflow button in the system navigation bar will not be enabled by default.</li>
+<li>In the <b>Application name</b> field, set the application's name.</li>
+<li>In the <b>Activity name</b> field, set an activity name.</li>
+<li>In the <b>Style extraction</b> field, set the method that Qt uses to <a href="creator-deploying-android.html#styling">determine which UI style to use</a>.</li>
+<li>In the <b>Screen orientation</b> field, select the option for determining <a href="creator-deploying-android.html#screen-orientation">screen orientation</a>.</li>
+<li>In <b>Application icon</b>, specify images to use as application icons depending on screen resolution.</li>
+<li>In <b>Splash screen</b>, select images to display as splash screens depending on the screen orientation and resolution.</li>
+<li>In <b>Android services</b>, select <b>Add</b> to add a service. You must enter at least a service class name for a new service. If you select <b>Run in external process</b>, you also need to enter a process name. If you select <b>Run in external library</b>, you need to enter a library name. Service arguments are mandatory for a service that is not run in an external library. For more information about writing service code and structure of services, see Android Services.<p class="centerAlign"><img src="images/qtcreator-android-manifest-editor-services.png" alt="&quot;Android services in Android Manifest Editor&quot;" /></p></li>
+<li>In the <b>Permissions</b> field, you can specify the permissions that your application needs. Starting from Android 6.0 (API 23), permissions have to be requested at runtime (see QtAndroidPrivate::requestPermission()). For lower Android API levels, users are asked to grant the permissions when they install the application. Android OS then grants the application access to the appropriate data and features.<p class="centerAlign"><img src="images/qtcreator-android-manifest-editor-permissions.png" alt="&quot;Permissions in Android Manifest Editor&quot;" /></p></li>
+<li>Select the <b>Include default permissions for Qt modules</b> and <b>Include default features for Qt modules</b> check boxes to add the permissions needed by Qt libraries. This can be <code>android.permission.WRITE_EXTERNAL_STORAGE</code> for Qt Core or <code>android.permission.ACCESS_COARSE_LOCATION</code> for <a href="https://doc.qt.io/qt-5.15/qtlocation-index.html">Qt Location</a>.</li>
+<li>To add a permission, select it from the list, and then click <b>Add</b>.</li>
+</ol>
+<p>On the top header, select the <b>XML Source</b> tab to edit the file in XML format.</p>
+</div>
+<!-- @@@creator-deploying-android.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-deployment.html">Deploying to Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-deployment-b2qt.html">Deploying Applications to Boot2Qt Devices</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

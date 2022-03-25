@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-build-settings-qmake.qdoc -->
+  <title>qmake Build Configuration | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>qmake Build Configuration</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-build-settings-cmake.html" />
+  <link rel="next" href="creator-build-settings-qbs.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-build-settings-cmake.html">CMake Build Configuration</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-build-settings-qbs.html">Qbs Build Configuration</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#global-qmake-settings">Global qmake Settings</a></li>
+<li class="level1"><a href="#compiling-qml">Compiling QML</a></li>
+<li class="level1"><a href="#qmake-build-steps">qmake Build Steps</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">qmake Build Configuration</h1>
+<!-- $$$creator-build-settings-qmake.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/qtcreator-projectpane.png" alt="&quot;qmake build settings&quot;" /></p><p>By default, Qt Creator builds qmake projects in a separate directory from the source directory, as <a href="creator-glossary.html#glossary-shadow-build">shadow builds</a>. This keeps the files generated for each <a href="creator-glossary.html#glossary-buildandrun-kit">build and run kit</a> separate. If you only build and run with a single <a href="creator-glossary.html#glossary-buildandrun-kit">kit</a>, you can deselect the <b>Shadow build</b> checkbox. Select the build directory in the <b>Build Directory</b> field.</p>
+<p>To make in-source builds the default option for all projects, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Build &amp; Run</b> &gt; <b>Default Build Properties</b>, and enter a period (.) in the <b>Default build directory</b> field.</p>
+<p>In the <b>Tooltip in target selector</b> field, you can enter text that is displayed as a tooltip when you hover the mouse over the build configuration in the <a href="creator-building-targets.html">kit selector</a>.</p>
+<p>You can create separate versions of project files to keep platform-dependent code separate. You can use qmake scopes to select the file to process depending on which platform qmake is run on.</p>
+<p>If debug info is being generated, you can have it placed into separate files, rather than embedded into the binary, by selecting <b>Enable</b> in the <b>Separate debug info</b> field. For more information, see <a href="creator-cpu-usage-analyzer.html#using-the-performance-analyzer">Using the Performance Analyzer</a>. To use default settings, select <b>Leave at Default</b>.</p>
+<p>In the <b>qmake system() behavior when parsing</b> field, you can select whether processes are run via qmake's <code>system()</code> function or ignored. Setting this option to <b>Ignore</b> might help if opening or closing projects takes too long, but it might produce inexact parsing results.</p>
+<h2 id="global-qmake-settings">Global qmake Settings</h2>
+<p>To specify settings for all qmake builds, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Build &amp; Run</b> &gt; <b>Qmake</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-build-settings-qmake.png" alt="&quot;qmake build and run options&quot;" /></p><p>To set the default build properties, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Build &amp; Run</b> &gt; <b>Default Build Properties</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-build-settings-default.png" alt="&quot;default build options&quot;" /></p><h2 id="compiling-qml">Compiling QML</h2>
+<p>You can compile QML source code into the final binary to improve the startup time of the application and eliminate the need to deploy QML files together with the application. For more information, see Ahead-of-Time Compilation.</p>
+<p>Qt Creator project wizard templates create Qt Quick projects that can be compiled because they are set up to use the Qt Resource System. To compile QML code, select <b>Enable</b> in the <b>Qt Quick Compiler</b> field. To use default settings, select <b>Leave at Default</b>.</p>
+<p>You can specify default behavior for compiling QML code in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Build &amp; Run</b> &gt; <b>Qmake</b> &gt; <b>Use qmlcachegen</b>.</p>
+<h2 id="qmake-build-steps">qmake Build Steps</h2>
+<p>Qt Creator builds qmake projects by running the <code>make</code> or <code>nmake</code> command from the Qt version defined for the current build configuration.</p>
+<p class="centerAlign"><img src="images/qtcreator-build-steps.png" alt="&quot;Build steps&quot;" /></p><p>To override the shell command that Qt Creator constructs by default, disable or remove the build step and add a custom build step that specifies another shell command.</p>
+<p>By default, Qt Creator uses all the CPU cores available to achieve maximum build parallelization. On Linux and macOS, you can specify the number of parallel jobs to use for building in the <b>Parallel jobs</b> field. Select the <b>Override MAKEFLAGS</b> check box to override existing MAKEFLAGS variables.</p>
+<p>Select <b>Disable in subdirectories</b> to execute the build step only for a top-level build.</p>
+<p>Select <b>Add Build Step</b> &gt; <b>IncrediBuild for Linux</b> or <b>IncrediBuild for Windows</b> to accelerate builds by using <a href="creator-build-settings-incredibuild.html">IncrediBuild</a>.</p>
+<p>Select <b>Add Build Step</b> &gt; <b>Run Conan Install</b> to use the <a href="creator-build-settings-conan.html">Conan</a> package manager with qmake</p>
+</div>
+<!-- @@@creator-build-settings-qmake.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-build-settings-cmake.html">CMake Build Configuration</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-build-settings-qbs.html">Qbs Build Configuration</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

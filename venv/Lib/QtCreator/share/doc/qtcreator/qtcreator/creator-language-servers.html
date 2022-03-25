@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-language-server.qdoc -->
+  <title>Using Language Servers | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Using Language Servers</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-editor-fakevim.html" />
+  <link rel="next" href="creator-mime-types.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-editor-fakevim.html">Using FakeVim Mode</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-mime-types.html">Editing MIME Types</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#adding-mime-types-for-language-servers">Adding MIME Types for Language Servers</a></li>
+<li class="level1"><a href="#specifying-settings-for-language-clients">Specifying Settings for Language Clients</a></li>
+<li class="level2"><a href="#adding-language-servers">Adding Language Servers</a></li>
+<li class="level2"><a href="#specifying-generic-settings">Specifying Generic Settings</a></li>
+<li class="level2"><a href="#specifying-java-language-server-settings">Specifying Java Language Server Settings</a></li>
+<li class="level1"><a href="#supported-locator-filters">Supported Locator Filters</a></li>
+<li class="level1"><a href="#inspecting-language-clients">Inspecting Language Clients</a></li>
+<li class="level2"><a href="#capabilities">Capabilities</a></li>
+<li class="level2"><a href="#memory-usage">Memory Usage</a></li>
+<li class="level1"><a href="#reporting-issues">Reporting Issues</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Using Language Servers</h1>
+<!-- $$$creator-language-servers.html-description -->
+<div class="descr" id="details">
+<p>For several programming languages, a <i>language server</i> is available that provides information about the code to IDEs as long as they support communication via the <a href="https://microsoft.github.io/language-server-protocol/">language server protocol (LSP)</a>. This enables the IDE to provide the following services:</p>
+<ul>
+<li><a href="creator-completing-code.html">Code completion</a></li>
+<li>Sending document formatting requests to the language server to automatically format documents using the settings specified in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Text Editor</b> &gt; <b>Behavior</b></li>
+<li>Highlighting the symbol under cursor</li>
+<li><a href="creator-help.html#viewing-function-tooltips">Viewing function tooltips</a></li>
+<li><a href="creator-highlighting.html">Semantic highlighting</a>, as defined in <a href="https://github.com/microsoft/vscode-languageserver-node/pull/367">Proposal of the semantic highlighting protocol extension</a></li>
+<li>Navigating in the code by using the <a href="creator-editor-locator.html">locator</a> or <a href="creator-coding-navigating.html#moving-to-symbol-definition-or-declaration">moving to the symbol definition</a></li>
+<li>Inspecting code by viewing the document outline in the <a href="creator-views.html#viewing-defined-types-and-symbols">Outline</a> view or in the <b>Symbols</b> list on the <a href="creator-coding-navigating.html#using-the-editor-toolbar">editor toolbar</a></li>
+<li><a href="creator-editor-refactoring.html#finding-symbols">Finding references to symbols</a></li>
+<li><a href="creator-editor-refactoring.html#renaming-symbols">Renaming the symbol under cursor</a></li>
+<li>Code actions</li>
+<li>Displaying diagnostics from the language server as tooltips. You can also select a code range to display diagnostics for.</li>
+</ul>
+<p>By providing a client for the language server protocol, Qt Creator can support the above features for several other programming languages besides C++. However, the client does not support language servers that require special handling.</p>
+<h2 id="adding-mime-types-for-language-servers">Adding MIME Types for Language Servers</h2>
+<p>Qt Creator uses the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a> of the file to determine which language server to request information from when you open a file for editing. Add new MIME types or file patterns to match language servers. If you do not set at least one MIME type or file pattern, no files will be sent to the language server. This is done to avoid unnecessary traffic and inaccurate information, as files are only sent to the languge server if they are known to be handled by it. For more information about how Qt Creator uses MIME types, see <a href="creator-mime-types.html">Editing MIME Types</a>.</p>
+<h2 id="specifying-settings-for-language-clients">Specifying Settings for Language Clients</h2>
+<p>You can add a generic generic stdIO language server for Python, for example. For <a href="creator-developing-android.html">Android development</a>, you can add a Java language server.</p>
+<h3 id="adding-language-servers">Adding Language Servers</h3>
+<p>To view a list of language servers, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Language Client</b> (or <b>Qt Creator</b> &gt; <b>Preferences</b> &gt; <b>Language Client</b> &gt; on macOS).</p>
+<p class="centerAlign"><img src="images/qtcreator-language-client-options.png" alt="&quot;Language client options page&quot;" /></p><p>To enable a language server, select the check box next to the language server name and specify settings for the server.</p>
+<p>To remove language servers from the list, select <b>Delete</b>.</p>
+<h3 id="specifying-generic-settings">Specifying Generic Settings</h3>
+<p>To add a generic language server:</p>
+<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Language Client</b> &gt; <b>Add</b> &gt; <b>New Generic StdIO Language Server</b> to add a generic language server.</li>
+<li>In the <b>Name</b> field, enter a name for the language server. Select the <img src="images/replace.png" alt="" /> (<b>Variables</b>) button to use a variable for the server name. For more information, see <a href="creator-project-settings-environment.html#using-qt-creator-variables">Using Qt Creator Variables</a>.</li>
+<li>In the <b>Language</b> field, select <b>Set MIME Types</b> to select the MIME types of the files to send to the language server. In the field below, you can enter file patterns to extend the MIME types, separated by semicolons.</li>
+<li>In the <b>Startup behavior</b> field, select whether the language server is started when Qt Creator starts or when a project or file with a matching MIME type is opened. The <b>General Messages</b> <a href="creator-output-panes.html">output pane</a> displays information about the connection to the language server.</li>
+<li>In the <b>Initialization</b> field, you can add language server specific JSON attributes to pass to an <code>initialize</code> request.</li>
+<li>In the <b>Executable</b> field, enter the path to the language server executable.</li>
+<li>In the <b>Arguments</b> field, enter any required command line arguments. Select <b>Variables</b> to use variables as arguments.</li>
+</ol>
+<h3 id="specifying-java-language-server-settings">Specifying Java Language Server Settings</h3>
+<p>To add a Java language server:</p>
+<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Language Client</b> &gt; <b>Add</b> &gt; <b>New Java Language Server</b> to add a Java language server.<p class="centerAlign"><img src="images/qtcreator-language-client-options-java.png" alt="&quot;Java language server options&quot;" /></p></li>
+<li>In the <b>Name</b> field, enter a name for the language server. Select the <img src="images/replace.png" alt="" /> (<b>Variables</b>) button to use a variable for the server name. For more information, see <a href="creator-project-settings-environment.html#using-qt-creator-variables">Using Qt Creator Variables</a>.</li>
+<li>In the <b>Java</b> field, enter the path to the Java executable.</li>
+<li>In the <b>Java Language Server</b> field, enter the path to the Java language server <code>.jar</code> file.</li>
+</ol>
+<h2 id="supported-locator-filters">Supported Locator Filters</h2>
+<p>The locator enables you to browse not only files, but any items defined by <i>locator filters</i>. The language client plugin supports the following locator filters:</p>
+<ul>
+<li>Locating symbols in the current project (<code>:</code>)</li>
+<li>Locating symbols in the current document (<code>.</code>)</li>
+<li>Locating class (<code>c</code>), enum, and function (<code>m</code>) definitions in your project</li>
+</ul>
+<h2 id="inspecting-language-clients">Inspecting Language Clients</h2>
+<p>Qt Creator sends messages (<i>Requests</i>) to the language server and receives responses that contain the requested information if the language server is capable of handling the requests. To inspect the communication between Qt Creator and language servers and view server capabilities, select <b>Tools</b> &gt; <b>Debug Qt Creator</b> &gt; <b>Inspect Language Client</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-language-client-inspector-log.png" alt="&quot;Language Client Inspector dialog&quot;" /></p><p>The dialog shows a list of running language servers. The value of the <b>Startup behavior</b> field in the language server options determines when the server is started. The information displayed depends on the language server.</p>
+<p><b>Log</b> displays additional information about the selected log entry. You can see the <b>Content length</b> and <b>MIME type</b> of a <b>Client Message</b> and <b>Server Message</b>, as well as inspect the data sent between Qt Creator and the language server.</p>
+<p>To remove old entries, select <b>Clear</b>.</p>
+<h3 id="capabilities">Capabilities</h3>
+<p>In <b>Capabilities</b>, you can check whether a language server is capable of a specific task. You cannot modify the server capabilities in this dialog.</p>
+<p>You can view the <b>Name</b>, <b>Value</b>, and <b>Type</b> of the capability.</p>
+<p class="centerAlign"><img src="images/qtcreator-language-client-inspector-capabilities.png" alt="&quot;Language Client Inspector Capabilities tab&quot;" /></p><p>For some language servers, <b>Dynamic Capabilities</b> lists the <b>Methods</b> and <b>Options</b> available.</p>
+<h3 id="memory-usage">Memory Usage</h3>
+<p>For a clangd server, you can inspect the total amount of memory used by a particular component in <b>Memory Usage</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-language-client-inspector-capabilities.png" alt="&quot;Language Client Inspector Capabilities tab&quot;" /></p><h2 id="reporting-issues">Reporting Issues</h2>
+<p>The language service client has been mostly tested with Python and Java. If problems arise when you try them or some other language, please select <b>Help</b> &gt; <b>Report Bug</b> to report them in the <a href="https://bugreports.qt.io/">Qt Project Bug Tracker</a>. The reports should include Qt Creator console output with the environment variable <code>QT_LOGGING_RULES=qtc.languageclient.*=true</code> set.</p>
+</div>
+<!-- @@@creator-language-servers.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-editor-fakevim.html">Using FakeVim Mode</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-mime-types.html">Editing MIME Types</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

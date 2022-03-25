@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-mobile-platforms.qdoc -->
+  <title>Mobile Platforms | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qt Creator Manual</a></li>
+<li>Mobile Platforms</li>
+<li id="buildversion"><a href="index.html">Qt Creator Manual 7.0&#x2e;0-rc1</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-embedded-platforms.html" />
+  <link rel="next" href="creator-project-other.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-embedded-platforms.html">Embedded Platforms</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-project-other.html">Build Systems</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#android">Android</a></li>
+<li class="level1"><a href="#ios">iOS</a></li>
+<li class="level1"><a href="#universal-windows-platform-uwp">Universal Windows Platform (UWP)</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Mobile Platforms</h1>
+<!-- $$$creator-mobile-platforms.html-description -->
+<div class="descr" id="details">
+<p>You can develop applications for the following mobile platforms:</p>
+<ul>
+<li><a href="creator-mobile-platforms.html#android">Android</a></li>
+<li><a href="creator-mobile-platforms.html#ios">iOS</a></li>
+<li><a href="creator-mobile-platforms.html#universal-windows-platform-uwp">Universal Windows Platform (UWP)</a></li>
+</ul>
+<p>You must install the tool chain for building applications for the targeted mobile platform on the development PC and use the Qt Maintenance Tool to install Qt libraries that are built for the platform. You can then add a <a href="creator-glossary.html#glossary-buildandrun-kit">kit</a> with the tool chain and the Qt version for the device's architecture. When possible, the Maintenance Tool creates suitable kits for you.</p>
+<p>You can connect mobile devices to the development PC and select the appropriate kit to build, run, debug, and analyze applications from Qt Creator.</p>
+<h2 id="android">Android</h2>
+<p>Starting from Qt 5.14.0, the Qt for Android package contains all the architectures (ABIs) installed as one. You can let Qt Creator automatically create kits for installed Qt version and tool chains.</p>
+<p>The following topics contain more information about developing applications for Android devices:</p>
+<ul>
+<li><a href="creator-developing-android.html">Connecting Android Devices</a></li>
+<li><a href="creator-deploying-android.html">Deploying Applications to Android Devices</a></li>
+<li><a href="creator-running-targets.html">Running on Multiple Platforms</a></li>
+<li><a href="qtcreator-accelbubble-example.html">Creating a Mobile Application</a></li>
+<li><a href="creator-developing-android.html#debugging-on-android-devices">Debugging on Android Devices</a></li>
+<li>Qt for Android</li>
+</ul>
+<h2 id="ios">iOS</h2>
+<p>To be able to use Qt Creator on macOS, you must install Xcode, and therefore you should already have the tool chain for building applications for iOS. Qt Creator automatically detects the tool chain and creates the necessary kits to build applications for and run them on configured iOS devices.</p>
+<p>The following topics contain more information about developing applications for iOS devices:</p>
+<ul>
+<li><a href="creator-developing-ios.html">Connecting iOS Devices</a></li>
+<li><a href="creator-running-targets.html">Running on Multiple Platforms</a></li>
+<li><a href="qtcreator-accelbubble-example.html">Creating a Mobile Application</a></li>
+<li>Qt for iOS</li>
+</ul>
+<h2 id="universal-windows-platform-uwp">Universal Windows Platform (UWP)</h2>
+<p>Microsoft Windows 10 introduced the Universal Windows Platform (UWP), which provides a common application platform on every device that runs Windows 10, as a successor to Windows Runtime (WinRT) introduced by Windows 8. The UWP core APIs are the same on all Windows devices, and therefore applications that only use the core APIs will run on any Windows 10 device, such as a desktop PC, or Xbox One.</p>
+<p>For more information about developing applications for UWP using Qt 5, see <a href="https://doc.qt.io/qt-5/winrt-support.html">Qt for UWP</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>Developing for UWP using Qt 6 is not supported.</p>
+</div>
+</div>
+<!-- @@@creator-mobile-platforms.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-embedded-platforms.html">Embedded Platforms</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-project-other.html">Build Systems</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2022 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>
