@@ -1,0 +1,24 @@
+{
+    "drawflow": {
+        "Home": {
+            "data": {
+                "1": {
+                    "id": 1,
+                    "name": "nachexp",
+                    "data": {},
+                    "class": "nachexp",
+                    "html": "\n        <div>\n          <div class=\"title-box\"><i class=\"fab fa-nachexp\"></i> Начало эксперимента</div>\n        </div>\n        ",
+                    "typenode": false,
+                    "inputs": {},
+                    "outputs": {
+                        "output_1": {
+                            "connections": []
+                        }
+                    },
+                    "pos_x": -334.5,
+                    "pos_y": 121
+                }
+            }
+        }
+    }
+}

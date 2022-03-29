@@ -1,0 +1,41 @@
+pos: (0.0, 0.0)
+bypass: False
+terminals:
+    dataIn:
+        io: 'in'
+        multi: False
+        optional: False
+        renamable: False
+        removable: False
+        multiable: False
+    dataOut:
+        io: 'out'
+        multi: False
+        optional: False
+        renamable: False
+        removable: False
+        multiable: False
+nodes: [{'class': 'Текст', 'name': 'Текст.0', 'pos': (0.0, 0.0), 'state': {'pos': (0.0, 0.0), 'bypass': False, 'ctrl': {}}}]
+connects: [('Текст.0', 'dataOut', 'Output', 'dataOut'), ('Input', 'dataIn', 'Текст.0', 'dataIn')]
+inputNode:
+    pos: (-150.0, 0.0)
+    bypass: False
+    terminals:
+        dataIn:
+            io: 'out'
+            multi: False
+            optional: False
+            renamable: False
+            removable: False
+            multiable: False
+outputNode:
+    pos: (300.0, 0.0)
+    bypass: False
+    terminals:
+        dataOut:
+            io: 'in'
+            multi: False
+            optional: False
+            renamable: False
+            removable: False
+            multiable: False

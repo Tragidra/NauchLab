@@ -16,19 +16,7 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>1101</width>
-      <height>801</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="LayOut1"/>
-   </widget>
-  </widget>
+  <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -61,9 +49,9 @@
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
-     <string>Настройки рабочего пространства...</string>
+     <string>Электронное рабочее пространство...</string>
     </property>
-    <addaction name="dobtextpes"/>
+    <addaction name="otkritpesoc"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -129,9 +117,9 @@
     <string>Провести теоретический эксперимент...</string>
    </property>
   </action>
-  <action name="dobtextpes">
+  <action name="otkritpesoc">
    <property name="text">
-    <string>Добавить текстовый документ...</string>
+    <string>Открыть Песочницу...</string>
    </property>
   </action>
  </widget>

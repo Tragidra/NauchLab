@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1110</width>
+    <height>824</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>0</y>
+     <width>571</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="dockWidgetContents">
+    <widget class="QLabel" name="labkar">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>551</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="smenacher">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>260</y>
+       <width>511</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Сменить чертёж</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>521</width>
+     <height>801</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>521</width>
+       <height>771</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="LayOut1"/>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pusk">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>380</y>
+     <width>491</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Открыть менеджер файлов в полном окне</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>340</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Инструменты</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,249 +8,269 @@
   <meta name="description" content="Simple library for flow programming. Drawflow allows you to create data flows easily and quickly.">
 </head>
 <body>
-  <script src="https://cdn.jsdelivr.net/gh/jerosoler/Drawflow/dist/drawflow.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jerosoler/Drawflow@0.0.48/dist/drawflow.min.css">
-  <link rel="stylesheet" type="text/css" href="beautiful.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/tsayen/dom-to-image/dist/dom-to-image.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jerosoler/Drawflow/dist/drawflow.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jerosoler/Drawflow@0.0.48/dist/drawflow.min.css">
+<link rel="stylesheet" type="text/css" href="beautiful.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/tsayen/dom-to-image/dist/dom-to-image.min.js"></script>
+<script src="qrc:///qtwebchannel/qwebchannel.js"></script>
 
 
-  <!-- <header>
-    <h2>Теоретический эксперимент</h2>
-    <div class="github-link"><a href="https://github.com/jerosoler/Drawflow" target="_blank"><i class="fab fa-github fa-3x"></i></a></div> Сюда надо вставить эмблему
-    <div class="them-edit-link"><a href="https://jerosoler.github.io/drawflow-theme-generator/" target="_blank">🎨</a></div>
-  </header> -->
-  <div class="wrapper">
-    <div class="col">
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="nachexp">
-        <i class="fab fa-nachexp"></i><span> Начало эксперимента</span>
-      </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="vneshfac">
-        <i class="fab fa-vneshfac"></i><span> Внешний фактор</span>
-      </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp">
-        <i class="fab fa-etapexp"></i><span> Этап эксперимента #1</span>
-      </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp1">
-        <i class="fab fa-etapexp1"></i><span> Этап эксперимента #2</span>
-      </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp2">
-        <i class="fab fa-etapexp2"></i><span> Этап эксперимента #3</span>
-      </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp3">
-        <i class="fab fa-etapexp3"></i><span> Этап эксперимента #4</span>
-      </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="predusl">
-        <i class="fab fa-predusl"></i><span> Предусловие</span>
-      </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="resultat">
-        <i class="fas fa-resultat"></i><span> Результат</span>
-      </div>
-      <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="konexp">
-        <i class="fas fa-konexp"></i><span> Конец эксперимента</span>
-      </div>
-
-
-
+<!-- <header>
+  <h2>Теоретический эксперимент</h2>
+  <div class="github-link"><a href="https://github.com/jerosoler/Drawflow" target="_blank"><i class="fab fa-github fa-3x"></i></a></div> Сюда надо вставить эмблему
+  <div class="them-edit-link"><a href="https://jerosoler.github.io/drawflow-theme-generator/" target="_blank">🎨</a></div>
+</header> -->
+<div class="wrapper">
+  <div class="col">
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="nachexp">
+      <i class="fab fa-nachexp"></i><span> Начало эксперимента</span>
     </div>
-    <div class="col-right">
-      <div class="menu">
-        <ul>
-          <li onclick="editor.changeModule('Home'); changeModule(event);" class="selected">Основная панель</li>
-          <li onclick="editor.changeModule('Other'); changeModule(event);">Дополнительная доска</li>
-        </ul>
-      </div>
-      <div id="drawflow" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="vneshfac">
+      <i class="fab fa-vneshfac"></i><span> Внешний фактор</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp">
+      <i class="fab fa-etapexp"></i><span> Этап эксперимента #1</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp1">
+      <i class="fab fa-etapexp1"></i><span> Этап эксперимента #2</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp2">
+      <i class="fab fa-etapexp2"></i><span> Этап эксперимента #3</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="etapexp3">
+      <i class="fab fa-etapexp3"></i><span> Этап эксперимента #4</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="predusl">
+      <i class="fab fa-predusl"></i><span> Предусловие</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="resultat">
+      <i class="fas fa-resultat"></i><span> Результат</span>
+    </div>
+    <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="konexp">
+      <i class="fas fa-konexp"></i><span> Конец эксперимента</span>
+    </div>
 
-        <div class="btn-export" onclick="exportNodeInfo()">Готово</div>
-        <div class="btn-clear" onclick="editor.clearModuleSelected()">Очистить</div>
-        <div class="btn-lock">
-          <i id="lock" class="fas fa-lock" onclick="editor.editor_mode='fixed'; changeMode('lock');"></i>
-          <i id="unlock" class="fas fa-lock-open" onclick="editor.editor_mode='edit'; changeMode('unlock');" style="display:none;"></i>
-        </div>
-        <div class="bar-zoom">
-          <i class="fas fa-search-minus" onclick="editor.zoom_out()"></i>
-          <i class="fas fa-search" onclick="editor.zoom_reset()"></i>
-          <i class="fas fa-search-plus" onclick="editor.zoom_in()"></i>
-        </div>
+
+
+  </div>
+  <div class="col-right">
+    <div class="menu">
+      <ul>
+        <li onclick="editor.changeModule('Home'); changeModule(event);" class="selected">Основная панель</li>
+        <li onclick="editor.changeModule('Other'); changeModule(event);">Дополнительная доска</li>
+      </ul>
+    </div>
+    <div id="drawflow" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+      <div class="btn-export" id="exportbtn">Готово</div>
+      <div class="btn-clear" onclick="editor.clearModuleSelected()">Очистить</div>
+      <div class="btn-lock">
+        <i id="lock" class="fas fa-lock" onclick="editor.editor_mode='fixed'; changeMode('lock');"></i>
+        <i id="unlock" class="fas fa-lock-open" onclick="editor.editor_mode='edit'; changeMode('unlock');" style="display:none;"></i>
+      </div>
+      <div class="bar-zoom">
+        <i class="fas fa-search-minus" onclick="editor.zoom_out()"></i>
+        <i class="fas fa-search" onclick="editor.zoom_reset()"></i>
+        <i class="fas fa-search-plus" onclick="editor.zoom_in()"></i>
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-    var id = document.getElementById("drawflow");
-    const editor = new Drawflow(id);
-    editor.reroute = true;
-    editor.start();
-
-    function exportNodeInfo() {
-      const exportdata = editor.export();
-      const textFileAsBlob = new Blob([JSON.stringify(exportdata, null, 4)], {
-        type: "text/json",
-      });
-      const downloadLink = document.createElement("a");
-      downloadLink.download = "DrawFlow.json";
-      downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-      downloadLink.click();
-      console.log(JSON.stringify(exportdata, null, 4));
+<script>
+  var id = document.getElementById("drawflow");
+  const editor = new Drawflow(id);
+  editor.reroute = true;
+  editor.start();
+  var dataToImport = {
+    "drawflow": {
+      "Home": {
+        "data": {
+          "7": {
+            "id": 7,
+            "name": "nachexp",
+            "data": {},
+            "class": "nachexp",
+            "html": "\n        <div>\n          <div class=\"title-box\"><i class=\"fab fa-nachexp\"></i> Начало эксперимента</div>\n        </div>\n        ",
+            "typenode": false,
+            "inputs": {},
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": -465.5,
+            "pos_y": 144
+          }
+        }
+      }
     }
-  /*
-    var welcome = `
-    <div>
-      <div class="title-box">👏 Welcome!!</div>
-      <div class="box">
-        <p>Simple flow library <b>demo</b>
-        <a href="https://github.com/jerosoler/Drawflow" target="_blank">Drawflow</a> by <b>Jero Soler</b></p><br>
+  }
+  editor.start();
+  editor.import(dataToImport);
 
-        <p>Multiple input / outputs<br>
-           Data sync nodes<br>
-           Import / export<br>
-           Modules support<br>
-           Simple use<br>
-           Type: Fixed or Edit<br>
-           Events: view console<br>
-           Pure Javascript<br>
-        </p>
-        <br>
-        <p><b><u>Shortkeys:</u></b></p>
-        <p>🎹 <b>Delete</b> for remove selected<br>
-        💠 Mouse Left Click == Move<br>
-        ❌ Mouse Right == Delete Option<br>
-        🔍 Ctrl + Wheel == Zoom<br>
-        📱 Mobile support<br>
-        ...</p>
-      </div>
-    </div>
-    `;
+  var backend = null;
+  new QWebChannel(qt.webChannelTransport, function (channel) {
+    backend = channel.objects.backend;
+  });
+  document.getElementById("exportbtn").addEventListener("click", function(){
+    backend.value = JSON.stringify(editor.export(), null, 4)
+  });
+  /*
+    var dataToImport = {
+    "drawflow": {
+        "Home": {
+            "data": {
+                "7": {
+                    "id": 7,
+                    "name": "nachexp",
+                    "data": {},
+                    "class": "nachexp",
+                    "html": "\n        <div>\n          <div class=\"title-box\"><i class=\"fab fa-nachexp\"></i> Начало эксперимента</div>\n        </div>\n        ",
+                    "typenode": false,
+                    "inputs": {},
+                    "outputs": {
+                        "output_1": {
+                            "connections": []
+                        }
+                    },
+                    "pos_x": -465.5,
+                    "pos_y": 144
+                }
+            }
+        }
+    }
+}
 */
 
 
-    //editor.addNode(name, inputs, outputs, posx, posy, class, data, html);
-    /*editor.addNode('welcome', 0, 0, 50, 50, 'welcome', {}, welcome );
-    editor.addModule('Other');
-    */
+  //editor.addNode(name, inputs, outputs, posx, posy, class, data, html);
+  /*editor.addNode('welcome', 0, 0, 50, 50, 'welcome', {}, welcome );
+  editor.addModule('Other');
+  */
 
-    // Events!
-    editor.on('nodeCreated', function(id) {
-      console.log("Node created " + id);
-    })
+  // Events!
+  editor.on('nodeCreated', function(id) {
+    console.log("Node created " + id);
+  })
 
-    editor.on('nodeRemoved', function(id) {
-      console.log("Node removed " + id);
-    })
+  editor.on('nodeRemoved', function(id) {
+    console.log("Node removed " + id);
+  })
 
-    editor.on('nodeSelected', function(id) {
-      console.log("Node selected " + id);
-    })
+  editor.on('nodeSelected', function(id) {
+    console.log("Node selected " + id);
+  })
 
-    editor.on('moduleCreated', function(name) {
-      console.log("Module Created " + name);
-    })
+  editor.on('moduleCreated', function(name) {
+    console.log("Module Created " + name);
+  })
 
-    editor.on('moduleChanged', function(name) {
-      console.log("Module Changed " + name);
-    })
+  editor.on('moduleChanged', function(name) {
+    console.log("Module Changed " + name);
+  })
 
-    editor.on('connectionCreated', function(connection) {
-      console.log('Connection created');
-      console.log(connection);
-    })
+  editor.on('connectionCreated', function(connection) {
+    console.log('Connection created');
+    console.log(connection);
+  })
 
-    editor.on('connectionRemoved', function(connection) {
-      console.log('Connection removed');
-      console.log(connection);
-    })
+  editor.on('connectionRemoved', function(connection) {
+    console.log('Connection removed');
+    console.log(connection);
+  })
 
-    editor.on('mouseMove', function(position) {
-      console.log('Position mouse x:' + position.x + ' y:'+ position.y);
-    })
+  editor.on('mouseMove', function(position) {
+    console.log('Position mouse x:' + position.x + ' y:'+ position.y);
+  })
 
-    editor.on('nodeMoved', function(id) {
-      console.log("Node moved " + id);
-    })
+  editor.on('nodeMoved', function(id) {
+    console.log("Node moved " + id);
+  })
 
-    editor.on('zoom', function(zoom) {
-      console.log('Zoom level ' + zoom);
-    })
+  editor.on('zoom', function(zoom) {
+    console.log('Zoom level ' + zoom);
+  })
 
-    editor.on('translate', function(position) {
-      console.log('Translate x:' + position.x + ' y:'+ position.y);
-    })
+  editor.on('translate', function(position) {
+    console.log('Translate x:' + position.x + ' y:'+ position.y);
+  })
 
-    editor.on('addReroute', function(id) {
-      console.log("Reroute added " + id);
-    })
+  editor.on('addReroute', function(id) {
+    console.log("Reroute added " + id);
+  })
 
-    editor.on('removeReroute', function(id) {
-      console.log("Reroute removed " + id);
-    })
+  editor.on('removeReroute', function(id) {
+    console.log("Reroute removed " + id);
+  })
 
-    /* DRAG EVENT */
+  /* DRAG EVENT */
 
-    /* Mouse and Touch Actions */
+  /* Mouse and Touch Actions */
 
-    var elements = document.getElementsByClassName('drag-drawflow');
-    for (var i = 0; i < elements.length; i++) {
-      elements[i].addEventListener('touchend', drop, false);
-      elements[i].addEventListener('touchmove', positionMobile, false);
-      elements[i].addEventListener('touchstart', drag, false );
-    }
+  var elements = document.getElementsByClassName('drag-drawflow');
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('touchend', drop, false);
+    elements[i].addEventListener('touchmove', positionMobile, false);
+    elements[i].addEventListener('touchstart', drag, false );
+  }
 
-    var mobile_item_selec = '';
-    var mobile_last_move = null;
-   function positionMobile(ev) {
-     mobile_last_move = ev;
-   }
+  var mobile_item_selec = '';
+  var mobile_last_move = null;
+  function positionMobile(ev) {
+    mobile_last_move = ev;
+  }
 
-   function allowDrop(ev) {
-      ev.preventDefault();
-    }
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
 
-    function drag(ev) {
-      if (ev.type === "touchstart") {
-        mobile_item_selec = ev.target.closest(".drag-drawflow").getAttribute('data-node');
-      } else {
+  function drag(ev) {
+    if (ev.type === "touchstart") {
+      mobile_item_selec = ev.target.closest(".drag-drawflow").getAttribute('data-node');
+    } else {
       ev.dataTransfer.setData("node", ev.target.getAttribute('data-node'));
+    }
+  }
+
+  function drop(ev) {
+    if (ev.type === "touchend") {
+      var parentdrawflow = document.elementFromPoint( mobile_last_move.touches[0].clientX, mobile_last_move.touches[0].clientY).closest("#drawflow");
+      if(parentdrawflow != null) {
+        addNodeToDrawFlow(mobile_item_selec, mobile_last_move.touches[0].clientX, mobile_last_move.touches[0].clientY);
       }
+      mobile_item_selec = '';
+    } else {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("node");
+      addNodeToDrawFlow(data, ev.clientX, ev.clientY);
     }
 
-    function drop(ev) {
-      if (ev.type === "touchend") {
-        var parentdrawflow = document.elementFromPoint( mobile_last_move.touches[0].clientX, mobile_last_move.touches[0].clientY).closest("#drawflow");
-        if(parentdrawflow != null) {
-          addNodeToDrawFlow(mobile_item_selec, mobile_last_move.touches[0].clientX, mobile_last_move.touches[0].clientY);
-        }
-        mobile_item_selec = '';
-      } else {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("node");
-        addNodeToDrawFlow(data, ev.clientX, ev.clientY);
-      }
+  }
 
+  function addNodeToDrawFlow(name, pos_x, pos_y) {
+    if(editor.editor_mode === 'fixed') {
+      return false;
     }
-
-    function addNodeToDrawFlow(name, pos_x, pos_y) {
-      if(editor.editor_mode === 'fixed') {
-        return false;
-      }
-      pos_x = pos_x * ( editor.precanvas.clientWidth / (editor.precanvas.clientWidth * editor.zoom)) - (editor.precanvas.getBoundingClientRect().x * ( editor.precanvas.clientWidth / (editor.precanvas.clientWidth * editor.zoom)));
-      pos_y = pos_y * ( editor.precanvas.clientHeight / (editor.precanvas.clientHeight * editor.zoom)) - (editor.precanvas.getBoundingClientRect().y * ( editor.precanvas.clientHeight / (editor.precanvas.clientHeight * editor.zoom)));
+    pos_x = pos_x * ( editor.precanvas.clientWidth / (editor.precanvas.clientWidth * editor.zoom)) - (editor.precanvas.getBoundingClientRect().x * ( editor.precanvas.clientWidth / (editor.precanvas.clientWidth * editor.zoom)));
+    pos_y = pos_y * ( editor.precanvas.clientHeight / (editor.precanvas.clientHeight * editor.zoom)) - (editor.precanvas.getBoundingClientRect().y * ( editor.precanvas.clientHeight / (editor.precanvas.clientHeight * editor.zoom)));
 
 
-      switch (name) {
-        case 'nachexp':
+    switch (name) {
+      case 'nachexp':
         var nachexp = `
         <div>
           <div class="title-box"><i class="fab fa-nachexp"></i> Начало эксперимента</div>
         </div>
         `;
-          editor.addNode('nachexp', 0,  1, pos_x, pos_y, 'nachexp', {}, nachexp );
-          break;
-        case 'etapexp':
+        editor.addNode('nachexp', 0,  1, pos_x, pos_y, 'nachexp', {}, nachexp );
+        break;
+      case 'etapexp':
         var etapexp = `
                 <div>
                 <div class="title-box"><i class="fab fa-etapexp"></i> Этап эксперимента</div>
@@ -265,9 +285,9 @@
                 </div>
         `;
         editor.addNode('etapexp', 1, 1, pos_x, pos_y, 'etapexp', { "name": '' }, etapexp);
-          break;
-        case 'etapexp1':
-          var etapexp1 = `
+        break;
+      case 'etapexp1':
+        var etapexp1 = `
                 <div>
                 <div class="title-box"><i class="fab fa-etapexp1"></i> Этап эксперимента</div>
                 <div class="box">
@@ -280,10 +300,10 @@
               </div>
                 </div>
         `;
-          editor.addNode('etapexp1', 5, 5, pos_x, pos_y, 'etapexp1', { "name": '' }, etapexp1);
-          break;
-        case 'etapexp2':
-          var etapexp2 = `
+        editor.addNode('etapexp1', 5, 5, pos_x, pos_y, 'etapexp1', { "name": '' }, etapexp1);
+        break;
+      case 'etapexp2':
+        var etapexp2 = `
                 <div>
                 <div class="title-box"><i class="fab fa-etapexp2"></i> Этап эксперимента</div>
                 <div class="box">
@@ -296,10 +316,10 @@
               </div>
                 </div>
         `;
-          editor.addNode('etapexp2', 1, 5, pos_x, pos_y, 'etapexp2', { "name": '' }, etapexp2);
-          break;
-        case 'etapexp3':
-          var etapexp3 = `
+        editor.addNode('etapexp2', 1, 5, pos_x, pos_y, 'etapexp2', { "name": '' }, etapexp2);
+        break;
+      case 'etapexp3':
+        var etapexp3 = `
                 <div>
                 <div class="title-box"><i class="fab fa-etapexp3"></i> Этап эксперимента</div>
                 <div class="box">
@@ -312,18 +332,18 @@
               </div>
                 </div>
         `;
-          editor.addNode('etapexp3', 5, 1, pos_x, pos_y, 'etapex31', { "name": '' }, etapexp3);
-          break;
-        case 'konexp':
-          var konexp = `
+        editor.addNode('etapexp3', 5, 1, pos_x, pos_y, 'etapex31', { "name": '' }, etapexp3);
+        break;
+      case 'konexp':
+        var konexp = `
         <div>
           <div class="title-box"><i class="fab fa-konexp"></i> Конец эксперимента</div>
         </div>
         `;
-          editor.addNode('konexp', 1,  0, pos_x, pos_y, 'konexp', {}, konexp );
-          break;
-        case 'vneshfac':
-          var vneshfac = `
+        editor.addNode('konexp', 1,  0, pos_x, pos_y, 'konexp', {}, konexp );
+        break;
+      case 'vneshfac':
+        var vneshfac = `
         <div>
           <div class="title-box"><i class="fab fa-vneshfac"></i> Внешний фактор</div>
           <div class="box">
@@ -332,10 +352,10 @@
           </div>
         </div>
         `;
-          editor.addNode('vneshfac', 0,  1, pos_x, pos_y, 'vneshfac', { "name": '' }, vneshfac );
-          break;
-        case 'resultat':
-          var resultat = `
+        editor.addNode('vneshfac', 0,  1, pos_x, pos_y, 'vneshfac', { "name": '' }, vneshfac );
+        break;
+      case 'resultat':
+        var resultat = `
         <div>
           <div class="title-box"><i class="fab fa-resultat"></i> Результат</div>
           <div class="box">
@@ -344,10 +364,10 @@
           </div>
         </div>
         `;
-          editor.addNode('resultat', 1,  1, pos_x, pos_y, 'resultat', { "name": '' }, resultat );
-          break;
-        case 'predusl':
-          var predusl = `
+        editor.addNode('resultat', 1,  1, pos_x, pos_y, 'resultat', { "name": '' }, resultat );
+        break;
+      case 'predusl':
+        var predusl = `
         <div>
           <div class="title-box"><i class="fab fa-predusl"></i> Предусловие</div>
           <div class="box">
@@ -356,12 +376,12 @@
           </div>
         </div>
         `;
-          editor.addNode('predusl', 1,  1, pos_x, pos_y, 'predusl', { "name": '' }, predusl );
-          break;
+        editor.addNode('predusl', 1,  1, pos_x, pos_y, 'predusl', { "name": '' }, predusl );
+        break;
 
       default:
-      }
     }
+  }
 
   var transform = '';
   function showpopup(e) {
@@ -382,37 +402,37 @@
 
   }
 
-   function closemodal(e) {
-     e.target.closest(".drawflow-node").style.zIndex = "2";
-     e.target.parentElement.parentElement.style.display  ="none";
-     //document.getElementById("modalfix").style.display = "none";
-     editor.precanvas.style.transform = transform;
-       editor.precanvas.style.left = '0px';
-       editor.precanvas.style.top = '0px';
-      editor.editor_mode = "edit";
-   }
+  function closemodal(e) {
+    e.target.closest(".drawflow-node").style.zIndex = "2";
+    e.target.parentElement.parentElement.style.display  ="none";
+    //document.getElementById("modalfix").style.display = "none";
+    editor.precanvas.style.transform = transform;
+    editor.precanvas.style.left = '0px';
+    editor.precanvas.style.top = '0px';
+    editor.editor_mode = "edit";
+  }
 
-    function changeModule(event) {
-      var all = document.querySelectorAll(".menu ul li");
-        for (var i = 0; i < all.length; i++) {
-          all[i].classList.remove('selected');
-        }
-      event.target.classList.add('selected');
+  function changeModule(event) {
+    var all = document.querySelectorAll(".menu ul li");
+    for (var i = 0; i < all.length; i++) {
+      all[i].classList.remove('selected');
     }
+    event.target.classList.add('selected');
+  }
 
-    function changeMode(option) {
+  function changeMode(option) {
 
     //console.log(lock.id);
-      if(option == 'lock') {
-        lock.style.display = 'none';
-        unlock.style.display = 'block';
-      } else {
-        lock.style.display = 'block';
-        unlock.style.display = 'none';
-      }
-
+    if(option == 'lock') {
+      lock.style.display = 'none';
+      unlock.style.display = 'block';
+    } else {
+      lock.style.display = 'block';
+      unlock.style.display = 'none';
     }
 
-  </script>
+  }
+
+</script>
 </body>
 </html>

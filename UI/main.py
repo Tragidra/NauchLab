@@ -1,5 +1,7 @@
 import ast
 import sys
+from tempfile import mkstemp
+
 import psycopg2
 import pyqtgraph.flowchart.library as fclib
 from PyQt5.QtWidgets import *
@@ -11,12 +13,11 @@ from pyqtgraph.flowchart.library.common import CtrlNode
 from scipy import linalg
 from PIL import ImageGrab
 import numpy as np
-from UI.Pesochnica.ChernovikPesocFlow import ChernovikPesocFlow
 import cv2
 import os
 import shutil
 import pyqtgraph.exporters
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets, QtWebChannel
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor, QPainter, QPen, QImage
 from PyQt5.QtWidgets import QMessageBox, QFileDialog, QMainWindow, QDialog, QApplication, QWidget, QScrollArea, \
     QVBoxLayout, QSizePolicy, QSpacerItem, QSystemTrayIcon, QStyle, QAction, QMenu, QTableWidgetItem, QPushButton, \
@@ -28,6 +29,7 @@ from PyQt5.QtCore import QRegExp, pyqtSignal, QPoint
 from PyQt5.QtGui import QTextCharFormat, QTextCursor
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QTextEdit,
                                  QToolBar, QLineEdit, QPushButton, QColorDialog, QHBoxLayout, QWidget)
+
 from UI.Grafiki.LinGraph import Ui_Form
 from UI.Visualisazia.VisualInput import Ui_Form as Form2
 from UI.Grafiki.Grafiki import ThemeWidget
@@ -68,13 +70,13 @@ class Main(QMainWindow):
         #self.pesochnica.triggered.connect(self.pesoc)
         self.formuli1.triggered.connect(self.formuli)
         self.experim1.triggered.connect(self.exper)
-        self.gotexp.triggered.connect(self.gotexper)
         self.pesochnica.triggered.connect(self.pesocdispl)
         #self.dobtextpes.triggered.connect(self.dobavittexttopes)
-        self.dobtextpes.triggered.connect(self.dobavittexttopes)
+        #self.dobtextpes.triggered.connect(self.dobavittexttopes)
         self.otkritpesoc.triggered.connect(self.pesoc)
 
     def pesoc(self):
+        from UI.Pesochnica.ChernovikPesocFlow import ChernovikPesocFlow
         self.ChernovikPesocFlow = ChernovikPesocFlow()
         self.ChernovikPesocFlow.show()
 
@@ -158,12 +160,8 @@ class Main(QMainWindow):
         self.Rachet.show()
 
     def exper(self):
-        self.Exper = Exper()
-        self.Exper.show()
-
-    def gotexper(self):
-        self.GotovExp = GotovExp()
-        self.GotovExp.show()
+        self.Widget = Widget() #поменять на Exper
+        self.Widget.show()
 
     def pesocdispl(self):
         self.Pesoc = Pesoc()
@@ -485,71 +483,82 @@ class Nazvan(QDialog):
 class Exper(QDialog):
     def __init__(self):
         super(Exper, self).__init__()
-        #loadUi("Exper/Exper.ui",self)
-        #self.pushok.clicked.connect(self.click555)
-        self.click555()
+        loadUi("Exper/Exper1.ui",self)
+        self.pushButton30.clicked.connect(self.udalit)
+        self.pushButton33.clicked.connect(self.otkrit)
+        self.pushButton333.clicked.connect(self.clickSozd)
 
-    def click555(self):
-        self.Window2 = Window2()
-        self.Window2.load(QUrl('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html'))
-        self.Window2.show()
-        #self.Window2.closed.connect(self.sapisresult())
+    def clickSozd(self):
+        print('')
 
-    #def sapisresult(self):
-        #self.TextEdit = TextEdit()
-        #self.TextEdit.show()
+    def otkrit(self):
+        print('')
 
-class GotovExp(QWidget):
-    def __init__(self):
-        super(GotovExp,self).__init__()
-        loadUi("Exper/GotExper.ui", self)
-        papka = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi'
-        files = os.listdir(papka)
-        a = 0
-        print(files)
-        self.tableWidget.setRowCount(len(files))
-        for i in files:
-            self.tableWidget.setItem(a,0, QTableWidgetItem(i))
-            a = a = 1
-        self.pushButton33.clicked.connect(self.prildoska1)
-        self.pushButton30.clicked.connect(self.prildoska3)
+    def udalit(self):
+        print('')
 
-    def prildoska1(self):
-        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
-        print('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi' + tecfile)
-        self.close()
-        self.Window = Window()
-        self.Window.load(QUrl('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/' + tecfile))
-        self.Window.show()
 
-    def prildoska3(self):
-        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
-        tempdelete = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/' + tecfile
-        os.remove(tempdelete)
-        try:
-            connection = psycopg2.connect(dbname='Laboratoria', user='postgres',
-                                password='astrafaz99', host='127.0.0.1', port="5432")
-            cursor = connection.cursor()
+def replace(file_path, pattern, subst):
+    # Create temp file
+    fh, abs_path = mkstemp()
+    with os.fdopen(fh, 'w', encoding='utf8') as new_file:
+        with open(file_path) as old_file:
+            for line in old_file:
+                new_file.write(line.replace(pattern, subst))
+    # Copy the file permissions from the old file to the new file
+    shutil.copymode(file_path, abs_path)
+    # Remove original file
+    os.remove(file_path)
+    # Move new file
+    shutil.move(abs_path, file_path)
 
-            postgres_insert_query = """DELETE FROM experements WHERE way = %s"""
-            record_to_insert = (tempdelete,)
-            cursor.execute(postgres_insert_query, record_to_insert)
+class Backend(QtCore.QObject):
+    valueChanged = QtCore.pyqtSignal(str)
 
-            connection.commit()
-            count = cursor.rowcount
-            print(count, "Данные удалены из базу данных")
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self._value = ""
 
-        except (Exception, psycopg2.Error) as error:
-            print("Не получилось подключиться к таблице", error)
+    @QtCore.pyqtProperty(str)
+    def value(self):
+        return self._value
 
-        finally:
-            # closing database connection.
-            if connection:
-                cursor.close()
-                connection.close()
-                print("PostgreSQL connection is closed")
+    @value.setter
+    def value(self, v):
+        self._value = v
+        self.valueChanged.emit(v)
 
-        self.close()
+class Widget(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.webEngineView = QtWebEngineWidgets.QWebEngineView()
+        self.label = QtWidgets.QLabel(alignment=QtCore.Qt.AlignCenter)
+
+        lay = QtWidgets.QVBoxLayout(self)
+        lay.addWidget(self.webEngineView, stretch=1)
+        lay.addWidget(self.label, stretch=1)
+
+        backend = Backend(self)
+        # backend.valueChanged.connect(self.label.setText)
+        backend.valueChanged.connect(self.foo_function)
+        self.channel = QtWebChannel.QWebChannel()
+        self.channel.registerObject("backend", backend)
+        self.webEngineView.page().setWebChannel(self.channel)
+
+        path = "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html"
+        self.webEngineView.setUrl(QtCore.QUrl.fromLocalFile(path))
+
+    @QtCore.pyqtSlot(str)
+    def foo_function(self, value):
+        value = "var dataToImport = " + value
+        shutil.copy('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/basa.html',
+                    'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html')
+        replace("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html", "var dataToImport",
+                        value)
+        os.remove("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html")
+        os.rename("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html",
+                    "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html")
+
 
 class SFor(QDialog):
     def __init__(self):
