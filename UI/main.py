@@ -1,7 +1,9 @@
 import ast
+import io
 import sys
+from numpy import array
 from tempfile import mkstemp
-
+tecfile2 = ''
 import psycopg2
 import pyqtgraph.flowchart.library as fclib
 from PyQt5.QtWidgets import *
@@ -39,6 +41,20 @@ from PyQt5.QtWebEngineCore import QWebEngineUrlSchemeHandler, \
 from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
 import datetime
 import pyautogui
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+from PyQt5.QtCore import pyqtSlot
+from pyautogui import screenshot
+import cv2
+import glob
+from threading import Thread
+import shutil
+import os
+import time
+from UI.Pesochnica.opendirec import MyMainWindow
+pathP = "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/Pictures/mq-01.png"
+dannie = ""
+
 
 class Main(QMainWindow):
     check_box = None
@@ -61,12 +77,12 @@ class Main(QMainWindow):
         tray_menu.addAction(quit_action)
         self.tray_icon.setContextMenu(tray_menu)
         self.tray_icon.show()
-        self.otkrpoject.triggered.connect(self.onOpenFile)
+        #self.otkrpoject.triggered.connect(self.onOpenFile)
         self.graphik.triggered.connect(self.loadgraph)
         self.dio.triggered.connect(self.loaddio)
         self.videotub.triggered.connect(self.loadyoutube)
         self.videofix.triggered.connect(self.sapis)
-        self.endvideo.triggered.connect(self.zakonchitvideosapis)
+        #self.endvideo.triggered.connect(self.zakonchitvideosapis)
         #self.pesochnica.triggered.connect(self.pesoc)
         self.formuli1.triggered.connect(self.formuli)
         self.experim1.triggered.connect(self.exper)
@@ -76,35 +92,12 @@ class Main(QMainWindow):
         self.otkritpesoc.triggered.connect(self.pesoc)
 
     def pesoc(self):
-        from UI.Pesochnica.ChernovikPesocFlow import ChernovikPesocFlow
         self.ChernovikPesocFlow = ChernovikPesocFlow()
         self.ChernovikPesocFlow.show()
 
     def sapis(self):
-        if not os.path.exists('temp.txt'):
-            f = open('temp.txt', 'w')
-            f.close()
-            # Оценить индивидуальную запись экрана или полноэкранную запись на основе значения тега
-        # преобразовываем эти пиксели в правильный массив numpy для работы с OpenCV
-        record_region = None
-        image = ImageGrab.grab(record_region)  # Получить экранный объект указанного диапазона
-        width, height = image.size
-        fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        dt_now = datetime.datetime.now()
-        name = str(dt_now) + '.avi'
-        video = cv2.VideoWriter(name, fourcc, 25, (width, height))  # Видео по умолчанию - 25 кадров
-        while True:
-            captureImage = ImageGrab.grab(record_region)  # Захват экрана указанного диапазона
-            frame = cv2.cvtColor(np.array(captureImage), cv2.COLOR_RGB2BGR)
-            video.write(frame)  # Записывать каждый кадр в видео файл
-            if not os.path.exists('temp.txt'):
-                break
-        video.release()
-        cv2.destroyAllWindows()
-
-    def zakonchitvideosapis(self):
-        self.TextEdit = TextEdit() #os.remove()
-        self.TextEdit.show()
+        self.App = App()
+        self.App.show()
 
     def closeEvent(self, event):
             event.ignore()
@@ -160,8 +153,8 @@ class Main(QMainWindow):
         self.Rachet.show()
 
     def exper(self):
-        self.Widget = Widget() #поменять на Exper
-        self.Widget.show()
+        self.Exper = Exper() #поменять на Exper
+        self.Exper.show()
 
     def pesocdispl(self):
         self.Pesoc = Pesoc()
@@ -172,6 +165,93 @@ class Main(QMainWindow):
 #        self.DobTextPes.show()
         #self.FileOtobr = FileOtobr()
         #self.FileOtobr.show()
+
+class App(QWidget, Thread):
+    """Inherit the class Thread"""
+    def __init__(self):
+        """Initialize init"""
+        super().__init__()
+        self.title = 'Видеофиксация'
+        self.left = 10
+        self.top = 10
+        self.width = 500
+        self.height = 50
+        self.count = 0
+        self.status = True
+        Thread.__init__(self)
+        self.daemon = Thread(target=self.start_recording, name="start_recording")
+        self.daemon.setDaemon(True)
+        self.initUI()
+
+    def initUI(self):
+        """Initialize UI"""
+        self.setWindowTitle(self.title)
+        self.setGeometry(self.left, self.top, self.width, self.height)
+        button = QPushButton('Начать видеофиксацию', self)
+        button.setToolTip('Нажите здесь чтобы начать видеофиксацию')
+        button.move(10, 10)
+        button.clicked.connect(self.start_threading)
+        button = QPushButton('Сделать скриншот', self)
+        button.setToolTip('Нажмите здесь чтобы сделать скриншот')
+        button.move(190, 10)
+        button.clicked.connect(self.take_screenshot)
+        button = QPushButton('Остановить видеофиксацию', self)
+        button.setToolTip('Нажмите здесь чтобы остановить видеофиксацию')
+        button.move(320, 10)
+        button.clicked.connect(self.stop_recording)
+        self.show()
+
+    def start_recording(self):
+        """Start Recording, take screenshot and store in directory"""
+        while self.status:
+            self.count += 1
+            print("Inside start recording", self.count)
+            if not os.path.isdir("screenshots"):
+                os.mkdir("Screenshots")
+            else:
+                filename = "Screenshots/" + str(self.count) + ".jpg"
+                screenshot(filename)
+
+    @pyqtSlot()
+    def start_threading(self):
+        """Start threading and daemon"""
+        print("Inside start threading")
+        self.daemon.start()
+
+    @pyqtSlot()
+    def stop_recording(self):
+        """Stop Recording and create video."""
+        print('Stop Button has been pressed')
+        try:
+            img_array = []
+            self.status = False
+            for filename in glob.glob('screenshots/*.jpg'):
+                img = cv2.imread(filename)
+                height, width, layers = img.shape
+                size = (width, height)
+                img_array.append(img)
+            ttt = str(time.time()) + '.avi'
+            out = cv2.VideoWriter(ttt, cv2.VideoWriter_fourcc(*'DIVX'), 24, size)
+            for i in range(len(img_array)):
+                out.write(img_array[i])
+            out.release()
+            shutil.rmtree('Screenshots')
+            print(ttt)
+            shutil.move('C:/Users/astra/PycharmProjects/Laboratoria1.0/UI/' + ttt,'C:/Users/astra/PycharmProjects/Laboratoria1.0/UI/Videofix')
+
+            exit()
+        except:
+            exit()
+
+    def take_screenshot(self):
+        """Take screen shot and store to a directory"""
+        if not os.path.isdir("Screenshot"):
+            os.mkdir("Screenshot")
+        filename = "Screenshot/" + str(time.time()) + ".jpg"
+        screenshot(filename)
+        img = cv2.imread(filename)
+        cv2.imshow("Screenshot", img)
+        cv2.waitKey(0)
 
 class UnsharpMaskNode(CtrlNode):
     """Return the input data passed through an unsharp mask."""
@@ -484,25 +564,66 @@ class Exper(QDialog):
     def __init__(self):
         super(Exper, self).__init__()
         loadUi("Exper/Exper1.ui",self)
+        papka = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi'
+        files = os.listdir(papka)
+        a = 0
+        print(files)
+        filesUd = ['beautiful.css','drawflow-element.html','drawflow-element.js','drawflow.gif','temp.txt']
+        for i in range(len(filesUd)):
+            files.remove(filesUd[i])
+        self.tableWidget.setRowCount(len(files))
+        for i in files:
+            self.tableWidget.setItem(a, 0, QTableWidgetItem(i))
+            a = a = 1
         self.pushButton30.clicked.connect(self.udalit)
-        self.pushButton33.clicked.connect(self.otkrit)
+        self.ok.clicked.connect(self.perehok)
         self.pushButton333.clicked.connect(self.clickSozd)
 
     def clickSozd(self):
-        print('')
-
-    def otkrit(self):
-        print('')
+        self.close()
+        self.Vibor = Vibor()
+        self.Vibor.show()
 
     def udalit(self):
-        print('')
+        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
+        tempdelete = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/' + tecfile
+        os.remove(tempdelete)
+        self.close()
+        self.Exper = Exper()
+        self.Exper.show()
+
+    def perehok(self):
+        global tecfile2
+        tecfile2 = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
+        self.Widget = Widget()
+        self.Widget.show()
+
+class Vibor(QDialog):
+    def __init__(self):
+        super(Vibor, self).__init__()
+        loadUi("Exper/Vibor.ui",self)
+        self.ssozdt.clicked.connect(self.peredacha)
+
+    def peredacha(self):
+        tecfile = self.line.text() + ".html"
+        temppT = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/' + tecfile
+        temppT2 = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/' + tecfile
+        print(temppT)
+        shutil.copy('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html',
+                    'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html')
+        os.rename("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html",temppT)
+        shutil.move(temppT,temppT2)
+        self.close()
+        self.Exper = Exper()
+        self.Exper.show()
+
 
 
 def replace(file_path, pattern, subst):
     # Create temp file
     fh, abs_path = mkstemp()
     with os.fdopen(fh, 'w', encoding='utf8') as new_file:
-        with open(file_path) as old_file:
+        with io.open(file_path,encoding="utf-8") as old_file:
             for line in old_file:
                 new_file.write(line.replace(pattern, subst))
     # Copy the file permissions from the old file to the new file
@@ -544,20 +665,22 @@ class Widget(QtWidgets.QWidget):
         self.channel = QtWebChannel.QWebChannel()
         self.channel.registerObject("backend", backend)
         self.webEngineView.page().setWebChannel(self.channel)
+        global tecfile2
 
-        path = "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html"
+        path = "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/" + tecfile2
         self.webEngineView.setUrl(QtCore.QUrl.fromLocalFile(path))
 
     @QtCore.pyqtSlot(str)
     def foo_function(self, value):
         value = "var dataToImport = " + value
+        temppT = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/experementi/' + tecfile2
+        TtT = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/' + tecfile2
         shutil.copy('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/basa.html',
-                    'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html')
-        replace("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html", "var dataToImport",
+                    TtT)
+        replace(TtT, "var dataToImport",
                         value)
-        os.remove("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html")
-        os.rename("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html",
-                    "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html")
+        os.remove(temppT)
+        shutil.move(TtT,temppT)
 
 
 class SFor(QDialog):
@@ -1373,7 +1496,168 @@ class DobTextPes(QDialog):
     def dobavka(self):
         path = self.lineText.text()
 
+class ChernovikPesocFlow(QMainWindow):
+    def __init__(self):
+        super(ChernovikPesocFlow, self).__init__()
+        loadUi("C:/Users/astra/PycharmProjects/Laboratoria1.0/UI/Pesochnica/NastroikaPesocFlow.ui",self) #self.line1.text() - количество входных данных, ZMass - сами входные данные
+        papka = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/PesocFlow'
+        files = os.listdir(papka)
+        a = 0
+        print(files)
+        self.tableWidget.setRowCount(len(files))
+        for i in files:
+            self.tableWidget.setItem(a, 0, QTableWidgetItem(i))
+            a = a = 1
+        self.pushButton33.clicked.connect(self.prildoska1) #Открыть
+        self.pushButton30.clicked.connect(self.prildoska3) #удалить
+        self.pushButton333.clicked.connect(self.prildoska333) #создать
+        self.ok.clicked.connect(self.sapflow)
 
+    def prildoska333(self):
+        self.TextEdit = TextEditPesoc()
+        self.TextEdit.show()
+
+    def prildoska1(self):
+        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
+        print('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/PesocFlow' + tecfile)
+        self.close()
+        self.Window = Window()
+        self.Window.load(QUrl('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/PesocFlow/' + tecfile))
+        self.Window.show()
+
+
+    def prildoska3(self):
+        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
+        tempdelete = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/PesocFlow/' + tecfile
+        os.remove(tempdelete)
+        self.close()
+
+    def sapflow(self):
+        tecfile = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
+        global dannie
+        dannie = 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/PesocFlow/' + tecfile
+        self.close()
+        self.PesocFlow = PesocFlow()
+        self.PesocFlow.show()
+
+    def smenaizo(self):
+        self.FileOtobr = FileOtobrPesoc()
+        self.FileOtobr.show()
+
+class TextEditPesoc(QMainWindow): #не переносить
+    def __init__(self, parent=None):
+        super(TextEditPesoc, self).__init__(parent)
+        self.textEdit = QTextEdit(self)
+        self.setCentralWidget(self.textEdit)
+
+        widget = QWidget(self)
+        vb = QHBoxLayout(widget)
+        vb.setContentsMargins(0, 0, 0, 0)
+        self.findText = QLineEdit(self)
+        self.findText.setText('Введите название файла(на английском)')
+        findBtn = QPushButton('Сохранить', self)
+        findBtn.clicked.connect(self.sochtest)
+        vb.addWidget(self.findText)
+        vb.addWidget(findBtn)
+
+        tb = QToolBar(self)
+        tb.addWidget(widget)
+        self.addToolBar(tb)
+        self.textEdit.setPlainText("Введите сюда данные для работы")
+
+    def sochtest(self):
+        nazv = self.findText.text() + ".txt"
+        my_file = open(nazv, "w+")
+        my_file.write(self.textEdit.toPlainText())
+        my_file.close()
+        os.path.isfile("/Laboratoria1.0/chernoviki/" + nazv)
+        os.rename("C:/Users/astra/PycharmProjects/Laboratoria1.0/chernoviki/" + nazv, "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/PesocFlow/" + nazv)
+        self.close()
+
+class PesocFlow(QWidget):
+    def __init__(self,parent=None):
+        super(PesocFlow, self).__init__(parent)
+        loadUi("C:/Users/astra/PycharmProjects/Laboratoria1.0/UI/Pesochnica/Pesoc.ui",self)
+        self.pusk.clicked.connect(self.poln)
+        pixmap = QPixmap(pathP)
+        self.labkar.setPixmap(pixmap)
+        file = open(dannie, "r")
+        contents = file.read()
+        contents = contents.split()
+        for i in range(len(contents)):
+            contents[i] = float(contents[i])
+        print(contents)
+        contents = array(contents)
+        file.close()
+
+        fc = Flowchart(terminals={
+    'dataIn': {'io': 'in'},
+    'dataOut': {'io': 'out'}
+})
+        fc.setInput(dataIn=contents)
+        w = fc.widget()
+
+        self.LayOut1.addWidget(w, 0, 0, 2, 1)
+
+
+        library = fclib.LIBRARY.copy()
+        library.addNodeType(UnsharpMaskNode, [('Текст',),
+                                          ('Submenu_test', 'submenu2', 'submenu3')])
+        fc.setLibrary(library)
+
+        fNode = fc.createNode('Текст', pos=(0, 0))
+        fc.connectTerminals(fc['dataIn'], fNode['dataIn'])
+        fc.connectTerminals(fNode['dataOut'], fc['dataOut'])
+        self.smenacher.clicked.connect(self.sapfileot)
+
+
+    def sapfileot(self):
+        self.close()
+        self.FileOtobr = FileOtobrPesoc()
+        self.FileOtobr.show()
+        pixmap = QPixmap(pathP)
+        self.labkar.setPixmap(pixmap)
+
+    def poln(self):
+        self.MyMainWindow = MyMainWindow()
+        self.MyMainWindow.show()
+
+class FileOtobrPesoc(QWidget):
+    def __init__(self):
+        super().__init__()
+        hlay = QHBoxLayout(self)
+        self.treeview = QTreeView()
+        self.listview = QListView()
+        hlay.addWidget(self.treeview)
+        hlay.addWidget(self.listview)
+        path1 = "C:/Users/astra/PycharmProjects/Laboratoria1.0/resour"
+        path = QDir.rootPath()
+        self.dirModel = QFileSystemModel()
+        self.dirModel.setRootPath(QDir.rootPath())
+        self.dirModel.setFilter(QDir.NoDotAndDotDot | QDir.AllDirs)
+
+        self.fileModel = QFileSystemModel()
+        self.fileModel.setFilter(QDir.NoDotAndDotDot |  QDir.Files)
+
+        self.treeview.setModel(self.dirModel)
+        self.listview.setModel(self.fileModel)
+
+        self.treeview.setRootIndex(self.dirModel.index(path1))
+        self.listview.setRootIndex(self.fileModel.index(path))
+
+        self.treeview.clicked.connect(self.on_clicked)
+        self.listview.clicked.connect(self.on_clicked2)
+
+    def on_clicked(self, index):
+        path = self.dirModel.fileInfo(index).absoluteFilePath()
+        self.listview.setRootIndex(self.fileModel.setRootPath(path))
+
+    def on_clicked2(self, index):
+        global pathP
+        pathP = self.dirModel.fileInfo(index).absoluteFilePath()
+        self.close()
+        self.PesocFlow = PesocFlow()
+        self.PesocFlow.show()
 '''class FileOtobr(QWidget):
     def __init__(self):
         super().__init__()

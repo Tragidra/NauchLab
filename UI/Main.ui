@@ -30,8 +30,6 @@
     <property name="title">
      <string>Проекты</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="otkrpoject"/>
     <addaction name="gotexp"/>
     <addaction name="formuli1"/>
    </widget>
@@ -40,7 +38,6 @@
      <string>Инструменты</string>
     </property>
     <addaction name="videofix"/>
-    <addaction name="endvideo"/>
     <addaction name="videotub"/>
     <addaction name="pesochnica"/>
     <addaction name="experim1"/>
@@ -69,7 +66,7 @@
   </action>
   <action name="videofix">
    <property name="text">
-    <string>Начать видеофиксацию...</string>
+    <string>Видеофиксация...</string>
    </property>
   </action>
   <action name="videotub">

@@ -1,5 +1,6 @@
 import codecs
 import fileinput
+import io
 import json
 import os
 import shutil
@@ -12,7 +13,7 @@ def replace(file_path, pattern, subst):
     #Create temp file
     fh, abs_path = mkstemp()
     with os.fdopen(fh, 'w', encoding='utf8') as new_file:
-        with open(file_path) as old_file:
+        with io.open(file_path,encoding="utf-8") as old_file:
             for line in old_file:
                 new_file.write(line.replace(pattern, subst))
     #Copy the file permissions from the old file to the new file
@@ -65,8 +66,8 @@ class Widget(QtWidgets.QWidget):
         value = "var dataToImport = " + value
         shutil.copy('C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/basa.html', 'C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html')
         replace("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html","var dataToImport",value)
-        os.remove("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html")
-        os.rename("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html","C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html")
+        #os.remove("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html")
+       # os.rename("C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index1.html","C:/Users/astra/PycharmProjects/Laboratoria1.0/resour/cherteji/index.html")
 
 
 
